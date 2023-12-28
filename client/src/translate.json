@@ -1,8 +1,14 @@
 {
   "en": {
+    "error_invalid_credentials": "Invalid username or password.",
+    "error_login_required": "Enter username and password to login.",
+    "error_unknown": "Something went wrong.",
     "label_login": "Login"
   },
   "cs": {
+    "error_invalid_credentials": "Neplatné uživatelské jméno nebo heslo.",
+    "error_login_required": "Zadejte uživatelské jméno a heslo pro přihlášení.",
+    "error_unknown": "Něco se pokazilo.",
     "label_login": "Přihlásit se"
   }
 }

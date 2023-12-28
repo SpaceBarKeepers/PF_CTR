@@ -8,10 +8,10 @@ import {useEffect, useState} from "react";
 import translate from "./translate.json";
 
 function App() {
-const [messages, setMessages] = useState({})
+    const [messages, setMessages] = useState({})
     const language = useAtomValue(languageAtom)
 
-// Load translations for currently selected language
+    // Load translations for currently selected language
     useEffect(() => {
         if (!language) return
         setMessages({
