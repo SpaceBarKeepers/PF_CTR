@@ -1,4 +1,5 @@
 import React from 'react';
+import HomePageHeader from "../../components/HomePageHeader/HomePageHeader";
 
 type Props = {
 
@@ -7,7 +8,8 @@ type Props = {
 const HomePage = ({}: Props) => {
  return (
   <div>
-   Homepage
+      <HomePageHeader/>
+        Homepage
   </div>
  );
 };
