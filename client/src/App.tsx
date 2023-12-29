@@ -2,14 +2,16 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import {useAtomValue} from "jotai/index";
-import {languageAtom} from "./atomStore";
+import {languageAtom, tokenAtom} from "./atomStore";
 import {IntlProvider} from "react-intl";
 import {useEffect, useState} from "react";
 import translate from "./translate.json";
+import DeviceCheckPage from "./pages/DeviceCheckPage/DeviceCheckPage";
 
 function App() {
     const [messages, setMessages] = useState({})
     const language = useAtomValue(languageAtom)
+    const token = useAtomValue(tokenAtom)
 
     // Load translations for currently selected language
     useEffect(() => {
@@ -27,6 +29,10 @@ function App() {
         {
             path: '/login',
             element: <LoginPage/>,
+        },
+        {
+            path: '/device-check',
+            element: token ? <DeviceCheckPage /> : <LoginPage/>,
         },
     ]);
 

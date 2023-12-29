@@ -7,6 +7,7 @@ import { AuthController } from "./auth.controller";
 import { JwtModule } from "@nestjs/jwt";
 import { JwtStrategy } from "./jwt.strategy";
 import { JwtStrategyRefresh } from "./jwt-refresh.strategy";
+import { JwtWithoutDeviceStrategy } from "./jwt-without-device.strategy";
 import * as dotenv from "dotenv";
 dotenv.config();
 
@@ -15,7 +16,7 @@ dotenv.config();
     secret: process.env.JWT_SECRET,
     signOptions: { expiresIn: '300s' },
   }),],
-  providers: [AuthService, LocalStrategy, JwtStrategy, JwtStrategyRefresh],
+  providers: [AuthService, LocalStrategy, JwtStrategy, JwtStrategyRefresh, JwtWithoutDeviceStrategy],
   controllers: [AuthController],
 })
 export class AuthModule {}

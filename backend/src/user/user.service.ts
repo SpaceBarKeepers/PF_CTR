@@ -19,4 +19,8 @@ export class UserService {
   async findAll(): Promise<User[]> {
     return await this.userModel.find().exec();
   }
+
+  async asignActiveDevice(username: string, deviceId: string): Promise<User | null> {
+    return this.userModel.findOneAndUpdate({username}, {activeDevice: deviceId}).exec();
+  }
 }
