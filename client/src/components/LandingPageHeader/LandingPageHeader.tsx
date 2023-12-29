@@ -4,7 +4,7 @@ import {FormattedMessage} from "react-intl";
 
 type Props = {};
 
-const HomePageHeader = ({}: Props) => {
+const LandingPageHeader = ({}: Props) => {
     return (
         <div>
             <Link to={"/login"}><FormattedMessage id={"label_login"} defaultMessage={"Login"}/></Link>
@@ -12,4 +12,4 @@ const HomePageHeader = ({}: Props) => {
     );
 };
 
-export default HomePageHeader;
+export default LandingPageHeader;
