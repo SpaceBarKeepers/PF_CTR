@@ -7,7 +7,8 @@
     "label_login": "Login",
     "label_logout": "Logout",
     "label_password": "Password",
-    "label_username": "Username"
+    "label_username": "Username",
+    "label_your_account": "Your account"
   },
   "cs": {
     "error_invalid_credentials": "Neplatné uživatelské jméno nebo heslo.",
@@ -17,6 +18,7 @@
     "label_login": "Přihlásit se",
     "label_logout": "Odhlásit se",
     "label_password": "Heslo",
-    "label_username": "Uživatelské jméno"
+    "label_username": "Uživatelské jméno",
+    "label_your_account": "Váš účet"
   }
 }
