@@ -7,6 +7,8 @@ import { AuthModule } from "./auth/auth.module";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from 'path';
 import * as dotenv from "dotenv";
+import {TagModule} from "./tag/tag.module";
+import {KnowledgeModule} from "./knowledge/knowledge.module";
 dotenv.config();
 
 @Module({
@@ -22,7 +24,7 @@ dotenv.config();
   }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', "..", 'client'),
-    }), UserModule, AuthModule],
+    }), UserModule, AuthModule, TagModule, KnowledgeModule],
   controllers: [AppController],
   providers: [AppService],
 })
