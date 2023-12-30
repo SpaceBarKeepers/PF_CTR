@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {loginUserWithUsernameAndPassword, tokenRefresh} from "../../api/user";
+import {loginUserWithUsernameAndPassword, tokenRefresh} from "../../api/auth";
 import {useAtom} from "jotai";
 import {tokenAtom} from "../../atomStore";
 import {TokenEntity} from "../../models/entities";
@@ -22,7 +22,7 @@ const LoginPage = ({}: Props) => {
             .then((response: TokenEntity) => {
                 setToken(response)
             })
-            .catch((error: string) => {
+            .catch((error: Error) => {
                 if (error.message === "error_invalid_device_hash" || error.message === "error_invalid_token") forcedLogout()
                 else console.error(error)
             })
@@ -36,7 +36,7 @@ const LoginPage = ({}: Props) => {
             .then((response: TokenEntity) => {
                 setToken(response)
             })
-            .catch((error: string) => {
+            .catch((error: Error) => {
                 setLoginError(error.message)
             })
     }

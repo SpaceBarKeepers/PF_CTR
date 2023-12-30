@@ -1,4 +1,5 @@
 import React from 'react';
+import AdminHeader from "../../components/AdminHeader/AdminHeader";
 
 type Props = {
 
@@ -7,7 +8,7 @@ type Props = {
 const AdminDashboardPage = ({}: Props) => {
  return (
   <div>
-   Dashboard
+   <AdminHeader />
   </div>
  );
 };

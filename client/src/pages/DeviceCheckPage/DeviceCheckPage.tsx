@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {checkDeviceHash, reassignDevice} from "../../api/user";
+import {useEffect, useState} from 'react';
+import {checkDeviceHash, reassignDevice} from "../../api/auth";
 import {useAtomValue} from "jotai";
 import {redirectUrlAtom, tokenAtom} from "../../atomStore";
 import {useForcedLogout} from "../../lib/logout";
@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom";
 type Props = {};
 
 const DeviceCheckPage = ({}: Props) => {
-    const [propmpReassignDevice, setPromptReassignDevice] = useState<boolean>(false)
+    const [promptReassignDevice, setPromptReassignDevice] = useState<boolean>(false)
     const redirectUrl = useAtomValue(redirectUrlAtom)
     const token = useAtomValue(tokenAtom)?.access_token
     const logout = useForcedLogout()
@@ -42,7 +42,7 @@ const DeviceCheckPage = ({}: Props) => {
     return (
         <div>
             {
-                propmpReassignDevice
+                promptReassignDevice
                 ? <div>
                     <button onClick={logout}><FormattedMessage id={"label_logout"} defaultMessage={"Logout"} /></button>
                     <button onClick={handleReassignDevice}><FormattedMessage id={"label_device_continue"} defaultMessage={"Continue from this device"} /></button>

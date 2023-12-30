@@ -12,6 +12,7 @@ import AccountPage from "./pages/AccountPage/AccountPage";
 import {useSetAtom} from "jotai";
 import AdminLoginPage from "./pagesAdmin/AdminLoginPage/AdminLoginPage";
 import AdminDashboardPage from "./pagesAdmin/AdminDashboardPage/AdminDashboardPage";
+import AdminUsersPage from "./pagesAdmin/AdminUsersPage/AdminUsersPage";
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -54,6 +55,10 @@ function App() {
         {
             path: '/admin/dashboard',
             element: adminToken ? <AdminDashboardPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/users',
+            element: adminToken ? <AdminUsersPage /> : <AdminLoginPage/>,
         },
     ]);
 
