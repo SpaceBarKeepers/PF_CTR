@@ -5,7 +5,7 @@ import {tokenAtom} from "../../atomStore";
 import {TokenEntity} from "../../models/entities";
 import {useNavigate} from "react-router-dom";
 import {jwtDecode} from "jwt-decode";
-import {useForcedLogout} from "../../lib/forceLogout";
+import {useForcedLogout} from "../../lib/logout";
 import {FormattedMessage} from "react-intl";
 
 type Props = {};

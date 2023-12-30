@@ -10,8 +10,8 @@ import {
 } from "@nestjs/common";
 import {Response} from "express";
 import {AuthService} from "./auth.service";
-import {LocalAuthGuard} from "./local-auth.guard";
-import {JwtAuthGuard, JwtRefreshGuard, JwtWithoutDeviceAuthGuard} from "./jwt-auth.guard";
+import {LocalAdminAuthGuard, LocalAuthGuard} from "./local-auth.guard";
+import {JwtAdminRefreshGuard, JwtAuthGuard, JwtRefreshGuard, JwtWithoutDeviceAuthGuard} from "./jwt-auth.guard";
 import * as CryptoJS from 'crypto-js';
 import * as dotenv from "dotenv";
 
@@ -61,7 +61,23 @@ export class AuthController {
     @Post('auth/refresh')
     async refresh(@Request() req: any, @Res({passthrough: true}) res: Response) {
         const refreshToken = await this.authService.generateRefreshToken(req.user)
-        res.cookie("refreshToken", CryptoJS.AES.encrypt(refreshToken, process.env.JWT_SECRET!).toString(), {httpOnly: true})
+        res.cookie("toheyo_session", CryptoJS.AES.encrypt(refreshToken, process.env.JWT_SECRET!).toString(), {httpOnly: true})
         return this.authService.login(req.user);
+    }
+
+    @UseGuards(LocalAdminAuthGuard)
+    @Post('auth/admin/login')
+    async loginAdmin(@Request() req: any, @Res({passthrough: true}) response: Response) {
+        const refreshToken = await this.authService.generateAdminRefreshToken(req.user)
+        response.cookie("toheyo_admin_session", CryptoJS.AES.encrypt(refreshToken, process.env.JWT_ADMIN_SECRET!).toString(), {httpOnly: true})
+        return this.authService.loginAdmin(req.user);
+    }
+
+    @UseGuards(JwtAdminRefreshGuard)
+    @Post('auth/admin/refresh')
+    async refreshAdmin(@Request() req: any, @Res({passthrough: true}) res: Response) {
+        const refreshToken = await this.authService.generateAdminRefreshToken(req.user)
+        res.cookie("toheyo_admin_session", CryptoJS.AES.encrypt(refreshToken, process.env.JWT_ADMIN_SECRET!).toString(), {httpOnly: true})
+        return this.authService.loginAdmin(req.user);
     }
 }

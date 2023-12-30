@@ -1,18 +1,22 @@
-import {createBrowserRouter, RouterProvider, useNavigate} from "react-router-dom";
+import {createBrowserRouter, RouterProvider, useLocation, useNavigate} from "react-router-dom";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import {useAtomValue} from "jotai/index";
-import {languageAtom, tokenAtom} from "./atomStore";
+import {languageAtom, redirectUrlAtom, tokenAdminAtom, tokenAtom} from "./atomStore";
 import {IntlProvider} from "react-intl";
 import {ReactElement, useEffect, useState} from "react";
 import translate from "./translate.json";
 import DeviceCheckPage from "./pages/DeviceCheckPage/DeviceCheckPage";
 import HomepagePage from "./pages/HomepagePage/HomepagePage";
 import AccountPage from "./pages/AccountPage/AccountPage";
+import {useSetAtom} from "jotai";
+import AdminLoginPage from "./pagesAdmin/AdminLoginPage/AdminLoginPage";
+import AdminDashboardPage from "./pagesAdmin/AdminDashboardPage/AdminDashboardPage";
 
 function App() {
     const [messages, setMessages] = useState({})
     const language = useAtomValue(languageAtom)
+    const adminToken = useAtomValue(tokenAdminAtom)
 
     // Load translations for currently selected language
     useEffect(() => {
@@ -43,6 +47,14 @@ function App() {
             path: '/account',
             element: <AuthRequired><AccountPage /></AuthRequired>,
         },
+        {
+            path: '/admin',
+            element: <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/dashboard',
+            element: adminToken ? <AdminDashboardPage /> : <AdminLoginPage/>,
+        },
     ]);
 
     return (
@@ -53,8 +65,16 @@ function App() {
 }
 
 const AuthRequired = ({children}: { children: ReactElement }) => {
+    const setRedirectAtom = useSetAtom(redirectUrlAtom)
     const token = useAtomValue(tokenAtom)
     const navigate = useNavigate()
+    const location = useLocation()
+
+    useEffect(() => {
+        if (location.pathname === "/login") return
+        if (location.pathname === "/device-check") return
+        setRedirectAtom(location.pathname)
+    }, [location.pathname]);
 
     useEffect(() => {
         if (!token) navigate("/login")

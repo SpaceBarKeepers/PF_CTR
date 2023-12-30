@@ -2,6 +2,8 @@ import {Injectable} from '@nestjs/common';
 import {UserService} from '../user/user.service';
 import {JwtService} from "@nestjs/jwt";
 import * as bcrypt from "bcrypt";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 @Injectable()
 export class AuthService {
@@ -26,9 +28,21 @@ export class AuthService {
         };
     }
 
+    async loginAdmin(user: any) {
+        const payload = {username: user.username, sub: user.userId};
+        return {
+            admin_token: this.jwtService.sign(payload,{ secret: process.env.JWT_ADMIN_SECRET } ),
+        };
+    }
+
     async generateRefreshToken(user: any) {
         const payload = {username: user.username};
         return this.jwtService.sign(payload, {expiresIn: "30d"});
+    }
+
+    async generateAdminRefreshToken(user: any) {
+        const payload = {username: user.username};
+        return this.jwtService.sign(payload, {expiresIn: "30d", secret: process.env.JWT_ADMIN_SECRET});
     }
 
     async checkDeviceHash(username: string, deviceHash: string) {
@@ -47,5 +61,14 @@ export class AuthService {
 
     async reassignDeviceHash(username: string, deviceHash: string) {
         return await this.userService.asignActiveDevice(username, deviceHash)
+    }
+
+    async validateAdminUser(username: string, pass: string): Promise<any> {
+        const usernameOk = username === process.env.ADMIN_USERNAME
+        const passwordOk = await bcrypt.compare(pass, process.env.ADMIN_PASSWORD!)
+        if (usernameOk && passwordOk) {
+            return {username: process.env.ADMIN_USERNAME}
+        }
+        return null;
     }
 }
