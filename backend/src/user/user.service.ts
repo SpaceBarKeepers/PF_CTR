@@ -20,6 +20,10 @@ export class UserService {
     return await this.userModel.find().exec();
   }
 
+  delete(username: string) {
+    return this.userModel.findOneAndDelete({username}).exec();
+  }
+
   async asignActiveDevice(username: string, deviceId: string): Promise<User | null> {
     return this.userModel.findOneAndUpdate({username}, {activeDevice: deviceId}).exec();
   }

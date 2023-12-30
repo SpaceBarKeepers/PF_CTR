@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {FormattedMessage} from "react-intl";
-import {TokenEntity} from "../../models/entities";
+import {TokenAdminEntity, TokenEntity} from "../../models/entities";
 import {adminLogin, adminTokenRefresh} from "../../api/admin";
 import {useAtom} from "jotai";
 import {tokenAdminAtom} from "../../atomStore";
@@ -19,7 +19,7 @@ const AdminLoginPage = ({}: Props) => {
  useEffect(() => {
   // try autologin from cookie
   adminTokenRefresh()
-      .then((response: TokenEntity) => {
+      .then((response: TokenAdminEntity) => {
        setAdminToken(response)
       })
       .catch((error: string) => {
