@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {checkDeviceHash, reassignDevice} from "../../api/user";
 import {useAtomValue} from "jotai";
-import {tokenAtom} from "../../atomStore";
-import {useForcedLogout} from "../../lib/forceLogout";
+import {redirectUrlAtom, tokenAtom} from "../../atomStore";
+import {useForcedLogout} from "../../lib/logout";
 import {FormattedMessage} from "react-intl";
 import {useNavigate} from "react-router-dom";
 
@@ -10,6 +10,7 @@ type Props = {};
 
 const DeviceCheckPage = ({}: Props) => {
     const [propmpReassignDevice, setPromptReassignDevice] = useState<boolean>(false)
+    const redirectUrl = useAtomValue(redirectUrlAtom)
     const token = useAtomValue(tokenAtom)?.access_token
     const logout = useForcedLogout()
     const navigate = useNavigate()
@@ -21,7 +22,7 @@ const DeviceCheckPage = ({}: Props) => {
         }
         checkDeviceHash(token)
             .then((response) => {
-                if (response.status === 200) navigate("/homepage")
+                if (response.status === 200) redirectUrl ? navigate(redirectUrl) : navigate("/homepage")
             })
             .catch((error) => {
                 if (error.message === "error_invalid_device_hash") {

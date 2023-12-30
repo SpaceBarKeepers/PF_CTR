@@ -5,12 +5,12 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 @Injectable()
-export class JwtWithoutDeviceStrategy extends PassportStrategy(Strategy, "jwt-without-device") {
+export class JwtAdminStrategy extends PassportStrategy(Strategy, "jwt-admin") {
   constructor() {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: process.env.JWT_SECRET,
+      secretOrKey: process.env.JWT_ADMIN_SECRET,
       passReqToCallback: true,
     });
   }

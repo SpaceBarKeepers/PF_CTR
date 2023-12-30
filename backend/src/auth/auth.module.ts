@@ -9,6 +9,9 @@ import { JwtStrategy } from "./jwt.strategy";
 import { JwtStrategyRefresh } from "./jwt-refresh.strategy";
 import { JwtWithoutDeviceStrategy } from "./jwt-without-device.strategy";
 import * as dotenv from "dotenv";
+import {LocalAdminStrategy} from "./local-admin.strategy";
+import {JwtAdminStrategy} from "./jwt-admin.strategy";
+import {JwtAdminRefreshStrategyRefresh} from "./jwt-admin-refresh.strategy";
 dotenv.config();
 
 @Module({
@@ -16,7 +19,7 @@ dotenv.config();
     secret: process.env.JWT_SECRET,
     signOptions: { expiresIn: '300s' },
   }),],
-  providers: [AuthService, LocalStrategy, JwtStrategy, JwtStrategyRefresh, JwtWithoutDeviceStrategy],
+  providers: [AuthService, LocalStrategy, LocalAdminStrategy, JwtStrategy, JwtStrategyRefresh, JwtWithoutDeviceStrategy, JwtAdminStrategy, JwtAdminRefreshStrategyRefresh],
   controllers: [AuthController],
 })
 export class AuthModule {}

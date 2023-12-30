@@ -7,3 +7,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {}
 export class JwtWithoutDeviceAuthGuard extends AuthGuard('jwt-without-device') {}
 @Injectable()
 export class JwtRefreshGuard extends AuthGuard('jwt-refresh') {}
+@Injectable()
+export class JwtAdminGuard extends AuthGuard('jwt-admin') {}
+@Injectable()
+export class JwtAdminRefreshGuard extends AuthGuard('jwt-admin-refresh') {}
