@@ -22,7 +22,12 @@ export class KnowledgeService {
     }
 
     async update(id: string, knowledge: Knowledge): Promise<Knowledge | null> {
-        return this.knowledgeModel.findOneAndUpdate({_id: id}, knowledge).exec();
+        const newKnowledge = {
+            createdAt: undefined,
+            updatedAt: Date.now(),
+            ...knowledge,
+        }
+        return this.knowledgeModel.findOneAndUpdate({_id: id}, newKnowledge).exec();
     }
 
     delete(id: string) {

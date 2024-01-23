@@ -1,15 +1,12 @@
-import {IsArray, IsString} from "class-validator";
+import {
+    IsObject,
+} from "class-validator";
+import {KnowledgeInterface} from "../interfaces/knowledge.interface";
 
 export class NewKnowledgeDto {
-    @IsString()
-    readonly title: string;
+    @IsObject()
+    readonly cs: KnowledgeInterface;
 
-    @IsString()
-    readonly thumbnail: string;
-
-    @IsArray()
-    readonly tags: string[];
-
-    @IsString()
-    readonly content: string;
+    @IsObject()
+    readonly en: KnowledgeInterface;
 }

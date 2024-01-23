@@ -1,7 +1,9 @@
+import {Tag} from "../../tag/interfaces/tag.interface";
+
 export interface KnowledgeInterface {
-    title: string;
+    title?: string;
     thumbnail?: string;
-    tags?: string[];
+    tags?: Tag[];
     content?: string;
     createdAt?: number;
     updatedAt?: number;
