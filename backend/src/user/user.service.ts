@@ -16,6 +16,10 @@ export class UserService {
     return this.userModel.findOne({username}).exec();
   }
 
+  async findOneWithPassword(username: string): Promise<User | null> {
+    return this.userModel.findOne({username}).select("+password").exec();
+  }
+
   async findAll(): Promise<User[]> {
     return await this.userModel.find().exec();
   }

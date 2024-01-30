@@ -17,3 +17,8 @@ export interface UserEntity {
     username: string;
     activeDevice: string;
 }
+
+export interface KnowledgeAPIEntity {
+    _id: string;
+
+}
