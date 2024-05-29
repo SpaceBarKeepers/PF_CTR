@@ -1,18 +1,23 @@
 import React, {useEffect} from 'react';
 import {FormattedMessage} from "react-intl";
-import {TokenAdminEntity, TokenEntity} from "../../models/entities";
+import {TokenAdminEntity} from "../../models/entities";
 import {adminLogin, adminTokenRefresh} from "../../api/admin";
 import {useAtom} from "jotai";
 import {tokenAdminAtom} from "../../atomStore";
 import {jwtDecode} from "jwt-decode";
 import {useNavigate} from "react-router-dom";
 
+interface FormElements extends HTMLFormElement {
+    usernameAdmin: HTMLInputElement;
+    passwordAdmin: HTMLInputElement;
+}
+
 type Props = {
 
 };
 
 const AdminLoginPage = ({}: Props) => {
- const [loginError, setLoginError] = React.useState<string>("")
+ const [, setLoginError] = React.useState<string>("")
  const [adminToken, setAdminToken] = useAtom(tokenAdminAtom)
  const navigate = useNavigate()
 
@@ -25,17 +30,19 @@ const AdminLoginPage = ({}: Props) => {
       .catch((error: string) => {
        console.error(error)
       })
- }, []);
+ }, [setAdminToken]);
 
- const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+ const handleLogin = (e: React.FormEvent<FormElements>) => {
   e.preventDefault();
 
-  if (!e.target.usernameAdmin.value || !e.target.passwordAdmin.value) setLoginError("error_login_required")
-  adminLogin(e.target.usernameAdmin.value, e.target.passwordAdmin.value)
-      .then((response: TokenEntity) => {
+  const target = e.target as FormElements;
+
+  if (!target.usernameAdmin.value || !target.passwordAdmin.value) setLoginError("error_login_required")
+  adminLogin(target.usernameAdmin.value, target.passwordAdmin.value)
+      .then((response: TokenAdminEntity) => {
        setAdminToken(response)
       })
-      .catch((error: string) => {
+      .catch((error) => {
        setLoginError(error.message)
       })
  }
@@ -46,7 +53,7 @@ const AdminLoginPage = ({}: Props) => {
    const expiration = jwtDecode(adminToken.admin_token).exp
    if (expiration && Date.now() < expiration * 1000) navigate("/admin/dashboard")
   }
- }, [adminToken]);
+ }, [adminToken, navigate]);
 
  return (
   <div>

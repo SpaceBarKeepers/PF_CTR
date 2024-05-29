@@ -8,10 +8,15 @@ import {jwtDecode} from "jwt-decode";
 import {useForcedLogout} from "../../lib/logout";
 import {FormattedMessage} from "react-intl";
 
+interface FormElements extends HTMLFormElement {
+    username: HTMLInputElement;
+    password: HTMLInputElement;
+}
+
 type Props = {};
 
 const LoginPage = ({}: Props) => {
-    const [loginError, setLoginError] = React.useState<string>("")
+    const [, setLoginError] = React.useState<string>("")
     const [token, setToken] = useAtom(tokenAtom)
     const navigate = useNavigate()
     const forcedLogout = useForcedLogout()
@@ -28,11 +33,13 @@ const LoginPage = ({}: Props) => {
             })
     }, []);
 
-    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleLogin = (e: React.FormEvent<FormElements>) => {
         e.preventDefault();
 
-        if (!e.target.username.value || !e.target.password.value) setLoginError("error_login_required")
-        loginUserWithUsernameAndPassword(e.target.username.value, e.target.password.value)
+        const target = e.target as FormElements;
+
+        if (!target.username.value || !target.password.value) setLoginError("error_login_required")
+        loginUserWithUsernameAndPassword(target.username.value, target.password.value)
             .then((response: TokenEntity) => {
                 setToken(response)
             })

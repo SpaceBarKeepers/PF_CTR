@@ -32,7 +32,7 @@ const DeviceCheckPage = ({}: Props) => {
                     else console.error(error)
                 }
             })
-    }, [propmpReassignDevice]);
+    }, [promptReassignDevice]);
 
     const handleReassignDevice = () => {
         if (!token) return

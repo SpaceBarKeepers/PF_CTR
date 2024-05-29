@@ -21,7 +21,7 @@ dotenv.config();
     dbName: process.env.DATABASE_DBNAME
   }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', "..", 'client'),
+      rootPath: join(__dirname, '..', '..', 'client', 'dist'),
     }), UserModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],

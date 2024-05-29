@@ -1,4 +1,3 @@
-import React from 'react';
 import LandingPageHeader from "../../components/LandingPageHeader/LandingPageHeader";
 
 type Props = {
