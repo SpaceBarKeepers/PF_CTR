@@ -1,5 +1,4 @@
 import "./landingPageCard.scss"
-import React from 'react';
 
 type Props = {
     image: string;

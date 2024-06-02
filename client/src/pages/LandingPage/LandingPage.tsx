@@ -7,6 +7,7 @@ import { languageAtom } from '../../atomStore';
 import { useAtomValue } from 'jotai/index';
 import { LANGUAGE_ENUM } from '../../models/enums';
 import LandingPageCard from '../../components/LandingPageCard/LandingPageCard';
+import LandingPagePricingCard from '../../components/LandingPagePricingCard/LandingPagePricingCard';
 
 const LandingPage = () => {
     const language = useAtomValue(languageAtom);
@@ -74,22 +75,22 @@ const LandingPage = () => {
                             image={'/images/landing_whoFor1.png'}
                             heading={intl.formatMessage({
                                 id: 'label_who_for1',
-                                defaultMessage: 'Local and regional governments'
+                                defaultMessage: 'Local and regional governments',
                             })}
                             text={intl.formatMessage({
                                 id: 'text_who_for1',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
                             })}
                         />
                         <LandingPageCard
                             image={'/images/landing_whoFor2.png'}
                             heading={intl.formatMessage({
                                 id: 'label_who_for2',
-                                defaultMessage: 'National governments'
+                                defaultMessage: 'National governments',
                             })}
                             text={intl.formatMessage({
                                 id: 'text_who_for2',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
                             })
                             }
                         />
@@ -97,22 +98,22 @@ const LandingPage = () => {
                             image={'/images/landing_whoFor3.png'}
                             heading={intl.formatMessage({
                                 id: 'label_who_for3',
-                                defaultMessage: 'Civic Tech companies'
+                                defaultMessage: 'Civic Tech companies',
                             })}
                             text={intl.formatMessage({
                                 id: 'text_who_for3',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
                             })}
                         />
                         <LandingPageCard
                             image={'/images/landing_whoFor4.png'}
                             heading={intl.formatMessage({
                                 id: 'label_who_for4',
-                                defaultMessage: 'Participation consultants'
+                                defaultMessage: 'Participation consultants',
                             })}
                             text={intl.formatMessage({
                                 id: 'text_who_for4',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
                             })}
                         />
                     </div>
@@ -127,35 +128,123 @@ const LandingPage = () => {
                             image={'/images/landing_whatYouGet1.png'}
                             heading={intl.formatMessage({
                                 id: 'label_what_you_get1',
-                                defaultMessage: 'Hard copy of book'
+                                defaultMessage: 'Hard copy of book',
                             })}
                             text={intl.formatMessage({
                                 id: 'text_what_you_get1',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
                             })}
                         />
                         <LandingPageCard
                             image={'/images/landing_whatYouGet2.png'}
                             heading={intl.formatMessage({
                                 id: 'label_what_you_get2',
-                                defaultMessage: 'Access to online platform'
+                                defaultMessage: 'Access to online platform',
                             })}
                             text={intl.formatMessage({
                                 id: 'text_what_you_get2',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
                             })}
                         />
                         <LandingPageCard
                             image={'/images/landing_whatYouGet3.png'}
                             heading={intl.formatMessage({
                                 id: 'label_what_you_get3',
-                                defaultMessage: 'Regular updates and news'
+                                defaultMessage: 'Regular updates and news',
                             })}
                             text={intl.formatMessage({
                                 id: 'text_what_you_get3',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
                             })}
                         />
+                    </div>
+                </section>
+
+                <section className={'landingPage__pricing'} id={'pricingSection'}>
+                    <h2>
+                        <FormattedMessage id={'label_pricing'} defaultMessage={'Pricing'} />
+                    </h2>
+                    <div className={'landingPage__pricingContainer'}>
+                        <LandingPagePricingCard
+                            title={intl.formatMessage({ id: 'label_pricing1', defaultMessage: 'Individual bundle' })}
+                            options={[
+                                intl.formatMessage({
+                                    id: 'text_pricing1_1',
+                                    defaultMessage: 'Personalised hard copy of the Report delivered to you',
+                                }),
+                                intl.formatMessage({
+                                    id: 'text_pricing1_2',
+                                    defaultMessage: 'Access to the online platform for 1 person for the 2025 edition of the Report',
+                                }),
+                                intl.formatMessage({
+                                    id: 'text_pricing1_3',
+                                    defaultMessage: 'Regular news, updates, and expert articles available on the platform\n',
+                                }),
+                            ]}
+                        >
+                            <ButtonColored>
+                                <a href={'#'}>
+                                    <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
+                                </a>
+                            </ButtonColored>
+                        </LandingPagePricingCard>
+                        <LandingPagePricingCard
+                            title={intl.formatMessage({ id: 'label_pricing2', defaultMessage: 'Participation bundle' })}
+                            options={[
+                                <span>
+                                <a href={'https://participatepractically.com'}>Participate Practically</a>
+                                    {' '}
+                                    {intl.formatMessage({
+                                        id: 'text_pricing2_1',
+                                        defaultMessage: 'online course for 1 person',
+                                    })}</span>,
+                                intl.formatMessage({
+                                    id: 'text_pricing2_2',
+                                    defaultMessage: 'Personalised hard copy of the Report delivered to you',
+                                }),
+                                intl.formatMessage({
+                                    id: 'text_pricing2_3',
+                                    defaultMessage: 'Access to the online platform for 1 person for the 2025 edition of the Report',
+                                }),
+                                intl.formatMessage({
+                                    id: 'text_pricing2_4',
+                                    defaultMessage: 'Regular news, updates, and expert articles available on the platform',
+                                }),
+                            ]}
+                        >
+                            <ButtonColored>
+                                <a href={'#'}>
+                                    <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
+                                </a>
+                            </ButtonColored>
+                        </LandingPagePricingCard>
+                        <LandingPagePricingCard
+                            title={intl.formatMessage({ id: 'label_pricing3', defaultMessage: 'Team bundle' })}
+                            options={[
+                                intl.formatMessage({
+                                    id: 'text_pricing3_1',
+                                    defaultMessage: 'Team/group discount if obtained for 3 or more people',
+                                }),
+                                intl.formatMessage({
+                                    id: 'text_pricing3_2',
+                                    defaultMessage: 'Multiple personalised hard copies of the Report',
+                                }),
+                                intl.formatMessage({
+                                    id: 'text_pricing3_3',
+                                    defaultMessage: 'Access to the online platform for multiple people for the 2025 edition of the Report',
+                                }),
+                                intl.formatMessage({
+                                    id: 'text_pricing3_4',
+                                    defaultMessage: 'Regular news, updates, and expert articles available on the platform',
+                                }),
+                            ]}
+                        >
+                            <ButtonColored>
+                                <a href={'#'}>
+                                    <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
+                                </a>
+                            </ButtonColored>
+                        </LandingPagePricingCard>
                     </div>
                 </section>
             </div>
