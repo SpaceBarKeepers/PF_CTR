@@ -2,9 +2,14 @@ import LayoutPublicWrapper from '../../wrappers/LayoutPublicWrapper';
 import { FLAG_PRESALE } from '../../dev_flags';
 import { FormattedMessage } from 'react-intl';
 import ButtonColored from '../../components/Button/ButtonColored';
-import "./landingPage.scss"
+import './landingPage.scss';
+import { languageAtom } from '../../atomStore';
+import { useAtomValue } from 'jotai/index';
+import { LANGUAGE_ENUM } from '../../models/enums';
 
 const LandingPage = () => {
+    const language = useAtomValue(languageAtom)
+
     return (
         <LayoutPublicWrapper>
             <div className={'landingPage'}>
@@ -32,6 +37,21 @@ const LandingPage = () => {
                     </ButtonColored>
                 </section>
 
+                <section className={'landingPage__about'} id={'aboutSection'}>
+                    <h2>
+                        <FormattedMessage id={'label_about_the_report'} defaultMessage={'About the report'} />
+                    </h2>
+                    <p>
+                        <FormattedMessage
+                            id={'text_about_report'}
+                            defaultMessage={'Through our extensive experience with participatory projects from all over the world combined with years of thorough research, we bring you the most comprehensive guide on digital participation and Civic Tech tools that are available on the European market. By obtaining the Report, you will get an artistically-designed hard copy of the book for your bookshelf along with an access to online Civic Tech Market Report platform with regular news and product updates for easy browsing through the catalogue of tools and accompanying depository of knowledge.'}
+                        />
+                    </p>
+                    <img
+                        src={"/images/landing_about.png"}
+                        alt={language === LANGUAGE_ENUM.CS ? 'obrázek produktu' : 'report image'}
+                    />
+                </section>
             </div>
         </LayoutPublicWrapper>
     );

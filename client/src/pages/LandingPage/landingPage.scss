@@ -1,4 +1,7 @@
 .landingPage {
+  display: flex;
+    flex-direction: column;
+    gap: 64px;
 
   p {
     max-width: 800px;
@@ -9,9 +12,16 @@
     flex-direction: column;
     gap: 40px;
     align-items: flex-start;
+  }
 
-    h1 {
-      margin-bottom: 40px;
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+
+    img {
+      width: 100%;
     }
   }
 }

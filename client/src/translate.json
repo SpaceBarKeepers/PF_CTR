@@ -4,6 +4,7 @@
     "error_login_required": "Enter username and password to login.",
     "error_unknown": "Something went wrong.",
     "label_about_report": "About report",
+    "label_about_the_report": "About the report",
     "label_buy": "Buy report",
     "label_contact": "Contact",
     "label_dashboard": "Dashboard",
@@ -20,6 +21,7 @@
     "label_whats_inside": "What's inside",
     "label_who_for": "Who is it for",
     "label_your_account": "Your account",
+    "text_about_report": "Through our extensive experience with participatory projects from all over the world combined with years of thorough research, we bring you the most comprehensive guide on digital participation and Civic Tech tools that are available on the European market. By obtaining the Report, you will get an artistically-designed hard copy of the book for your bookshelf along with an access to online Civic Tech Market Report platform with regular news and product updates for easy browsing through the catalogue of tools and accompanying depository of knowledge.",
     "text_hero": "Explore major trends that are currently shaping the field of digital participation. Get access to the insights from top-tear industry experts and gain a perfect overview of the European Civic Tech ecosystem and detailed information about over 80 solutions with accompanying case studies.",
     "text_hero_presale": "Explore major trends that are currently shaping the field of digital participation. Get access to the insights from top-tear industry experts and gain a perfect overview of the European Civic Tech ecosystem and detailed information about over 80 solutions with accompanying case studies. Sign up now to pre-order your copy of Civic Tech Market Report 2025 for the early-bird price!"
   },
@@ -28,6 +30,7 @@
     "error_login_required": "Zadejte uživatelské jméno a heslo pro přihlášení.",
     "error_unknown": "Něco se pokazilo.",
     "label_about_report": "O reportu",
+    "label_about_the_report": "--- přeložit ---",
     "label_buy": "Koupit report",
     "label_contact": "Kontakt",
     "label_dashboard": "Dashboard",
@@ -44,6 +47,7 @@
     "label_whats_inside": "--- přeložit ---",
     "label_who_for": "--- přeložit ---",
     "label_your_account": "Váš účet",
+    "text_about_report": "--- přeložit ---",
     "text_hero": "--- přeložit ---",
     "text_hero_presale": "--- přeložit ---"
   }

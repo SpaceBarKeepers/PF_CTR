@@ -5,6 +5,7 @@
 
 body {
   padding: 21px 70px;
+  max-width: 1440px;
 }
 
 p {
@@ -17,6 +18,13 @@ p {
 h1 {
   font-family: dharmaRegular, Arial, sans-serif;
   font-size: 110px;
+  font-weight: bold;
+  margin: 0;
+}
+
+h2 {
+  font-family: dharmaRegular, Arial, sans-serif;
+  font-size: 64px;
   font-weight: bold;
   margin: 0;
 }
