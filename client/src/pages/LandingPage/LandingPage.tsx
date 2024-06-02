@@ -1,14 +1,16 @@
 import LayoutPublicWrapper from '../../wrappers/LayoutPublicWrapper';
 import { FLAG_PRESALE } from '../../dev_flags';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import ButtonColored from '../../components/Button/ButtonColored';
 import './landingPage.scss';
 import { languageAtom } from '../../atomStore';
 import { useAtomValue } from 'jotai/index';
 import { LANGUAGE_ENUM } from '../../models/enums';
+import LandingPageCard from '../../components/LandingPageCard/LandingPageCard';
 
 const LandingPage = () => {
-    const language = useAtomValue(languageAtom)
+    const language = useAtomValue(languageAtom);
+    const intl = useIntl();
 
     return (
         <LayoutPublicWrapper>
@@ -48,7 +50,7 @@ const LandingPage = () => {
                         />
                     </p>
                     <img
-                        src={"/images/landing_about.png"}
+                        src={'/images/landing_about.png'}
                         alt={language === LANGUAGE_ENUM.CS ? 'obrázek produktu' : 'report image'}
                     />
                 </section>
@@ -58,9 +60,62 @@ const LandingPage = () => {
                         <FormattedMessage id={'label_whats_inside'} defaultMessage={'What\'s inside'} />
                     </h2>
                     <img
-                        src={"/images/landing_inside.svg"}
+                        src={'/images/landing_inside.svg'}
                         alt={language === LANGUAGE_ENUM.CS ? 'obrázek obsahu reportu' : 'report content image'}
                     />
+                </section>
+
+                <section className={'landingPage__whoFor'} id={'whoForSection'}>
+                    <h2>
+                        <FormattedMessage id={'label_who_for'} defaultMessage={'Who is it for'} />
+                    </h2>
+                    <div className={'landingPage__whoForContainer'}>
+                        <LandingPageCard
+                            image={'/images/landing_whoFor1.png'}
+                            heading={intl.formatMessage({
+                                id: 'label_who_for1',
+                                defaultMessage: 'Local and regional governments'
+                            })}
+                            text={intl.formatMessage({
+                                id: 'text_who_for1',
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                            })}
+                        />
+                        <LandingPageCard
+                            image={'/images/landing_whoFor2.png'}
+                            heading={intl.formatMessage({
+                                id: 'label_who_for2',
+                                defaultMessage: 'National governments'
+                            })}
+                            text={intl.formatMessage({
+                                id: 'text_who_for2',
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                            })
+                            }
+                        />
+                        <LandingPageCard
+                            image={'/images/landing_whoFor3.png'}
+                            heading={intl.formatMessage({
+                                id: 'label_who_for3',
+                                defaultMessage: 'Civic Tech companies'
+                            })}
+                            text={intl.formatMessage({
+                                id: 'text_who_for3',
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                            })}
+                        />
+                        <LandingPageCard
+                            image={'/images/landing_whoFor4.png'}
+                            heading={intl.formatMessage({
+                                id: 'label_who_for4',
+                                defaultMessage: 'Participation consultants'
+                            })}
+                            text={intl.formatMessage({
+                                id: 'text_who_for4',
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                            })}
+                        />
+                    </div>
                 </section>
             </div>
         </LayoutPublicWrapper>
