@@ -1,0 +1,38 @@
+@use "../../partials/colors";
+
+.landingHeader {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 65px;
+
+  > img {
+    height: 120px;
+  }
+
+  &__navigationContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    padding: 8px 0;
+
+    nav {
+        display: flex;
+        gap: 32px;
+
+        a {
+          text-decoration: none;
+          color: colors.$color-black;
+          font-family: dharmaRegular, Arial, sans-serif;
+          font-size: 32px;
+          font-weight: bold;
+        }
+    }
+  }
+
+  &__loginAndLanguage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
