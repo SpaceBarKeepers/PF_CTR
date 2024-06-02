@@ -45,4 +45,19 @@
       padding-bottom: 40px;
     }
   }
+
+  &__whatYouGet {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+
+    &Container {
+      display: flex;
+      gap: 16px;
+      width: 100%;
+      overflow: auto;
+      padding-bottom: 40px;
+    }
+  }
 }

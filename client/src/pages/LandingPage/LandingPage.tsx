@@ -117,6 +117,47 @@ const LandingPage = () => {
                         />
                     </div>
                 </section>
+
+                <section className={'landingPage__whatYouGet'} id={'whatYouGetSection'}>
+                    <h2>
+                        <FormattedMessage id={'label_what_you_get'} defaultMessage={'What you get'} />
+                    </h2>
+                    <div className={'landingPage__whatYouGetContainer'}>
+                        <LandingPageCard
+                            image={'/images/landing_whatYouGet1.png'}
+                            heading={intl.formatMessage({
+                                id: 'label_what_you_get1',
+                                defaultMessage: 'Hard copy of book'
+                            })}
+                            text={intl.formatMessage({
+                                id: 'text_what_you_get1',
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                            })}
+                        />
+                        <LandingPageCard
+                            image={'/images/landing_whatYouGet2.png'}
+                            heading={intl.formatMessage({
+                                id: 'label_what_you_get2',
+                                defaultMessage: 'Access to online platform'
+                            })}
+                            text={intl.formatMessage({
+                                id: 'text_what_you_get2',
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                            })}
+                        />
+                        <LandingPageCard
+                            image={'/images/landing_whatYouGet3.png'}
+                            heading={intl.formatMessage({
+                                id: 'label_what_you_get3',
+                                defaultMessage: 'Regular updates and news'
+                            })}
+                            text={intl.formatMessage({
+                                id: 'text_what_you_get3',
+                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.'
+                            })}
+                        />
+                    </div>
+                </section>
             </div>
         </LayoutPublicWrapper>
     );
