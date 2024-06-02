@@ -8,16 +8,20 @@
     "label_contact": "Contact",
     "label_dashboard": "Dashboard",
     "label_device_continue": "Continue from this device",
+    "label_get_your_copy": "Get your copy",
     "label_login": "Login",
     "label_logout": "Logout",
     "label_password": "Password",
+    "label_preorder": "Pre-order",
     "label_pricing": "Pricing",
     "label_username": "Username",
     "label_users": "Users",
     "label_what_you_get": "What you get",
     "label_whats_inside": "What's inside",
     "label_who_for": "Who is it for",
-    "label_your_account": "Your account"
+    "label_your_account": "Your account",
+    "text_hero": "Explore major trends that are currently shaping the field of digital participation. Get access to the insights from top-tear industry experts and gain a perfect overview of the European Civic Tech ecosystem and detailed information about over 80 solutions with accompanying case studies.",
+    "text_hero_presale": "Explore major trends that are currently shaping the field of digital participation. Get access to the insights from top-tear industry experts and gain a perfect overview of the European Civic Tech ecosystem and detailed information about over 80 solutions with accompanying case studies. Sign up now to pre-order your copy of Civic Tech Market Report 2025 for the early-bird price!"
   },
   "cs": {
     "error_invalid_credentials": "Neplatné uživatelské jméno nebo heslo.",
@@ -28,15 +32,19 @@
     "label_contact": "Kontakt",
     "label_dashboard": "Dashboard",
     "label_device_continue": "Pokračovat z tohoto zařízení",
+    "label_get_your_copy": "--- přeložit ---",
     "label_login": "Přihlásit se",
     "label_logout": "Odhlásit se",
     "label_password": "Heslo",
+    "label_preorder": "Předobjednat",
     "label_pricing": "Ceník",
     "label_username": "Uživatelské jméno",
     "label_users": "Uživatelé",
     "label_what_you_get": "--- přeložit ---",
     "label_whats_inside": "--- přeložit ---",
     "label_who_for": "--- přeložit ---",
-    "label_your_account": "Váš účet"
+    "label_your_account": "Váš účet",
+    "text_hero": "--- přeložit ---",
+    "text_hero_presale": "--- přeložit ---"
   }
 }

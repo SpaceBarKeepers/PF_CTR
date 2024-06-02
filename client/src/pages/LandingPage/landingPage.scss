@@ -1,0 +1,17 @@
+.landingPage {
+
+  p {
+    max-width: 800px;
+  }
+
+  &__hero {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+
+    h1 {
+      margin-bottom: 40px;
+    }
+  }
+}
