@@ -52,6 +52,16 @@ const LandingPage = () => {
                         alt={language === LANGUAGE_ENUM.CS ? 'obrázek produktu' : 'report image'}
                     />
                 </section>
+
+                <section className={'landingPage__whatsInside'} id={'whatsInsideSection'}>
+                    <h2>
+                        <FormattedMessage id={'label_whats_inside'} defaultMessage={'What\'s inside'} />
+                    </h2>
+                    <img
+                        src={"/images/landing_inside.svg"}
+                        alt={language === LANGUAGE_ENUM.CS ? 'obrázek obsahu reportu' : 'report content image'}
+                    />
+                </section>
             </div>
         </LayoutPublicWrapper>
     );
