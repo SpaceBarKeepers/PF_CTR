@@ -9,6 +9,7 @@
     "label_contact": "Contact",
     "label_dashboard": "Dashboard",
     "label_device_continue": "Continue from this device",
+    "label_faq": "FAQ",
     "label_get_your_copy": "Get your copy",
     "label_login": "Login",
     "label_logout": "Logout",
@@ -30,7 +31,18 @@
     "label_your_account": "Your account",
     "text_about_report": "Through our extensive experience with participatory projects from all over the world combined with years of thorough research, we bring you the most comprehensive guide on digital participation and Civic Tech tools that are available on the European market. By obtaining the Report, you will get an artistically-designed hard copy of the book for your bookshelf along with an access to online Civic Tech Market Report platform with regular news and product updates for easy browsing through the catalogue of tools and accompanying depository of knowledge.",
     "text_hero": "Explore major trends that are currently shaping the field of digital participation. Get access to the insights from top-tear industry experts and gain a perfect overview of the European Civic Tech ecosystem and detailed information about over 80 solutions with accompanying case studies.",
-    "text_hero_presale": "Explore major trends that are currently shaping the field of digital participation. Get access to the insights from top-tear industry experts and gain a perfect overview of the European Civic Tech ecosystem and detailed information about over 80 solutions with accompanying case studies. Sign up now to pre-order your copy of Civic Tech Market Report 2025 for the early-bird price!"
+    "text_hero_presale": "Explore major trends that are currently shaping the field of digital participation. Get access to the insights from top-tear industry experts and gain a perfect overview of the European Civic Tech ecosystem and detailed information about over 80 solutions with accompanying case studies. Sign up now to pre-order your copy of Civic Tech Market Report 2025 for the early-bird price!",
+    "text_pricing1_1": "Personalised hard copy of the Report delivered to you",
+    "text_pricing1_2": "Access to the online platform for 1 person for the 2025 edition of the Report",
+    "text_pricing1_3": "Regular news, updates, and expert articles available on the platform",
+    "text_pricing2_1": "online course for 1 person",
+    "text_pricing2_2": "Personalised hard copy of the Report delivered to you",
+    "text_pricing2_3": "Access to the online platform for 1 person for the 2025 edition of the Report",
+    "text_pricing2_4": "Regular news, updates, and expert articles available on the platform",
+    "text_pricing3_1": "Team/group discount if obtained for 3 or more people",
+    "text_pricing3_2": "Multiple personalised hard copies of the Report",
+    "text_pricing3_3": "Access to the online platform for multiple people for the 2025 edition of the Report",
+    "text_pricing3_4": "Regular news, updates, and expert articles available on the platform"
   },
   "cs": {
     "error_invalid_credentials": "Neplatné uživatelské jméno nebo heslo.",
@@ -42,6 +54,7 @@
     "label_contact": "Kontakt",
     "label_dashboard": "Dashboard",
     "label_device_continue": "Pokračovat z tohoto zařízení",
+    "label_faq": "--- přeložit ---",
     "label_get_your_copy": "--- přeložit ---",
     "label_login": "Přihlásit se",
     "label_logout": "Odhlásit se",
@@ -63,6 +76,17 @@
     "label_your_account": "Váš účet",
     "text_about_report": "--- přeložit ---",
     "text_hero": "--- přeložit ---",
-    "text_hero_presale": "--- přeložit ---"
+    "text_hero_presale": "--- přeložit ---",
+    "text_pricing1_1": "--- přeložit ---",
+    "text_pricing1_2": "--- přeložit ---",
+    "text_pricing1_3": "--- přeložit ---",
+    "text_pricing2_1": "--- přeložit ---",
+    "text_pricing2_2": "--- přeložit ---",
+    "text_pricing2_3": "--- přeložit ---",
+    "text_pricing2_4": "--- přeložit ---",
+    "text_pricing3_1": "--- přeložit ---",
+    "text_pricing3_2": "--- přeložit ---",
+    "text_pricing3_3": "--- přeložit ---",
+    "text_pricing3_4": "--- přeložit ---"
   }
 }

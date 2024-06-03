@@ -75,4 +75,19 @@
       padding-bottom: 40px;
     }
   }
+
+    &__faq {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        align-items: flex-start;
+
+        &Container {
+        display: flex;
+          flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        padding-bottom: 40px;
+        }
+    }
 }

@@ -8,6 +8,7 @@ import { useAtomValue } from 'jotai/index';
 import { LANGUAGE_ENUM } from '../../models/enums';
 import LandingPageCard from '../../components/LandingPageCard/LandingPageCard';
 import LandingPagePricingCard from '../../components/LandingPagePricingCard/LandingPagePricingCard';
+import FaqRow from '../../components/FaqRow/FaqRow';
 
 const LandingPage = () => {
     const language = useAtomValue(languageAtom);
@@ -178,7 +179,7 @@ const LandingPage = () => {
                                 }),
                                 intl.formatMessage({
                                     id: 'text_pricing1_3',
-                                    defaultMessage: 'Regular news, updates, and expert articles available on the platform\n',
+                                    defaultMessage: 'Regular news, updates, and expert articles available on the platform',
                                 }),
                             ]}
                         >
@@ -245,6 +246,64 @@ const LandingPage = () => {
                                 </a>
                             </ButtonColored>
                         </LandingPagePricingCard>
+                    </div>
+                </section>
+
+                <section className={'landingPage__faq'} id={'faqSection'}>
+                    <h2>
+                        <FormattedMessage id={'label_faq'} defaultMessage={'FAQ'} />
+                    </h2>
+                    <div className={'landingPage__faqContainer'}>
+                        <FaqRow
+                            question={intl.formatMessage({
+                                id: 'text_faq1_question',
+                                defaultMessage: 'Can I obtain the hard copy only or the online platform only?',
+                            })}
+                            answer={intl.formatMessage({
+                                id: 'text_faq1_answer',
+                                defaultMessage: 'At the moment, we offer the Report only as a bundle with hard copy and online platform together. We want our artistically designed and crafted Report to become a valuable addition to your bookshelf. Yet at the same time we would like to offer you a convenient way to browse through the database.',
+                            })}
+                        />
+                        <FaqRow
+                            question={intl.formatMessage({
+                                id: 'text_faq2_question',
+                                defaultMessage: 'How does the online platform work?',
+                            })}
+                            answer={intl.formatMessage({
+                                id: 'text_faq2_answer',
+                                defaultMessage: 'Once you purchase the access, you will receive login details to your e-mail.',
+                            })}
+                        />
+                        <FaqRow
+                            question={intl.formatMessage({
+                                id: 'text_faq3_question',
+                                defaultMessage: 'Can I share the online platform with someone else?',
+                            })}
+                            answer={intl.formatMessage({
+                                id: 'text_faq3_answer',
+                                defaultMessage: 'Each purchase grants access to one user only. For the teams of more people, reach out to us for a group discount.',
+                            })}
+                        />
+                        <FaqRow
+                            question={intl.formatMessage({
+                                id: 'text_faq4_question',
+                                defaultMessage: 'How long will the online platform be accessible?',
+                            })}
+                            answer={intl.formatMessage({
+                                id: 'text_faq4_answer',
+                                defaultMessage: 'The access is granted for one year/2024 edition of the report with regular updates of the data, news and premium content that is not available in hard copy of the Report.',
+                            })}
+                        />
+                        <FaqRow
+                            question={intl.formatMessage({
+                                id: 'text_faq4_question',
+                                defaultMessage: 'I want to get access to the online platform for our office. Is there any discount?',
+                            })}
+                            answer={intl.formatMessage({
+                                id: 'text_faq4_answer',
+                                defaultMessage: 'Absolutely. Contact us regarding your needs and we will give you a special price if you need access for the team of three or more people.',
+                            })}
+                        />
                     </div>
                 </section>
             </div>
