@@ -17,6 +17,9 @@ jobs:
 
       - name: Build
         run: cd client && npm run build # The build command of your project
+
+      - name: LS
+        run: cd client && ls
       
       - name: Push generated build to develop
         uses: nkoppel/push-files-to-another-repository@master
