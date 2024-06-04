@@ -3,6 +3,12 @@
   src: url(/fonts/DharmaGothicM-Regular.woff2);
 }
 
+html {
+  display: flex;
+  justify-content: center;
+  scroll-behavior: smooth;
+}
+
 body {
   padding: 21px 70px;
   max-width: 1440px;

@@ -5,9 +5,7 @@ import { FLAG_PRESALE } from '../../dev_flags';
 import ButtonLanguage from '../Button/ButtonLanguage';
 import "./landingPageHeader.scss"
 
-type Props = {};
-
-const LandingPageHeader = ({}: Props) => {
+const LandingPageHeader = () => {
     return (
         <div className={'landingHeader'}>
             <img src={'/images/PFlogo.png'} alt={'logo Participation Factory'} />
@@ -15,7 +13,7 @@ const LandingPageHeader = ({}: Props) => {
                 <div className={'landingHeader__loginAndLanguage'}>
                     <div className={"landingHeader__login"}>
                     <ButtonColored>
-                        <a href={'#purchaseSection'}>
+                        <a href={'#pricingSection'}>
                             <FormattedMessage id={'label_buy'} defaultMessage={'Buy Report'} />
                         </a>
                     </ButtonColored>
@@ -32,7 +30,7 @@ const LandingPageHeader = ({}: Props) => {
                     <a href={'#aboutSection'}>
                         <FormattedMessage id={'label_about_report'} defaultMessage={'About Report'} />
                     </a>
-                    <a href={'#aboutSection'}>
+                    <a href={'#whatsInsideSection'}>
                         <FormattedMessage id={'label_whats_inside'} defaultMessage={'What\'s inside'} />
                     </a>
                     <a href={'#whoForSection'}>
@@ -44,9 +42,9 @@ const LandingPageHeader = ({}: Props) => {
                     <a href={'#pricingSection'}>
                         <FormattedMessage id={'label_pricing'} defaultMessage={'Pricing'} />
                     </a>
-                    <Link to={'/contact'}>
-                            <FormattedMessage id={'label_contact'} defaultMessage={'Contact'} />
-                    </Link>
+                    {!FLAG_PRESALE && <Link to={'/contact'}>
+                        <FormattedMessage id={'label_contact'} defaultMessage={'Contact'} />
+                    </Link>}
                 </nav>
             </div>
         </div>

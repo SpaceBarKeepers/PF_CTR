@@ -9,6 +9,7 @@ import { LANGUAGE_ENUM } from '../../models/enums';
 import LandingPageCard from '../../components/LandingPageCard/LandingPageCard';
 import LandingPagePricingCard from '../../components/LandingPagePricingCard/LandingPagePricingCard';
 import FaqRow from '../../components/FaqRow/FaqRow';
+import Footer from '../../components/Footer/Footer';
 
 const LandingPage = () => {
     const language = useAtomValue(languageAtom);
@@ -184,7 +185,7 @@ const LandingPage = () => {
                             ]}
                         >
                             <ButtonColored>
-                                <a href={'#'}>
+                                <a href={'https://tally.so/r/mKoV9X'}>
                                     <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
                                 </a>
                             </ButtonColored>
@@ -214,7 +215,7 @@ const LandingPage = () => {
                             ]}
                         >
                             <ButtonColored>
-                                <a href={'#'}>
+                                <a href={'https://tally.so/r/mKoV9X'}>
                                     <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
                                 </a>
                             </ButtonColored>
@@ -241,7 +242,7 @@ const LandingPage = () => {
                             ]}
                         >
                             <ButtonColored>
-                                <a href={'#'}>
+                                <a href={'https://tally.so/r/mKoV9X'}>
                                     <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
                                 </a>
                             </ButtonColored>
@@ -306,6 +307,7 @@ const LandingPage = () => {
                         />
                     </div>
                 </section>
+                <Footer />
             </div>
         </LayoutPublicWrapper>
     );
