@@ -1,0 +1,34 @@
+name: Generate a build and push to another branch
+
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build and Push
+    steps:
+      - name: git-checkout
+        uses: actions/checkout@v2
+
+      - name: Go to client
+        run: cd client
+
+      - name: Install all dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build # The build command of your project
+      
+      - name: Push generated build to SBK-BE
+        uses: nkoppel/push-files-to-another-repository@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-files: 'build/'
+          destination-username: 'SpaceBarKeepers'
+          destination-repository: 'PF_CTR'
+          destination-branch: 'develop'
+          destination-directory: '/client'
+          commit-email: 'karel.dohnal@gmail.com'
