@@ -26,9 +26,9 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-files: '/client/dist/'
+          source-files: 'client/dist/'
           destination-username: 'SpaceBarKeepers'
           destination-repository: 'PF_CTR'
           destination-branch: 'develop'
-          destination-directory: '/client/'
+          destination-directory: 'client/'
           commit-email: 'karel.dohnal@gmail.com'
