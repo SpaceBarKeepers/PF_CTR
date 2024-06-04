@@ -12,23 +12,20 @@ jobs:
       - name: git-checkout
         uses: actions/checkout@v2
 
-      - name: Go to client
-        run: cd client
-
       - name: Install all dependencies
-        run: npm install
+        run: cd client && npm install
 
       - name: Build
-        run: npm run build # The build command of your project
+        run: cd client && npm run build # The build command of your project
       
-      - name: Push generated build to SBK-BE
+      - name: Push generated build to develop
         uses: nkoppel/push-files-to-another-repository@master
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-files: 'build/'
+          source-files: 'client/build/'
           destination-username: 'SpaceBarKeepers'
           destination-repository: 'PF_CTR'
           destination-branch: 'develop'
-          destination-directory: '/client'
+          destination-directory: '/client/'
           commit-email: 'karel.dohnal@gmail.com'
