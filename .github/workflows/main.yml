@@ -17,15 +17,18 @@ jobs:
 
       - name: Build
         run: cd client && npm run build # The build command of your project
+
+      - name: LS
+        run: cd client && ls
       
       - name: Push generated build to develop
         uses: nkoppel/push-files-to-another-repository@master
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-files: 'client/build/'
+          source-files: 'dist/'
           destination-username: 'SpaceBarKeepers'
           destination-repository: 'PF_CTR'
           destination-branch: 'develop'
-          destination-directory: '/client/'
+          destination-directory: 'client/'
           commit-email: 'karel.dohnal@gmail.com'
