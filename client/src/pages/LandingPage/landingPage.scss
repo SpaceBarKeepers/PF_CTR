@@ -1,7 +1,7 @@
 .landingPage {
   display: flex;
-    flex-direction: column;
-    gap: 64px;
+  flex-direction: column;
+  gap: 64px;
 
   p {
     max-width: 800px;
@@ -27,7 +27,15 @@
 
   &__whatsInside {
     img {
-     margin-left: 170px;
+      width: 100%;
+
+      @media (min-width: 880px) {
+      }
+
+      @media (min-width: 1440px) {
+        width: initial;
+        margin-left: 170px;
+      }
     }
   }
 
@@ -39,10 +47,15 @@
 
     &Container {
       display: flex;
+      flex-direction: column;
       gap: 16px;
       width: 100%;
-      overflow: auto;
       padding-bottom: 40px;
+
+      @media (min-width: 880px) {
+        flex-direction: row;
+        overflow: auto;
+      }
     }
   }
 
@@ -54,10 +67,15 @@
 
     &Container {
       display: flex;
+      flex-direction: column;
       gap: 16px;
       width: 100%;
-      overflow: auto;
       padding-bottom: 40px;
+
+      @media (min-width: 880px) {
+        flex-direction: row;
+        overflow: auto;
+      }
     }
   }
 
@@ -69,25 +87,32 @@
 
     &Container {
       display: flex;
-      gap: 16px;
+      flex-direction: column;
+      gap: 50px;
       width: 100%;
       overflow: auto;
       padding-bottom: 40px;
+
+      @media (min-width: 880px) {
+        gap: 16px;
+        flex-direction: row;
+        overflow: auto;
+      }
     }
   }
 
-    &__faq {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        align-items: flex-start;
+  &__faq {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
 
-        &Container {
-        display: flex;
-          flex-direction: column;
-        gap: 8px;
-        width: 100%;
-        padding-bottom: 40px;
-        }
+    &Container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      padding-bottom: 40px;
     }
+  }
 }
