@@ -1,4 +1,3 @@
-import { COLORS_ENUM } from '../../models/enums';
 import React from 'react';
 import "./buttons.scss"
 
@@ -11,7 +10,7 @@ type Props = {
 const ButtonColored = ({ children, type = "primary", size = "normal" }: Props) => {
     return (
         <button
-            className={`button${type === "secondary" ? " buttonSecondary" : " buttonPrimary"}`}
+            className={`button${type === "secondary" ? " buttonSecondary" : " buttonPrimary"}${size === "large" ? " buttonLarge" : ""}`}
         >
             {children}
         </button>
