@@ -7,29 +7,21 @@ html {
   display: flex;
   justify-content: center;
   scroll-behavior: smooth;
+  width: 100vw;
 }
 
 body {
-  max-width: 300px;
-  padding: 21px 40px;
+  padding: 21px 20px;
+  margin: 0;
+  overflow-x: hidden;
+  width: 100%;
 
   @media (min-width: 880px) {
-    max-width: 800px;
-    padding: 21px 70px;
-  }
-
-  @media (min-width: 1100px) {
-    max-width: 1050px;
-    padding: 21px 70px;
-  }
-
-  @media (min-width: 1440px) {
-    max-width: 1440px;
     padding: 21px 70px;
   }
 }
 
-p {
+p, td {
   font-family: Arial, sans-serif;
   font-size: 18px;
   line-height: 26px;
@@ -58,7 +50,7 @@ h2 {
   }
 }
 
-h3 {
+h3, th {
   font-family: dharmaRegular, Arial, sans-serif;
   font-size: 45px;
   font-weight: bold;
