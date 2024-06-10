@@ -7,7 +7,6 @@ import { languageAtom } from '../../atomStore';
 import { useAtomValue } from 'jotai/index';
 import { LANGUAGE_ENUM } from '../../models/enums';
 import LandingPageCard from '../../components/LandingPageCard/LandingPageCard';
-import LandingPagePricingCard from '../../components/LandingPagePricingCard/LandingPagePricingCard';
 import FaqRow from '../../components/FaqRow/FaqRow';
 import Footer from '../../components/Footer/Footer';
 
@@ -81,7 +80,7 @@ const LandingPage = () => {
                             })}
                             text={intl.formatMessage({
                                 id: 'text_who_for1',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
+                                defaultMessage: 'Find the right tools for your participatory processes, write better tenders, improve your digital strategy, and educate your team.',
                             })}
                         />
                         <LandingPageCard
@@ -92,7 +91,7 @@ const LandingPage = () => {
                             })}
                             text={intl.formatMessage({
                                 id: 'text_who_for2',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
+                                defaultMessage: 'Identify digital solutions for systemic participation, and support participation initiatives in regions.',
                             })
                             }
                         />
@@ -104,7 +103,7 @@ const LandingPage = () => {
                             })}
                             text={intl.formatMessage({
                                 id: 'text_who_for3',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
+                                defaultMessage: 'Explore the market, identify your competition, learn about current trends, and find new use cases for your tool.',
                             })}
                         />
                         <LandingPageCard
@@ -115,7 +114,29 @@ const LandingPage = () => {
                             })}
                             text={intl.formatMessage({
                                 id: 'text_who_for4',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
+                                defaultMessage: 'Learn about the best practices in digital participation and bring higher value to your clients.',
+                            })}
+                        />
+                        <LandingPageCard
+                            image={'/images/landing_whoFor4.png'}
+                            heading={intl.formatMessage({
+                                id: 'label_who_for5',
+                                defaultMessage: 'NGOs',
+                            })}
+                            text={intl.formatMessage({
+                                id: 'text_who_for5',
+                                defaultMessage: 'Find out how to run a digital participatory project and select the tool that fits your resources.',
+                            })}
+                        />
+                        <LandingPageCard
+                            image={'/images/landing_whoFor4.png'}
+                            heading={intl.formatMessage({
+                                id: 'label_who_for6',
+                                defaultMessage: 'Architects and real estate',
+                            })}
+                            text={intl.formatMessage({
+                                id: 'text_who_for6',
+                                defaultMessage: 'Select the right digital solution for public space and urban development projects and enhance your community engagement process.',
                             })}
                         />
                     </div>
@@ -134,7 +155,7 @@ const LandingPage = () => {
                             })}
                             text={intl.formatMessage({
                                 id: 'text_what_you_get1',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
+                                defaultMessage: 'Over 250 pages of expert information about Civic Tech in an artistically-designed book edition suited for your bookshelf.',
                             })}
                         />
                         <LandingPageCard
@@ -145,7 +166,7 @@ const LandingPage = () => {
                             })}
                             text={intl.formatMessage({
                                 id: 'text_what_you_get2',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
+                                defaultMessage: 'Easy-to-use online platform with an interactive catalogue of Civic Tech tools, all the content from the book, and some additional updates.',
                             })}
                         />
                         <LandingPageCard
@@ -156,7 +177,7 @@ const LandingPage = () => {
                             })}
                             text={intl.formatMessage({
                                 id: 'text_what_you_get3',
-                                defaultMessage: 'Lorem ipsum dolor sit amet consectetur. Vitae in in ultrices enim scelerisque fusce.',
+                                defaultMessage: 'Latest news from the Civic Tech industry, expert interviews, innovation updates, case studies, and much more available on the online platform.',
                             })}
                         />
                     </div>
@@ -167,87 +188,232 @@ const LandingPage = () => {
                         <FormattedMessage id={'label_pricing'} defaultMessage={'Pricing'} />
                     </h2>
                     <div className={'landingPage__pricingContainer'}>
-                        <LandingPagePricingCard
-                            title={intl.formatMessage({ id: 'label_pricing1', defaultMessage: 'Individual bundle' })}
-                            options={[
-                                intl.formatMessage({
-                                    id: 'text_pricing1_1',
-                                    defaultMessage: 'Personalised hard copy of the Report delivered to you',
-                                }),
-                                intl.formatMessage({
-                                    id: 'text_pricing1_2',
-                                    defaultMessage: 'Access to the online platform for 1 person for the 2025 edition of the Report',
-                                }),
-                                intl.formatMessage({
-                                    id: 'text_pricing1_3',
-                                    defaultMessage: 'Regular news, updates, and expert articles available on the platform',
-                                }),
-                            ]}
-                        >
-                            <ButtonColored>
-                                <a href={'https://tally.so/r/mKoV9X'}>
-                                    <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
-                                </a>
-                            </ButtonColored>
-                        </LandingPagePricingCard>
-                        <LandingPagePricingCard
-                            title={intl.formatMessage({ id: 'label_pricing2', defaultMessage: 'Participation bundle' })}
-                            options={[
-                                <span>
-                                <a href={'https://participatepractically.com'}>Participate Practically</a>
-                                    {' '}
-                                    {intl.formatMessage({
-                                        id: 'text_pricing2_1',
-                                        defaultMessage: 'online course for 1 person',
-                                    })}</span>,
-                                intl.formatMessage({
-                                    id: 'text_pricing2_2',
-                                    defaultMessage: 'Personalised hard copy of the Report delivered to you',
-                                }),
-                                intl.formatMessage({
-                                    id: 'text_pricing2_3',
-                                    defaultMessage: 'Access to the online platform for 1 person for the 2025 edition of the Report',
-                                }),
-                                intl.formatMessage({
-                                    id: 'text_pricing2_4',
-                                    defaultMessage: 'Regular news, updates, and expert articles available on the platform',
-                                }),
-                            ]}
-                        >
-                            <ButtonColored>
-                                <a href={'https://tally.so/r/mKoV9X'}>
-                                    <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
-                                </a>
-                            </ButtonColored>
-                        </LandingPagePricingCard>
-                        <LandingPagePricingCard
-                            title={intl.formatMessage({ id: 'label_pricing3', defaultMessage: 'Team bundle' })}
-                            options={[
-                                intl.formatMessage({
-                                    id: 'text_pricing3_1',
-                                    defaultMessage: 'Team/group discount if obtained for 3 or more people',
-                                }),
-                                intl.formatMessage({
-                                    id: 'text_pricing3_2',
-                                    defaultMessage: 'Multiple personalised hard copies of the Report',
-                                }),
-                                intl.formatMessage({
-                                    id: 'text_pricing3_3',
-                                    defaultMessage: 'Access to the online platform for multiple people for the 2025 edition of the Report',
-                                }),
-                                intl.formatMessage({
-                                    id: 'text_pricing3_4',
-                                    defaultMessage: 'Regular news, updates, and expert articles available on the platform',
-                                }),
-                            ]}
-                        >
-                            <ButtonColored>
-                                <a href={'https://tally.so/r/mKoV9X'}>
-                                    <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
-                                </a>
-                            </ButtonColored>
-                        </LandingPagePricingCard>
+                        {/*<LandingPagePricingCard*/}
+                        {/*    title={intl.formatMessage({ id: 'label_pricing1', defaultMessage: 'Individual bundle' })}*/}
+                        {/*    options={[*/}
+                        {/*        intl.formatMessage({*/}
+                        {/*            id: 'text_pricing1_1',*/}
+                        {/*            defaultMessage: 'Personalised hard copy of the Report delivered to you',*/}
+                        {/*        }),*/}
+                        {/*        intl.formatMessage({*/}
+                        {/*            id: 'text_pricing1_2',*/}
+                        {/*            defaultMessage: 'Access to the online platform for 1 person for the 2025 edition of the Report',*/}
+                        {/*        }),*/}
+                        {/*        intl.formatMessage({*/}
+                        {/*            id: 'text_pricing1_3',*/}
+                        {/*            defaultMessage: 'Regular news, updates, and expert articles available on the platform',*/}
+                        {/*        }),*/}
+                        {/*    ]}*/}
+                        {/*>*/}
+                        {/*    <ButtonColored>*/}
+                        {/*        <a href={'https://tally.so/r/mKoV9X'}>*/}
+                        {/*            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
+                        {/*        </a>*/}
+                        {/*    </ButtonColored>*/}
+                        {/*</LandingPagePricingCard>*/}
+                        {/*<LandingPagePricingCard*/}
+                        {/*    title={intl.formatMessage({ id: 'label_pricing2', defaultMessage: 'Participation bundle' })}*/}
+                        {/*    options={[*/}
+                        {/*        <span>*/}
+                        {/*        <a href={'https://participatepractically.com'}>Participate Practically</a>*/}
+                        {/*            {' '}*/}
+                        {/*            {intl.formatMessage({*/}
+                        {/*                id: 'text_pricing2_1',*/}
+                        {/*                defaultMessage: 'online course for 1 person',*/}
+                        {/*            })}</span>,*/}
+                        {/*        intl.formatMessage({*/}
+                        {/*            id: 'text_pricing2_2',*/}
+                        {/*            defaultMessage: 'Personalised hard copy of the Report delivered to you',*/}
+                        {/*        }),*/}
+                        {/*        intl.formatMessage({*/}
+                        {/*            id: 'text_pricing2_3',*/}
+                        {/*            defaultMessage: 'Access to the online platform for 1 person for the 2025 edition of the Report',*/}
+                        {/*        }),*/}
+                        {/*        intl.formatMessage({*/}
+                        {/*            id: 'text_pricing2_4',*/}
+                        {/*            defaultMessage: 'Regular news, updates, and expert articles available on the platform',*/}
+                        {/*        }),*/}
+                        {/*    ]}*/}
+                        {/*>*/}
+                        {/*    <ButtonColored>*/}
+                        {/*        <a href={'https://tally.so/r/mKoV9X'}>*/}
+                        {/*            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
+                        {/*        </a>*/}
+                        {/*    </ButtonColored>*/}
+                        {/*</LandingPagePricingCard>*/}
+                        {/*<LandingPagePricingCard*/}
+                        {/*    title={intl.formatMessage({ id: 'label_pricing3', defaultMessage: 'Team bundle' })}*/}
+                        {/*    options={[*/}
+                        {/*        intl.formatMessage({*/}
+                        {/*            id: 'text_pricing3_1',*/}
+                        {/*            defaultMessage: 'Team/group discount if obtained for 3 or more people',*/}
+                        {/*        }),*/}
+                        {/*        intl.formatMessage({*/}
+                        {/*            id: 'text_pricing3_2',*/}
+                        {/*            defaultMessage: 'Multiple personalised hard copies of the Report',*/}
+                        {/*        }),*/}
+                        {/*        intl.formatMessage({*/}
+                        {/*            id: 'text_pricing3_3',*/}
+                        {/*            defaultMessage: 'Access to the online platform for multiple people for the 2025 edition of the Report',*/}
+                        {/*        }),*/}
+                        {/*        intl.formatMessage({*/}
+                        {/*            id: 'text_pricing3_4',*/}
+                        {/*            defaultMessage: 'Regular news, updates, and expert articles available on the platform',*/}
+                        {/*        }),*/}
+                        {/*    ]}*/}
+                        {/*>*/}
+                        {/*    <ButtonColored>*/}
+                        {/*        <a href={'https://tally.so/r/mKoV9X'}>*/}
+                        {/*            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
+                        {/*        </a>*/}
+                        {/*    </ButtonColored>*/}
+                        {/*</LandingPagePricingCard>*/}
+
+                        <table>
+                            <thead>
+                            <tr>
+                                <th className={"borderBottom sticky"}></th>
+                                <th className={"borderBottom borderLeft borderRight center"}>
+                                    <FormattedMessage
+                                        id={'label_pricing1'}
+                                        defaultMessage={'Individual bundle'}
+                                    />
+                                </th>
+                                <th className={"borderBottom borderLeft borderRight center"}>
+                                    <FormattedMessage
+                                        id={'label_pricing2'}
+                                        defaultMessage={'Participation bundle'}
+                                    />
+                                </th>
+                                <th className={"borderBottom borderLeft borderRight center"}>
+                                    <FormattedMessage
+                                        id={'label_pricing3'}
+                                        defaultMessage={'Team bundle'}
+                                    />
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td className={"borderBottom sticky"}>
+                                    <b>
+                                        <FormattedMessage
+                                            id={'text_pricing_row1_title'}
+                                            defaultMessage={'Personalised hard copy of the Report delivered to you'}
+                                        />
+                                    </b>
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <FormattedMessage
+                                        id={'text_pricing_row1_individual'}
+                                        defaultMessage={'1 copy'}
+                                    />
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <FormattedMessage
+                                        id={'text_pricing_row1_participation'}
+                                        defaultMessage={'1 copy'} />
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <FormattedMessage
+                                        id={'text_pricing_row1_team'}
+                                        defaultMessage={'multiple copies'} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={"borderBottom sticky"}>
+                                    <b>
+                                        <FormattedMessage
+                                            id={'text_pricing_row2_title'}
+                                            defaultMessage={'Access to the online platform for the 2025 edition of the Report'}
+                                        />
+                                    </b>
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <FormattedMessage
+                                        id={'text_pricing_row2_individual'}
+                                        defaultMessage={'for 1 person'}
+                                    />
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <FormattedMessage
+                                        id={'text_pricing_row2_participation'}
+                                        defaultMessage={'for 1 person'} />
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <FormattedMessage
+                                        id={'text_pricing_row2_team'}
+                                        defaultMessage={'for multiple people'} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={"borderBottom sticky"}>
+                                    <b>
+                                        <FormattedMessage
+                                            id={'text_pricing_row3_title'}
+                                            defaultMessage={'Regular news, updates, and expert articles available on the platform'}
+                                        />
+                                    </b>
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={"borderBottom sticky"}>
+                                    <b>
+                                        <a href={'https://participatepractically.com'}>Participate Practically</a>
+                                        {' '}
+                                        <FormattedMessage
+                                            id={'text_pricing_row4_title'}
+                                            defaultMessage={'online course for 1 person'}
+                                        />
+                                    </b>
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={"borderBottom sticky"}>
+                                    <b>
+                                        <FormattedMessage
+                                            id={'text_pricing_row5_title'}
+                                            defaultMessage={'Team/group discount if obtained for 3 or more people'}
+                                        />
+                                    </b>
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
+                                </td>
+                                <td className={"borderBottom borderLeft borderRight center"}>
+                                    <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
                     </div>
+                    <ButtonColored size={"large"}>
+                        <a href={'https://tally.so/r/mKoV9X'}>
+                            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
+                        </a>
+                    </ButtonColored>
                 </section>
 
                 <section className={'landingPage__faq'} id={'faqSection'}>
