@@ -413,13 +413,13 @@ const LandingPage = () => {
                             </tr>
                             </tbody>
                         </table>
-
+                        <ButtonColored size={"large"}>
+                            <a href={'https://tally.so/r/mKoV9X'}>
+                                <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
+                            </a>
+                        </ButtonColored>
                     </div>
-                    <ButtonColored size={"large"}>
-                        <a href={'https://tally.so/r/mKoV9X'}>
-                            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
-                        </a>
-                    </ButtonColored>
+
                 </section>
 
                 <section className={'landingPage__faq'} id={'faqSection'}>
