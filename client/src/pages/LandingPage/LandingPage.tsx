@@ -74,6 +74,7 @@ const LandingPage = () => {
                     <div className={'landingPage__whoForContainer'}>
                         <LandingPageCard
                             image={'/images/landing_whoFor1.png'}
+                            imageType={'icon'}
                             heading={intl.formatMessage({
                                 id: 'label_who_for1',
                                 defaultMessage: 'Local and regional governments',
@@ -85,6 +86,7 @@ const LandingPage = () => {
                         />
                         <LandingPageCard
                             image={'/images/landing_whoFor2.png'}
+                            imageType={'icon'}
                             heading={intl.formatMessage({
                                 id: 'label_who_for2',
                                 defaultMessage: 'National governments',
@@ -97,6 +99,7 @@ const LandingPage = () => {
                         />
                         <LandingPageCard
                             image={'/images/landing_whoFor3.png'}
+                            imageType={'icon'}
                             heading={intl.formatMessage({
                                 id: 'label_who_for3',
                                 defaultMessage: 'Civic Tech companies',
@@ -108,6 +111,7 @@ const LandingPage = () => {
                         />
                         <LandingPageCard
                             image={'/images/landing_whoFor4.png'}
+                            imageType={'icon'}
                             heading={intl.formatMessage({
                                 id: 'label_who_for4',
                                 defaultMessage: 'Participation consultants',
@@ -118,7 +122,8 @@ const LandingPage = () => {
                             })}
                         />
                         <LandingPageCard
-                            image={'/images/landing_whoFor4.png'}
+                            image={'/images/landing_whoFor5.png'}
+                            imageType={'icon'}
                             heading={intl.formatMessage({
                                 id: 'label_who_for5',
                                 defaultMessage: 'NGOs',
@@ -129,7 +134,8 @@ const LandingPage = () => {
                             })}
                         />
                         <LandingPageCard
-                            image={'/images/landing_whoFor4.png'}
+                            image={'/images/landing_whoFor6.png'}
+                            imageType={'icon'}
                             heading={intl.formatMessage({
                                 id: 'label_who_for6',
                                 defaultMessage: 'Architects and real estate',
