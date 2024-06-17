@@ -1,6 +1,6 @@
 @font-face {
   font-family: dharmaRegular;
-  src: url(/fonts/DharmaGothicM-Regular.woff2);
+  src: url(/fonts/DharmaTypeDharmaGothicMExBold.otf);
 }
 
 html {
@@ -31,7 +31,7 @@ p, td {
 h1 {
   font-family: dharmaRegular, Arial, sans-serif;
   font-size: 80px;
-  font-weight: bold;
+  font-weight: normal;
   margin: 0;
 
   @media (min-width: 880px) {
@@ -42,7 +42,7 @@ h1 {
 h2 {
   font-family: dharmaRegular, Arial, sans-serif;
   font-size: 48px;
-  font-weight: bold;
+  font-weight: normal;
   margin: 0;
 
   @media (min-width: 880px) {
@@ -53,6 +53,6 @@ h2 {
 h3, th {
   font-family: dharmaRegular, Arial, sans-serif;
   font-size: 45px;
-  font-weight: bold;
+  font-weight: normal;
   margin: 0;
 }

@@ -6,6 +6,10 @@
 
   img {
     background: lightgray;
-    width: 100%;
+
+    &.iconImage {
+      align-self: center;
+      height: 90px;
+    }
   }
 }
