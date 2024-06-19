@@ -17,7 +17,7 @@ const LandingPage = () => {
     return (
         <LayoutPublicWrapper>
             <div className={'landingPage'}>
-
+                <img className={"wormhole"} src={'/images/landing_wormhole.png'} alt={'logo Participation Factory'} />
                 <section className={'landingPage__hero'}>
                     <h1>Civic Tech Market Report 2025</h1>
                     <p>{FLAG_PRESALE
