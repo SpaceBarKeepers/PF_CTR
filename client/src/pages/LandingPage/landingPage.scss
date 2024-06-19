@@ -2,6 +2,20 @@
   display: flex;
   flex-direction: column;
   gap: 64px;
+  position: relative;
+
+  .wormhole {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 500px;
+    opacity: 0.1;
+
+    @media (min-width: 880px) {
+      display: initial;
+    }
+  }
 
   p {
     max-width: 800px;
