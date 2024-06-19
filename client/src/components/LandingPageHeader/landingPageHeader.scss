@@ -28,6 +28,7 @@
       border-radius: 10px 0 0 0;
       text-wrap: nowrap;
       box-shadow: black 0 0 10px;
+      z-index: 1;
 
       @media (min-width: 880px) {
         display: flex;
@@ -69,7 +70,7 @@
     padding: 10px;
     cursor: pointer;
     display: none;
-    z-index: 1;
+    z-index: 2;
 
     @media (max-width: 880px) {
       display: flex;
