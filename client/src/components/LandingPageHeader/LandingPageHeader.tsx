@@ -13,6 +13,10 @@ const LandingPageHeader = () => {
         setMobileMenuOpen(!mobileMenuOpen);
     }
 
+    const handleClickLink = () => {
+        setMobileMenuOpen(false);
+    }
+
     return (
         <div className={'landingHeader'}>
             <div className={'landingHeader__hamburger'} onClick={handleClickHambuger}>
@@ -49,22 +53,22 @@ const LandingPageHeader = () => {
                 <nav
                     style={{ display: mobileMenuOpen ? 'flex' : undefined }}
                 >
-                    <a href={'#aboutSection'}>
+                    <a href={'#aboutSection'} onClick={handleClickLink}>
                         <FormattedMessage id={'label_about_report'} defaultMessage={'About Report'} />
                     </a>
-                    <a href={'#whatsInsideSection'}>
+                    <a href={'#whatsInsideSection'} onClick={handleClickLink}>
                         <FormattedMessage id={'label_whats_inside'} defaultMessage={'What\'s inside'} />
                     </a>
-                    <a href={'#whoForSection'}>
+                    <a href={'#whoForSection'} onClick={handleClickLink}>
                         <FormattedMessage id={'label_who_for'} defaultMessage={'Who is it for'} />
                     </a>
-                    <a href={'#whatYouGetSection'}>
+                    <a href={'#whatYouGetSection'} onClick={handleClickLink}>
                         <FormattedMessage id={'label_what_you_get'} defaultMessage={'What you get'} />
                     </a>
-                    <a href={'#pricingSection'}>
+                    <a href={'#pricingSection'} onClick={handleClickLink}>
                         <FormattedMessage id={'label_pricing'} defaultMessage={'Pricing'} />
                     </a>
-                    {!FLAG_PRESALE && <Link to={'/contact'}>
+                    {!FLAG_PRESALE && <Link to={'/contact'} onClick={handleClickLink}>
                       <FormattedMessage id={'label_contact'} defaultMessage={'Contact'} />
                     </Link>}
                 </nav>
