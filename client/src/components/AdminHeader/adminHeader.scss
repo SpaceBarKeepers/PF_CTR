@@ -1,0 +1,28 @@
+.adminHeader {
+  align-items: center;
+  display: flex;
+  font-family: dharmaRegular, Arial, sans-serif;
+  justify-content: space-between;
+  margin-bottom: 32px;
+
+  a {
+    color: black;
+    font-size: 32px;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    gap: 32px;
+  }
+
+  &__buttons {
+    align-items: center;
+    display: flex;
+    gap: 32px;
+  }
+}
