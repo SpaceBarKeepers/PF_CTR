@@ -4,6 +4,7 @@ import { deleteKnowledgeById, getKnowledgeAll } from '../../api/knowledge';
 import { Body, Cell, Header, HeaderCell, HeaderRow, Row, Table } from '@table-library/react-table-library';
 import { deleteUserByUsername, getUserAll } from '../../api/user';
 import { useSilentAdminTokenRefresh } from '../../lib/useSilentAdminTokenRefresh';
+import AdminHeader from '../../components/AdminHeader/AdminHeader';
 
 const intlOptions = {
     year: 'numeric',
@@ -59,6 +60,7 @@ const AdminKnowledgePage = ({}: Props) => {
 
     return (
         <div>
+            <AdminHeader />
             AdminKnowledgePage
             <Table data={{ nodes: articles }}>
                 {(tableList) => (

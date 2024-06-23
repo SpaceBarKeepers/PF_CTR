@@ -14,6 +14,10 @@ import AdminLoginPage from "./pagesAdmin/AdminLoginPage/AdminLoginPage";
 import AdminDashboardPage from "./pagesAdmin/AdminDashboardPage/AdminDashboardPage";
 import AdminUsersPage from "./pagesAdmin/AdminUsersPage/AdminUsersPage";
 import AdminKnowledgePage from "./pagesAdmin/AdminKnowledgePage/AdminKnowledgePage";
+import AdminNewsPage from './pagesAdmin/AdminNewsPage/AdminNewsPage';
+import AdminPagesPage from './pagesAdmin/AdminPagesPage/AdminPagesPage';
+import AdminEventsPage from './pagesAdmin/AdminEventsPage/AdminEventsPage';
+import AdminToolsPage from './pagesAdmin/AdminToolsPage/AdminToolsPage';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -65,6 +69,22 @@ function App() {
             path: '/admin/knowledge',
             element: adminToken ? <AdminKnowledgePage /> : <AdminLoginPage/>,
         },
+        {
+            path: '/admin/news',
+            element: adminToken ? <AdminNewsPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/pages',
+            element: adminToken ? <AdminPagesPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/events',
+            element: adminToken ? <AdminEventsPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/tools',
+            element: adminToken ? <AdminToolsPage /> : <AdminLoginPage/>,
+        },
     ]);
 
     return (
@@ -84,11 +104,11 @@ const AuthRequired = ({children}: { children: ReactElement }) => {
         if (location.pathname === "/login") return
         if (location.pathname === "/device-check") return
         setRedirectAtom(location.pathname)
-    }, [location.pathname]);
+    }, [location.pathname, setRedirectAtom]);
 
     useEffect(() => {
         if (!token) navigate("/login")
-    }, [token])
+    }, [token, navigate])
 
     return children
 }
