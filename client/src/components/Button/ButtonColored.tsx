@@ -3,15 +3,17 @@ import "./buttons.scss"
 
 type Props = {
     children: React.ReactNode,
+    childIsLink?: boolean,
+    onClick?: () => void,
     type?: "primary" | "secondary",
     size?: "normal" | "large"
-    childIsLink?: boolean
 }
 
-const ButtonColored = ({ children, type = "primary", size = "normal", childIsLink = true }: Props) => {
+const ButtonColored = ({ children, childIsLink = true, onClick, type = "primary", size = "normal" }: Props) => {
     return (
         <button
             className={`button${type === "secondary" ? " buttonSecondary" : " buttonPrimary"}${size === "large" ? " buttonLarge" : ""}${childIsLink ? "" : " buttonWithoutLink"}`}
+            {...{onClick}}
         >
             {children}
         </button>

@@ -18,6 +18,12 @@ import AdminNewsPage from './pagesAdmin/AdminNewsPage/AdminNewsPage';
 import AdminPagesPage from './pagesAdmin/AdminPagesPage/AdminPagesPage';
 import AdminEventsPage from './pagesAdmin/AdminEventsPage/AdminEventsPage';
 import AdminToolsPage from './pagesAdmin/AdminToolsPage/AdminToolsPage';
+import CataloguePage from './pages/CataloguePage/CataloguePage';
+import KnowledgeBasePage from './pages/KnowledgeBasePage/KnowledgeBasePage';
+import NewsPage from './pages/NewsPage/NewsPage';
+import EditablePage from './pages/EditablePage/EditablePage';
+import { jwtDecode } from 'jwt-decode';
+import ContactPage from './pages/ContactPage/ContactPage';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -48,6 +54,26 @@ function App() {
         {
             path: '/homepage',
             element: <AuthRequired><HomepagePage /></AuthRequired>,
+        },
+        {
+            path: '/catalogue',
+            element: <AuthRequired><CataloguePage /></AuthRequired>,
+        },
+        {
+            path: '/knowledge-base',
+            element: <AuthRequired><KnowledgeBasePage /></AuthRequired>,
+        },
+        {
+            path: '/news',
+            element: <AuthRequired><NewsPage /></AuthRequired>,
+        },
+        {
+            path: '/trends',
+            element: <AuthRequired><EditablePage /></AuthRequired>,
+        },
+        {
+            path: '/contact',
+            element: <AuthRequired><ContactPage /></AuthRequired>,
         },
         {
             path: '/account',
@@ -108,6 +134,10 @@ const AuthRequired = ({children}: { children: ReactElement }) => {
 
     useEffect(() => {
         if (!token) navigate("/login")
+        else {
+            const expiration = jwtDecode(token.access_token).exp
+            if (expiration && Date.now() > expiration * 1000) navigate("/login")
+        }
     }, [token, navigate])
 
     return children
