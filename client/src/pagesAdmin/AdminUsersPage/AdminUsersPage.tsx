@@ -3,6 +3,7 @@ import {useSilentAdminTokenRefresh} from "../../lib/useSilentAdminTokenRefresh";
 import {deleteUserByUsername, getUserAll} from "../../api/user";
 import {Body, Cell, Header, HeaderCell, HeaderRow, Row, Table} from "@table-library/react-table-library";
 import {UserAPIEntity, UserEntity} from "../../models/entities";
+import AdminHeader from '../../components/AdminHeader/AdminHeader';
 
 type Props = {};
 
@@ -25,7 +26,7 @@ const AdminUsersPage = ({}: Props) => {
                         console.log(error)
                     })
             })
-    }, []);
+    }, [getToken]);
 
     const handleRemove = (username: string) => () => {
         getToken()
@@ -52,6 +53,7 @@ const AdminUsersPage = ({}: Props) => {
 
     return (
         <div>
+            <AdminHeader />
             <button>Tlačítko na přidání uživatele (až bude ready SMTP)</button>
             <Table data={{nodes: users}}>
                 {(tableList: UserEntity[]) => {
