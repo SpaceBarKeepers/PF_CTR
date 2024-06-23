@@ -14,6 +14,9 @@ const AdminHeader = ({}: Props) => {
     <Link to={"/admin/users"}>
         <FormattedMessage id={"label_users"} defaultMessage={"Users"} />
     </Link>
+      <Link to={"/admin/knowledge"}>
+        <FormattedMessage id={"label_knowledge_base"} defaultMessage={"Knowledge base"} />
+    </Link>
   </div>
  );
 };
