@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {loginUserWithUsernameAndPassword, tokenRefresh} from "../../api/auth";
 import {useAtom} from "jotai";
-import {tokenAtom} from "../../atomStore";
+import {    tokenAtom} from "../../atomStore";
 import {TokenEntity} from "../../models/entities";
 import {useNavigate} from "react-router-dom";
 import {jwtDecode} from "jwt-decode";
@@ -13,9 +13,7 @@ interface FormElements extends HTMLFormElement {
     password: HTMLInputElement;
 }
 
-type Props = {};
-
-const LoginPage = ({}: Props) => {
+const LoginPage = () => {
     const [, setLoginError] = React.useState<string>("")
     const [token, setToken] = useAtom(tokenAtom)
     const navigate = useNavigate()
@@ -31,7 +29,7 @@ const LoginPage = ({}: Props) => {
                 if (error.message === "error_invalid_device_hash" || error.message === "error_invalid_token") forcedLogout()
                 else console.error(error)
             })
-    }, []);
+    }, [forcedLogout, setToken]);
 
     const handleLogin = (e: React.FormEvent<FormElements>) => {
         e.preventDefault();
@@ -54,7 +52,7 @@ const LoginPage = ({}: Props) => {
             const expiration = jwtDecode(token.access_token).exp
             if (expiration && Date.now() < expiration * 1000) navigate("/device-check")
         }
-    }, [token]);
+    }, [token, navigate]);
 
     return (
         <div>
