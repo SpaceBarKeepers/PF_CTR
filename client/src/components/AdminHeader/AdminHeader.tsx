@@ -2,11 +2,18 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import ButtonColored from '../Button/ButtonColored';
 import ButtonLanguage from '../Button/ButtonLanguage';
+import './adminHeader.scss';
+import { useAdminLogout } from '../../lib/logoutAdmin';
 
 const AdminHeader = () => {
+    const logout = useAdminLogout()
+
+    const handleLogout = () => {
+        logout()
+    }
     return (
-        <div>
-            <div>
+        <div className={"adminHeader"}>
+            <nav className={'adminHeader__navigation'}>
             <Link to={'/admin/dashboard'}>
                 <FormattedMessage id={'label_dashboard'} defaultMessage={'Dashboard'} />
             </Link>
@@ -28,9 +35,9 @@ const AdminHeader = () => {
             <Link to={'/admin/tools'}>
                 <FormattedMessage id={'label_tools'} defaultMessage={'Tools'} />
             </Link>
-            </div>
-            <div>
-                <ButtonColored childIsLink={false}>
+            </nav>
+            <div className={"adminHeader__buttons"}>
+                <ButtonColored childIsLink={false} onClick={handleLogout}>
                     <FormattedMessage id={'label_logout'} defaultMessage={'Logout'} />
                 </ButtonColored>
                 <ButtonLanguage />
