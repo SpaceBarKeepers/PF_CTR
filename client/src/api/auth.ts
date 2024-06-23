@@ -1,4 +1,5 @@
 import {apiRoot} from "./apiRoot";
+// @ts-expect-error get-browser-fingerprint is not typed
 import getBrowserFingerprint from "get-browser-fingerprint"
 
 const deviceHash = getBrowserFingerprint({ enableWebgl: true }).toString()

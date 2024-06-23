@@ -1,0 +1,79 @@
+@use "../../partials/colors";
+
+.landingHeader {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 65px;
+
+  > img {
+    height: 90px;
+    padding: 15px 0;
+  }
+
+  &__navigationContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    padding: 8px 0;
+
+    nav {
+      display: none;
+      background: white;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      flex-direction: column;
+      padding: 40px 50px 120px 40px;
+      border-radius: 10px 0 0 0;
+      text-wrap: nowrap;
+      box-shadow: black 0 0 10px;
+      z-index: 1;
+
+      @media (min-width: 880px) {
+        display: flex;
+        flex-direction: row;
+        position: initial;
+        gap: 32px;
+        padding: 0;
+        box-shadow: none;
+      }
+
+
+      a {
+        text-decoration: none;
+        color: colors.$color-black;
+        font-family: dharmaRegular, Arial, sans-serif;
+        font-size: 32px;
+      }
+    }
+  }
+
+  &__loginAndLanguage {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: 880px) {
+      display: flex;
+    }
+  }
+
+  &__hamburger {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: colors.$color-blue;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    display: none;
+    z-index: 2;
+
+    @media (max-width: 880px) {
+      display: flex;
+    }
+  }
+}

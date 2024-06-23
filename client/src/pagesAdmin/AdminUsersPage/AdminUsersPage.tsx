@@ -54,29 +54,32 @@ const AdminUsersPage = ({}: Props) => {
         <div>
             <button>Tlačítko na přidání uživatele (až bude ready SMTP)</button>
             <Table data={{nodes: users}}>
-                {(tableList) => (
-                    <>
-                        <Header>
-                            <HeaderRow>
-                                <HeaderCell>Username</HeaderCell>
-                                <HeaderCell>Actions</HeaderCell>
-                            </HeaderRow>
-                        </Header>
+                {(tableList: UserEntity[]) => {
+                    console.log(tableList)
+                    return (
+                        <>
+                            <Header>
+                                <HeaderRow>
+                                    <HeaderCell>Username</HeaderCell>
+                                    <HeaderCell>Actions</HeaderCell>
+                                </HeaderRow>
+                            </Header>
 
-                        <Body>
-                            {tableList.map((item) => (
-                                <Row key={item.id} item={item}>
-                                    <Cell>{item.username}</Cell>
-                                    <Cell>
-                                        <button type="button" onClick={handleRemove(item.username)}>
-                                            Remove
-                                        </button>
-                                    </Cell>
-                                </Row>
-                            ))}
-                        </Body>
-                    </>
-                )}
+                            <Body>
+                                {tableList.map((item) => (
+                                    <Row key={item.id} item={item}>
+                                        <Cell>{item.username}</Cell>
+                                        <Cell>
+                                            <button type="button" onClick={handleRemove(item.username)}>
+                                                Remove
+                                            </button>
+                                        </Cell>
+                                    </Row>
+                                ))}
+                            </Body>
+                        </>
+                    );
+                }}
             </Table>
         </div>
     );

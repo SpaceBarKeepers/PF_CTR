@@ -1,0 +1,59 @@
+@font-face {
+  font-family: dharmaRegular;
+  src: url(/fonts/DharmaTypeDharmaGothicMExBold.otf);
+}
+
+html {
+  display: flex;
+  justify-content: center;
+  scroll-behavior: smooth;
+  width: 100vw;
+}
+
+body {
+  padding: 21px 20px;
+  margin: 0;
+  overflow-x: hidden;
+  max-width: 1600px;
+  width: 100%;
+
+  @media (min-width: 880px) {
+    padding: 21px 70px;
+  }
+}
+
+p, td {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0;
+}
+
+h1 {
+  font-family: dharmaRegular, Arial, sans-serif;
+  font-size: 80px;
+  font-weight: normal;
+  margin: 0;
+
+  @media (min-width: 880px) {
+    font-size: 110px;
+  }
+}
+
+h2 {
+  font-family: dharmaRegular, Arial, sans-serif;
+  font-size: 48px;
+  font-weight: normal;
+  margin: 0;
+
+  @media (min-width: 880px) {
+    font-size: 64px;
+  }
+}
+
+h3, th {
+  font-family: dharmaRegular, Arial, sans-serif;
+  font-size: 45px;
+  font-weight: normal;
+  margin: 0;
+}

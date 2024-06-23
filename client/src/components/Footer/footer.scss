@@ -1,0 +1,53 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  @media (min-width: 880px) {
+    align-items: flex-start;
+    gap: 0;
+    flex-direction: row;
+  }
+
+  &__logos {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-direction: column;
+
+    @media (min-width: 880px) {
+      flex-direction: row;
+    }
+  }
+
+  &__logo1 {
+    width: 150px;
+  }
+
+  &__logo2 {
+    width: 200px;
+  }
+
+  &__logo3 {
+    width: 60px;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    font-size: 14px;
+
+    @media (min-width: 880px) {
+      font-size: initial;
+    }
+  }
+}
