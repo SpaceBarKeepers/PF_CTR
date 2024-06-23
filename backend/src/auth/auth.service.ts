@@ -1,75 +1,81 @@
-import {Injectable} from '@nestjs/common';
-import {UserService} from '../user/user.service';
-import {JwtService} from "@nestjs/jwt";
-import * as bcrypt from "bcrypt";
-import * as dotenv from "dotenv";
+import { Injectable } from '@nestjs/common';
+import { UserService } from '../user/user.service';
+import { JwtService } from '@nestjs/jwt';
+import * as bcrypt from 'bcrypt';
+import * as dotenv from 'dotenv';
+
 dotenv.config();
 
 @Injectable()
 export class AuthService {
-    constructor(private userService: UserService, private jwtService: JwtService) {
-    }
+  constructor(
+    private userService: UserService,
+    private jwtService: JwtService,
+  ) {}
 
-    async validateUser(username: string, pass: string): Promise<any> {
-        const user = await this.userService.findOneWithPassword(username);
-        if (!user) return null
-        console.log("user", user)
-        const passwordOk = await bcrypt.compare(pass, user.password)
-        if (user && passwordOk) {
-            const {password, ...result} = user;
-            return user;
-        }
-        return null;
+  async validateUser(username: string, pass: string): Promise<any> {
+    const user = await this.userService.findOneWithPassword(username);
+    if (!user) return null;
+    const passwordOk = await bcrypt.compare(pass, user.password);
+    if (user && passwordOk) {
+      const { password, ...result } = user;
+      return user;
     }
+    return null;
+  }
 
-    async login(user: any) {
-        const payload = {username: user.username, sub: user.userId};
-        return {
-            access_token: this.jwtService.sign(payload),
-        };
+  async login(user: any) {
+    const payload = { username: user.username, sub: user.userId };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
+  }
+
+  async loginAdmin(user: any) {
+    const payload = { username: user.username, sub: user.userId };
+    return {
+      admin_token: this.jwtService.sign(payload, {
+        secret: process.env.JWT_ADMIN_SECRET,
+      }),
+    };
+  }
+
+  async generateRefreshToken(user: any) {
+    const payload = { username: user.username };
+    return this.jwtService.sign(payload, { expiresIn: '30d' });
+  }
+
+  async generateAdminRefreshToken(user: any) {
+    const payload = { username: user.username };
+    return this.jwtService.sign(payload, {
+      expiresIn: '30d',
+      secret: process.env.JWT_ADMIN_SECRET,
+    });
+  }
+
+  async checkDeviceHash(username: string, deviceHash: string) {
+    const user = await this.userService.findOne(username);
+    if (!user) return null;
+
+    if (user.activeDevice) {
+      if (user.activeDevice === deviceHash) return true;
+    } else {
+      await this.userService.asignActiveDevice(username, deviceHash);
+      return true;
     }
+    return false;
+  }
 
-    async loginAdmin(user: any) {
-        const payload = {username: user.username, sub: user.userId};
-        return {
-            admin_token: this.jwtService.sign(payload,{ secret: process.env.JWT_ADMIN_SECRET } ),
-        };
+  async reassignDeviceHash(username: string, deviceHash: string) {
+    return await this.userService.asignActiveDevice(username, deviceHash);
+  }
+
+  async validateAdminUser(username: string, pass: string): Promise<any> {
+    const usernameOk = username === process.env.ADMIN_USERNAME;
+    const passwordOk = await bcrypt.compare(pass, process.env.ADMIN_PASSWORD!);
+    if (usernameOk && passwordOk) {
+      return { username: process.env.ADMIN_USERNAME };
     }
-
-    async generateRefreshToken(user: any) {
-        const payload = {username: user.username};
-        return this.jwtService.sign(payload, {expiresIn: "30d"});
-    }
-
-    async generateAdminRefreshToken(user: any) {
-        const payload = {username: user.username};
-        return this.jwtService.sign(payload, {expiresIn: "30d", secret: process.env.JWT_ADMIN_SECRET});
-    }
-
-    async checkDeviceHash(username: string, deviceHash: string) {
-        const user = await this.userService.findOne(username);
-        if (!user) return null
-
-        if (user.activeDevice) {
-            if (user.activeDevice === deviceHash)
-                return true
-        } else {
-            await this.userService.asignActiveDevice(username, deviceHash)
-            return true
-        }
-        return false
-    }
-
-    async reassignDeviceHash(username: string, deviceHash: string) {
-        return await this.userService.asignActiveDevice(username, deviceHash)
-    }
-
-    async validateAdminUser(username: string, pass: string): Promise<any> {
-        const usernameOk = username === process.env.ADMIN_USERNAME
-        const passwordOk = await bcrypt.compare(pass, process.env.ADMIN_PASSWORD!)
-        if (usernameOk && passwordOk) {
-            return {username: process.env.ADMIN_USERNAME}
-        }
-        return null;
-    }
+    return null;
+  }
 }
