@@ -13,6 +13,17 @@ import {useSetAtom} from "jotai";
 import AdminLoginPage from "./pagesAdmin/AdminLoginPage/AdminLoginPage";
 import AdminDashboardPage from "./pagesAdmin/AdminDashboardPage/AdminDashboardPage";
 import AdminUsersPage from "./pagesAdmin/AdminUsersPage/AdminUsersPage";
+import AdminKnowledgePage from "./pagesAdmin/AdminKnowledgePage/AdminKnowledgePage";
+import AdminNewsPage from './pagesAdmin/AdminNewsPage/AdminNewsPage';
+import AdminPagesPage from './pagesAdmin/AdminPagesPage/AdminPagesPage';
+import AdminEventsPage from './pagesAdmin/AdminEventsPage/AdminEventsPage';
+import AdminToolsPage from './pagesAdmin/AdminToolsPage/AdminToolsPage';
+import CataloguePage from './pages/CataloguePage/CataloguePage';
+import KnowledgeBasePage from './pages/KnowledgeBasePage/KnowledgeBasePage';
+import NewsPage from './pages/NewsPage/NewsPage';
+import EditablePage from './pages/EditablePage/EditablePage';
+import { jwtDecode } from 'jwt-decode';
+import ContactPage from './pages/ContactPage/ContactPage';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -45,6 +56,26 @@ function App() {
             element: <AuthRequired><HomepagePage /></AuthRequired>,
         },
         {
+            path: '/catalogue',
+            element: <AuthRequired><CataloguePage /></AuthRequired>,
+        },
+        {
+            path: '/knowledge-base',
+            element: <AuthRequired><KnowledgeBasePage /></AuthRequired>,
+        },
+        {
+            path: '/news',
+            element: <AuthRequired><NewsPage /></AuthRequired>,
+        },
+        {
+            path: '/trends',
+            element: <AuthRequired><EditablePage /></AuthRequired>,
+        },
+        {
+            path: '/contact',
+            element: <AuthRequired><ContactPage /></AuthRequired>,
+        },
+        {
             path: '/account',
             element: <AuthRequired><AccountPage /></AuthRequired>,
         },
@@ -59,6 +90,26 @@ function App() {
         {
             path: '/admin/users',
             element: adminToken ? <AdminUsersPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/knowledge',
+            element: adminToken ? <AdminKnowledgePage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/news',
+            element: adminToken ? <AdminNewsPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/pages',
+            element: adminToken ? <AdminPagesPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/events',
+            element: adminToken ? <AdminEventsPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/tools',
+            element: adminToken ? <AdminToolsPage /> : <AdminLoginPage/>,
         },
     ]);
 
@@ -79,11 +130,15 @@ const AuthRequired = ({children}: { children: ReactElement }) => {
         if (location.pathname === "/login") return
         if (location.pathname === "/device-check") return
         setRedirectAtom(location.pathname)
-    }, [location.pathname]);
+    }, [location.pathname, setRedirectAtom]);
 
     useEffect(() => {
         if (!token) navigate("/login")
-    }, [token])
+        else {
+            const expiration = jwtDecode(token.access_token).exp
+            if (expiration && Date.now() > expiration * 1000) navigate("/login")
+        }
+    }, [token, navigate])
 
     return children
 }

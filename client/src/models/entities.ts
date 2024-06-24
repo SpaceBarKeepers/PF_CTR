@@ -17,3 +17,26 @@ export interface UserEntity {
     username: string;
     activeDevice: string;
 }
+
+export interface KnowledgeAPIEntity {
+    _id: string;
+    cs?: KnowlegdeLanguageUnit;
+    en?: KnowlegdeLanguageUnit;
+    tags: string[];
+    createdAt: number;
+    updatedAt: number;
+}
+
+export interface KnowledgeEntity {
+    id: string;
+    cs?: KnowlegdeLanguageUnit;
+    en?: KnowlegdeLanguageUnit;
+    tags: string[];
+    createdAt: number;
+    updatedAt: number;
+}
+
+interface KnowlegdeLanguageUnit {
+    title: string;
+    tags: string[];
+}

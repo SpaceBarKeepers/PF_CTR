@@ -1,12 +1,12 @@
 import AdminHeader from '../../components/AdminHeader/AdminHeader';
 
-const AdminDashboardPage = () => {
+const AdminEventsPage = () => {
     return (
         <div>
             <AdminHeader />
-            <h1>Dashboard</h1>
+            <h1>Admin Events Page</h1>
         </div>
     );
-};
+}
 
-export default AdminDashboardPage;
+export default AdminEventsPage;

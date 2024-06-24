@@ -68,7 +68,7 @@ const LandingPageHeader = () => {
                     <a href={'#pricingSection'} onClick={handleClickLink}>
                         <FormattedMessage id={'label_pricing'} defaultMessage={'Pricing'} />
                     </a>
-                    {!FLAG_PRESALE && <Link to={'/contact'} onClick={handleClickLink}>
+                    {!FLAG_PRESALE && <Link to={'/contactPurchase'} onClick={handleClickLink}>
                       <FormattedMessage id={'label_contact'} defaultMessage={'Contact'} />
                     </Link>}
                 </nav>
