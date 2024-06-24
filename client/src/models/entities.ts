@@ -13,9 +13,12 @@ export interface UserAPIEntity {
 }
 
 export interface UserEntity {
-    id: string;
+    id: number;
     username: string;
     activeDevice: string;
+    registered: Date;
+    registrationType: "manual" | "paygate";
+    lastLogin: Date;
 }
 
 export interface KnowledgeAPIEntity {

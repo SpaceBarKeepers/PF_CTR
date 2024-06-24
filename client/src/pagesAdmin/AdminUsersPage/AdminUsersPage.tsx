@@ -1,13 +1,11 @@
 import {useEffect, useState} from 'react';
 import {useSilentAdminTokenRefresh} from "../../lib/useSilentAdminTokenRefresh";
-import {deleteUserByUsername, getUserAll} from "../../api/user";
+import { deleteUserById, getUserAll } from '../../api/user';
 import {Body, Cell, Header, HeaderCell, HeaderRow, Row, Table} from "@table-library/react-table-library";
 import {UserAPIEntity, UserEntity} from "../../models/entities";
 import AdminHeader from '../../components/AdminHeader/AdminHeader';
 
-type Props = {};
-
-const AdminUsersPage = ({}: Props) => {
+const AdminUsersPage = () => {
     const [users, setUsers] = useState<UserEntity[]>([])
     const getToken = useSilentAdminTokenRefresh();
 
@@ -26,13 +24,13 @@ const AdminUsersPage = ({}: Props) => {
                         console.log(error)
                     })
             })
-    }, [getToken]);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const handleRemove = (username: string) => () => {
+    const handleRemove = (id: number) => () => {
         getToken()
             .then((token) => {
                 if (!token) return;
-                deleteUserByUsername(token, username)
+                deleteUserById(token, id)
                     .then(() => {
                         getUserAll(token)
                             .then((response) => {
@@ -63,16 +61,22 @@ const AdminUsersPage = ({}: Props) => {
                             <Header>
                                 <HeaderRow>
                                     <HeaderCell>Username</HeaderCell>
+                                    <HeaderCell>Registered via</HeaderCell>
+                                    <HeaderCell>Registered</HeaderCell>
+                                    <HeaderCell>Last Login</HeaderCell>
                                     <HeaderCell>Actions</HeaderCell>
                                 </HeaderRow>
                             </Header>
 
                             <Body>
-                                {tableList.map((item) => (
+                                {tableList.map((item: UserEntity) => (
                                     <Row key={item.id} item={item}>
                                         <Cell>{item.username}</Cell>
+                                        <Cell>{String(item.registrationType)}</Cell>
+                                        <Cell>{String(item.registered)}</Cell>
+                                        <Cell>{String(item.lastLogin)}</Cell>
                                         <Cell>
-                                            <button type="button" onClick={handleRemove(item.username)}>
+                                            <button type="button" onClick={handleRemove(item.id)}>
                                                 Remove
                                             </button>
                                         </Cell>

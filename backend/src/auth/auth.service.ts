@@ -13,15 +13,13 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-    async validateUser(id: number, pass: string): Promise<any> {
-        const user = await this.userService.findOne(id);
-        if (!user) return null
-        const passwordOk = await bcrypt.compare(pass, user.password)
-        if (user && passwordOk) {
-            const {password, ...result} = user;
-            return user;
-        }
-        return null;
+  async validateUser(id: number, pass: string): Promise<any> {
+    const user = await this.userService.findOne(id);
+    if (!user) return null;
+    const passwordOk = await bcrypt.compare(pass, user.password);
+    if (user && passwordOk) {
+      const { password, ...result } = user;
+      return user;
     }
     return null;
   }
@@ -55,25 +53,22 @@ export class AuthService {
     });
   }
 
-    async checkDeviceHash(id: number, deviceHash: string) {
-        const user = await this.userService.findOne(id);
-        if (!user) return null
+  async checkDeviceHash(id: number, deviceHash: string) {
+    const user = await this.userService.findOne(id);
+    if (!user) return null;
 
-        if (user.activeDevice) {
-            if (user.activeDevice === deviceHash)
-                return true
-        } else {
-            await this.userService.assignActiveDevice(id, deviceHash)
-            return true
-        }
-        return false
+    if (user.activeDevice) {
+      if (user.activeDevice === deviceHash) return true;
+    } else {
+      await this.userService.assignActiveDevice(id, deviceHash);
+      return true;
     }
     return false;
   }
 
-    async reassignDeviceHash(id: number, deviceHash: string) {
-        return await this.userService.assignActiveDevice(id, deviceHash)
-    }
+  async reassignDeviceHash(id: number, deviceHash: string) {
+    return await this.userService.assignActiveDevice(id, deviceHash);
+  }
 
   async validateAdminUser(username: string, pass: string): Promise<any> {
     const usernameOk = username === process.env.ADMIN_USERNAME;

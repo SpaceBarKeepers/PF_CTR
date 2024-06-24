@@ -25,9 +25,9 @@ export const getUserAll = async (adminToken: string) => {
     }
 }
 
-export const deleteUserByUsername = async (adminToken: string, username: string) => {
+export const deleteUserById = async (adminToken: string, id: number) => {
     try {
-        const response = await fetch(`${apiRoot}/user/${username}`, {
+        const response = await fetch(`${apiRoot}/user/${id}`, {
             method: "DELETE",
             credentials: "include",
             headers: {

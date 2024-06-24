@@ -13,4 +13,13 @@ export class User {
 
   @Column({ type: 'varchar', length: 200, nullable: true })
   activeDevice: string;
+
+  @Column({ type: 'date', default: new Date() })
+  registered: Date;
+
+  @Column({ type: 'varchar', default: 'manual' })
+  registrationType: 'manual' | 'paygate';
+
+  @Column({ type: 'date', default: new Date() })
+  lastLogin: Date;
 }
