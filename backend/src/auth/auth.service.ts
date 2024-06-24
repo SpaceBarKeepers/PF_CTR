@@ -10,8 +10,8 @@ export class AuthService {
     constructor(private userService: UserService, private jwtService: JwtService) {
     }
 
-    async validateUser(username: string, pass: string): Promise<any> {
-        const user = await this.userService.findOne(username);
+    async validateUser(id: number, pass: string): Promise<any> {
+        const user = await this.userService.findOne(id);
         if (!user) return null
         const passwordOk = await bcrypt.compare(pass, user.password)
         if (user && passwordOk) {
@@ -45,22 +45,22 @@ export class AuthService {
         return this.jwtService.sign(payload, {expiresIn: "30d", secret: process.env.JWT_ADMIN_SECRET});
     }
 
-    async checkDeviceHash(username: string, deviceHash: string) {
-        const user = await this.userService.findOne(username);
+    async checkDeviceHash(id: number, deviceHash: string) {
+        const user = await this.userService.findOne(id);
         if (!user) return null
 
         if (user.activeDevice) {
             if (user.activeDevice === deviceHash)
                 return true
         } else {
-            await this.userService.asignActiveDevice(username, deviceHash)
+            await this.userService.assignActiveDevice(id, deviceHash)
             return true
         }
         return false
     }
 
-    async reassignDeviceHash(username: string, deviceHash: string) {
-        return await this.userService.asignActiveDevice(username, deviceHash)
+    async reassignDeviceHash(id: number, deviceHash: string) {
+        return await this.userService.assignActiveDevice(id, deviceHash)
     }
 
     async validateAdminUser(username: string, pass: string): Promise<any> {
