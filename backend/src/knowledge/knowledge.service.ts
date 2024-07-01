@@ -1,36 +1,81 @@
-import {Injectable} from '@nestjs/common';
-import {Model} from "mongoose";
-import {InjectModel} from "@nestjs/mongoose";
-import {Knowledge} from "./schemas/knowledge.schema";
+import { Injectable } from '@nestjs/common';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+import { Knowledge } from './schemas/knowledge.schema';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from '../user/entities/user.entity';
+import { Repository, UpdateResult } from 'typeorm';
+import { KnowledgeBase } from './entities/knowledge.entity';
+import { KnowledgeDto } from './dto/knowledge.dto';
 
 @Injectable()
 export class KnowledgeService {
-    constructor(@InjectModel(Knowledge.name) private knowledgeModel: Model<Knowledge>) {
-    }
+  constructor(
+    // @InjectModel(Knowledge.name) private knowledgeModel: Model<Knowledge>,
+    @InjectRepository(KnowledgeBase)
+    private readonly knowledgeRepository: Repository<KnowledgeBase>,
+  ) {}
 
-    async create(knowledge: Knowledge) {
-        const createdKnowledge = new this.knowledgeModel(knowledge);
-        return createdKnowledge.save();
-    }
+  async pushDownFeaturedPosition(position: number) {
+    const knowledge = await this.knowledgeRepository.find();
+    if (!knowledge.find((k) => k.featuredPosition === position)) return;
 
-    async findAll(): Promise<Knowledge[]> {
-        return await this.knowledgeModel.find().exec();
-    }
-
-    async findOne(id: string): Promise<Knowledge | null> {
-        return this.knowledgeModel.findOne({_id: id}).exec();
-    }
-
-    async update(id: string, knowledge: Knowledge): Promise<Knowledge | null> {
-        const newKnowledge = {
-            createdAt: undefined,
-            updatedAt: Date.now(),
-            ...knowledge,
+    for (let i = 0; i < knowledge.length; i++) {
+      if (knowledge[i].featuredPosition) {
+        if (knowledge[i].featuredPosition! >= position) {
+          if (knowledge[i].featuredPosition === 4) {
+            knowledge[i].featuredPosition = null;
+          } else {
+            knowledge[i].featuredPosition! += 1;
+          }
         }
-        return this.knowledgeModel.findOneAndUpdate({_id: id}, newKnowledge).exec();
+        await this.knowledgeRepository.save(knowledge[i]);
+      }
     }
+  }
 
-    delete(id: string) {
-        return this.knowledgeModel.findOneAndDelete({_id: id}).exec();
+  async create(knowledge: KnowledgeDto) {
+    const createdKnowledge = new KnowledgeBase();
+    createdKnowledge.publishedCs = knowledge.publishedCs;
+    createdKnowledge.titleCs = knowledge.titleCs;
+    createdKnowledge.subtitleCs = knowledge.subtitleCs;
+    createdKnowledge.contentCs = knowledge.contentCs;
+    createdKnowledge.publishedEn = knowledge.publishedEn;
+    createdKnowledge.titleEn = knowledge.titleEn;
+    createdKnowledge.subtitleEn = knowledge.subtitleEn;
+    createdKnowledge.contentEn = knowledge.contentEn;
+    createdKnowledge.thumbnail = knowledge.thumbnail;
+    createdKnowledge.featuredPosition = knowledge.featuredPosition;
+    createdKnowledge.createdAt = new Date();
+    createdKnowledge.updatedAt = new Date();
+
+    if (knowledge.featuredPosition) {
+      await this.pushDownFeaturedPosition(knowledge.featuredPosition);
     }
+    return this.knowledgeRepository.save(createdKnowledge);
+  }
+
+  async findAll(): Promise<KnowledgeBase[]> {
+    return await this.knowledgeRepository.find();
+  }
+
+  async findOne(id: number): Promise<KnowledgeBase | null> {
+    return this.knowledgeRepository.findOneBy({ id });
+  }
+
+  async update(id: number, knowledge: KnowledgeDto): Promise<UpdateResult> {
+    const newKnowledge = {
+      createdAt: undefined,
+      updatedAt: Date.now(),
+      ...knowledge,
+    };
+    if (knowledge.featuredPosition) {
+      await this.pushDownFeaturedPosition(knowledge.featuredPosition);
+    }
+    return this.knowledgeRepository.update({ id: id }, newKnowledge);
+  }
+
+  delete(id: number) {
+    return this.knowledgeRepository.delete({ id });
+  }
 }

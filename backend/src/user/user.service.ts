@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Model } from "mongoose";
-import { InjectModel } from "@nestjs/mongoose";
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, UpdateResult } from 'typeorm';
 import { CreateUserDto } from './dto/user.dto';
@@ -10,7 +10,7 @@ import { User } from './entities/user.entity';
 export class UserService {
   // constructor(@InjectModel(User.name) private userModel: Model<User>) {}
   constructor(
-      @InjectRepository(User) private readonly userRepository: Repository<User>,
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
   // create(user: User) {
@@ -49,7 +49,10 @@ export class UserService {
   //   return this.userModel.findOneAndUpdate({username}, {activeDevice: deviceId}).exec();
   // }
 
-  async assignActiveDevice(id: number, deviceId: string): Promise<UpdateResult> {
+  async assignActiveDevice(
+    id: number,
+    deviceId: string,
+  ): Promise<UpdateResult> {
     return this.userRepository.update(id, { activeDevice: deviceId });
   }
 }

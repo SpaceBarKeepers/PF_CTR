@@ -1,0 +1,30 @@
+.inputLabel {
+  font-family: dharmaRegular, Arial, sans-serif;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+
+  input[type="text"] {
+    margin-left: 10px;
+    height: 1.3rem;
+    width: 200px;
+  }
+
+  select {
+    margin-left: 10px;
+    height: 1.3rem;
+  }
+}
+
+.wrapperClassName {
+  border: 1px solid lightgrey;
+  padding: 10px;
+}
+
+.toolbarClassName {
+  display: flex;
+
+  & > div {
+    display: flex;
+  }
+}

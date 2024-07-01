@@ -21,25 +21,28 @@ export interface UserEntity {
     lastLogin: Date;
 }
 
-export interface KnowledgeAPIEntity {
-    _id: string;
-    cs?: KnowlegdeLanguageUnit;
-    en?: KnowlegdeLanguageUnit;
-    tags: string[];
-    createdAt: number;
-    updatedAt: number;
-}
-
 export interface KnowledgeEntity {
     id: string;
-    cs?: KnowlegdeLanguageUnit;
-    en?: KnowlegdeLanguageUnit;
-    tags: string[];
-    createdAt: number;
-    updatedAt: number;
+    publishedCs: boolean;
+    titleCs: string;
+    subtitleCs: string;
+    contentCs: string;
+    publishedEn: boolean;
+    titleEn: string;
+    subtitleEn: string;
+    contentEn: string;
+    featuredPosition: number;
+    thumbnail: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 interface KnowlegdeLanguageUnit {
     title: string;
     tags: string[];
+}
+
+export interface SelectBoxOptionEntity {
+    label: string;
+    value: string | number | null;
 }

@@ -1,15 +1,19 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from "./user/user.module";
-import { MongooseModule } from "@nestjs/mongoose";
-import { AuthModule } from "./auth/auth.module";
-import { ServeStaticModule } from "@nestjs/serve-static";
+import { UserModule } from './user/user.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './auth/auth.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
-import * as dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/entities/user.entity';
 import * as process from 'node:process';
+import { KnowledgeBase } from './knowledge/entities/knowledge.entity';
+import { Tag } from './tag/entities/tag.entity';
+import { KnowledgeModule } from './knowledge/knowledge.module';
+
 dotenv.config();
 
 @Module({
@@ -30,7 +34,7 @@ dotenv.config();
       port: 25060,
       password: process.env.DB_PASSWORD,
       username: process.env.DB_USERNAME,
-      entities: [User],
+      entities: [User, KnowledgeBase, Tag],
       database: process.env.DB_NAME,
       synchronize: true,
       logging: true,
@@ -45,6 +49,7 @@ dotenv.config();
     }),
     UserModule,
     AuthModule,
+    KnowledgeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
