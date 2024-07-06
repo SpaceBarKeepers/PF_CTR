@@ -107,3 +107,9 @@ export interface TagEntity {
     tagEn: string;
     tagCs: string;
 }
+
+export interface PageEntity {
+    id: string;
+    contentEn: string;
+    contentCs: string;
+}

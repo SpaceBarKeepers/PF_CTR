@@ -32,6 +32,7 @@ const geotags = [
 
 const AdminNewsEditPage = () => {
     const [data, setData] = useState<NewsInterface>({} as NewsInterface);
+    const [loaded, setLoaded] = useState(false);
     const [tags, setTags] = useState<TagEntity[]>([]);
     const { id } = useParams();
     const getToken = useSilentAdminTokenRefresh();
@@ -39,10 +40,14 @@ const AdminNewsEditPage = () => {
     const intl = useIntl();
 
     useEffect(() => {
-        if (!id) return;
+        if (!id) {
+            setLoaded(true);
+            return
+        }
         getNewsById(id)
             .then((response) => {
                 setData(response);
+                setLoaded(true);
             })
             .catch((error) => {
                 console.log(error);
@@ -114,7 +119,8 @@ const AdminNewsEditPage = () => {
             }
         });
     };
-    console.log(data.tags);
+
+    if (!loaded) return (<div>Loading...</div>);
     return (
         <div className={'adminNewsEditPage'}>
             <AdminHeader />

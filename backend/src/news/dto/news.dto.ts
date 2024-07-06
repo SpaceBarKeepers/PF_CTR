@@ -1,59 +1,59 @@
 import {
-    IsArray,
-    IsBoolean,
-    IsNotEmpty,
-    IsNumber,
-    IsString,
-    MinLength,
+  IsArray,
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  MinLength,
 } from 'class-validator';
 import { Tag } from '../../tag/entities/tag.entity';
 
 export class NewsDto {
-    @IsBoolean()
-    publishedCs: boolean;
+  @IsBoolean()
+  publishedCs: boolean;
 
-    @IsString()
-    @MinLength(2, { message: 'Title must have at least 2 characters.' })
-    @IsNotEmpty()
-    titleCs: string;
+  @IsString()
+  @MinLength(2, { message: 'Title must have at least 2 characters.' })
+  @IsNotEmpty()
+  titleCs: string;
 
-    @IsString()
-    subtitleCs: string;
+  @IsString()
+  subtitleCs: string;
 
-    @IsString()
-    @IsNotEmpty()
-    contentCs: string;
+  @IsString()
+  @IsNotEmpty()
+  contentCs: string;
 
-    @IsBoolean()
-    publishedEn: boolean;
+  @IsBoolean()
+  publishedEn: boolean;
 
-    @IsString()
-    @MinLength(2, { message: 'Title must have at least 2 characters.' })
-    @IsNotEmpty()
-    titleEn: string;
+  @IsString()
+  @MinLength(2, { message: 'Title must have at least 2 characters.' })
+  @IsNotEmpty()
+  titleEn: string;
 
-    @IsString()
-    subtitleEn: string;
+  @IsString()
+  subtitleEn: string;
 
-    @IsString()
-    @IsNotEmpty()
-    contentEn: string;
+  @IsString()
+  @IsNotEmpty()
+  contentEn: string;
 
-    @IsNumber()
-    featuredPosition: number;
+  @IsNumber()
+  featuredPosition: number;
 
-    @IsString()
-    thumbnail: string;
+  @IsString()
+  thumbnail: string;
 
-    @IsArray()
-    tags: Tag[];
+  @IsArray()
+  tags: Tag[];
 
-    @IsArray()
-    geotags: string[];
+  @IsArray()
+  geotags: string[];
 
-    @IsBoolean()
-    interview: boolean;
+  @IsBoolean()
+  interview: boolean;
 
-    @IsBoolean()
-    caseStudy: boolean;
+  @IsBoolean()
+  caseStudy: boolean;
 }

@@ -15,15 +15,20 @@ import { KnowledgeBaseInterface } from '../../models/entities';
 
 const AdminKnowledgeEditPage = () => {
     const [data, setData] = useState<KnowledgeBaseInterface>({} as KnowledgeBaseInterface);
+    const [loaded, setLoaded] = useState(false);
     const { id } = useParams();
     const getToken = useSilentAdminTokenRefresh();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!id) return;
+        if (!id) {
+            setLoaded(true);
+            return
+        }
         getKnowledgeById(id)
             .then((response) => {
                 setData(response);
+                setLoaded(true);
             })
             .catch((error) => {
                 console.log(error);
@@ -62,6 +67,7 @@ const AdminKnowledgeEditPage = () => {
         }
     };
 
+    if (!loaded) return (<div>Loading...</div>);
     return (
         <div className={'adminKnowledgeEditPage'}>
             <AdminHeader />
