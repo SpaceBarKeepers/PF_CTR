@@ -22,13 +22,12 @@ const SelectBox = ({ label, options, state, setState, name }: Props) => {
     return (
         <label htmlFor={name} className={'inputLabel'}>
             {label}
-            <select onChange={handleChange}>
+            <select onChange={handleChange} value={state?.[name as keyof KnowledgeBaseInterface] ?? undefined}>
                 {options.map((option) => {
                         return (
                             <option
                                 key={option.label}
                                 value={option.value || ''}
-                                selected={state?.[name as keyof KnowledgeBaseInterface] === option.value}
                             >
                                 {option.label}
                             </option>

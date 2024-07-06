@@ -1,26 +1,26 @@
-import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
-import { Model } from "mongoose";
-import { InjectModel } from "@nestjs/mongoose";
-import {Tag} from "./schemas/tag.schema";
+import {Injectable} from '@nestjs/common';
+import { Tag } from './entities/tag.entity';
+import { TagDto } from './dto/tag.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class TagService {
-  constructor(@InjectModel(Tag.name) private tagModel: Model<Tag>) {}
+  constructor(@InjectRepository(Tag)
+              private readonly tagRepository: Repository<Tag>,) {}
 
-  async create(tag: Tag) {
-    const tagAlreadyExists = await this.tagModel.findOne({tag: tag.tag}).exec();
-    if (tagAlreadyExists) {
-      throw new HttpException("Conflict: 'tag' already exists", HttpStatus.CONFLICT);
-    }
-    const createdTag = new this.tagModel(tag);
-    return createdTag.save();
+  async create(tag: TagDto) {
+    const createdTag = new Tag();
+    createdTag.tagEn = tag.tagEn;
+    createdTag.tagCs = tag.tagCs;
+    return this.tagRepository.save(createdTag);
   }
 
   async findAll(): Promise<Tag[]> {
-    return await this.tagModel.find().exec();
+    return await this.tagRepository.find();
   }
 
-  delete(tag: string) {
-    return this.tagModel.findOneAndDelete({tag}).exec();
+  delete(id: number) {
+    return this.tagRepository.delete({ id });
   }
 }

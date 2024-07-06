@@ -5,6 +5,9 @@ export class Tag {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 50 })
-  tag: string;
+  @Column({ type: 'varchar', length: 50, default: ''})
+  tagEn: string;
+
+  @Column({ type: 'varchar', length: 50, default: ''})
+  tagCs: string;
 }

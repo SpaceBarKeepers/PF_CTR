@@ -11,7 +11,7 @@ type Props = {
 };
 
 
-const Checkbox = ({ className, label, setState, name, checked }: Props) =>  {
+const Checkbox = ({ className, label, setState, name, checked = false }: Props) =>  {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setState((prev) => ({ ...prev, [name]: e.target.checked }));

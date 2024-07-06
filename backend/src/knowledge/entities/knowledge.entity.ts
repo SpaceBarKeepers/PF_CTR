@@ -42,9 +42,9 @@ export class KnowledgeBase {
   @Column({ type: 'int2', nullable: true, default: null })
   featuredPosition: number | null;
 
-  // @ManyToMany(() => Tag, { eager: true })
+  // @ManyToMany(() => GeoTag, { eager: true })
   // @JoinTable()
-  // tags: Tag[];
+  // tags: GeoTag[];
 
   @Column({ type: 'timestamp', default: new Date() })
   createdAt: Date;

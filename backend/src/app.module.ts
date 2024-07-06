@@ -13,6 +13,9 @@ import * as process from 'node:process';
 import { KnowledgeBase } from './knowledge/entities/knowledge.entity';
 import { Tag } from './tag/entities/tag.entity';
 import { KnowledgeModule } from './knowledge/knowledge.module';
+import { News } from './news/entities/news.entity';
+import { NewsModule } from './news/news.module';
+import { TagModule } from './tag/tag.module';
 
 dotenv.config();
 
@@ -34,7 +37,7 @@ dotenv.config();
       port: 25060,
       password: process.env.DB_PASSWORD,
       username: process.env.DB_USERNAME,
-      entities: [User, KnowledgeBase, Tag],
+      entities: [User, KnowledgeBase, Tag, News],
       database: process.env.DB_NAME,
       synchronize: true,
       logging: true,
@@ -50,6 +53,8 @@ dotenv.config();
     UserModule,
     AuthModule,
     KnowledgeModule,
+    NewsModule,
+    TagModule,
   ],
   controllers: [AppController],
   providers: [AppService],

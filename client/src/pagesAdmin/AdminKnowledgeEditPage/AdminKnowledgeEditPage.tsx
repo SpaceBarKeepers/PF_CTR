@@ -6,25 +6,12 @@ import RichTextInput from '../../components/Input/RichTextInput';
 import AdminHeader from '../../components/AdminHeader/AdminHeader';
 import './adminKnowledgeEditPage.scss';
 import ButtonColored from '../../components/Button/ButtonColored';
-import { createKnowledge, getKnowledgeAll, getKnowledgeById, updateKnowledge } from '../../api/knowledge';
+import { createKnowledge, getKnowledgeById, updateKnowledge } from '../../api/knowledge';
 import SelectBox from '../../components/Input/SelectBox';
 import { FeaturedPositions } from '../../models/constants';
 import Image from '../../components/Input/Image';
 import { useSilentAdminTokenRefresh } from '../../lib/useSilentAdminTokenRefresh';
-
-export interface KnowledgeBaseInterface {
-    publishedCs: boolean;
-    titleCs: string;
-    subtitleCs: string;
-    contentCs: string;
-    publishedEn: boolean;
-    titleEn: string;
-    subtitleEn: string;
-    featuredPosition: number;
-    contentEn: string;
-    thumbnail: string;
-    tags: string[];
-}
+import { KnowledgeBaseInterface } from '../../models/entities';
 
 const AdminKnowledgeEditPage = () => {
     const [data, setData] = useState<KnowledgeBaseInterface>({} as KnowledgeBaseInterface);

@@ -1,22 +1,24 @@
 import OutsideClickHandler from "react-outside-click-handler"
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, MouseEvent, useRef, RefObject } from 'react';
+import "./dialog.scss"
 
 type Props = {
-    setOpen: Dispatch<SetStateAction<boolean>>
     children: React.ReactNode;
-};
+    dialogRef: RefObject<HTMLDialogElement>
 }
 
-const Dialog = ({ setOpen, children }) => {
-
-    const handleCloseDialog = () => {
-        setOpen(false);
+const Dialog = ({ children, dialogRef }: Props) => {
+    const stopPropagation = (e: MouseEvent<HTMLDialogElement>) => {
+        e.stopPropagation();
+        e.preventDefault()
     }
 
     return (
-        <OutsideClickHandler onOutsideClick={handleCloseDialog}>
-            {children}
-        </OutsideClickHandler>
+        // <OutsideClickHandler onOutsideClick={handleCloseDialog}>
+            <dialog ref={dialogRef} className={"dialog"} onClick={stopPropagation}>
+                {children}
+            </dialog>
+        // </OutsideClickHandler>
     );
 }
 

@@ -21,7 +21,6 @@ type Props = {};
 
 const AdminKnowledgePage = ({}: Props) => {
     const [articles, setArticles] = useState<KnowledgeEntity[]>([]);
-    const [removeDialogOpen, setRemoveDialogOpen] = useState(false);
     const getToken = useSilentAdminTokenRefresh();
     const navigate = useNavigate()
 

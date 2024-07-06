@@ -1,9 +1,9 @@
 import {apiRoot} from "./apiRoot";
-import { KnowledgeBaseInterface } from '../models/entities';
+import { NewsInterface } from '../models/entities';
 
-export const getKnowledgeAll = async () => {
+export const getNewsAll = async () => {
     try {
-        const response = await fetch(`${apiRoot}/knowledge/all`, {
+        const response = await fetch(`${apiRoot}/news/all`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -21,9 +21,9 @@ export const getKnowledgeAll = async () => {
     }
 }
 
-export const getKnowledgeById = async (id: string) => {
+export const getNewsById = async (id: string) => {
     try {
-        const response = await fetch(`${apiRoot}/knowledge/${id}`, {
+        const response = await fetch(`${apiRoot}/news/${id}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -41,9 +41,9 @@ export const getKnowledgeById = async (id: string) => {
     }
 }
 
-export const createKnowledge = async (adminToken: string, data: KnowledgeBaseInterface) => {
+export const createNews = async (adminToken: string, data: NewsInterface) => {
     try {
-        const response = await fetch(`${apiRoot}/knowledge`, {
+        const response = await fetch(`${apiRoot}/news`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -67,9 +67,9 @@ export const createKnowledge = async (adminToken: string, data: KnowledgeBaseInt
     }
 }
 
-export const updateKnowledge = async (adminToken: string, id: number, data: KnowledgeBaseInterface) => {
+export const updateNews = async (adminToken: string, id: number, data: NewsInterface) => {
     try {
-        const response = await fetch(`${apiRoot}/knowledge/${id}`, {
+        const response = await fetch(`${apiRoot}/news/${id}`, {
             method: "PATCH",
             credentials: "include",
             headers: {
@@ -93,9 +93,9 @@ export const updateKnowledge = async (adminToken: string, id: number, data: Know
     }
 }
 
-export const deleteKnowledgeById = async (adminToken: string, id: string) => {
+export const deleteNewsById = async (adminToken: string, id: string) => {
     try {
-        const response = await fetch(`${apiRoot}/knowledge/${id}`, {
+        const response = await fetch(`${apiRoot}/news/${id}`, {
             method: "DELETE",
             credentials: "include",
             headers: {

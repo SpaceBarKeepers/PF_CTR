@@ -14,7 +14,6 @@ import {
 import { JwtAdminGuard } from '../auth/jwt-auth.guard';
 import { KnowledgeService } from './knowledge.service';
 import { KnowledgeDto } from './dto/knowledge.dto';
-import { KnowledgeInterface } from './interfaces/knowledge.interface';
 import { KnowledgeBase } from './entities/knowledge.entity';
 
 @Controller('knowledge')

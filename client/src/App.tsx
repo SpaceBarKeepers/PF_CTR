@@ -25,6 +25,7 @@ import EditablePage from './pages/EditablePage/EditablePage';
 import { jwtDecode } from 'jwt-decode';
 import ContactPage from './pages/ContactPage/ContactPage';
 import AdminKnowledgeEditPage from './pagesAdmin/AdminKnowledgeEditPage/AdminKnowledgeEditPage';
+import AdminNewsEditPage from './pagesAdmin/AdminNewsEditPage/AdminNewsEditPage';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -103,6 +104,14 @@ function App() {
         {
             path: '/admin/knowledge',
             element: adminToken ? <AdminKnowledgePage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/news/new',
+            element: adminToken ? <AdminNewsEditPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/news/:id',
+            element: adminToken ? <AdminNewsEditPage /> : <AdminLoginPage/>,
         },
         {
             path: '/admin/news',
