@@ -9,18 +9,23 @@ type Props = {
 };
 
 
-const Input = ({ label, state, setState, name }: Props) =>  {
+const TimeInput = ({ label, state, setState, name }: Props) =>  {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target.value);
         setState((prev) => ({ ...prev, [name]: e.target.value }));
     };
 
     return (
         <label htmlFor={name} className={"inputLabel"}>
-        {label}
-        <input value={state?.[name]} type={"text"} onChange={handleChange} {...{ name }} />
+            {label}
+            <input
+                value={state?.[name]}
+                type={"time"}
+                onChange={handleChange} {...{ name }}
+            />
         </label>
     );
 }
 
-export default Input;
+export default TimeInput;

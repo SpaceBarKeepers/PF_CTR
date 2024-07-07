@@ -1,11 +1,10 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { KnowledgeBaseInterface } from '../../pagesAdmin/AdminKnowledgeEditPage/AdminKnowledgeEditPage';
 import "./inputs.scss"
 
 type Props = {
     className?: string;
     label: string;
-    setState: Dispatch<SetStateAction<KnowledgeBaseInterface>>
+    setState: Dispatch<SetStateAction<Record<string, any>>>
     name: string;
     checked: boolean;
 };

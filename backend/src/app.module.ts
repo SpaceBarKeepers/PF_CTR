@@ -17,6 +17,8 @@ import { NewsModule } from './news/news.module';
 import { TagModule } from './tag/tag.module';
 import { Page } from './page/entities/page.entity';
 import { PageModule } from './page/page.module';
+import { Events } from './events/entities/events.entity';
+import { EventsModule } from './events/events.module';
 
 dotenv.config();
 
@@ -38,7 +40,7 @@ dotenv.config();
       port: 25060,
       password: process.env.DB_PASSWORD,
       username: process.env.DB_USERNAME,
-      entities: [User, KnowledgeBase, Tag, News, Page],
+      entities: [User, KnowledgeBase, Tag, News, Page, Events],
       database: process.env.DB_NAME,
       synchronize: true,
       logging: true,
@@ -57,6 +59,7 @@ dotenv.config();
     NewsModule,
     TagModule,
     PageModule,
+    EventsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

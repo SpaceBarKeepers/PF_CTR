@@ -1,10 +1,9 @@
-import { KnowledgeBaseInterface } from '../../pagesAdmin/AdminKnowledgeEditPage/AdminKnowledgeEditPage';
 import { Dispatch, SetStateAction } from 'react';
 
 type Props = {
     label: string;
-    state: KnowledgeBaseInterface;
-    setState: Dispatch<SetStateAction<KnowledgeBaseInterface>>
+    state: Record<string, any>;
+    setState: Dispatch<SetStateAction<Record<string, any>>>
     name: string;
 };
 

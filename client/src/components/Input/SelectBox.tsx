@@ -1,5 +1,4 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { KnowledgeBaseInterface } from '../../pagesAdmin/AdminKnowledgeEditPage/AdminKnowledgeEditPage';
 import './inputs.scss';
 import { SelectBoxOptionEntity } from '../../models/entities';
 import './inputs.scss';
@@ -7,8 +6,8 @@ import './inputs.scss';
 type Props = {
     label: string;
     options: SelectBoxOptionEntity[];
-    state: KnowledgeBaseInterface;
-    setState: Dispatch<SetStateAction<KnowledgeBaseInterface>>
+    state: Record<string, any>;
+    setState: Dispatch<SetStateAction<Record<string, any>>>
     name: string;
 };
 
@@ -22,7 +21,7 @@ const SelectBox = ({ label, options, state, setState, name }: Props) => {
     return (
         <label htmlFor={name} className={'inputLabel'}>
             {label}
-            <select onChange={handleChange} value={state?.[name as keyof KnowledgeBaseInterface] ?? undefined}>
+            <select onChange={handleChange} value={state?.[name] ?? undefined}>
                 {options.map((option) => {
                         return (
                             <option

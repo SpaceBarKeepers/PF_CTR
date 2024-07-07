@@ -4,15 +4,14 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import htmlToDraft from "html-to-draftjs";
 import draftToHtml from "draftjs-to-html";
 import {convertToRaw} from "draft-js";
-import { KnowledgeBaseInterface } from '../../pagesAdmin/AdminKnowledgeEditPage/AdminKnowledgeEditPage';
 import "./inputs.scss";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import 'draft-js/dist/Draft.css';
 
 type Props = {
     label: string;
-    state: KnowledgeBaseInterface;
-    setState: Dispatch<SetStateAction<KnowledgeBaseInterface>>
+    state: Record<string, any>;
+    setState: Dispatch<SetStateAction<Record<string, any>>>
     name: string;
 };
 
@@ -27,7 +26,7 @@ const RichTextInput = ({label, state, setState, name}: Props) => {
         return EditorState.createWithContent(contentState);
     };
 
-    const [editorState, setEditorState] = useState(getDraftState(state?.[name as keyof KnowledgeBaseInterface] ?  String(state?.[name as keyof KnowledgeBaseInterface]) : ""));
+    const [editorState, setEditorState] = useState(getDraftState(state?.[name] ?  String(state?.[name]) : ""));
 
     const onEditorStateChange = (editorState: EditorState) => {
         setEditorState(editorState);

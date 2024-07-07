@@ -113,3 +113,22 @@ export interface PageEntity {
     contentEn: string;
     contentCs: string;
 }
+
+export interface EventEntity {
+    id: string;
+    publishedCs: boolean;
+    titleCs: string;
+    publishedEn: boolean;
+    titleEn: string;
+    eventAt: Date;
+    eventTimeAt: string;
+}
+
+export interface EventInterface {
+    publishedCs: boolean;
+    titleCs: string;
+    publishedEn: boolean;
+    titleEn: string;
+    eventAt: Date;
+    eventTimeAt: string;
+}
