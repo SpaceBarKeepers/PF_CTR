@@ -1,6 +1,12 @@
-.adminNewsEditPage {
+.adminToolsEditPage {
     display: flex;
     flex-direction: column;
+
+  &__dualLangBox {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 30px;
+  }
 
   &__language {
     margin-top: 20px;

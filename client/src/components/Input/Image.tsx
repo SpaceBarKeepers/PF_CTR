@@ -10,7 +10,7 @@ type Props = {
 const Image = ({ label, state, setState, name }: Props) => {
     return (
         <div>
-            Dodělat Image!!!!
+            TODO: Image až bude hotová platební brána a S3 storage
             <label htmlFor={name} className={"inputLabel"}>
                 {label}
         <input type="file" />

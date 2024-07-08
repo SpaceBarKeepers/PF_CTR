@@ -154,7 +154,7 @@ const AdminNewsEditPage = () => {
             <Image label={'Thumbnail: '} state={data} setState={setData} name={'thumbnail'} />
             <SelectBox label={'Featured: '} options={FeaturedPositions} state={data} setState={setData}
                        name={'featuredPosition'} />
-            <h3>Geotags:</h3>
+            <h4>Geotags:</h4>
             <div className={'adminNewsEditPage__tagContainer'}>
                 {geotags.map((tag) => (
                     <GeoTag
@@ -166,7 +166,7 @@ const AdminNewsEditPage = () => {
                     />
                 ))}
             </div>
-            <h3>Tags:</h3>
+            <h4>Tags:</h4>
             <div className={'adminNewsEditPage__tagContainer'}>
                 {tags.map((tag: TagEntity) => (
                     <Tag

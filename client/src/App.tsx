@@ -28,6 +28,7 @@ import AdminKnowledgeEditPage from './pagesAdmin/AdminKnowledgeEditPage/AdminKno
 import AdminNewsEditPage from './pagesAdmin/AdminNewsEditPage/AdminNewsEditPage';
 import AdminPagesEditPage from './pagesAdmin/AdminPagesEditPage/AdminPagesEditPage';
 import AdminEventsEditPage from './pagesAdmin/AdminEventsEditPage/AdminEventsEditPage';
+import AdminToolsEditPage from './pagesAdmin/AdminToolsEditPage/AdminToolsEditPage';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -138,6 +139,14 @@ function App() {
         {
             path: '/admin/events',
             element: adminToken ? <AdminEventsPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/tools/new',
+            element: adminToken ? <AdminToolsEditPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/tools/:id',
+            element: adminToken ? <AdminToolsEditPage /> : <AdminLoginPage/>,
         },
         {
             path: '/admin/tools',

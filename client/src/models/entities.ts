@@ -132,3 +132,60 @@ export interface EventInterface {
     eventAt: Date;
     eventTimeAt: string;
 }
+
+export interface ToolEntity {
+    id: string;
+    toolsName: string;
+    descEn: string;
+    descCS: string;
+    featuresEn: string[];
+    featuresCs: string[];
+    dataProtectionEn: string;
+    dataProtectionCs: string;
+    authenticationEn: string;
+    authenticationCs: string;
+    nextProductUpdateEn: string;
+    nextProductUpdateCs: string;
+    feedEn: string[];
+    feedCs: string[];
+    accessibilityTag: number[];
+    established: string;
+    noOfClients: string;
+    team: string;
+    email: string;
+    phone: string;
+    web: string;
+    countries: string[];
+    partners: string;
+    socialPositioningTag: number[];
+    featureTag: number[];
+    similarTools: ToolEntity[];
+}
+
+export interface ToolInterface {
+    toolsName: string;
+    descEn: string;
+    descCS: string;
+    featuresEn: string[];
+    featuresCs: string[];
+    dataProtectionEn: string;
+    dataProtectionCs: string;
+    authenticationEn: string;
+    authenticationCs: string;
+    nextProductUpdateEn: string;
+    nextProductUpdateCs: string;
+    feedEn: string[];
+    feedCs: string[];
+    established: string;
+    noOfClients: string;
+    team: string;
+    email: string;
+    phone: string;
+    web: string;
+    countries: string[];
+    partners: string;
+    accessibilityTag: number[];
+    socialPositioningTag: number[];
+    featureTag: number[];
+    similarTools: ToolEntity[];
+}
