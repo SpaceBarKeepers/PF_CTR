@@ -1,34 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { KnowledgeAPIEntity, KnowledgeEntity, UserAPIEntity } from '../../models/entities';
+import { useEffect, useState } from 'react';
+import { KnowledgeEntity } from '../../models/entities';
 import { deleteKnowledgeById, getKnowledgeAll } from '../../api/knowledge';
 import { Body, Cell, Header, HeaderCell, HeaderRow, Row, Table } from '@table-library/react-table-library';
-import { deleteUserByUsername, getUserAll } from '../../api/user';
 import { useSilentAdminTokenRefresh } from '../../lib/useSilentAdminTokenRefresh';
 import AdminHeader from '../../components/AdminHeader/AdminHeader';
+import ButtonColored from '../../components/Button/ButtonColored';
+import { Link, useNavigate } from 'react-router-dom';
 
-const intlOptions = {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-};
-
-type Props = {};
-
-const AdminKnowledgePage = ({}: Props) => {
-    const [articles, setArticles] = useState([]);
+const AdminKnowledgePage = () => {
+    const [articles, setArticles] = useState<KnowledgeEntity[]>([]);
     const getToken = useSilentAdminTokenRefresh();
+    const navigate = useNavigate()
 
+    const sortArticlesByCreatedAt = (articles: KnowledgeEntity[]) => {
+        return articles.sort((a, b) => {
+            return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+        });
+    }
 
     useEffect(() => {
         getKnowledgeAll()
             .then((response) => {
-                setArticles(response.map((item: KnowledgeAPIEntity) => {
-                    const { _id, ...rest } = item;
-                    return { id: _id, ...rest };
-                }));
+                console.log(response);
+                setArticles(sortArticlesByCreatedAt(response));
             })
             .catch((error) => {
                 console.log(error);
@@ -36,39 +30,46 @@ const AdminKnowledgePage = ({}: Props) => {
     }, []);
 
     const handleRemove = (id: string) => () => {
+        const confirmRemove = window.confirm('Are you sure you want to remove this article?');
+        if (!confirmRemove) return;
         getToken()
             .then((token) => {
                 if (!token) return;
                 deleteKnowledgeById(token, id)
                     .then(() => {
-                        getKnowledgeAll(token)
+                        getKnowledgeAll()
                             .then((response) => {
-                                setArticles(response.map((item: UserAPIEntity) => {
-                                    const {_id, ...rest} = item;
-                                    return {id: _id, ...rest}
-                                }))
+                                setArticles(sortArticlesByCreatedAt(response));
                             })
                             .catch((error) => {
-                                console.log(error)
-                            })
+                                console.log(error);
+                            });
                     })
                     .catch((error) => {
-                        console.log(error)
-                    })
-            })
-    }
+                        console.log(error);
+                    });
+            });
+    };
+
+    const handleEdit = (id: string) => () => {
+        navigate(`/admin/knowledge/${id}`)
+    };
 
     return (
         <div>
             <AdminHeader />
-            AdminKnowledgePage
+            <ButtonColored>
+                <Link to={'/admin/knowledge/new'}>
+                    Add article
+                </Link>
+            </ButtonColored>
             <Table data={{ nodes: articles }}>
-                {(tableList) => (
+                {(tableList: KnowledgeEntity[]) => (
                     <>
                         <Header>
                             <HeaderRow>
                                 <HeaderCell>Title</HeaderCell>
-                                <HeaderCell>Tags</HeaderCell>
+                                <HeaderCell>Featured #</HeaderCell>
                                 <HeaderCell>Created</HeaderCell>
                                 <HeaderCell>Edited</HeaderCell>
                                 <HeaderCell>Actions</HeaderCell>
@@ -79,22 +80,38 @@ const AdminKnowledgePage = ({}: Props) => {
                             {tableList.map((item: KnowledgeEntity) => (
                                 <Row key={item.id} item={item}>
                                     <Cell>
-                                        {item.cs && 'CZ: ' + item.cs.title}
-                                        {item.en && 'EN: ' + item.en.title}
+                                        {item.titleCs && 'CZ: ' + item.titleCs}
+                                        {item.titleEn && 'EN: ' + item.titleEn}
                                     </Cell>
                                     <Cell>
-                                        {!!item.cs?.tags.length && 'CZ: ' + item.cs.tags.map((tag: string) => tag + ', ')}
-                                        {!!item.en?.tags.length && 'EN: ' + item.en.tags.map((tag: string) => tag + ', ')}
+                                        {item.featuredPosition}
                                     </Cell>
                                     <Cell>
-                                        {new Intl.DateTimeFormat('cs', intlOptions).format(item.createdAt)}
+                                        {new Intl.DateTimeFormat('cs', {
+                                            year: 'numeric',
+                                            month: '2-digit',
+                                            day: '2-digit',
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            second: '2-digit',
+                                        }).format(new Date(item.createdAt))}
                                     </Cell>
                                     <Cell>
-                                        {new Intl.DateTimeFormat('cs', intlOptions).format(item.updatedAt)}
+                                        {new Intl.DateTimeFormat('cs', {
+                                            year: 'numeric',
+                                            month: '2-digit',
+                                            day: '2-digit',
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            second: '2-digit',
+                                        }).format(new Date(item.updatedAt))}
                                     </Cell>
                                     <Cell>
-                                        <button type="button">
+                                        <button type="button" onClick={handleRemove(item.id)}>
                                             Remove
+                                        </button>
+                                        <button type="button" onClick={handleEdit(item.id)}>
+                                                Edit
                                         </button>
                                     </Cell>
                                 </Row>

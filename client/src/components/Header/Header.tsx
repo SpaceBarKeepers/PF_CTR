@@ -34,7 +34,7 @@ const Header = () => {
             <Link to={"/news"}>
                 <FormattedMessage
                     id={'label_news'}
-                    defaultMessage={'News'}
+                    defaultMessage={'NewsEntity'}
                 />
             </Link>
             <Link to={"/trends"}>

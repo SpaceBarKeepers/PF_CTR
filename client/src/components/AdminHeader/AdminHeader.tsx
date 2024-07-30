@@ -24,7 +24,7 @@ const AdminHeader = () => {
                 <FormattedMessage id={'label_knowledge_base'} defaultMessage={'Knowledge base'} />
             </Link>
             <Link to={'/admin/news'}>
-                <FormattedMessage id={'label_news'} defaultMessage={'News'} />
+                <FormattedMessage id={'label_news'} defaultMessage={'NewsEntity'} />
             </Link>
             <Link to={'/admin/pages'}>
                 <FormattedMessage id={'label_pages'} defaultMessage={'Pages'} />

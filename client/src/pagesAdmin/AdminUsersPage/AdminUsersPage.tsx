@@ -1,14 +1,15 @@
-import {useEffect, useState} from 'react';
-import {useSilentAdminTokenRefresh} from "../../lib/useSilentAdminTokenRefresh";
-import {deleteUserByUsername, getUserAll} from "../../api/user";
-import {Body, Cell, Header, HeaderCell, HeaderRow, Row, Table} from "@table-library/react-table-library";
-import {UserAPIEntity, UserEntity} from "../../models/entities";
+import { useEffect, useState } from 'react';
+import { useSilentAdminTokenRefresh } from '../../lib/useSilentAdminTokenRefresh';
+import { deleteUserById, getUserAll } from '../../api/user';
+import { Body, Cell, Header, HeaderCell, HeaderRow, Row, Table } from '@table-library/react-table-library';
+import { UserAPIEntity, UserEntity } from '../../models/entities';
 import AdminHeader from '../../components/AdminHeader/AdminHeader';
+import ButtonColored from '../../components/Button/ButtonColored';
 
-type Props = {};
-
-const AdminUsersPage = ({}: Props) => {
-    const [users, setUsers] = useState<UserEntity[]>([])
+const AdminUsersPage = () => {
+    const [users, setUsers] = useState<UserEntity[]>([]);
+    // const [addUserDialodOpen, setAddUserDialogOpen] = useState(false);
+    // const dialogRef = useRef<HTMLDialogElement>(null);
     const getToken = useSilentAdminTokenRefresh();
 
     useEffect(() => {
@@ -18,61 +19,79 @@ const AdminUsersPage = ({}: Props) => {
                 getUserAll(token)
                     .then((response) => {
                         setUsers(response.map((item: UserAPIEntity) => {
-                            const {_id, ...rest} = item;
-                            return {id: _id, ...rest}
-                        }))
+                            const { _id, ...rest } = item;
+                            return { id: _id, ...rest };
+                        }));
                     })
                     .catch((error) => {
-                        console.log(error)
-                    })
-            })
-    }, [getToken]);
+                        console.log(error);
+                    });
+            });
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const handleRemove = (username: string) => () => {
+    const handleRemove = (id: number) => () => {
         getToken()
             .then((token) => {
                 if (!token) return;
-                deleteUserByUsername(token, username)
+                deleteUserById(token, id)
                     .then(() => {
                         getUserAll(token)
                             .then((response) => {
                                 setUsers(response.map((item: UserAPIEntity) => {
-                                    const {_id, ...rest} = item;
-                                    return {id: _id, ...rest}
-                                }))
+                                    const { _id, ...rest } = item;
+                                    return { id: _id, ...rest };
+                                }));
                             })
                             .catch((error) => {
-                                console.log(error)
-                            })
+                                console.log(error);
+                            });
                     })
                     .catch((error) => {
-                        console.log(error)
-                    })
-            })
-    }
+                        console.log(error);
+                    });
+            });
+    };
+
+    // const handleOpenDialog = () => {
+    //     setAddUserDialogOpen(true);
+    // };
 
     return (
         <div>
             <AdminHeader />
-            <button>Tlačítko na přidání uživatele (až bude ready SMTP)</button>
-            <Table data={{nodes: users}}>
+            <ButtonColored
+                type={'secondary'}
+                childIsLink={false}
+                // onClick={handleOpenDialog}
+            >
+                Add user
+            </ButtonColored>
+            {/*<Dialog dialogRef={dialogRef}>*/}
+            {/*  <div>askhjbdjhsdfvjhsdgfv dsa</div>*/}
+            {/*</Dialog>*/}
+            <Table data={{ nodes: users }}>
                 {(tableList: UserEntity[]) => {
-                    console.log(tableList)
                     return (
                         <>
                             <Header>
                                 <HeaderRow>
                                     <HeaderCell>Username</HeaderCell>
+                                    <HeaderCell>Registered via</HeaderCell>
+                                    <HeaderCell>Registered</HeaderCell>
+                                    <HeaderCell>Last Login</HeaderCell>
                                     <HeaderCell>Actions</HeaderCell>
                                 </HeaderRow>
                             </Header>
 
                             <Body>
-                                {tableList.map((item) => (
+                                {tableList.map((item: UserEntity) => (
                                     <Row key={item.id} item={item}>
                                         <Cell>{item.username}</Cell>
+                                        <Cell>{String(item.registrationType)}</Cell>
+                                        <Cell>{String(item.registered)}</Cell>
+                                        <Cell>{String(item.lastLogin)}</Cell>
                                         <Cell>
-                                            <button type="button" onClick={handleRemove(item.username)}>
+                                            <button type="button" onClick={handleRemove(item.id)}>
                                                 Remove
                                             </button>
                                         </Cell>

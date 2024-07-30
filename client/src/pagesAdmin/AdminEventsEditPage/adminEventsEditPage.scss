@@ -1,0 +1,14 @@
+.adminEventsEditPage {
+    display: flex;
+    flex-direction: column;
+
+  &__language {
+    margin-top: 20px;
+  }
+
+  &__editor {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+}

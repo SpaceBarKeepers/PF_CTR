@@ -24,6 +24,14 @@ export class UserController {
     await this.userService.create(body);
   }
 
+  @Get('check/:username')
+  @HttpCode(200)
+  async checkIfUserExists(
+    @Param('username') username: string,
+  ): Promise<boolean> {
+    return await this.userService.checkIfUserExists(username);
+  }
+
   @UseGuards(JwtAdminGuard)
   @Get('all')
   @HttpCode(200)

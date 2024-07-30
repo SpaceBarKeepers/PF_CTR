@@ -24,6 +24,12 @@ import NewsPage from './pages/NewsPage/NewsPage';
 import EditablePage from './pages/EditablePage/EditablePage';
 import { jwtDecode } from 'jwt-decode';
 import ContactPage from './pages/ContactPage/ContactPage';
+import AdminKnowledgeEditPage from './pagesAdmin/AdminKnowledgeEditPage/AdminKnowledgeEditPage';
+import AdminNewsEditPage from './pagesAdmin/AdminNewsEditPage/AdminNewsEditPage';
+import AdminPagesEditPage from './pagesAdmin/AdminPagesEditPage/AdminPagesEditPage';
+import AdminEventsEditPage from './pagesAdmin/AdminEventsEditPage/AdminEventsEditPage';
+import AdminToolsEditPage from './pagesAdmin/AdminToolsEditPage/AdminToolsEditPage';
+import OrderPage from './pages/OrderPage/OrderPage';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -42,6 +48,10 @@ function App() {
         {
             path: '/',
             element: <LandingPage/>,
+        },
+        {
+            path: "/order/:option",
+            element: <OrderPage/>
         },
         {
             path: '/login',
@@ -92,20 +102,56 @@ function App() {
             element: adminToken ? <AdminUsersPage /> : <AdminLoginPage/>,
         },
         {
+            path: '/admin/knowledge/new',
+            element: adminToken ? <AdminKnowledgeEditPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/knowledge/:id',
+            element: adminToken ? <AdminKnowledgeEditPage /> : <AdminLoginPage/>,
+        },
+        {
             path: '/admin/knowledge',
             element: adminToken ? <AdminKnowledgePage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/news/new',
+            element: adminToken ? <AdminNewsEditPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/news/:id',
+            element: adminToken ? <AdminNewsEditPage /> : <AdminLoginPage/>,
         },
         {
             path: '/admin/news',
             element: adminToken ? <AdminNewsPage /> : <AdminLoginPage/>,
         },
         {
+            path: '/admin/pages/trends',
+            element: adminToken ? <AdminPagesEditPage page={"trends"} /> : <AdminLoginPage/>,
+        },
+        {
             path: '/admin/pages',
             element: adminToken ? <AdminPagesPage /> : <AdminLoginPage/>,
         },
         {
+            path: '/admin/events/new',
+            element: adminToken ? <AdminEventsEditPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/events/:id',
+            element: adminToken ? <AdminEventsEditPage /> : <AdminLoginPage/>,
+        },
+        {
             path: '/admin/events',
             element: adminToken ? <AdminEventsPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/tools/new',
+            element: adminToken ? <AdminToolsEditPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/tools/:id',
+            element: adminToken ? <AdminToolsEditPage /> : <AdminLoginPage/>,
         },
         {
             path: '/admin/tools',
