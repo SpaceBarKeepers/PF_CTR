@@ -56,8 +56,8 @@ export default function CheckoutForm() {
             elements,
             confirmParams: {
                 // Make sure to change this to your payment completion page
-                return_url: 'http://localhost:5173/order/success',
-                // return_url: 'https://civictechreport.com/order/success',
+                // return_url: 'http://localhost:5173/order/success',
+                return_url: 'https://civictechreport.com/order/success',
                 shipping: {
                     name: 'Krasomil Mladistfvý',
                     address: {
