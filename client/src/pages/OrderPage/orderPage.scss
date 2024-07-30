@@ -1,0 +1,43 @@
+.orderPage {
+  &__customerForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 2rem;
+    max-width: 730px;
+  }
+
+  &__customerFormRow {
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+  }
+
+  &__itemsList {
+    max-width: 250px;
+    margin-bottom: 2rem;
+  }
+
+  .selectLabel {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 28px;
+  }
+
+  .countrySelect {
+    border: 2px solid black;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 5px;
+  }
+
+  &__error {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 0.5rem;
+  }
+}

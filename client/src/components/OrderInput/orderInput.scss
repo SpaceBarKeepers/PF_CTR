@@ -1,0 +1,19 @@
+.orderInput {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  label {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 28px;
+  }
+
+  input {
+    border: 2px solid black;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 5px;
+  }
+}

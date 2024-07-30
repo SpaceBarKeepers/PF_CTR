@@ -1,14 +1,12 @@
+import Header from '../../components/Header/Header';
 
-type Props = {
-
-};
-
-const AccountPage = ({}: Props) => {
- return (
-  <div>
-   Account page
-  </div>
- );
+const AccountPage = () => {
+    return (
+        <div>
+            <Header />
+            Account page
+        </div>
+    );
 };
 
 export default AccountPage;

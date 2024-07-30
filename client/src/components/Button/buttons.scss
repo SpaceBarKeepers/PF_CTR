@@ -2,43 +2,42 @@
 
 .button {
   border: 0;
+  cursor: pointer;
   font-size: 18px;
   padding: 0;
+  text-transform: uppercase;
 
   a {
+    color: inherit;
     display: block;
     text-transform: uppercase;
     text-decoration: none;
     padding: 6px 24px;
   }
 
+  &.buttonWithoutLink {
+    padding: 6px 24px;
+  }
+
   &Primary {
     background: colors.$color-orange;
     border: 1px solid colors.$color-orange;
-    a {
-      color: colors.$color-white;
-    }
+    color: colors.$color-white;
 
     &:hover {
       background: colors.$color-white;
-      a {
-        color: colors.$color-orange;
-      }
+      color: colors.$color-orange;
     }
   }
 
   &Secondary {
     background: colors.$color-blue;
     border: 1px solid colors.$color-blue;
-    a {
-      color: colors.$color-white;
-    }
+    color: colors.$color-white;
 
     &:hover {
       background: colors.$color-white;
-      a {
-        color: colors.$color-blue;
-      }
+      color: colors.$color-blue;
     }
   }
 

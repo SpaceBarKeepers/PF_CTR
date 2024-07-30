@@ -1,15 +1,12 @@
-import AdminHeader from "../../components/AdminHeader/AdminHeader";
+import AdminHeader from '../../components/AdminHeader/AdminHeader';
 
-type Props = {
-
-};
-
-const AdminDashboardPage = ({}: Props) => {
- return (
-  <div>
-   <AdminHeader />
-  </div>
- );
+const AdminDashboardPage = () => {
+    return (
+        <div>
+            <AdminHeader />
+            <h1>Dashboard</h1>
+        </div>
+    );
 };
 
 export default AdminDashboardPage;
