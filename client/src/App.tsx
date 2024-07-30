@@ -29,6 +29,7 @@ import AdminNewsEditPage from './pagesAdmin/AdminNewsEditPage/AdminNewsEditPage'
 import AdminPagesEditPage from './pagesAdmin/AdminPagesEditPage/AdminPagesEditPage';
 import AdminEventsEditPage from './pagesAdmin/AdminEventsEditPage/AdminEventsEditPage';
 import AdminToolsEditPage from './pagesAdmin/AdminToolsEditPage/AdminToolsEditPage';
+import OrderPage from './pages/OrderPage/OrderPage';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -47,6 +48,10 @@ function App() {
         {
             path: '/',
             element: <LandingPage/>,
+        },
+        {
+            path: "/order/:option",
+            element: <OrderPage/>
         },
         {
             path: '/login',

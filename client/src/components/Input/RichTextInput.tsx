@@ -10,8 +10,8 @@ import 'draft-js/dist/Draft.css';
 
 type Props = {
     label: string;
-    state: Record<string, any>;
-    setState: Dispatch<SetStateAction<Record<string, any>>>
+    state: any
+    setState: Dispatch<SetStateAction<any>>
     name: string;
 };
 
@@ -30,7 +30,7 @@ const RichTextInput = ({label, state, setState, name}: Props) => {
 
     const onEditorStateChange = (editorState: EditorState) => {
         setEditorState(editorState);
-        setState((prev) => ({ ...prev, [name]: draftToHtml(convertToRaw(editorState.getCurrentContent())) }));
+        setState((prev: any) => ({ ...prev, [name]: draftToHtml(convertToRaw(editorState.getCurrentContent())) }));
     };
 
     const toolbarOptions = {

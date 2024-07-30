@@ -1,5 +1,5 @@
 import AdminHeader from '../../components/AdminHeader/AdminHeader';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ToolEntity } from '../../models/entities';
 import { useSilentAdminTokenRefresh } from '../../lib/useSilentAdminTokenRefresh';
 import { Link, useNavigate } from 'react-router-dom';
@@ -70,7 +70,7 @@ const AdminToolsPage = () => {
                 </Link>
             </ButtonColored>
             <Table data={{ nodes: tools }}>
-                {(tableList) => (
+                {(tableList:ToolEntity []) => (
                     <>
                         <Header>
                             <HeaderRow>

@@ -21,11 +21,6 @@ export interface UserEntity {
     lastLogin: Date;
 }
 
-interface KnowlegdeLanguageUnit {
-    title: string;
-    tags: string[];
-}
-
 export interface SelectBoxOptionEntity {
     label: string;
     value: string | number | null;

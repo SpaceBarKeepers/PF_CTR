@@ -1,17 +1,11 @@
 import AdminHeader from '../../components/AdminHeader/AdminHeader';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { EventEntity } from '../../models/entities';
 import { useSilentAdminTokenRefresh } from '../../lib/useSilentAdminTokenRefresh';
 import { Link, useNavigate } from 'react-router-dom';
 import ButtonColored from '../../components/Button/ButtonColored';
 import { Body, Cell, Header, HeaderCell, HeaderRow, Row, Table } from '@table-library/react-table-library';
 import { deleteEventById, getEventsAll } from '../../api/events';
-
-const intlOptions = {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-};
 
 const AdminEventsPage = () => {
     const [events, setEvents] = useState<EventEntity[]>([]);
@@ -70,7 +64,7 @@ const AdminEventsPage = () => {
                 </Link>
             </ButtonColored>
             <Table data={{ nodes: events }}>
-                {(tableList) => (
+                {(tableList: EventEntity[]) => (
                     <>
                         <Header>
                             <HeaderRow>
@@ -89,7 +83,11 @@ const AdminEventsPage = () => {
                                         {item.titleEn && 'EN: ' + item.titleEn}
                                     </Cell>
                                     <Cell>
-                                        {new Intl.DateTimeFormat('cs', intlOptions).format(new Date(item.eventAt))}
+                                        {new Intl.DateTimeFormat('cs', {
+                                            year: 'numeric',
+                                            month: '2-digit',
+                                            day: '2-digit',
+                                        }).format(new Date(item.eventAt))}
                                     </Cell>
                                     <Cell>
                                         {item.eventTimeAt}

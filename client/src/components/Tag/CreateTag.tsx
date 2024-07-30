@@ -22,7 +22,6 @@ const CreateTag = ({updateTags}: Props) => {
     };
 
     const handleCloseDialog = () => {
-        console.log("zavřít")
         dialogRef.current?.close();
     };
 

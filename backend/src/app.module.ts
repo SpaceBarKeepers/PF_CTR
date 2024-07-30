@@ -21,6 +21,8 @@ import { Events } from './events/entities/events.entity';
 import { EventsModule } from './events/events.module';
 import { ToolsModule } from './tools/tools.module';
 import { Tools } from './tools/entities/tools.entity';
+import { PaywallModule } from './paywall/paywall.module';
+import { EmailModule } from './email/email.module';
 
 dotenv.config();
 
@@ -63,6 +65,8 @@ dotenv.config();
     PageModule,
     EventsModule,
     ToolsModule,
+    PaywallModule,
+    EmailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

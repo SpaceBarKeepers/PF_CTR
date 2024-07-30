@@ -1,20 +1,11 @@
 import AdminHeader from '../../components/AdminHeader/AdminHeader';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { KnowledgeEntity, NewsEntity } from '../../models/entities';
 import { useSilentAdminTokenRefresh } from '../../lib/useSilentAdminTokenRefresh';
 import { Link, useNavigate } from 'react-router-dom';
 import ButtonColored from '../../components/Button/ButtonColored';
 import { Body, Cell, Header, HeaderCell, HeaderRow, Row, Table } from '@table-library/react-table-library';
 import { deleteNewsById, getNewsAll } from '../../api/news';
-
-const intlOptions = {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-};
 
 const AdminNewsPage = () => {
     const [articles, setArticles] = useState<KnowledgeEntity[]>([]);
@@ -73,7 +64,7 @@ const AdminNewsPage = () => {
                 </Link>
             </ButtonColored>
             <Table data={{ nodes: articles }}>
-                {(tableList) => (
+                {(tableList: NewsEntity[]) => (
                     <>
                         <Header>
                             <HeaderRow>
@@ -96,10 +87,24 @@ const AdminNewsPage = () => {
                                         {item.featuredPosition}
                                     </Cell>
                                     <Cell>
-                                        {new Intl.DateTimeFormat('cs', intlOptions).format(new Date(item.createdAt))}
+                                        {new Intl.DateTimeFormat('cs', {
+                                            year: 'numeric',
+                                            month: '2-digit',
+                                            day: '2-digit',
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            second: '2-digit',
+                                        }).format(new Date(item.createdAt))}
                                     </Cell>
                                     <Cell>
-                                        {new Intl.DateTimeFormat('cs', intlOptions).format(new Date(item.updatedAt))}
+                                        {new Intl.DateTimeFormat('cs', {
+                                            year: 'numeric',
+                                            month: '2-digit',
+                                            day: '2-digit',
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            second: '2-digit',
+                                        }).format(new Date(item.updatedAt))}
                                     </Cell>
                                     <Cell>
                                         <button type="button" onClick={handleRemove(item.id)}>

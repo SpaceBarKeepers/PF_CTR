@@ -4,8 +4,8 @@ import { dateStringToDate, dateToDateString } from '../../lib/dateConversions';
 
 type Props = {
     label: string;
-    state: Record<string, any>;
-    setState: Dispatch<SetStateAction<Record<string, any>>>
+    state: any;
+    setState: Dispatch<SetStateAction<any>>
     name: string;
     min?: string;
     max?: string;
@@ -16,7 +16,7 @@ const DateInput = ({ label, state, setState, name, min, max }: Props) =>  {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         console.log(e.target.value);
-        setState((prev) => ({ ...prev, [name]: dateStringToDate(e.target.value) }));
+        setState((prev: any) => ({ ...prev, [name]: dateStringToDate(e.target.value) }));
     };
 
     return (

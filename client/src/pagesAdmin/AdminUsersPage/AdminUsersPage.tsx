@@ -1,12 +1,15 @@
-import {useEffect, useState} from 'react';
-import {useSilentAdminTokenRefresh} from "../../lib/useSilentAdminTokenRefresh";
+import { useEffect, useState } from 'react';
+import { useSilentAdminTokenRefresh } from '../../lib/useSilentAdminTokenRefresh';
 import { deleteUserById, getUserAll } from '../../api/user';
-import {Body, Cell, Header, HeaderCell, HeaderRow, Row, Table} from "@table-library/react-table-library";
-import {UserAPIEntity, UserEntity} from "../../models/entities";
+import { Body, Cell, Header, HeaderCell, HeaderRow, Row, Table } from '@table-library/react-table-library';
+import { UserAPIEntity, UserEntity } from '../../models/entities';
 import AdminHeader from '../../components/AdminHeader/AdminHeader';
+import ButtonColored from '../../components/Button/ButtonColored';
 
 const AdminUsersPage = () => {
-    const [users, setUsers] = useState<UserEntity[]>([])
+    const [users, setUsers] = useState<UserEntity[]>([]);
+    // const [addUserDialodOpen, setAddUserDialogOpen] = useState(false);
+    // const dialogRef = useRef<HTMLDialogElement>(null);
     const getToken = useSilentAdminTokenRefresh();
 
     useEffect(() => {
@@ -16,14 +19,14 @@ const AdminUsersPage = () => {
                 getUserAll(token)
                     .then((response) => {
                         setUsers(response.map((item: UserAPIEntity) => {
-                            const {_id, ...rest} = item;
-                            return {id: _id, ...rest}
-                        }))
+                            const { _id, ...rest } = item;
+                            return { id: _id, ...rest };
+                        }));
                     })
                     .catch((error) => {
-                        console.log(error)
-                    })
-            })
+                        console.log(error);
+                    });
+            });
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleRemove = (id: number) => () => {
@@ -35,27 +38,39 @@ const AdminUsersPage = () => {
                         getUserAll(token)
                             .then((response) => {
                                 setUsers(response.map((item: UserAPIEntity) => {
-                                    const {_id, ...rest} = item;
-                                    return {id: _id, ...rest}
-                                }))
+                                    const { _id, ...rest } = item;
+                                    return { id: _id, ...rest };
+                                }));
                             })
                             .catch((error) => {
-                                console.log(error)
-                            })
+                                console.log(error);
+                            });
                     })
                     .catch((error) => {
-                        console.log(error)
-                    })
-            })
-    }
+                        console.log(error);
+                    });
+            });
+    };
+
+    // const handleOpenDialog = () => {
+    //     setAddUserDialogOpen(true);
+    // };
 
     return (
         <div>
             <AdminHeader />
-            <button>Tlačítko na přidání uživatele (až bude ready SMTP)</button>
-            <Table data={{nodes: users}}>
+            <ButtonColored
+                type={'secondary'}
+                childIsLink={false}
+                // onClick={handleOpenDialog}
+            >
+                Add user
+            </ButtonColored>
+            {/*<Dialog dialogRef={dialogRef}>*/}
+            {/*  <div>askhjbdjhsdfvjhsdgfv dsa</div>*/}
+            {/*</Dialog>*/}
+            <Table data={{ nodes: users }}>
                 {(tableList: UserEntity[]) => {
-                    console.log(tableList)
                     return (
                         <>
                             <Header>

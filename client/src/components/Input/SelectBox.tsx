@@ -6,8 +6,8 @@ import './inputs.scss';
 type Props = {
     label: string;
     options: SelectBoxOptionEntity[];
-    state: Record<string, any>;
-    setState: Dispatch<SetStateAction<Record<string, any>>>
+    state: any;
+    setState: Dispatch<SetStateAction<any>>
     name: string;
 };
 
@@ -15,11 +15,11 @@ type Props = {
 const SelectBox = ({ label, options, state, setState, name }: Props) => {
 
     const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        setState((prev) => ({ ...prev, [name]: Number(e.target.value) }));
+        setState((prev: any) => ({ ...prev, [name]: Number(e.target.value) }));
     };
 
     return (
-        <label htmlFor={name} className={'inputLabel'}>
+        <label htmlFor={name} className={'selectLabel'}>
             {label}
             <select onChange={handleChange} value={state?.[name] ?? undefined}>
                 {options.map((option) => {

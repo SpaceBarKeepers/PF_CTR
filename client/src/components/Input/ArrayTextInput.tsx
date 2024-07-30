@@ -3,8 +3,8 @@ import './inputs.scss';
 
 type Props = {
     label: string;
-    state: Record<string, any>;
-    setState: Dispatch<SetStateAction<Record<string, any>>>
+    state: any;
+    setState: Dispatch<SetStateAction<any>>
     name: string;
 };
 
@@ -12,7 +12,7 @@ type Props = {
 const ArrayTextInput = ({ label, state, setState, name }: Props) => {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
-        setState((prev) => ({
+        setState((prev: any) => ({
             ...prev,
             [name]: [
                 ...prev[name].slice(0, index),
@@ -23,7 +23,7 @@ const ArrayTextInput = ({ label, state, setState, name }: Props) => {
     };
 
     const addInput = () => {
-        setState((prev) => ({
+        setState((prev: any) => ({
             ...prev,
             [name]: [
                 ...prev[name],
@@ -33,8 +33,8 @@ const ArrayTextInput = ({ label, state, setState, name }: Props) => {
     };
 
     const removeInput = (index: number) => {
-        const newInputs = state?.[name].filter((_, i) => i !== index);
-        setState((prev) => ({
+        const newInputs = state?.[name].filter((_: any, i: number) => i !== index);
+        setState((prev: any) => ({
             ...prev,
             [name]: newInputs,
         }));

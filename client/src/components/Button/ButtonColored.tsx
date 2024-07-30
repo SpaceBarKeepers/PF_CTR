@@ -4,16 +4,19 @@ import "./buttons.scss"
 type Props = {
     children: React.ReactNode,
     childIsLink?: boolean,
+    disabled?: boolean,
+    id?: string,
     onClick?: () => void,
-    type?: "primary" | "secondary",
     size?: "normal" | "large"
+    style?: Record<string, string>
+    type?: "primary" | "secondary",
 }
 
-const ButtonColored = ({ children, childIsLink = true, onClick, type = "primary", size = "normal" }: Props) => {
+const ButtonColored = ({ children, childIsLink = true, disabled = false, id, onClick, size = "normal", style, type = "primary" }: Props) => {
     return (
         <button
             className={`button${type === "secondary" ? " buttonSecondary" : " buttonPrimary"}${size === "large" ? " buttonLarge" : ""}${childIsLink ? "" : " buttonWithoutLink"}`}
-            {...{onClick}}
+            {...{disabled, id, onClick, style}}
         >
             {children}
         </button>

@@ -4,7 +4,7 @@ import "./inputs.scss"
 type Props = {
     className?: string;
     label: string;
-    setState: Dispatch<SetStateAction<Record<string, any>>>
+    setState: Dispatch<SetStateAction<any>>
     name: string;
     checked: boolean;
 };
@@ -13,7 +13,7 @@ type Props = {
 const Checkbox = ({ className, label, setState, name, checked = false }: Props) =>  {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setState((prev) => ({ ...prev, [name]: e.target.checked }));
+        setState((prev: any) => ({ ...prev, [name]: e.target.checked }));
     };
 
     return (

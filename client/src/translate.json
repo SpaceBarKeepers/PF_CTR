@@ -28,6 +28,7 @@
     "label_password": "Password",
     "label_preorder": "Sign up",
     "label_pricing": "Pricing",
+    "label_shipping_country": "Shipping country",
     "label_tools": "Tools",
     "label_trends": "Trends",
     "label_username": "Username",
@@ -77,7 +78,10 @@
     "text_who_for3": "Explore the market, identify your competition, learn about current trends, and find new use cases for your tool.",
     "text_who_for4": "Learn about the best practices in digital participation and bring higher value to your clients.",
     "text_who_for5": "Find out how to run a digital participatory project and select the tool that fits your resources.",
-    "text_who_for6": "Select the right digital solution for public space and urban development projects and enhance your community engagement process."
+    "text_who_for6": "Select the right digital solution for public space and urban development projects and enhance your community engagement process.",
+    "error_order_fill_all_required_fields": "Please fill all required fields.",
+    "error_order_invalid_email": "Invalid e-mail address.",
+    "error_order_address_already_exists": "This e-mail address is already used."
   },
   "cs": {
     "error_invalid_credentials": "Neplatné uživatelské jméno nebo heslo.",
@@ -110,6 +114,7 @@
     "label_pricing": "Ceník",
     "label_tools": "Nástroje",
     "label_trends": "--- přeložit ---",
+    "label_shipping_country": "Země doručení",
     "label_username": "Uživatelské jméno",
     "label_users": "Uživatelé",
     "label_what_you_get": "--- přeložit ---",
@@ -154,6 +159,9 @@
     "text_who_for3": "--- přeložit ---",
     "text_who_for4": "--- přeložit ---",
     "text_who_for5": "--- přeložit ---",
-    "text_who_for6": "--- přeložit ---"
+    "text_who_for6": "--- přeložit ---",
+    "error_order_fill_all_required_fields": "Vyplňte všechna povinná pole.",
+    "error_order_invalid_email": "Neplatná e-mailová adresa.",
+    "error_order_address_already_exists": "Tato e-mailová adresa je již použita."
   }
 }

@@ -11,3 +11,15 @@ export enum COLORS_ENUM {
     RED = "#E22119",
     BLUE = "#006D75"
 }
+
+export enum CTR_OPTION_ENUM {
+    INDIVIDUAL = 'individual',
+    PARTICIPATION = 'participation',
+}
+
+export enum CTR_SHIPPING_ENUM {
+    CZECHIA = 'czechia',
+    EU = 'eu',
+    NORTH_AMERICA = 'north_america',
+    OTHER = 'other',
+}

@@ -1,5 +1,4 @@
-import OutsideClickHandler from "react-outside-click-handler"
-import React, { Dispatch, SetStateAction, MouseEvent, useRef, RefObject } from 'react';
+import React, { MouseEvent, RefObject } from 'react';
 import "./dialog.scss"
 
 type Props = {
