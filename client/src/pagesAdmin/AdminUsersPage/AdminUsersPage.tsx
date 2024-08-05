@@ -30,6 +30,8 @@ const AdminUsersPage = () => {
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleRemove = (id: number) => () => {
+        const confirmRemove = window.confirm('Are you sure you want to remove this user?');
+        if (!confirmRemove) return;
         getToken()
             .then((token) => {
                 if (!token) return;
