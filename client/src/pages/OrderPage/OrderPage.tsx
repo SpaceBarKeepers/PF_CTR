@@ -325,7 +325,7 @@ const OrderPage = () => {
                             theme: 'stripe',
                         },
                     }} stripe={stripePromise}>
-                        <CheckoutForm />
+                        <CheckoutForm option={option as CTR_OPTION_ENUM} />
                     </Elements>
                 )}
             </div>
