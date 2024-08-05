@@ -19,7 +19,7 @@ export const sendContactEmail = async (body: Record<string, string>) => {
             }
         }
 
-        return await response.json();
+        return;
     } catch (error: any) {
         throw new Error(error.message);
     }
