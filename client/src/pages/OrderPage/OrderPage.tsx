@@ -303,7 +303,7 @@ const OrderPage = () => {
                     </h2>
                     <div className={'orderPage__itemsList'}>
                         <OrderItem
-                            label={intl.formatMessage({ id: 'label_order_option_a', defaultMessage: 'Option A' })}
+                            label={option === CTR_OPTION_ENUM.PARTICIPATION ? intl.formatMessage({ id: 'label_order_option_b', defaultMessage: 'Participate option' }) :  intl.formatMessage({ id: 'label_order_option_a', defaultMessage: 'Individual option' })}
                             price={optionPrice}
                         />
                         <OrderItem

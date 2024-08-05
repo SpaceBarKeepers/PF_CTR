@@ -6,6 +6,10 @@
   font-size: 18px;
   line-height: 26px;
 
+  div {
+    text-wrap: nowrap;
+  }
+
   &__item {
     display: flex;
     gap: 24px;

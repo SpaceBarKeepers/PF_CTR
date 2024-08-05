@@ -11,7 +11,7 @@ const OrderItem = ({ label, price, total = false }: Props) => {
         <div className={`orderItem${total ? ' orderItem--total' : ''}`}>
             <div className={'orderItem__item'}>
                 <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
-                <div>{label}</div>
+                <div className={'orderItem__label'}>{label}</div>
             </div>
             <div>{`${price} EUR`}</div>
         </div>
