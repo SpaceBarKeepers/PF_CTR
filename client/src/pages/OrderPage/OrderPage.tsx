@@ -14,7 +14,8 @@ import { useParams } from 'react-router-dom';
 import { isEmailAddress } from '../../lib/isEmailAddress';
 import { checkUserExists } from '../../api/user';
 
-const stripePromise = loadStripe('pk_test_51PcnIgRuy3DzAnAUck92B3nZ4PeL82buh0C5HxWIBsnVXWGX2WyOg3UxFB5PLYiAB0zQVXU8uYXXuhtwo4fEO8Ae00h7TE7Ecz');
+// const stripePromise = loadStripe('pk_test_51PcnIgRuy3DzAnAUck92B3nZ4PeL82buh0C5HxWIBsnVXWGX2WyOg3UxFB5PLYiAB0zQVXU8uYXXuhtwo4fEO8Ae00h7TE7Ecz');
+const stripePromise = loadStripe('pk_live_51PcnIgRuy3DzAnAUpscuvuJu476cDaiQXwjamGUWWrUZNwrDqkES8Ax1FDKEHuzqcqqVbGP05tyhsBYSxa5898Ya00BPT2f3tD');
 
 interface OrderDto {
     option: CTR_OPTION_ENUM;

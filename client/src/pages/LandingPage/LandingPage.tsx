@@ -9,6 +9,7 @@ import { LANGUAGE_ENUM } from '../../models/enums';
 import LandingPageCard from '../../components/LandingPageCard/LandingPageCard';
 import FaqRow from '../../components/FaqRow/FaqRow';
 import Footer from '../../components/Footer/Footer';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
     const language = useAtomValue(languageAtom);
@@ -301,7 +302,7 @@ const LandingPage = () => {
                             </thead>
                             <tbody>
                             <tr>
-                                <td className={"borderBottom borderRight sticky"}>
+                                <td className={'borderBottom borderRight sticky'}>
                                     <b>
                                         <FormattedMessage
                                             id={'text_pricing_row1_title'}
@@ -309,25 +310,25 @@ const LandingPage = () => {
                                         />
                                     </b>
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'text_pricing_row1_individual'}
                                         defaultMessage={'1 copy'}
                                     />
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'text_pricing_row1_participation'}
                                         defaultMessage={'1 copy'} />
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'text_pricing_row1_team'}
                                         defaultMessage={'multiple copies'} />
                                 </td>
                             </tr>
                             <tr>
-                                <td className={"borderBottom borderRight sticky"}>
+                                <td className={'borderBottom borderRight sticky'}>
                                     <b>
                                         <FormattedMessage
                                             id={'text_pricing_row2_title'}
@@ -335,25 +336,25 @@ const LandingPage = () => {
                                         />
                                     </b>
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'text_pricing_row2_individual'}
                                         defaultMessage={'for 1 person'}
                                     />
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'text_pricing_row2_participation'}
                                         defaultMessage={'for 1 person'} />
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'text_pricing_row2_team'}
                                         defaultMessage={'for multiple people'} />
                                 </td>
                             </tr>
                             <tr>
-                                <td className={"borderBottom borderRight sticky"}>
+                                <td className={'borderBottom borderRight sticky'}>
                                     <b>
                                         <FormattedMessage
                                             id={'text_pricing_row3_title'}
@@ -361,20 +362,20 @@ const LandingPage = () => {
                                         />
                                     </b>
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
                                 </td>
                             </tr>
                             <tr>
-                                <td className={"borderBottom borderRight sticky"}>
+                                <td className={'borderBottom borderRight sticky'}>
                                     <b>
-                                        <a href={'https://participatepractically.com'}>Participate Practically</a>
+                                        <a className={"tableLink"} href={'https://participatepractically.com'}>Participate Practically</a>
                                         {' '}
                                         <FormattedMessage
                                             id={'text_pricing_row4_title'}
@@ -382,18 +383,18 @@ const LandingPage = () => {
                                         />
                                     </b>
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
                                 </td>
                             </tr>
                             <tr>
-                                <td className={"borderBottom borderRight sticky"}>
+                                <td className={'borderBottom borderRight sticky'}>
                                     <b>
                                         <FormattedMessage
                                             id={'text_pricing_row5_title'}
@@ -401,23 +402,48 @@ const LandingPage = () => {
                                         />
                                     </b>
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
                                 </td>
-                                <td className={"borderBottom borderRight center"}>
+                                <td className={'borderBottom borderRight center'}>
                                     <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td className={"buttonCell"}>
+                                    <ButtonColored>
+                                        <Link to={"/order/individual"}>
+                                            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
+                                        </Link>
+                                    </ButtonColored>
+                                </td>
+                                <td className={"buttonCell"}>
+                                    <ButtonColored>
+                                        <Link to={"/order/participation"}>
+                                            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
+                                        </Link>
+                                    </ButtonColored>
+                                </td>
+                                <td className={"buttonCell"}>
+                                    <ButtonColored>
+                                        <Link to={"/contact"}>
+                                            <FormattedMessage id={'label_contact_us'} defaultMessage={'Contact us'} />
+                                        </Link>
+                                    </ButtonColored>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
-                        <ButtonColored size={"large"}>
-                            <a href={'https://tally.so/r/mKoV9X'}>
-                                <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
-                            </a>
-                        </ButtonColored>
+                        {/*<ButtonColored size={'large'}>*/}
+                        {/*    <a href={'https://tally.so/r/mKoV9X'}>*/}
+                        {/*        <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
+                        {/*    </a>*/}
+                        {/*</ButtonColored>*/}
                     </div>
 
                 </section>
