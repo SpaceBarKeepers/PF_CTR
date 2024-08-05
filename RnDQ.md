@@ -17,3 +17,6 @@ SbU37Bzt#e$vbF
 
 civictechreport@civictechreport.com
 SbU37Bzt#e$vbF
+
+
+CO je třeba udělat do pre-sale

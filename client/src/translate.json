@@ -1,6 +1,7 @@
 {
   "en": {
     "error_invalid_credentials": "Invalid username or password.",
+    "error_invalid_email": "Invalid e-mail address.",
     "error_login_required": "Enter username and password to login.",
     "error_unknown": "Something went wrong.",
     "label_about_report": "About report",
@@ -23,11 +24,13 @@
     "label_knowledge_base": "Knowledge base",
     "label_login": "Login",
     "label_logout": "Logout",
+    "label_message": "Message",
     "label_news": "News",
     "label_pages": "Pages",
     "label_password": "Password",
     "label_preorder": "Sign up",
     "label_pricing": "Pricing",
+    "label_send": "Send",
     "label_shipping_country": "Shipping country",
     "label_tools": "Tools",
     "label_trends": "Trends",
@@ -81,10 +84,18 @@
     "text_who_for6": "Select the right digital solution for public space and urban development projects and enhance your community engagement process.",
     "error_order_fill_all_required_fields": "Please fill all required fields.",
     "error_order_invalid_email": "Invalid e-mail address.",
-    "error_order_address_already_exists": "This e-mail address is already used."
+    "error_order_address_already_exists": "This e-mail address is already used.",
+    "label_order_success_heading": "Order Complete!",
+    "label_order_success_1": "Thank You for Your Purchase!",
+    "label_order_success_2": "We are excited to see your interest in digital participation and engagement, and we sincerely appreciate your trust in us. We are thrilled to announce that the Civic Tech Market Report 2025 will be available after September 3rd, when our website goes fully live. Your support is invaluable to us, and we can't wait to share this comprehensive report with you.",
+    "label_order_success_3": "In the meantime, stay connected and get the latest updates by following us on {li} and {fb}.",
+    "label_order_success_4": "Thank you once again for your purchase and your interest in civic technology!",
+    "label_order_success_participate": "Additionally, access to the Participate Practically course will be shared with you promptly via the email used for purchasing the Participate Practically Bundle.",
+    "success_message_sent": "Message sent successfully."
   },
   "cs": {
     "error_invalid_credentials": "Neplatné uživatelské jméno nebo heslo.",
+    "error_invalid_email": "Neplatná e-mailová adresa.",
     "error_login_required": "Zadejte uživatelské jméno a heslo pro přihlášení.",
     "error_unknown": "Něco se pokazilo.",
     "label_about_report": "O reportu",
@@ -107,11 +118,13 @@
     "label_knowledge_base": "Znalostní báze",
     "label_login": "Přihlásit se",
     "label_logout": "Odhlásit se",
+    "label_message": "Zpráva",
     "label_news": "--- přeložit ---",
     "label_pages": "Stránky",
     "label_password": "Heslo",
     "label_preorder": "Předobjednat",
     "label_pricing": "Ceník",
+    "label_send": "Odeslat",
     "label_tools": "Nástroje",
     "label_trends": "--- přeložit ---",
     "label_shipping_country": "Země doručení",
@@ -162,6 +175,13 @@
     "text_who_for6": "--- přeložit ---",
     "error_order_fill_all_required_fields": "Vyplňte všechna povinná pole.",
     "error_order_invalid_email": "Neplatná e-mailová adresa.",
-    "error_order_address_already_exists": "Tato e-mailová adresa je již použita."
+    "error_order_address_already_exists": "Tato e-mailová adresa je již použita.",
+    "label_order_success_heading": "Objednávka dokončena!",
+    "label_order_success_1": "Děkujeme za vaši objednávku!",
+    "label_order_success_2": "--- přeložit ---",
+    "label_order_success_3": "--- přeložit ---",
+    "label_order_success_4": "--- přeložit ---",
+    "label_order_success_participate": "--- přeložit ---",
+    "success_message_sent": "Zpráva úspěšně odeslána."
   }
 }

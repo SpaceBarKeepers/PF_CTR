@@ -83,7 +83,7 @@ function App() {
         },
         {
             path: '/contact',
-            element: <AuthRequired><ContactPage /></AuthRequired>,
+            element: <ContactPage />,
         },
         {
             path: '/account',

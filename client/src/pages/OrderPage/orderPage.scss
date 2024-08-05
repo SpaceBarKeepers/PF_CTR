@@ -1,4 +1,9 @@
 .orderPage {
+  p {
+    margin-bottom: 12px;
+    max-width: 600px;
+  }
+
   &__customerForm {
     display: flex;
     flex-direction: column;

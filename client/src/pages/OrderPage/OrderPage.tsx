@@ -78,27 +78,27 @@ const OrderPage = () => {
         switch (option) {
             case CTR_OPTION_ENUM.INDIVIDUAL:
                 orderOption = CTR_OPTION_ENUM.INDIVIDUAL;
-                setOptionPrice(500);
+                setOptionPrice(490);
                 break;
             case CTR_OPTION_ENUM.PARTICIPATION:
                 orderOption = CTR_OPTION_ENUM.PARTICIPATION;
-                setOptionPrice(1000);
+                setOptionPrice(790);
                 break;
             default:
                 orderOption = CTR_OPTION_ENUM.INDIVIDUAL;
-                setOptionPrice(500);
+                setOptionPrice(490);
                 break;
         }
 
         switch (shippingRegion) {
             case CTR_SHIPPING_ENUM.CZECHIA:
-                setShippingPrice(10);
+                setShippingPrice(3.5);
                 break;
             case CTR_SHIPPING_ENUM.EU:
-                setShippingPrice(20);
+                setShippingPrice(26);
                 break;
             case CTR_SHIPPING_ENUM.NORTH_AMERICA:
-                setShippingPrice(30);
+                setShippingPrice(31);
                 break;
             case CTR_SHIPPING_ENUM.OTHER:
                 setShippingPrice(40);
@@ -115,10 +115,10 @@ const OrderPage = () => {
                 phone,
                 address,
                 shippingCode,
-            }
+            },
         };
 
-        if (validationError) return
+        if (validationError) return;
 
         fetch(`${apiRoot}/paywall/create-payment-intent`, {
             method: 'POST',
@@ -137,12 +137,91 @@ const OrderPage = () => {
         return (
             <LayoutPublicWrapper>
                 <div className={'orderPage'}>
-                    <h1>
+                    <h2>
                         <FormattedMessage
-                            id={'label_order_success'}
-                            defaultMessage={'Order success'}
+                            id={'label_order_success_heading'}
+                            defaultMessage={'Order Complete!'}
                         />
-                    </h1>
+                    </h2>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_1'}
+                            defaultMessage={'Thank You for Your Purchase!'}
+                        />
+                    </p>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_2'}
+                            defaultMessage={'We are excited to see your interest in digital participation and engagement, and we sincerely appreciate your trust in us. We are thrilled to announce that the Civic Tech Market Report 2025 will be available after September 3rd, when our website goes fully live. Your support is invaluable to us, and we can\'t wait to share this comprehensive report with you.'}
+                        />
+                    </p>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_3'}
+                            defaultMessage={'In the meantime, stay connected and get the latest updates by following us on {li} and {fb}.'}
+                            values={{
+                                li: <a href={'https://www.linkedin.com/company/participation-factory/'}
+                                       target={'_blank'}>LinkedIn</a>,
+                                fb: <a href={'https://www.facebook.com/participationfactory'}
+                                       target={'_blank'}>Facebook</a>,
+                            }}
+                        />
+                    </p>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_4'}
+                            defaultMessage={'Thank you once again for your purchase and your interest in civic technology!'}
+                        />
+                    </p>
+                </div>
+            </LayoutPublicWrapper>
+        );
+    } else if (option === "success-participate") {
+        return (
+            <LayoutPublicWrapper>
+                <div className={'orderPage'}>
+                    <h2>
+                        <FormattedMessage
+                            id={'label_order_success_heading'}
+                            defaultMessage={'Order Complete!'}
+                        />
+                    </h2>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_1'}
+                            defaultMessage={'Thank You for Your Purchase!'}
+                        />
+                    </p>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_2'}
+                            defaultMessage={'We are excited to see your interest in digital participation and engagement, and we sincerely appreciate your trust in us. We are thrilled to announce that the Civic Tech Market Report 2025 will be available after September 3rd, when our website goes fully live. Your support is invaluable to us, and we can\'t wait to share this comprehensive report with you.'}
+                        />
+                    </p>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_participate'}
+                            defaultMessage={'Additionally, access to the Participate Practically course will be shared with you promptly via the email used for purchasing the Participate Practically Bundle.'}
+                        />
+                    </p>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_3'}
+                            defaultMessage={'In the meantime, stay connected and get the latest updates by following us on {li} and {fb}.'}
+                            values={{
+                                li: <a href={'https://www.linkedin.com/company/participation-factory/'}
+                                       target={'_blank'}>LinkedIn</a>,
+                                fb: <a href={'https://www.facebook.com/participationfactory'}
+                                       target={'_blank'}>Facebook</a>,
+                            }}
+                        />
+                    </p>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_4'}
+                            defaultMessage={'Thank you once again for your purchase and your interest in civic technology!'}
+                        />
+                    </p>
                 </div>
             </LayoutPublicWrapper>
         )
@@ -249,15 +328,6 @@ const OrderPage = () => {
                         <CheckoutForm />
                     </Elements>
                 )}
-                {/*<ButtonColored*/}
-                {/*    onClick={handleOrderClick}*/}
-                {/*    childIsLink={false}*/}
-                {/*>*/}
-                {/*    <FormattedMessage*/}
-                {/*        id={'label_order_and_pay'}*/}
-                {/*        defaultMessage={'Order and pay'}*/}
-                {/*    />*/}
-                {/*</ButtonColored>*/}
             </div>
         </LayoutPublicWrapper>
     );

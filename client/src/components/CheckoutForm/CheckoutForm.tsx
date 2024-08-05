@@ -2,12 +2,17 @@ import { useEffect, useState } from 'react';
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import ButtonColored from '../Button/ButtonColored';
 import { FormattedMessage } from 'react-intl';
+import { CTR_OPTION_ENUM } from '../../models/enums';
 
-export default function CheckoutForm() {
+type Props = {
+    option?: CTR_OPTION_ENUM
+}
+
+export default function CheckoutForm({ option = CTR_OPTION_ENUM.INDIVIDUAL }: Props) {
     const stripe = useStripe();
     const elements = useElements();
 
-    const [message, setMessage] = useState<string|null>(null);
+    const [message, setMessage] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -57,17 +62,7 @@ export default function CheckoutForm() {
             confirmParams: {
                 // Make sure to change this to your payment completion page
                 // return_url: 'http://localhost:5173/order/success',
-                return_url: 'https://civictechreport.com/order/success',
-                shipping: {
-                    name: 'Krasomil Mladistfvý',
-                    address: {
-                        line1: '510 Townsend St',
-                        postal_code: '98140',
-                        city: 'San Francisco',
-                        state: 'CA',
-                        country: 'US',
-                    },
-                }
+                return_url: option === CTR_OPTION_ENUM.PARTICIPATION ? 'https://civictechreport.com/order/success-participate' : 'https://civictechreport.com/order/success',
             },
         });
 
@@ -87,7 +82,8 @@ export default function CheckoutForm() {
 
     return (
         <form id="payment-form" onSubmit={handleSubmit}>
-
+            <p>If you encounter any issues with your card payment, please contact us directly via our contact form or
+                email us at <a href={'mailto:camille@participationfactory.com'}>info@participationfactory.com</a></p>
             <PaymentElement id="payment-element" options={{
                 layout: 'tabs',
             }} />
@@ -105,6 +101,7 @@ export default function CheckoutForm() {
           />}
         </span>
             </ButtonColored>
+            <p style={{fontSize: "12px"}}>Please note that by placing an order, you agree to our <a href={"https://drive.google.com/file/d/18b4_vOCgR_JCa-KtpHBAgo8-W3pbbNn-/view"} target={"_blank"}>Confidentiality and Non-Compete Agreement.</a></p>
             {/* Show any error or success messages */}
             {message && <div id="payment-message">{message}</div>}
         </form>
