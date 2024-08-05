@@ -20,3 +20,5 @@ SbU37Bzt#e$vbF
 
 
 CO je třeba udělat do pre-sale
+
+Testovací platba?
