@@ -124,7 +124,7 @@ export class EmailService {
               </div>
               <div class="footer">
                   <p>&copy; 2024 All rights reserved.</p>
-                  <p>Please note that by placing an order, you agree to our <a href={"https://drive.google.com/file/d/18b4_vOCgR_JCa-KtpHBAgo8-W3pbbNn-/view"} target={"_blank"}>Confidentiality and Non-Compete Agreement.</a></p>
+                  <p>Please note that by placing an order, you agree to our <a href="https://drive.google.com/file/d/18b4_vOCgR_JCa-KtpHBAgo8-W3pbbNn-/view" target="_blank">Confidentiality and Non-Compete Agreement.</a></p>
               </div>
           </div>
       </body>
