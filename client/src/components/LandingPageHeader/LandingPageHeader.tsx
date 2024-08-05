@@ -5,6 +5,7 @@ import { FLAG_PRESALE } from '../../dev_flags';
 import ButtonLanguage from '../Button/ButtonLanguage';
 import "./landingPageHeader.scss"
 import { useState } from 'react';
+import { HashLink } from 'react-router-hash-link';
 
 const LandingPageHeader = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -53,22 +54,22 @@ const LandingPageHeader = () => {
                 <nav
                     style={{ display: mobileMenuOpen ? 'flex' : undefined }}
                 >
-                    <a href={'#aboutSection'} onClick={handleClickLink}>
+                    <HashLink to={'/#aboutSection'} onClick={handleClickLink}>
                         <FormattedMessage id={'label_about_report'} defaultMessage={'About Report'} />
-                    </a>
-                    <a href={'#whatsInsideSection'} onClick={handleClickLink}>
+                    </HashLink>
+                    <HashLink to={'/#whatsInsideSection'} onClick={handleClickLink}>
                         <FormattedMessage id={'label_whats_inside'} defaultMessage={'What\'s inside'} />
-                    </a>
-                    <a href={'#whoForSection'} onClick={handleClickLink}>
+                    </HashLink>
+                    <HashLink to={'/#whoForSection'} onClick={handleClickLink}>
                         <FormattedMessage id={'label_who_for'} defaultMessage={'Who is it for'} />
-                    </a>
-                    <a href={'#whatYouGetSection'} onClick={handleClickLink}>
+                    </HashLink>
+                    <HashLink to={'/#whatYouGetSection'} onClick={handleClickLink}>
                         <FormattedMessage id={'label_what_you_get'} defaultMessage={'What you get'} />
-                    </a>
-                    <a href={'#pricingSection'} onClick={handleClickLink}>
+                    </HashLink>
+                    <HashLink to={'/#pricingSection'} onClick={handleClickLink}>
                         <FormattedMessage id={'label_pricing'} defaultMessage={'Pricing'} />
-                    </a>
-                    {!FLAG_PRESALE && <Link to={'/contactPurchase'} onClick={handleClickLink}>
+                    </HashLink>
+                    {<Link to={'/contact'} onClick={handleClickLink}>
                       <FormattedMessage id={'label_contact'} defaultMessage={'Contact'} />
                     </Link>}
                 </nav>
