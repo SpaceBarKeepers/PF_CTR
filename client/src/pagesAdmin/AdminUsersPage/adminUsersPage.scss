@@ -1,0 +1,35 @@
+.adminUsersPage {
+  .selectLabel {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 28px;
+  }
+
+  .countrySelect {
+    border: 2px solid black;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 5px;
+  }
+
+  &__dialogContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__dialogActions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__validationError{
+    color: red;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+}
+
