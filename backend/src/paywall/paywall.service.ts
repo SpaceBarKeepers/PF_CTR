@@ -75,25 +75,15 @@ export class PaywallService {
 
   async stripeWebhook(body: any, sig: string): Promise<void> {
     const stripe = new Stripe(process.env.STRIPE_API_KEY!);
-    console.log('Stripe webhook received:1');
 
-    // const sig = body.headers['stripe-signature'];
-    console.log('Stripe webhook received:11');
     const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-    console.log('Stripe webhook received:12');
     let event: Stripe.Event;
-    console.log('Stripe webhook received:2');
 
     try {
-      console.log('Stripe webhook received:31');
       event = stripe.webhooks.constructEvent(body.rawBody, sig, endpointSecret);
-      console.log('Stripe webhook received:32');
     } catch (err) {
-      console.log('Stripe webhook received:33', err.message);
       throw new Error(`Webhook Error: ${err.message}`);
-      console.log('Stripe webhook received:34');
     }
-    console.log('Stripe webhook received:4', event.type);
 
     switch (event.type) {
       case 'payment_intent.succeeded':
@@ -102,7 +92,6 @@ export class PaywallService {
         try {
           const password = generatePassword(16);
           const hashedPassword = await generateBcryptHash(password);
-          console.log('hashed', hashedPassword);
           const user: User = new User();
           user.username = paymentIntent.metadata.email;
           user.password = hashedPassword!;

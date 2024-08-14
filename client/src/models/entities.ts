@@ -184,3 +184,12 @@ export interface ToolInterface {
     featureTag: number[];
     similarTools: ToolEntity[];
 }
+
+export interface CreateUserInterface {
+    username: string;
+    name: string;
+    organization: string;
+    phone: string;
+    address: string;
+    shippingCode: string;
+}
