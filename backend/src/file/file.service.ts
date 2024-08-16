@@ -33,6 +33,7 @@ export class FileService {
     });
 
     const result = await upload.done();
+    console.log(result);
     // return `https://${bucket}.${process.env
     //   .S3_SPACES_REGION!}.digitaloceanspaces.com/${file.originalname}`;
     // return `http://localhost:3000/file/${uniqueFileName}`;
