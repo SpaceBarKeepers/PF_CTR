@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
-import * as process from 'node:process';
 import { ContactDto } from './dto/contact.dto';
 
 @Injectable()

@@ -8,7 +8,6 @@ import { join } from 'path';
 import * as dotenv from 'dotenv';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/entities/user.entity';
-import * as process from 'node:process';
 import { KnowledgeBase } from './knowledge/entities/knowledge.entity';
 import { Tag } from './tag/entities/tag.entity';
 import { KnowledgeModule } from './knowledge/knowledge.module';
