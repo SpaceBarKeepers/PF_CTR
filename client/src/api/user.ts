@@ -1,4 +1,5 @@
 import {apiRoot} from "./apiRoot";
+import { CreateUserInterface, EventInterface } from '../models/entities';
 
 export const getUserAll = async (adminToken: string) => {
     try {
@@ -57,6 +58,32 @@ export const checkUserExists = async (username: string) => {
             headers: {
                 "Content-Type": "application/json",
             },
+        })
+
+        if (!response.ok) {
+            if (response.status === 401) {
+                throw new Error("error_invalid_refresh");
+            } else {
+                throw new Error("error_unknown");
+            }
+        }
+
+        return response;
+    } catch (error: any) {
+        throw new Error(error.message);
+    }
+}
+
+export const createUser = async (adminToken: string, newUser: CreateUserInterface) => {
+    try {
+        const response = await fetch(`${apiRoot}/user`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Authorization": "Bearer " + adminToken,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newUser),
         })
 
         if (!response.ok) {

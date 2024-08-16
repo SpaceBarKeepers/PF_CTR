@@ -46,6 +46,12 @@
     font-size: 24px;
     padding: 8px 25px;
   }
+
+  &:disabled {
+    background: grey;
+    color: lightgrey;
+    cursor: not-allowed;
+  }
 }
 
 .languageButton {

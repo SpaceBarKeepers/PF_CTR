@@ -1,28 +1,41 @@
 import { Injectable } from '@nestjs/common';
-import { Model } from 'mongoose';
-import { InjectModel } from '@nestjs/mongoose';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, UpdateResult } from 'typeorm';
-import { CreateUserDto, CreateUserFromPaygateDto } from './dto/user.dto';
+import { CreateUserDto } from './dto/user.dto';
 import { User } from './entities/user.entity';
+import { EmailService } from '../email/email.service';
 import { generatePassword } from '../utils/generatePassword';
 import { generateBcryptHash } from '../utils/generateBcryptHash';
 
 @Injectable()
 export class UserService {
-  // constructor(@InjectModel(User.name) private userModel: Model<User>) {}
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
+    private readonly emailService: EmailService,
   ) {}
 
-  // create(user: User) {
-  //   const createdUser = new this.userModel(user);
-  //   return createdUser.save();
-  // }
-  create(createUserDto: CreateUserDto): Promise<User> {
+  async create(createUserDto: CreateUserDto): Promise<User> {
     const user: User = new User();
+    const password = generatePassword(16);
+    const hashedPassword = await generateBcryptHash(password);
+
     user.username = createUserDto.username;
-    user.password = createUserDto.password;
+    user.password = hashedPassword!;
+    user.name = createUserDto.name;
+    user.organization = createUserDto.organization;
+    user.phone = createUserDto.phone;
+    user.address = createUserDto.address;
+    user.shippingCode = createUserDto.shippingCode;
+
+    try {
+      await this.emailService.sendPasswordEmail(
+        createUserDto.username,
+        password,
+      );
+    } catch (error) {
+      console.error('Error while sending email:', error);
+    }
+
     return this.userRepository.save(user);
   }
 
