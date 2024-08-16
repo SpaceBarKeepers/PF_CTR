@@ -1,7 +1,4 @@
-import { IsNotEmpty, IsString, Matches, MinLength } from 'class-validator';
-
-const passwordRegEx =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,20}$/;
+import { IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export class CreateUserDto {
   @IsString()
@@ -9,24 +6,8 @@ export class CreateUserDto {
   @IsNotEmpty()
   username: string;
 
-  @IsNotEmpty()
-  @Matches(passwordRegEx, {
-    message: `Password must contain Minimum 8 and maximum 20 characters, 
-    at least one uppercase letter, 
-    one lowercase letter, 
-    one number and 
-    one special character`,
-  })
-  password: string;
-}
-
-export class CreateUserFromPaygateDto {
   @IsString()
-  @MinLength(2, { message: 'Name must have at least 2 characters.' })
   @IsNotEmpty()
-  username: string;
-
-  @IsString()
   name: string;
 
   @IsString()
@@ -36,8 +17,10 @@ export class CreateUserFromPaygateDto {
   phone: string;
 
   @IsString()
+  @IsNotEmpty()
   address: string;
 
   @IsString()
+  @IsNotEmpty()
   shippingCode: string;
 }
