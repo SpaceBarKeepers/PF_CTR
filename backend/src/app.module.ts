@@ -23,6 +23,7 @@ import { ToolsModule } from './tools/tools.module';
 import { Tools } from './tools/entities/tools.entity';
 import { PaywallModule } from './paywall/paywall.module';
 import { EmailModule } from './email/email.module';
+import { FileModule } from './file/file.module';
 
 dotenv.config();
 
@@ -67,6 +68,7 @@ dotenv.config();
     ToolsModule,
     PaywallModule,
     EmailModule,
+    FileModule,
   ],
   controllers: [AppController],
   providers: [AppService],
