@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
 import { Upload } from '@aws-sdk/lib-storage';
-import * as process from 'node:process';
 import { PassThrough, Readable } from 'stream';
 
 @Injectable()
