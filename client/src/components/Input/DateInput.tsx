@@ -15,7 +15,6 @@ type Props = {
 const DateInput = ({ label, state, setState, name, min, max }: Props) =>  {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.value);
         setState((prev: any) => ({ ...prev, [name]: dateStringToDate(e.target.value) }));
     };
 
