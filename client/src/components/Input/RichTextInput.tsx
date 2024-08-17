@@ -7,6 +7,8 @@ import {convertToRaw} from "draft-js";
 import "./inputs.scss";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import 'draft-js/dist/Draft.css';
+import { createFile } from '../../api/file';
+import { useSilentAdminTokenRefresh } from '../../lib/useSilentAdminTokenRefresh';
 
 type Props = {
     label: string;
@@ -16,6 +18,8 @@ type Props = {
 };
 
 const RichTextInput = ({label, state, setState, name}: Props) => {
+    const getToken = useSilentAdminTokenRefresh();
+
     const getDraftState = (value = "") => {
         const blocksFromHtml = htmlToDraft(value);
         const { contentBlocks, entityMap } = blocksFromHtml;
@@ -33,11 +37,46 @@ const RichTextInput = ({label, state, setState, name}: Props) => {
         setState((prev: any) => ({ ...prev, [name]: draftToHtml(convertToRaw(editorState.getCurrentContent())) }));
     };
 
+    function uploadImageCallBack(file: string | Blob) {
+        return new Promise(
+            (resolve, reject) => {
+                const data = new FormData();
+                data.append('file', file);
+
+                try {
+                    getToken()
+                        .then((token) => {
+                            if (!token) return;
+                            createFile(token, data)
+                                .then((res) => {
+                                    res.json()
+                                        .then((data) => {
+                                            setState((prev: any) => ({ ...prev, [name]: data.url }));
+                                            resolve({ data: { link: data.url }})
+                                        })
+                                        .catch((error) => {
+                                            console.log(error);
+                                            reject(error);
+                                        });
+                                });
+                        });
+                } catch (error) {
+                    console.error('Error uploading image', error);
+                }
+            }
+        );
+    }
+
     const toolbarOptions = {
         options: ['inline', 'blockType', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image'], //, 'fontSize'
         inline: {
             inDropdown: false,
             options: ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript'], // removed 'monospace'
+        },
+        image: {
+            uploadEnabled: true,
+            uploadCallback: uploadImageCallBack,
+            previewImage: true,
         }
     }
 
