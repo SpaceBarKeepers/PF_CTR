@@ -1,5 +1,4 @@
 import {
-  Body,
   Controller,
   Get,
   Param,
@@ -21,10 +20,7 @@ export class FilesController {
   @UseGuards(JwtAdminGuard)
   @Post()
   @UseInterceptors(FileInterceptor('file'))
-  async uploadFile(
-    @Body() body: any,
-    @UploadedFile() file: Express.Multer.File,
-  ) {
+  async uploadFile(@UploadedFile() file: Express.Multer.File) {
     const bucket = 'pf-ctr';
     const url = await this.fileService.uploadFile(file, bucket);
     return {
