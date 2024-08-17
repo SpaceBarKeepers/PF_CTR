@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
 import { Upload } from '@aws-sdk/lib-storage';
-import * as process from 'node:process';
 import { PassThrough, Readable } from 'stream';
 
 @Injectable()
@@ -10,10 +9,14 @@ export class FileService {
 
   constructor() {
     this.s3Client = new S3Client({
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       region: process.env.S3_SPACES_REGION!,
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       endpoint: process.env.S3_SPACES_ENDPOINT!,
       credentials: {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         accessKeyId: process.env.S3_SPACES_ACCESS_KEY_ID!,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         secretAccessKey: process.env.S3_SPACES_SECRET_ACCESS_KEY!,
       },
       forcePathStyle: true, // Required for DigitalOcean Spaces
@@ -33,6 +36,7 @@ export class FileService {
     });
 
     const result = await upload.done();
+    console.log('Uploaded file:', result);
     // return `https://${bucket}.${process.env
     //   .S3_SPACES_REGION!}.digitaloceanspaces.com/${file.originalname}`;
     // return `http://localhost:3000/file/${uniqueFileName}`;
