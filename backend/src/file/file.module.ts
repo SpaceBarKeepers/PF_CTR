@@ -3,7 +3,6 @@ import { FilesController } from './file.controller';
 import { FileService } from './file.service';
 
 @Module({
-  imports: [],
   controllers: [FilesController],
   providers: [FileService],
   exports: [FileService],
