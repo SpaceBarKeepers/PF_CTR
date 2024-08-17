@@ -1,5 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+import {
+  S3Client,
+  GetObjectCommand,
+  DeleteObjectCommand,
+} from '@aws-sdk/client-s3';
 import { Upload } from '@aws-sdk/lib-storage';
 import { PassThrough, Readable } from 'stream';
 
@@ -69,5 +73,15 @@ export class FileService {
       stream,
       contentType: response.ContentType || 'application/octet-stream',
     };
+  }
+
+  async deleteFile(key: string, bucket: string) {
+    // Delete the file from the Space
+    await this.s3Client.send(
+      new DeleteObjectCommand({
+        Bucket: bucket,
+        Key: key,
+      }),
+    );
   }
 }

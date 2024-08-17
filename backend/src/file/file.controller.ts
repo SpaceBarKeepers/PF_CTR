@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -49,5 +50,14 @@ export class FilesController {
 
     // Pipe the image stream to the response
     stream.pipe(res);
+  }
+
+  @Delete(':key')
+  async deleteFile(@Param('key') key: string) {
+    const bucket = 'pf-ctr'; // Replace with your Space bucket name
+    await this.fileService.deleteFile(key, bucket);
+    return {
+      message: 'File deleted successfully!',
+    };
   }
 }
