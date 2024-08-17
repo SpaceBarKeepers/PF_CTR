@@ -10,18 +10,14 @@ export class FileService {
   constructor() {
     this.s3Client = new S3Client({
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      // region: process.env.S3_SPACES_REGION!,
-      region: 'pokius',
+      region: process.env.S3_SPACES_REGION!,
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      // endpoint: process.env.S3_SPACES_ENDPOINT!,
-      endpoint: 'pokius',
+      endpoint: process.env.S3_SPACES_ENDPOINT!,
       credentials: {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        // accessKeyId: process.env.S3_SPACES_ACCESS_KEY_ID!,
-        accessKeyId: 'pokius',
+        accessKeyId: process.env.S3_SPACES_ACCESS_KEY_ID!,
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        // secretAccessKey: process.env.S3_SPACES_SECRET_ACCESS_KEY!,
-        secretAccessKey: 'pokius',
+        secretAccessKey: process.env.S3_SPACES_SECRET_ACCESS_KEY!,
       },
       forcePathStyle: true, // Required for DigitalOcean Spaces
     });
