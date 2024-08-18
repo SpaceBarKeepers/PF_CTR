@@ -43,6 +43,10 @@ export class UserService {
     return this.userRepository.findOneBy({ id });
   }
 
+  findOneByUsername(username: string): Promise<User | null> {
+    return this.userRepository.findOneBy({ username });
+  }
+
   findAll(): Promise<User[]> {
     return this.userRepository.find();
   }
@@ -52,10 +56,10 @@ export class UserService {
   }
 
   async assignActiveDevice(
-    id: number,
+    username: string,
     deviceId: string,
   ): Promise<UpdateResult> {
-    return this.userRepository.update(id, { activeDevice: deviceId });
+    return this.userRepository.update({ username }, { activeDevice: deviceId });
   }
 
   async checkIfUserExists(username: string): Promise<boolean> {
