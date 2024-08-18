@@ -30,6 +30,7 @@ import AdminPagesEditPage from './pagesAdmin/AdminPagesEditPage/AdminPagesEditPa
 import AdminEventsEditPage from './pagesAdmin/AdminEventsEditPage/AdminEventsEditPage';
 import AdminToolsEditPage from './pagesAdmin/AdminToolsEditPage/AdminToolsEditPage';
 import OrderPage from './pages/OrderPage/OrderPage';
+import ContactPageLogged from './pages/ContactPageLogged/ContactPageLogged';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -84,6 +85,10 @@ function App() {
         {
             path: '/contact',
             element: <ContactPage />,
+        },
+        {
+            path: '/contactLogged',
+            element: <AuthRequired><ContactPageLogged /></AuthRequired>,
         },
         {
             path: '/account',
