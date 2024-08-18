@@ -102,9 +102,9 @@ const AdminToolsEditPage = () => {
             <Input label={'Team: '} state={data} setState={setData} name={'team'} />
             {/*// TODO: Array select countries*/}
             <Input label={'Partners: '} state={data} setState={setData} name={'partners'} />
-            {/*// TODO: Accesibility tag*/}
-            {/*// TODO: Social positioning tag*/}
-            {/*// TODO: Accesibility tag*/}
+            {/*// TODO: Accesibility tag.ts*/}
+            {/*// TODO: Social positioning tag.ts*/}
+            {/*// TODO: Accesibility tag.ts*/}
             {/*// TODO: Similar tools*/}
 
             <ButtonColored childIsLink={false} onClick={handleSave}>

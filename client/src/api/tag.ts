@@ -23,7 +23,7 @@ export const getTagAll = async () => {
 
 // export const getTagById = async (id: string) => {
 //     try {
-//         const response = await fetch(`${apiRoot}/tag/${id}`, {
+//         const response = await fetch(`${apiRoot}/tag.ts/${id}`, {
 //             method: "GET",
 //             credentials: "include",
 //             headers: {
