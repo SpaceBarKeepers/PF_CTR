@@ -1,0 +1,46 @@
+@use "../../partials/colors";
+
+.newsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__tags {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    &Tag {
+      border: 2px solid transparent;
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      color: colors.$color-white;
+      background: colors.$color-orange;
+      text-transform: uppercase;
+      padding: 16px;
+      letter-spacing: 2px;
+      text-wrap: nowrap;
+
+      &--active {
+        border: 2px dashed colors.$color-black;
+      }
+    }
+
+    &Geotag {
+      border: 2px solid transparent;
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      color: colors.$color-white;
+      background: colors.$color-green;
+      text-transform: uppercase;
+      padding: 16px;
+      letter-spacing: 2px;
+      text-wrap: nowrap;
+
+      &--active {
+        border: 2px dashed colors.$color-black;
+      }
+    }
+  }
+
+}

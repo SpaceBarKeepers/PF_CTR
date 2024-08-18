@@ -1,0 +1,26 @@
+@use "../../partials/colors";
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  nav {
+    align-items: center;
+    display: flex;
+    gap: 32px;
+
+    a {
+      text-decoration: none;
+      color: colors.$color-black;
+      font-family: dharmaRegular, Arial, sans-serif;
+      font-size: 32px;
+      text-wrap: nowrap;
+    }
+  }
+
+  img {
+    height: 90px;
+  }
+}

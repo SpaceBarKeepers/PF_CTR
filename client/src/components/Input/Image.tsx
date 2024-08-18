@@ -1,7 +1,7 @@
-import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { useSilentAdminTokenRefresh } from '../../lib/useSilentAdminTokenRefresh';
 import { createFile, deleteFile } from '../../api/file';
-import { dateStringToDate, dateToDateString } from '../../lib/dateConversions';
+import { ChangeEvent } from 'react';
 
 type Props = {
     label: string;
@@ -12,10 +12,11 @@ type Props = {
 
 const Image = ({ label, name, state, setState }: Props) => {
     const [isUploading, setIsUploading] = useState(false);
-    const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const getToken = useSilentAdminTokenRefresh();
 
-    const handleFileChange = (e) => {
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.files) return;
         setSelectedFile(e.target.files[0]);
     };
 

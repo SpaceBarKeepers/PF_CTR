@@ -7,6 +7,9 @@ export class ToolsDto {
   toolsName: string;
 
   @IsString()
+  logo: string;
+
+  @IsString()
   @IsNotEmpty()
   descEn: string;
 

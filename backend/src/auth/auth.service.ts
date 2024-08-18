@@ -13,8 +13,8 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(id: number, pass: string): Promise<any> {
-    const user = await this.userService.findOne(id);
+  async validateUser(username: string, pass: string): Promise<any> {
+    const user = await this.userService.findOneByUsername(username);
     if (!user) return null;
     const passwordOk = await bcrypt.compare(pass, user.password);
     if (user && passwordOk) {
@@ -53,21 +53,21 @@ export class AuthService {
     });
   }
 
-  async checkDeviceHash(id: number, deviceHash: string) {
-    const user = await this.userService.findOne(id);
+  async checkDeviceHash(username: string, deviceHash: string) {
+    const user = await this.userService.findOneByUsername(username);
     if (!user) return null;
 
     if (user.activeDevice) {
       if (user.activeDevice === deviceHash) return true;
     } else {
-      await this.userService.assignActiveDevice(id, deviceHash);
+      await this.userService.assignActiveDevice(username, deviceHash);
       return true;
     }
     return false;
   }
 
-  async reassignDeviceHash(id: number, deviceHash: string) {
-    return await this.userService.assignActiveDevice(id, deviceHash);
+  async reassignDeviceHash(username: string, deviceHash: string) {
+    return await this.userService.assignActiveDevice(username, deviceHash);
   }
 
   async validateAdminUser(username: string, pass: string): Promise<any> {
