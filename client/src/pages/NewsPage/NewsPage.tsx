@@ -8,6 +8,7 @@ import { getTagAll } from '../../api/tag';
 import { geotagsIntl, TagEntity } from '../../models/tag';
 import { FormattedMessage } from 'react-intl';
 import ArticleRow from '../../components/ArticleRow/ArticleRow';
+import './newsPage.scss';
 
 const NewsPage = () => {
     const [news, setNews] = useState<NewsEntity[]>([]);
@@ -81,45 +82,57 @@ const NewsPage = () => {
         );
     }, [news, filteredTags, filteredGeotags]);
 
+    const firtsRow = filteredNews
+        .filter((news: NewsEntity) => !featuredNews.some((featured: NewsEntity) => featured.id === news.id))
+        .filter((news: NewsEntity) => news.publishedEn);
+
+    const interviewRow = filteredNews
+        .filter((news: NewsEntity) => !featuredNews.some((featured: NewsEntity) => featured.id === news.id))
+        .filter((news: NewsEntity) => news.publishedEn)
+        .filter((news: NewsEntity) => news.interview);
+
+    const caseStudyRow = filteredNews
+        .filter((news: NewsEntity) => !featuredNews.some((featured: NewsEntity) => featured.id === news.id))
+        .filter((news: NewsEntity) => news.publishedEn)
+        .filter((news: NewsEntity) => news.caseStudy);
+
     return (
-        <div>
+        <div className={'newsPage'}>
             <Header />
             <FeaturedArticlesHeader articles={featuredNews} />
-            {tags.map((tag) => (
-                <div key={tag.id} onClick={handleClickTag(tag.id)}>
-                    <h4>{tag.tagEn}</h4>
-                </div>
-            ))}
-            {geotagsIntl.map((geotag) => (
-                <div key={geotag.label} onClick={handleClickGeotag(geotag.value)}>
-                    <FormattedMessage id={geotag.label} defaultMessage={geotag.defaultMessage} />
-                </div>
-            ))}
+            <div className={'newsPage__tags'}>
+                {tags.map((tag) => (
+                    <div
+                        className={`newsPage__tagsTag${filteredTags.includes(tag.id) ? ' newsPage__tagsTag--active' : ''}`}
+                        key={tag.id}
+                        onClick={handleClickTag(tag.id)}
+                    >
+                        <p>{tag.tagEn}</p>
+                    </div>
+                ))}
+            </div>
+            <div className={'newsPage__tags'}>
+                {geotagsIntl.map((geotag) => (
+                    <div
+                        className={`newsPage__tagsGeotag${filteredGeotags.includes(geotag.value) ? ' newsPage__tagsGeotag--active' : ''}`}
+                        key={geotag.label}
+                         onClick={handleClickGeotag(geotag.value)}
+                    >
+                        <FormattedMessage id={geotag.label} defaultMessage={geotag.defaultMessage} />
+                    </div>
+                ))}
+            </div>
             <ArticleRow
-                articles={
-                    filteredNews
-                        .filter((news: NewsEntity) => !featuredNews.some((featured: NewsEntity) => featured.id === news.id))
-                        .filter((news: NewsEntity) => news.publishedEn)
-                }
+                articles={firtsRow}
             />
-            <ArticleRow
-                articles={
-                    filteredNews
-                        .filter((news: NewsEntity) => !featuredNews.some((featured: NewsEntity) => featured.id === news.id))
-                        .filter((news: NewsEntity) => news.publishedEn)
-                        .filter((news: NewsEntity) => news.interview)
-                }
-                rowTitle={'Interviews'}
-            />
-            <ArticleRow
-                articles={
-                    filteredNews
-                        .filter((news: NewsEntity) => !featuredNews.some((featured: NewsEntity) => featured.id === news.id))
-                        .filter((news: NewsEntity) => news.publishedEn)
-                        .filter((news: NewsEntity) => news.caseStudy)
-                }
-                rowTitle={'Case Studies'}
-            />
+            {!!interviewRow.length && <ArticleRow
+              articles={interviewRow}
+              rowTitle={'Interviews'}
+            />}
+            {!!caseStudyRow && <ArticleRow
+              articles={caseStudyRow}
+              rowTitle={'Case Studies'}
+            />}
         </div>
     );
 };

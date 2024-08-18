@@ -81,6 +81,10 @@ function App() {
             element: <AuthRequired><KnowledgeBasePage /></AuthRequired>,
         },
         {
+            path: '/news/:id',
+            element: <AuthRequired><ArticlePage type={ARTICLE_TYPE_ENUM.NEWS}/></AuthRequired>,
+        },
+        {
             path: '/news',
             element: <AuthRequired><NewsPage /></AuthRequired>,
         },

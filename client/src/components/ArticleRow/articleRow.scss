@@ -1,19 +1,12 @@
 @use "../../partials/colors";
 
-.knowledgeBasePage {
+.articleRow {
   display: flex;
   flex-direction: column;
 
   &__container {
     display: flex;
-    flex-direction: column;
     gap: 32px;
-  }
-
-  &__articleContainer {
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
   }
 
   &__articleCard {
