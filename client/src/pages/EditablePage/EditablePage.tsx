@@ -1,15 +1,26 @@
 import { useLocation } from 'react-router-dom';
 import Header from '../../components/Header/Header';
+import { useEffect, useState } from 'react';
+import { getPageById } from '../../api/page';
+import { PageEntity } from '../../models/page';
 
 const EditablePage = () => {
+    const [page, setPage] = useState<PageEntity | null>(null);
     const pageId = useLocation().pathname.split('/').pop()
 
-    console.log(pageId)
+    useEffect(() => {
+        if (!pageId) return;
+        getPageById(pageId)
+            .then((response) => {
+                setPage(response);
+            })
+            .catch((error) => console.error(error));
+    }, [pageId]);
 
     return (
         <div>
             <Header/>
-            <h1>Editable Page</h1>
+            {page?.contentEn && <div dangerouslySetInnerHTML={{ __html: page.contentEn }} />}
         </div>
     );
 }
