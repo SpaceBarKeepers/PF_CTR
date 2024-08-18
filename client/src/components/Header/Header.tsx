@@ -2,7 +2,6 @@ import { FormattedMessage } from 'react-intl';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForcedLogout } from '../../lib/logout';
 import ButtonColored from '../Button/ButtonColored';
-import ButtonLanguage from '../Button/ButtonLanguage';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -61,7 +60,7 @@ const Header = () => {
                 <ButtonColored childIsLink={false} onClick={handleLogout}>
                     Logout - vymazat
                 </ButtonColored>
-                <ButtonLanguage />
+                {/*<ButtonLanguage />*/}
             </div>
         </div>
     );
