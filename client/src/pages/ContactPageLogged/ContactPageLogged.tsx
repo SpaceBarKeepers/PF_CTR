@@ -1,4 +1,3 @@
-import LayoutPublicWrapper from '../../wrappers/LayoutPublicWrapper';
 import { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import OrderInput from '../../components/OrderInput/OrderInput';

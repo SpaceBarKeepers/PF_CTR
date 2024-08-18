@@ -33,6 +33,7 @@ import OrderPage from './pages/OrderPage/OrderPage';
 import ContactPageLogged from './pages/ContactPageLogged/ContactPageLogged';
 import ArticlePage from './pages/ArticlePage/ArticlePage';
 import { ARTICLE_TYPE_ENUM } from './models/enums';
+import ToolDetail from './pages/ToolDetail/ToolDetail';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -71,6 +72,10 @@ function App() {
         {
             path: '/catalogue',
             element: <AuthRequired><CataloguePage /></AuthRequired>,
+        },
+        {
+            path: '/tool/:id',
+            element: <AuthRequired><ToolDetail /></AuthRequired>,
         },
         {
             path: '/knowledge-base/:id',

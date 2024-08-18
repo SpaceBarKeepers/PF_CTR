@@ -1,0 +1,80 @@
+@use "../../partials/colors";
+
+.cataloguePage {
+  display: flex;
+    flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  h1 {
+    align-self: flex-start;
+  }
+
+  &__functionalityFilter {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    &Container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
+
+    &Item {
+        border: 2px solid transparent;
+        display: flex;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        color: colors.$color-black;
+        background: #E6E6E6;
+        text-transform: uppercase;
+        padding: 16px;
+        text-wrap: nowrap;
+
+        &--selected {
+            border: 2px dashed colors.$color-black;
+        }
+    }
+  }
+
+  &__searchInputs {
+    display: flex;
+  }
+
+  &__tools {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &List {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+
+      &Item {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 355px;
+        width: 500px;
+        border: 3px solid colors.$color-black;
+        padding: 32px;
+        justify-content: space-between;
+
+        &Head {
+          align-items: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            img {
+              height: 77px;
+            }
+        }
+      }
+    }
+  }
+}

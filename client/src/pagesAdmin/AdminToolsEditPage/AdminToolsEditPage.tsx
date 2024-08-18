@@ -8,6 +8,7 @@ import ButtonColored from '../../components/Button/ButtonColored';
 import { createTools, getToolsById, updateTools } from '../../api/tools';
 import ArrayTextInput from '../../components/Input/ArrayTextInput';
 import "./adminToolsEditPage.scss"
+import Image from '../../components/Input/Image';
 
 const AdminToolsEditPage = () => {
     const [data, setData] = useState<ToolEntity>({} as ToolEntity);
@@ -68,6 +69,7 @@ const AdminToolsEditPage = () => {
         <div className={'adminToolsEditPage'}>
             <AdminHeader />
             <Input label={'Tool name: '} state={data} setState={setData} name={'toolsName'} />
+            <Image label={"Logo: "} state={data} setState={setData} name={"logo"} />
             <div className={'adminToolsEditPage__dualLangBox'}>
                 <Input label={'Description EN: '} state={data} setState={setData} name={'descEn'} />
                 <Input label={'Popis CS: '} state={data} setState={setData} name={'descCS'} />
@@ -104,7 +106,6 @@ const AdminToolsEditPage = () => {
             <Input label={'Partners: '} state={data} setState={setData} name={'partners'} />
             {/*// TODO: Accesibility tag.ts*/}
             {/*// TODO: Social positioning tag.ts*/}
-            {/*// TODO: Accesibility tag.ts*/}
             {/*// TODO: Similar tools*/}
 
             <ButtonColored childIsLink={false} onClick={handleSave}>

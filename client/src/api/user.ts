@@ -1,5 +1,5 @@
 import {apiRoot} from "./apiRoot";
-import { CreateUserInterface, EventInterface } from '../models/entities';
+import { CreateUserInterface } from '../models/entities';
 
 export const getUserAll = async (adminToken: string) => {
     try {

@@ -1,20 +1,19 @@
 import { FormattedMessage } from 'react-intl';
 import { Link, useNavigate } from 'react-router-dom';
-import { useForcedLogout } from '../../lib/logout';
 import ButtonColored from '../Button/ButtonColored';
 import './header.scss';
 
 const Header = () => {
     const navigate = useNavigate();
-    const logout = useForcedLogout();
+    // const logout = useForcedLogout();
 
     const handleClickAccount = () => {
         navigate('/account');
     };
 
-    const handleLogout = () => {
-        logout();
-    };
+    // const handleLogout = () => {
+    //     logout();
+    // };
 
     return (
         <div className={'header'}>

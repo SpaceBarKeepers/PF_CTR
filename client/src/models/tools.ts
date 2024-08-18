@@ -1,6 +1,30 @@
 export interface ToolEntity {
+    id: number;
     toolsName: string;
+    logo: string;
+    descEn: string;
+    descCS: string;
+    featuresEn: string[];
+    featuresCs: string[];
+    dataProtectionEn: string;
+    dataProtectionCs: string;
+    authenticationEn: string;
+    authenticationCs: string;
+    nextProductUpdateEn: string;
+    nextProductUpdateCs: string;
+    feedEn: string[];
+    feedCs: string[];
+    accessibilityTag: string[];
+    established: string;
+    noOfClients: string;
+    team: string;
+    email: string;
+    phone: string;
+    web: string;
     countries: string[];
+    partners: string;
+    socialPositioningTag: string[];
+    featureTag: string[];
 }
 
 export enum TOOLS_FUNCTIONALITY_ENUM {
