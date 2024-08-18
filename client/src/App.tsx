@@ -1,19 +1,19 @@
-import {createBrowserRouter, RouterProvider, useLocation, useNavigate} from "react-router-dom";
-import LandingPage from "./pages/LandingPage/LandingPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import {useAtomValue} from "jotai/index";
-import {languageAtom, redirectUrlAtom, tokenAdminAtom, tokenAtom} from "./atomStore";
-import {IntlProvider} from "react-intl";
-import {ReactElement, useEffect, useState} from "react";
-import translate from "./translate.json";
-import DeviceCheckPage from "./pages/DeviceCheckPage/DeviceCheckPage";
-import HomepagePage from "./pages/HomepagePage/HomepagePage";
-import AccountPage from "./pages/AccountPage/AccountPage";
-import {useSetAtom} from "jotai";
-import AdminLoginPage from "./pagesAdmin/AdminLoginPage/AdminLoginPage";
-import AdminDashboardPage from "./pagesAdmin/AdminDashboardPage/AdminDashboardPage";
-import AdminUsersPage from "./pagesAdmin/AdminUsersPage/AdminUsersPage";
-import AdminKnowledgePage from "./pagesAdmin/AdminKnowledgePage/AdminKnowledgePage";
+import { createBrowserRouter, RouterProvider, useLocation, useNavigate } from 'react-router-dom';
+import LandingPage from './pages/LandingPage/LandingPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import { useAtomValue } from 'jotai/index';
+import { languageAtom, redirectUrlAtom, tokenAdminAtom, tokenAtom } from './atomStore';
+import { IntlProvider } from 'react-intl';
+import { ReactElement, useEffect, useState } from 'react';
+import translate from './translate.json';
+import DeviceCheckPage from './pages/DeviceCheckPage/DeviceCheckPage';
+import HomepagePage from './pages/HomepagePage/HomepagePage';
+import AccountPage from './pages/AccountPage/AccountPage';
+import { useSetAtom } from 'jotai';
+import AdminLoginPage from './pagesAdmin/AdminLoginPage/AdminLoginPage';
+import AdminDashboardPage from './pagesAdmin/AdminDashboardPage/AdminDashboardPage';
+import AdminUsersPage from './pagesAdmin/AdminUsersPage/AdminUsersPage';
+import AdminKnowledgePage from './pagesAdmin/AdminKnowledgePage/AdminKnowledgePage';
 import AdminNewsPage from './pagesAdmin/AdminNewsPage/AdminNewsPage';
 import AdminPagesPage from './pagesAdmin/AdminPagesPage/AdminPagesPage';
 import AdminEventsPage from './pagesAdmin/AdminEventsPage/AdminEventsPage';
@@ -31,6 +31,8 @@ import AdminEventsEditPage from './pagesAdmin/AdminEventsEditPage/AdminEventsEdi
 import AdminToolsEditPage from './pagesAdmin/AdminToolsEditPage/AdminToolsEditPage';
 import OrderPage from './pages/OrderPage/OrderPage';
 import ContactPageLogged from './pages/ContactPageLogged/ContactPageLogged';
+import ArticlePage from './pages/ArticlePage/ArticlePage';
+import { ARTICLE_TYPE_ENUM } from './models/enums';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -69,6 +71,10 @@ function App() {
         {
             path: '/catalogue',
             element: <AuthRequired><CataloguePage /></AuthRequired>,
+        },
+        {
+            path: '/knowledge-base/:id',
+            element: <AuthRequired><ArticlePage type={ARTICLE_TYPE_ENUM.KNOWLEDGE_BASE}/></AuthRequired>,
         },
         {
             path: '/knowledge-base',

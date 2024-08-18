@@ -3,6 +3,8 @@ import { KnowledgeBaseEntity } from '../../models/knowledge';
 import { useEffect, useState } from 'react';
 import { getKnowledgeAll } from '../../api/knowledge';
 import FeaturedArticlesHeader from '../../components/FeaturedArticlesHeader/FeaturedArticlesHeader';
+import { Link } from 'react-router-dom';
+import './knowledgeBasePage.scss';
 
 const KnowledgeBasePage = () => {
     const [knowledgeBase, setKnowledgeBase] = useState<KnowledgeBaseEntity[]>([]);
@@ -37,20 +39,29 @@ const KnowledgeBasePage = () => {
     }, []);
     console.log(knowledgeBase, knowledgeBase.filter((knowledge: KnowledgeBaseEntity) => !featuredKnowledgeBase.some((featured: KnowledgeBaseEntity) => featured.id === knowledge.id)).sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)));
     return (
-        <div>
+        <div className={'knowledgeBasePage'}>
             <Header />
-            <div>
+            <div className={'knowledgeBasePage__container'}>
                 <FeaturedArticlesHeader articles={featuredKnowledgeBase} />
-                {knowledgeBase
-                    .filter((knowledge: KnowledgeBaseEntity) => !featuredKnowledgeBase.some((featured: KnowledgeBaseEntity) => featured.id === knowledge.id))
-                    .filter((knowledge: KnowledgeBaseEntity) => knowledge.publishedEn)
-                    .sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
-                    .map((knowledge: KnowledgeBaseEntity) => (
-                        <div key={knowledge.id}>
-                            <h2>{knowledge.titleEn}</h2>
-                            <p>{knowledge.contentEn}</p>
-                        </div>
-                    ))}
+                <div className={'knowledgeBasePage__articleContainer'}>
+                    {knowledgeBase
+                        .filter((knowledge: KnowledgeBaseEntity) => !featuredKnowledgeBase.some((featured: KnowledgeBaseEntity) => featured.id === knowledge.id))
+                        .filter((knowledge: KnowledgeBaseEntity) => knowledge.publishedEn)
+                        .sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
+                        .map((knowledge: KnowledgeBaseEntity) => (
+                            <Link
+                                className={'knowledgeBasePage__articleCard'}
+                                to={`/knowledge-base/${knowledge.id}`}
+                                key={knowledge.id}
+                            >
+                                <img src={knowledge.thumbnail} alt={knowledge.titleEn} />
+                                <div className={'knowledgeBasePage__articleCardLabel'}>
+                                    <h3>{knowledge.titleEn}</h3>
+                                    <p>{knowledge.subtitleEn}</p>
+                                </div>
+                            </Link>
+                        ))}
+                </div>
             </div>
         </div>
     );
