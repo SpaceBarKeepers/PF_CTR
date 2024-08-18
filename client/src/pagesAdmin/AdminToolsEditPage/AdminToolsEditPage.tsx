@@ -9,6 +9,7 @@ import { createTools, getToolsById, updateTools } from '../../api/tools';
 import ArrayTextInput from '../../components/Input/ArrayTextInput';
 import "./adminToolsEditPage.scss"
 import Image from '../../components/Input/Image';
+import CountryInput from '../../components/Input/CountryInput';
 
 const AdminToolsEditPage = () => {
     const [data, setData] = useState<ToolEntity>({} as ToolEntity);
@@ -103,6 +104,7 @@ const AdminToolsEditPage = () => {
             <Input label={'Web: '} state={data} setState={setData} name={'web'} />
             <Input label={'Team: '} state={data} setState={setData} name={'team'} />
             {/*// TODO: Array select countries*/}
+            <CountryInput label={'Countries: '} state={data} setState={setData} name={'countries'} />
             <Input label={'Partners: '} state={data} setState={setData} name={'partners'} />
             {/*// TODO: Accesibility tag.ts*/}
             {/*// TODO: Social positioning tag.ts*/}
