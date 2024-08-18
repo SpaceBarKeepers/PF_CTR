@@ -26,7 +26,7 @@ const ArrayTextInput = ({ label, state, setState, name }: Props) => {
         setState((prev: any) => ({
             ...prev,
             [name]: [
-                ...prev[name],
+                ...(prev[name] || []), // If prev[name] is undefined, initialize it as an empty array
                 '',
             ],
         }));

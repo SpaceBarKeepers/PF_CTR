@@ -14,6 +14,9 @@ export class Tools {
   @Column({ type: 'varchar' })
   toolsName: string;
 
+  @Column({ type: 'varchar', nullable: true })
+  logo: string;
+
   @Column({ type: 'varchar', length: 500, default: '' })
   descEn: string;
 

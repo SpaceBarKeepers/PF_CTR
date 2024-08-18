@@ -19,16 +19,7 @@ import { getTagAll } from '../../api/tag';
 import Tag from '../../components/Tag/Tag';
 import { arrayContainsObject } from '../../lib/arrayContainsObject';
 import DeleteTags from '../../components/Tag/DeleteTags';
-
-const geotags = [
-    { label: 'label_geotag_africa', value: 'africa', defaultMessage: 'Africa' },
-    { label: 'label_geotag_asia', value: 'asia', defaultMessage: 'Asia' },
-    { label: 'label_geotag_europe', value: 'europe', defaultMessage: 'Europe' },
-    { label: 'label_geotag_north_america', value: 'north_america', defaultMessage: 'North America' },
-    { label: 'label_geotag_south_america', value: 'south_america', defaultMessage: 'South America' },
-    { label: 'label_geotag_middle_east', value: 'middle_east', defaultMessage: 'Middle East' },
-    { label: 'label_geotag_aus_nz', value: 'aus_nz', defaultMessage: 'Australia & New Zealand' },
-];
+import { geotagsIntl } from '../../models/tag';
 
 const AdminNewsEditPage = () => {
     const [data, setData] = useState<NewsInterface>({} as NewsInterface);
@@ -156,7 +147,7 @@ const AdminNewsEditPage = () => {
                        name={'featuredPosition'} />
             <h4>Geotags:</h4>
             <div className={'adminNewsEditPage__tagContainer'}>
-                {geotags.map((tag) => (
+                {geotagsIntl.map((tag) => (
                     <GeoTag
                         key={tag.value}
                         label={intl.formatMessage({ id: tag.label, defaultMessage: tag.defaultMessage })}

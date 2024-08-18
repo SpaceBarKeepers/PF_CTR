@@ -1,14 +1,12 @@
-import {useEffect, useState} from 'react';
-import {checkDeviceHash, reassignDevice} from "../../api/auth";
-import {useAtomValue} from "jotai";
-import {redirectUrlAtom, tokenAtom} from "../../atomStore";
-import {useForcedLogout} from "../../lib/logout";
-import {FormattedMessage} from "react-intl";
-import {useNavigate} from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { checkDeviceHash, reassignDevice } from '../../api/auth';
+import { useAtomValue } from 'jotai';
+import { redirectUrlAtom, tokenAtom } from '../../atomStore';
+import { useForcedLogout } from '../../lib/logout';
+import { FormattedMessage } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
 
-type Props = {};
-
-const DeviceCheckPage = ({}: Props) => {
+const DeviceCheckPage = () => {
     const [promptReassignDevice, setPromptReassignDevice] = useState<boolean>(false)
     const redirectUrl = useAtomValue(redirectUrlAtom)
     const token = useAtomValue(tokenAtom)?.access_token
@@ -32,7 +30,7 @@ const DeviceCheckPage = ({}: Props) => {
                     else console.error(error)
                 }
             })
-    }, [promptReassignDevice]);
+    }, [logout, navigate, promptReassignDevice, redirectUrl, token]);
 
     const handleReassignDevice = () => {
         if (!token) return

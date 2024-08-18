@@ -26,7 +26,7 @@ const LoginPage = () => {
                 setToken(response)
             })
             .catch((error: Error) => {
-                if (error.message === "error_invalid_device_hash" || error.message === "error_invalid_token") forcedLogout()
+                if (error.message === "error_invalid_token") forcedLogout()
                 else console.error(error)
             })
     }, [forcedLogout, setToken]);

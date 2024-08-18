@@ -23,3 +23,8 @@ export enum CTR_SHIPPING_ENUM {
     NORTH_AMERICA = 'north_america',
     OTHER = 'other',
 }
+
+export enum ARTICLE_TYPE_ENUM {
+    NEWS = 'news',
+    KNOWLEDGE_BASE = 'knowledgeBase',
+}
