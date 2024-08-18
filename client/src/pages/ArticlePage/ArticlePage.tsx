@@ -11,10 +11,11 @@ type Props = {
 }
 
 const ArticlePage = ({ type }: Props) => {
-    const [article, setArticle] = useState<KnowledgeBaseEntity | NewsEntity>(null);
+    const [article, setArticle] = useState<KnowledgeBaseEntity | NewsEntity | null>(null);
     const { id } = useParams<{ id: string }>();
 
     useEffect(() => {
+        if (!id) return;
         if (type === ARTICLE_TYPE_ENUM.KNOWLEDGE_BASE) {
             getKnowledgeById(id)
                 .then((response) => {
@@ -24,7 +25,7 @@ const ArticlePage = ({ type }: Props) => {
                     console.error(error);
                 });
         }
-    }, []);
+    }, [type, id]);
 
     return (
         <div className={'articlePage'}>
@@ -41,7 +42,7 @@ const ArticlePage = ({ type }: Props) => {
                 )}
                 <h1>{article?.titleEn}</h1>
                 <h2>{article?.subtitleEn}</h2>
-                <div dangerouslySetInnerHTML={{ __html: article?.contentEn }} />
+                {article?.contentEn && <div dangerouslySetInnerHTML={{ __html: article?.contentEn }} />}
             </div>
         </div>
     );
