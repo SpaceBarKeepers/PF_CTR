@@ -72,12 +72,12 @@ const NewsPage = () => {
                 if (filteredTags.length === 0) {
                     return true;
                 }
-                return news.tags.some((tag) => filteredTags.includes(tag.id));
+                return news.tags?.some((tag) => filteredTags.includes(tag.id));
             }).filter((news) => {
                 if (filteredGeotags.length === 0) {
                     return true;
                 }
-                return news.geoTags.some((tag) => filteredGeotags.includes(tag));
+                return news.geoTags?.some((tag) => filteredGeotags.includes(tag));
             }),
         );
     }, [news, filteredTags, filteredGeotags]);
