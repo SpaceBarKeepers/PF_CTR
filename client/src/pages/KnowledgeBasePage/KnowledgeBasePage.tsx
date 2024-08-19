@@ -42,7 +42,7 @@ const KnowledgeBasePage = () => {
         <div className={'knowledgeBasePage'}>
             <Header />
             <div className={'knowledgeBasePage__container'}>
-                <FeaturedArticlesHeader articles={featuredKnowledgeBase} />
+                <FeaturedArticlesHeader articles={featuredKnowledgeBase} slug={"knowledge-base"} />
                 <div className={'knowledgeBasePage__articleContainer'}>
                     {knowledgeBase
                         .filter((knowledge: KnowledgeBaseEntity) => !featuredKnowledgeBase.some((featured: KnowledgeBaseEntity) => featured.id === knowledge.id))

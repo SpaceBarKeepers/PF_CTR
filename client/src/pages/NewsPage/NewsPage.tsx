@@ -99,7 +99,7 @@ const NewsPage = () => {
     return (
         <div className={'newsPage'}>
             <Header />
-            <FeaturedArticlesHeader articles={featuredNews} />
+            <FeaturedArticlesHeader articles={featuredNews} slug={"news"} />
             <div className={'newsPage__tags'}>
                 {tags.map((tag) => (
                     <div

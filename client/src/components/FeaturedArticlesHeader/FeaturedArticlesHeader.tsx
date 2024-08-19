@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 
 type Props = {
     articles: KnowledgeBaseEntity[] | NewsEntity[];
+    slug: string;
 }
 
-const FeaturedArticlesHeader = ({ articles }: Props) => {
+const FeaturedArticlesHeader = ({ articles, slug }: Props) => {
     return (
         <div className="featuredArticlesHeader">
             <div className={'featuredArticlesHeader__container'}>
                 {articles[0] && (
-                    <Link to={`/knowledge-base/${articles[0].id}`} className={'featuredArticlesHeader__mainArticle'}>
+                    <Link to={`/${slug}/${articles[0].id}`} className={'featuredArticlesHeader__mainArticle'}>
                         <img src={articles[0].thumbnail} alt={articles[0].titleEn} />
                         <h3>{articles[0].titleEn}</h3>
                     </Link>
@@ -21,7 +22,7 @@ const FeaturedArticlesHeader = ({ articles }: Props) => {
                     {articles.map((article, index) => {
                         if (index === 0) return;
                         return (
-                            <Link to={`/knowledge-base/${article.id}`} className={'featuredArticlesHeader__otherArticle'} key={article.id}>
+                            <Link to={`/${slug}/${article.id}`} className={'featuredArticlesHeader__otherArticle'} key={article.id}>
                                 <h3>{article.titleEn}</h3>
                                 <div className={"featuredArticlesHeader__otherArticleImage"}>
                                 <img src={article.thumbnail} alt={article.titleEn} />
