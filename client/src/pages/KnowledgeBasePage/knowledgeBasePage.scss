@@ -1,8 +1,11 @@
-@use "../../partials/colors";
+@use '../../partials/colors';
 
 .knowledgeBasePage {
   display: flex;
   flex-direction: column;
+  background-image: url('../../assets/bg-earth.png');
+  background-size: cover;
+  background-position: center center;
 
   &__container {
     display: flex;
@@ -23,6 +26,9 @@
     overflow: hidden;
     text-decoration: none;
     color: colors.$color-black;
+    &:hover {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
 
     img {
       width: 100%;

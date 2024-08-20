@@ -102,7 +102,7 @@ const CataloguePage = () => {
                 />
             </div>
             <div className={'cataloguePage__tools'}>
-                <div>
+                <div className={"cataloguePage__results"}>
                     {filteredTools.length} results found
                 </div>
                 <div className={'cataloguePage__toolsList'}>
