@@ -1,10 +1,13 @@
-@use "../../partials/colors";
+@use '../../partials/colors';
 
 .cataloguePage {
   display: flex;
-    flex-direction: column;
+  flex-direction: column;
   align-items: center;
   gap: 16px;
+  background-image: url('../../assets/bg-earth.png');
+  background-size: cover;
+  background-position: center center;
 
   h1 {
     align-self: flex-start;
@@ -14,33 +17,54 @@
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+    justify-content: center;
 
     &Container {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
     }
 
     &Item {
-        border: 2px solid transparent;
-        display: flex;
-        font-family: Arial, sans-serif;
-        font-size: 18px;
-        color: colors.$color-black;
-        background: #E6E6E6;
-        text-transform: uppercase;
-        padding: 16px;
-        text-wrap: nowrap;
+      border: 2px solid transparent;
+      display: flex;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      color: colors.$color-black;
+      background: colors.$color-grey;
+      text-transform: uppercase;
+      padding: 16px;
+      text-wrap: nowrap;
+      border-radius: 8px;
 
-        &--selected {
-            border: 2px dashed colors.$color-black;
-        }
+      &--selected,
+      &:hover {
+        border: 2px solid colors.$color-orange;
+        background-color: #fdf1e5;
+        cursor: pointer;
+      }
     }
   }
 
   &__searchInputs {
     display: flex;
+    background-color: colors.$color-grey;
+    border-radius: 8px;
+    width: 500px;
+    padding: 16px 8px;
+    margin-bottom: 40px;
+
+    & div:first-child {
+      border-right: 4px solid black;
+    }
+  }
+
+  &__results {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700;
+    font-family: Arial, sans-serif;
   }
 
   &__tools {
@@ -49,30 +73,61 @@
     width: 100%;
 
     &List {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+      @media (min-width: 1000px) {
+        gap: 36px;
+      }
 
       &Item {
         align-items: center;
         display: flex;
         flex-direction: column;
         height: 355px;
-        width: 500px;
+        width: 90%;
         border: 3px solid colors.$color-black;
+        border-radius: 8px;
         padding: 32px;
         justify-content: space-between;
+        background-color: white;
+
+        &:hover {
+          background-color: #fdf1e5;
+          border-color: colors.$color-orange;
+          cursor: pointer;
+        }
+
+        @media (min-width: 746px) {
+          width: 38%;
+        }
+
+        @media (min-width: 1119px) {
+          width: 41%;
+        }
+
+        @media (min-width: 1500px) {
+          width: 27%;
+        }
 
         &Head {
           align-items: center;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
 
-            img {
+          img {
+            height: 77px;
+            max-width: 100%;
+            @media (min-width: 746px) {
+              height: 47px;
+            }
+            @media (min-width: 1119px) {
               height: 77px;
             }
+          }
         }
       }
     }
