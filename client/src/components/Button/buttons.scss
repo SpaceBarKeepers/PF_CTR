@@ -1,4 +1,4 @@
-@use "../../partials/colors";
+@use '../../partials/colors';
 
 .button {
   border: 0;
@@ -22,7 +22,7 @@
 
   &Primary {
     background: colors.$color-orange;
-    border: 1px solid colors.$color-orange;
+    border: 2px solid colors.$color-orange;
     color: colors.$color-white;
 
     &:hover {
@@ -33,7 +33,7 @@
 
   &Secondary {
     background: colors.$color-blue;
-    border: 1px solid colors.$color-blue;
+    border: 2px solid colors.$color-blue;
     color: colors.$color-white;
 
     &:hover {

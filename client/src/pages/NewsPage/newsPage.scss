@@ -1,9 +1,12 @@
-@use "../../partials/colors";
+@use '../../partials/colors';
 
 .newsPage {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  background-image: url('../../assets/bg-earth.png');
+  background-size: cover;
+  background-position: center center;
 
   &__tags {
     display: flex;
@@ -42,5 +45,4 @@
       }
     }
   }
-
 }
