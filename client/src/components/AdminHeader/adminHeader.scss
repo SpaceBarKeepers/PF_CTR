@@ -1,13 +1,16 @@
 .adminHeader {
   align-items: center;
   display: flex;
-  font-family: dharmaRegular, Arial, sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   justify-content: space-between;
   margin-bottom: 32px;
+  background: black;
+  color: white;
+  padding: 24px;
 
   a {
-    color: black;
-    font-size: 32px;
+    color: white;
+    font-size: 28px;
     text-decoration: none;
 
     &:hover {
