@@ -5,24 +5,29 @@ import { getPageById } from '../../api/page';
 import { PageEntity } from '../../models/page';
 
 const EditablePage = () => {
-    const [page, setPage] = useState<PageEntity | null>(null);
-    const pageId = useLocation().pathname.split('/').pop()
+  const [page, setPage] = useState<PageEntity | null>(null);
+  const pageId = useLocation().pathname.split('/').pop();
 
-    useEffect(() => {
-        if (!pageId) return;
-        getPageById(pageId)
-            .then((response) => {
-                setPage(response);
-            })
-            .catch((error) => console.error(error));
-    }, [pageId]);
+  useEffect(() => {
+    if (!pageId) return;
+    getPageById(pageId)
+      .then((response) => {
+        setPage(response);
+      })
+      .catch((error) => console.error(error));
+  }, [pageId]);
 
-    return (
-        <div>
-            <Header/>
-            {page?.contentEn && <div dangerouslySetInnerHTML={{ __html: page.contentEn }} />}
-        </div>
-    );
-}
+  return (
+    <div className={'editablePage'}>
+      <Header />
+      {page?.contentEn && (
+        <div
+          dangerouslySetInnerHTML={{ __html: page.contentEn }}
+          className={'richtext'}
+        />
+      )}
+    </div>
+  );
+};
 
 export default EditablePage;
