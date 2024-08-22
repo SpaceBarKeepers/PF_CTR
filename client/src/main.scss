@@ -21,10 +21,22 @@ body {
     padding: 21px 70px;
   }
 }
-
+main {
+  background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.97) 10%,
+      rgba(255, 255, 255, 0.95) 50%,
+      rgba(255, 255, 255, 0.97) 90%,
+      rgba(255, 255, 255, 1) 100%
+    ),
+    url('./assets/bg-earth.png') no-repeat center center fixed;
+  background-size: 150%;
+}
 p,
 td,
-span {
+span,
+.breadcrumps {
   font-family: Arial, sans-serif;
   font-size: 18px;
   line-height: 26px;
@@ -90,4 +102,8 @@ h4 {
     font-size: 18px !important;
     line-height: 1.5;
   }
+}
+
+.breadcrumps {
+  margin: 24px 0 16px 0;
 }

@@ -4,14 +4,12 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  background-image: url('../../assets/bg-earth.png');
-  background-size: cover;
-  background-position: center center;
 
   &__tags {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+    margin: 24px 0;
 
     &Tag {
       border: 2px solid transparent;

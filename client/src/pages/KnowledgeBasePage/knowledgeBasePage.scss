@@ -3,9 +3,7 @@
 .knowledgeBasePage {
   display: flex;
   flex-direction: column;
-  background-image: url('../../assets/bg-earth.png');
-  background-size: cover;
-  background-position: center center;
+
 
   &__container {
     display: flex;
