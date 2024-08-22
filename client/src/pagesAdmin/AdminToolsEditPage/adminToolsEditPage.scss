@@ -1,6 +1,6 @@
 .adminToolsEditPage {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
   &__dualLangBox {
     display: flex;
@@ -23,11 +23,18 @@
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
+
   }
 
   h4 {
-    font-family: dharmaRegular, Arial, sans-serif;
+    font-family: 'Roboto Condensed', Arial, sans-serif;
     font-size: 32px;
     margin: 0;
+  }
+  label {
+    font-family: 'Roboto Condensed', Arial, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 4px;
   }
 }

@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import ButtonColored from '../../components/Button/ButtonColored';
 import { Body, Cell, Header, HeaderCell, HeaderRow, Row, Table } from '@table-library/react-table-library';
 import { deleteNewsById, getNewsAll } from '../../api/news';
+import "./adminNewsPage.scss"
 
 const AdminNewsPage = () => {
     const [articles, setArticles] = useState<KnowledgeEntity[]>([]);
@@ -56,7 +57,7 @@ const AdminNewsPage = () => {
     };
 
     return (
-        <div>
+        <div className={"adminNewsPage"}>
             <AdminHeader />
             <ButtonColored>
                 <Link to={'/admin/news/new'}>
