@@ -6,73 +6,70 @@ import { useEffect, useState } from 'react';
 import ButtonColored from '../../components/Button/ButtonColored';
 import { useSilentAdminTokenRefresh } from '../../lib/useSilentAdminTokenRefresh';
 import { getPageById, updatePage } from '../../api/page';
+import './adminPagesEditPage.scss';
 
 type Props = {
-    page: 'trends';
-}
+  page: 'trends';
+};
 
 const AdminPagesEditPage = ({ page }: Props) => {
-    const [data, setData] = useState<PageEntity>({} as PageEntity);
-    const [loaded, setLoaded] = useState(false);
-    const getToken = useSilentAdminTokenRefresh();
-    const navigate = useNavigate();
+  const [data, setData] = useState<PageEntity>({} as PageEntity);
+  const [loaded, setLoaded] = useState(false);
+  const getToken = useSilentAdminTokenRefresh();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!page) return;
-        getPageById(page)
-            .then((response) => {
-                const dto = {id: page, ...response}
-                setData(dto);
-                setLoaded(true);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [page]);
+  useEffect(() => {
+    if (!page) return;
+    getPageById(page)
+      .then((response) => {
+        const dto = { id: page, ...response };
+        setData(dto);
+        setLoaded(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [page]);
 
-    const handleSave = () => {
-        getToken()
-            .then((token) => {
-                if (!token) return;
-                updatePage(token, data)
-                    .then((response) => {
-                        console.log(response);
-                        navigate('/admin/pages');
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            });
-    };
+  const handleSave = () => {
+    getToken().then((token) => {
+      if (!token) return;
+      updatePage(token, data)
+        .then((response) => {
+          console.log(response);
+          navigate('/admin/pages');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+  };
 
-
-    if (page === 'trends') {
-        if (!loaded) return (<div>Loading...</div>);
-        return (
-            <div>
-                <AdminHeader />
-                <RichTextInput
-                    label={'Trends in Civic Tech (CS):'}
-                    name={'contentCs'}
-                    state={data}
-                    setState={setData}
-                />
-                <RichTextInput
-                    label={'Trends in Civic Tech (EN):'}
-                    name={'contentEn'}
-                    state={data}
-                    setState={setData}
-                />
-                <ButtonColored childIsLink={false} onClick={handleSave}>
-                    Uložit
-                </ButtonColored>
-            </div>
-        );
-    } else {
-        return (
-            <Navigate to={'/admin/pages'} />
-        );
-    }
+  if (page === 'trends') {
+    if (!loaded) return <div>Loading...</div>;
+    return (
+      <div className={'adminPagesEditPage'}>
+        <AdminHeader />
+        <RichTextInput
+          label={'Trends in Civic Tech (CS):'}
+          name={'contentCs'}
+          state={data}
+          setState={setData}
+        />
+        <RichTextInput
+          label={'Trends in Civic Tech (EN):'}
+          name={'contentEn'}
+          state={data}
+          setState={setData}
+        />
+        <ButtonColored childIsLink={false} onClick={handleSave}>
+          Uložit
+        </ButtonColored>
+      </div>
+    );
+  } else {
+    return <Navigate to={'/admin/pages'} />;
+  }
 };
 
 export default AdminPagesEditPage;

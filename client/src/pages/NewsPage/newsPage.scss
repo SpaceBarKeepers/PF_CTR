@@ -4,14 +4,12 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  background-image: url('../../assets/bg-earth.png');
-  background-size: cover;
-  background-position: center center;
 
   &__tags {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+    margin: 24px 0;
 
     &Tag {
       border: 2px solid transparent;
@@ -24,8 +22,12 @@
       letter-spacing: 2px;
       text-wrap: nowrap;
 
-      &--active {
-        border: 2px dashed colors.$color-black;
+      &--active,
+      &:hover {
+        cursor: pointer;
+        border: 2px solid colors.$color-orange;
+        background: white;
+        color: colors.$color-orange;
       }
     }
 
@@ -40,8 +42,12 @@
       letter-spacing: 2px;
       text-wrap: nowrap;
 
-      &--active {
-        border: 2px dashed colors.$color-black;
+      &--active,
+      &:hover {
+        cursor: pointer;
+        border: 2px solid colors.$color-green;
+        color: colors.$color-green;
+        background: white;
       }
     }
   }

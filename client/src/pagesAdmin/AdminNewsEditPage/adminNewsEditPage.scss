@@ -1,6 +1,6 @@
 .adminNewsEditPage {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
   &__language {
     margin-top: 20px;
@@ -17,11 +17,22 @@
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
+
+    & .tag {
+      font-family: 'Roboto Condensed', Arial, sans-serif;
+      font-size: 1rem;
+    }
   }
 
   h4 {
-    font-family: dharmaRegular, Arial, sans-serif;
-    font-size: 32px;
+    font-family: 'Roboto Condensed', Arial, sans-serif;
+    font-size: 2rem;
     margin: 0;
+  }
+  label {
+    font-family: 'Roboto Condensed', Arial, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 4px;
   }
 }

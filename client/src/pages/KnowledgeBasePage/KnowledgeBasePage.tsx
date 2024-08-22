@@ -41,7 +41,7 @@ const KnowledgeBasePage = () => {
     return (
         <div className={'knowledgeBasePage'}>
             <Header />
-            <div className={'knowledgeBasePage__container'}>
+            <main className={'knowledgeBasePage__container'}>
                 <FeaturedArticlesHeader articles={featuredKnowledgeBase} slug={"knowledge-base"} />
                 <div className={'knowledgeBasePage__articleContainer'}>
                     {knowledgeBase
@@ -62,7 +62,7 @@ const KnowledgeBasePage = () => {
                             </Link>
                         ))}
                 </div>
-            </div>
+            </main>
         </div>
     );
 };
