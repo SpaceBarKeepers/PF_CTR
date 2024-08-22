@@ -1,4 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Tools {
@@ -23,22 +29,22 @@ export class Tools {
   @Column({ type: 'varchar', array: true, default: [] })
   featuresCs: string[];
 
-  @Column({ type: 'varchar', length: 800, default: '' })
+  @Column({ type: 'varchar', length: 200, default: '' })
   dataProtectionEn: string;
 
-  @Column({ type: 'varchar', length: 800, default: '' })
+  @Column({ type: 'varchar', length: 200, default: '' })
   dataProtectionCs: string;
 
-  @Column({ type: 'varchar', length: 800, default: '' })
+  @Column({ type: 'varchar', length: 200, default: '' })
   authenticationEn: string;
 
-  @Column({ type: 'varchar', length: 800, default: '' })
+  @Column({ type: 'varchar', length: 200, default: '' })
   authenticationCs: string;
 
-  @Column({ type: 'varchar', length: 800, default: '' })
+  @Column({ type: 'varchar', length: 300, default: '' })
   nextProductUpdateEn: string;
 
-  @Column({ type: 'varchar', length: 800, default: '' })
+  @Column({ type: 'varchar', length: 300, default: '' })
   nextProductUpdateCs: string;
 
   @Column({ type: 'varchar', array: true, default: [] })
@@ -47,7 +53,7 @@ export class Tools {
   @Column({ type: 'varchar', array: true, default: [] })
   feedCs: string[];
 
-  @Column({ type: 'varchar', array: true, default: [] })
+  @Column({ type: 'int2', array: true, default: [] })
   accessibilityTag: number[];
 
   @Column({ type: 'varchar', length: 100, default: '' })
@@ -56,7 +62,7 @@ export class Tools {
   @Column({ type: 'varchar', length: 100, default: '' })
   noOfClients: string;
 
-  @Column({ type: 'varchar', length: 800, default: '' })
+  @Column({ type: 'varchar', length: 300, default: '' })
   team: string;
 
   @Column({ type: 'varchar', length: 100, default: '' })
@@ -71,13 +77,13 @@ export class Tools {
   @Column({ type: 'varchar', array: true, default: [] })
   countries: string[];
 
-  @Column({ type: 'varchar', length: 800, default: '' })
+  @Column({ type: 'varchar', length: 300, default: '' })
   partners: string;
 
-  @Column({ type: 'varchar', array: true, default: [] })
+  @Column({ type: 'int2', array: true, default: [] })
   socialPositioningTag: number[];
 
-  @Column({ type: 'varchar', array: true, default: [] })
+  @Column({ type: 'int2', array: true, default: [] })
   featureTag: number[];
 
   // @ManyToMany(() => Tools, { eager: true })
