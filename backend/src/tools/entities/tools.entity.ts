@@ -48,7 +48,7 @@ export class Tools {
   feedCs: string[];
 
   @Column({ type: 'varchar', array: true, default: [] })
-  accessibilityTag: number[];
+  accessibilityTag: string[];
 
   @Column({ type: 'varchar', length: 100, default: '' })
   established: string;
@@ -75,10 +75,10 @@ export class Tools {
   partners: string;
 
   @Column({ type: 'varchar', array: true, default: [] })
-  socialPositioningTag: number[];
+  socialPositioningTag: string[];
 
   @Column({ type: 'varchar', array: true, default: [] })
-  featureTag: number[];
+  featureTag: string[];
 
   // @ManyToMany(() => Tools, { eager: true })
   // @JoinTable()
