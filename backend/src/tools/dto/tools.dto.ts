@@ -47,7 +47,7 @@ export class ToolsDto {
   feedCs: string[];
 
   @IsArray()
-  accessibilityTag: number[];
+  accessibilityTag: string[];
 
   @IsString()
   established: string;
@@ -74,10 +74,10 @@ export class ToolsDto {
   partners: string;
 
   @IsArray()
-  socialPositioningTag: number[];
+  socialPositioningTag: string[];
 
   @IsArray()
-  featureTag: number[];
+  featureTag: string[];
 
   @IsArray()
   similarTools: Tools[];

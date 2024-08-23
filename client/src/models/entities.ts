@@ -143,7 +143,7 @@ export interface ToolEntity {
     nextProductUpdateCs: string;
     feedEn: string[];
     feedCs: string[];
-    accessibilityTag: number[];
+    accessibilityTag: string[];
     established: string;
     noOfClients: string;
     team: string;
@@ -152,8 +152,8 @@ export interface ToolEntity {
     web: string;
     countries: string[];
     partners: string;
-    socialPositioningTag: number[];
-    featureTag: number[];
+    socialPositioningTag: string[];
+    featureTag: string[];
     similarTools: ToolEntity[];
 }
 
@@ -179,9 +179,9 @@ export interface ToolInterface {
     web: string;
     countries: string[];
     partners: string;
-    accessibilityTag: number[];
-    socialPositioningTag: number[];
-    featureTag: number[];
+    accessibilityTag: string[];
+    socialPositioningTag: string[];
+    featureTag: string[];
     similarTools: ToolEntity[];
 }
 

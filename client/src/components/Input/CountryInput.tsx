@@ -15,7 +15,6 @@ const CountryInput = ({ label, state, setState, name }: Props) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setInputValue(value);
-        setState(value);
 
         // Filter options based on the input value
         if (value.length > 0) {
@@ -30,7 +29,10 @@ const CountryInput = ({ label, state, setState, name }: Props) => {
 
     const handleSuggestionClick = (suggestion: string) => {
         setInputValue("");
-        setState((prev: any) => ({ ...prev, [name]: [...(prev[name] || []), suggestion] }));
+        setState((prev: any) => {
+            console.log(state, prev);
+            return { ...prev, [name]: [...(prev[name] || []), suggestion] };
+        });
         setSuggestions([]);
     };
 
