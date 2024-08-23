@@ -10,6 +10,9 @@ import ArrayTextInput from '../../components/Input/ArrayTextInput';
 import './adminToolsEditPage.scss';
 import Image from '../../components/Input/Image';
 import CountryInput from '../../components/Input/CountryInput';
+import { accessibilityTagsIntl, geotagsIntl, socialTagsIntl } from '../../models/tag';
+import GeoTag from '../../components/Tag/GeoTag';
+import { useIntl } from 'react-intl';
 
 const AdminToolsEditPage = () => {
     const [data, setData] = useState<ToolEntity>({} as ToolEntity);
@@ -17,6 +20,7 @@ const AdminToolsEditPage = () => {
     const { id } = useParams();
     const getToken = useSilentAdminTokenRefresh();
     const navigate = useNavigate();
+    const intl = useIntl();
 
     useEffect(() => {
         if (!id) {
@@ -65,12 +69,33 @@ const AdminToolsEditPage = () => {
         }
     };
 
+    const handleAccessibilityTagClick = (tag: string) => () => {
+        setData((prev) => {
+            if (prev.accessibilityTag?.includes(tag)) {
+                return { ...prev, accessibilityTag: prev.accessibilityTag.filter((t) => t !== tag) };
+            } else {
+                return { ...prev, accessibilityTag: [...(prev.accessibilityTag || []), tag] };
+            }
+        });
+    };
+
+    const handleSocialTagClick = (tag: string) => () => {
+        setData((prev) => {
+            if (prev.socialPositioningTag?.includes(tag)) {
+                return { ...prev, socialPositioningTag: prev.socialPositioningTag.filter((t) => t !== tag) };
+            } else {
+                return { ...prev, socialPositioningTag: [...(prev.socialPositioningTag || []), tag] };
+            }
+        });
+    };
+
+
     if (!loaded) return (<div>Loading...</div>);
     return (
         <div className={'adminToolsEditPage'}>
             <AdminHeader />
             <Input label={'Tool name: '} state={data} setState={setData} name={'toolsName'} />
-            <Image label={"Logo: "} state={data} setState={setData} name={"logo"} />
+            <Image label={'Logo: '} state={data} setState={setData} name={'logo'} />
             <div className={'adminToolsEditPage__dualLangBox'}>
                 <Input label={'Description EN: '} state={data} setState={setData} name={'descEn'} />
                 <Input label={'Popis CS: '} state={data} setState={setData} name={'descCS'} />
@@ -105,7 +130,28 @@ const AdminToolsEditPage = () => {
             <Input label={'Team: '} state={data} setState={setData} name={'team'} />
             <CountryInput label={'Countries: '} state={data} setState={setData} name={'countries'} />
             <Input label={'Partners: '} state={data} setState={setData} name={'partners'} />
-            {/*// TODO: Accesibility tag.ts*/}
+            <div className={'adminToolsEditPage__tagContainer'}>
+                {accessibilityTagsIntl.map((tag) => (
+                    <GeoTag
+                        key={tag.value}
+                        label={intl.formatMessage({ id: tag.label, defaultMessage: tag.defaultMessage })}
+                        onClick={handleAccessibilityTagClick}
+                        selected={data.accessibilityTag?.includes(tag.value)}
+                        value={tag.value}
+                    />
+                ))}
+            </div>
+            <div className={'adminToolsEditPage__tagContainer'}>
+                {socialTagsIntl.map((tag) => (
+                    <GeoTag
+                        key={tag.value}
+                        label={intl.formatMessage({ id: tag.label, defaultMessage: tag.defaultMessage })}
+                        onClick={handleSocialTagClick}
+                        selected={data.socialPositioningTag?.includes(tag.value)}
+                        value={tag.value}
+                    />
+                ))}
+            </div>
             {/*// TODO: Social positioning tag.ts*/}
             {/*// TODO: Similar tools*/}
 
