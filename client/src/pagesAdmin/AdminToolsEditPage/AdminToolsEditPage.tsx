@@ -10,7 +10,7 @@ import ArrayTextInput from '../../components/Input/ArrayTextInput';
 import './adminToolsEditPage.scss';
 import Image from '../../components/Input/Image';
 import CountryInput from '../../components/Input/CountryInput';
-import { accessibilityTagsIntl, geotagsIntl, socialTagsIntl } from '../../models/tag';
+import { accessibilityTagsIntl, socialTagsIntl } from '../../models/tag';
 import GeoTag from '../../components/Tag/GeoTag';
 import { useIntl } from 'react-intl';
 

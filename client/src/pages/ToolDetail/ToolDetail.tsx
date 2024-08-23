@@ -4,12 +4,11 @@ import { getToolsById } from '../../api/tools';
 import { ToolEntity } from '../../models/tools';
 import Header from '../../components/Header/Header';
 import { accessibilityTagsIntl, featureTagIntl, socialTagsIntl } from '../../models/tag';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 const ToolDetail = () => {
     const [tool, setTool] = useState<ToolEntity>({} as ToolEntity);
     const { id } = useParams();
-    const intl = useIntl();
 
     useEffect(() => {
         if (!id) return;

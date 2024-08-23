@@ -179,9 +179,9 @@ export interface ToolInterface {
     web: string;
     countries: string[];
     partners: string;
-    accessibilityTag: number[];
-    socialPositioningTag: number[];
-    featureTag: number[];
+    accessibilityTag: string[];
+    socialPositioningTag: string[];
+    featureTag: string[];
     similarTools: ToolEntity[];
 }
 
