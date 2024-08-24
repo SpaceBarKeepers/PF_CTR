@@ -16,8 +16,12 @@ const Calendar = () => {
         const currentMonth = now.getMonth() + 1; // JavaScript months are 0-indexed
         const currentYear = now.getFullYear();
 
+        type GroupedEvents = {
+            [key: string]: EventEntity[];
+        };
+
         // Filter events by year and month
-        const groupedEvents = events.reduce((acc, event) => {
+        const groupedEvents: GroupedEvents = events.reduce<GroupedEvents>((acc, event) => {
             const eventDate = new Date(event.eventAt);
             const eventMonth = eventDate.getMonth() + 1;
             const eventYear = eventDate.getFullYear();
@@ -81,14 +85,14 @@ const Calendar = () => {
         }
 
         // Helper function to add months to a date
-        function addMonths(month, year, numMonths) {
+        function addMonths(month: number, year: number, numMonths: number) {
             const date = new Date(year, month - 1); // JS months are 0-based
             date.setMonth(date.getMonth() + numMonths);
             return [date.getMonth() + 1, date.getFullYear()]; // Return as [month, year]
         }
 
         // Helper function to generate the range of months
-        function generateMonths(startMonth, startYear, endMonth, endYear) {
+        function generateMonths(startMonth: number, startYear: number, endMonth: number, endYear: number) {
             const months = [];
             let [currentMonth, currentYear] = [startMonth, startYear];
             while (currentYear < endYear || (currentYear === endYear && currentMonth <= endMonth)) {
@@ -128,7 +132,7 @@ const Calendar = () => {
                 });
                 setSelectedMonth(findRelevantMonth(onlyEnglishEvents));
             })
-            .catch((error) => console.error);
+            .catch((error: any) => console.log(error));
     }, [findRelevantMonth]);
 
     useEffect(() => {
