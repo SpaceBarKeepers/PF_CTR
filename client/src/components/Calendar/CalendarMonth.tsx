@@ -1,5 +1,5 @@
 import { EventEntity } from '../../models/entities';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import CalendarDay from './CalendarDay';
 import './calendarMonth.scss';
 import { getMonthName } from '../../lib/getMonthName';

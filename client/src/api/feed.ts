@@ -1,9 +1,9 @@
 import {apiRoot} from "./apiRoot";
-import { EventEntity } from '../models/entities';
+import { FeedEntity } from '../models/entities';
 
-export const getEventsAll = async () => {
+export const getFeedAll = async () => {
     try {
-        const response = await fetch(`${apiRoot}/events/all`, {
+        const response = await fetch(`${apiRoot}/feed/all`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -21,9 +21,9 @@ export const getEventsAll = async () => {
     }
 }
 
-export const getEventById = async (id: string) => {
+export const getFeedById = async (id: string) => {
     try {
-        const response = await fetch(`${apiRoot}/events/${id}`, {
+        const response = await fetch(`${apiRoot}/feed/${id}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -41,9 +41,9 @@ export const getEventById = async (id: string) => {
     }
 }
 
-export const createEvent = async (adminToken: string, data: EventEntity) => {
+export const createFeed = async (adminToken: string, data: FeedEntity) => {
     try {
-        const response = await fetch(`${apiRoot}/events`, {
+        const response = await fetch(`${apiRoot}/feed`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -67,9 +67,9 @@ export const createEvent = async (adminToken: string, data: EventEntity) => {
     }
 }
 
-export const updateEvent = async (adminToken: string, data: EventEntity) => {
+export const updateFeed = async (adminToken: string, data: FeedEntity) => {
     try {
-        const response = await fetch(`${apiRoot}/events`, {
+        const response = await fetch(`${apiRoot}/feed`, {
             method: "PATCH",
             credentials: "include",
             headers: {
@@ -93,9 +93,9 @@ export const updateEvent = async (adminToken: string, data: EventEntity) => {
     }
 }
 
-export const deleteEventById = async (adminToken: string, id: string) => {
+export const deleteFeedById = async (adminToken: string, id: string) => {
     try {
-        const response = await fetch(`${apiRoot}/events/${id}`, {
+        const response = await fetch(`${apiRoot}/feed/${id}`, {
             method: "DELETE",
             credentials: "include",
             headers: {

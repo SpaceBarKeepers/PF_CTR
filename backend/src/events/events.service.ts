@@ -32,7 +32,7 @@ export class EventsService {
     return this.eventsRepository.findOneBy({ id });
   }
 
-  async update(event: Events) {
+  async update(event: EventsDto) {
     return this.eventsRepository.save(event);
   }
 

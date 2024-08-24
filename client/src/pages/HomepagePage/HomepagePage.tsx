@@ -7,9 +7,13 @@ import { NewsEntity } from '../../models/news';
 import ArticleRow from '../../components/ArticleRow/ArticleRow';
 import Calendar from '../../components/Calendar/Calendar';
 import { useNavigate } from 'react-router-dom';
+import { FeedEntity } from '../../models/entities';
+import { getFeedAll } from '../../api/feed';
+import { dateStringToDate, formatDateToDDMMYYYY } from '../../lib/dateConversions';
 
 const HomepagePage = () => {
     const [news, setNews] = useState<NewsEntity[]>([]);
+    const [feed, setFeed] = useState<FeedEntity[]>([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,8 +24,26 @@ const HomepagePage = () => {
             .catch((error) => console.error(error));
     }, []);
 
+    useEffect(() => {
+        getFeedAll()
+            .then((response) => {
+                setFeed(response.sort((a: FeedEntity, b:FeedEntity) => new Date(b.date).getTime() - new Date(a.date).getTime()));
+            })
+            .catch((error) => console.error(error));
+    }, []);
+
     const handleCardClick = (path: string) => () => {
         navigate(path);
+    }
+
+    const formatUrl = (url:string) => {
+        // Check if the URL starts with 'http://' or 'https://'
+        if (url.startsWith('http://') || url.startsWith('https://')) {
+            return url;
+        } else {
+            // Prepend 'https://' if it does not
+            return 'https://' + url;
+        }
     }
 
     return (
@@ -41,7 +63,15 @@ const HomepagePage = () => {
                             />
                         </div>
                         <div className={'homepage__topTopFeed'}>
-                            Feed
+                            <h3>Feed</h3>
+                            {feed.length && feed.map((item: FeedEntity) => (
+                                <div key={item.id} className={'homepage__topTopFeedItem'}>
+                                    <p><b>{formatDateToDDMMYYYY(dateStringToDate(item.date))}</b> - {item.url
+                                        ? <a href={formatUrl(item.url)}>{item.titleEn}</a>
+                                        : item.titleEn
+                                    }</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                     <div className={'homepage__topBottom'}>

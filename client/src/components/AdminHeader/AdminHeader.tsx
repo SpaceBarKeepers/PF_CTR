@@ -35,6 +35,9 @@ const AdminHeader = () => {
             <Link to={'/admin/tools'}>
                 <FormattedMessage id={'label_tools'} defaultMessage={'Tools'} />
             </Link>
+                <Link to={'/admin/feed'}>
+                    <FormattedMessage id={'label_feed'} defaultMessage={'Feed'} />
+                </Link>
             </nav>
             <div className={"adminHeader__buttons"}>
                 <ButtonColored childIsLink={false} onClick={handleLogout}>

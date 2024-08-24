@@ -195,3 +195,11 @@ export interface CreateUserInterface {
     address: string;
     shippingCode: string;
 }
+
+export interface FeedEntity {
+    id: string;
+    titleCs: string;
+    titleEn: string;
+    date: string;
+    url: string;
+}
