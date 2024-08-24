@@ -107,7 +107,7 @@ const CataloguePage = () => {
           <ButtonColored
             onClick={handleClickExpandFuntionalityFilter}
             childIsLink={false}
-            type={'secondary'}
+            buttonType={'secondary'}
           >
             {functionalityFilterExpanded ? 'Show less' : 'Show more'}
           </ButtonColored>

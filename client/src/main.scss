@@ -11,15 +11,10 @@ html {
 }
 
 body {
-  padding: 21px 20px;
   margin: 0;
   overflow-x: hidden;
   max-width: 1600px;
   width: 100%;
-
-  @media (min-width: 880px) {
-    padding: 21px 70px;
-  }
 }
 main {
   background: linear-gradient(

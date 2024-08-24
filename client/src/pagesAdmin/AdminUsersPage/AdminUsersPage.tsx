@@ -150,7 +150,7 @@ const AdminUsersPage = () => {
         <div className={'adminUsersPage'}>
             <AdminHeader />
             <ButtonColored
-                type={'secondary'}
+                buttonType={'secondary'}
                 childIsLink={false}
                 onClick={handleOpenDialog}
             >
@@ -213,7 +213,7 @@ const AdminUsersPage = () => {
                         {validationError}
                     </div>
                     <div className={'adminUsersPage__dialogActions'}>
-                        <ButtonColored onClick={handleCloseDialog} type={'secondary'} childIsLink={false}>
+                        <ButtonColored onClick={handleCloseDialog} buttonType={'secondary'} childIsLink={false}>
                             Cancel
                         </ButtonColored>
                         <ButtonColored onClick={handleAddUser} childIsLink={false} disabled={!!validationError}>
