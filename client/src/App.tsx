@@ -34,6 +34,8 @@ import ContactPageLogged from './pages/ContactPageLogged/ContactPageLogged';
 import ArticlePage from './pages/ArticlePage/ArticlePage';
 import { ARTICLE_TYPE_ENUM } from './models/enums';
 import ToolDetail from './pages/ToolDetail/ToolDetail';
+import AdminFeedPage from './pagesAdmin/AdminFeedPage/AdminFeedPage';
+import AdminFeedEditPage from './pagesAdmin/AdminFeedEditPage/AdminFeedEditPage';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -164,6 +166,18 @@ function App() {
         {
             path: '/admin/events',
             element: adminToken ? <AdminEventsPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/feed/new',
+            element: adminToken ? <AdminFeedEditPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/feed/:id',
+            element: adminToken ? <AdminFeedEditPage /> : <AdminLoginPage/>,
+        },
+        {
+            path: '/admin/feed',
+            element: adminToken ? <AdminFeedPage /> : <AdminLoginPage/>,
         },
         {
             path: '/admin/tools/new',

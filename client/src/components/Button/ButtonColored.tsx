@@ -9,14 +9,15 @@ type Props = {
     onClick?: () => void,
     size?: "normal" | "large"
     style?: Record<string, string>
-    type?: "primary" | "secondary",
+    buttonType?: "primary" | "secondary",
+    type?: "button" | "submit" | "reset"
 }
 
-const ButtonColored = ({ children, childIsLink = true, disabled = false, id, onClick, size = "normal", style, type = "primary" }: Props) => {
+const ButtonColored = ({ children, childIsLink = true, disabled = false, id, onClick, size = "normal", style, buttonType = "primary", type }: Props) => {
     return (
         <button
-            className={`button${type === "secondary" ? " buttonSecondary" : " buttonPrimary"}${size === "large" ? " buttonLarge" : ""}${childIsLink ? "" : " buttonWithoutLink"}`}
-            {...{disabled, id, onClick, style}}
+            className={`button${buttonType === "secondary" ? " buttonSecondary" : " buttonPrimary"}${size === "large" ? " buttonLarge" : ""}${childIsLink ? "" : " buttonWithoutLink"}`}
+            {...{disabled, id, onClick, style, type}}
         >
             {children}
         </button>

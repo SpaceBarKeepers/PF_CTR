@@ -1,5 +1,5 @@
 import {apiRoot} from "./apiRoot";
-import { EventEntity, EventInterface } from '../models/entities';
+import { EventEntity } from '../models/entities';
 
 export const getEventsAll = async () => {
     try {
@@ -41,7 +41,7 @@ export const getEventById = async (id: string) => {
     }
 }
 
-export const createEvent = async (adminToken: string, data: EventInterface) => {
+export const createEvent = async (adminToken: string, data: EventEntity) => {
     try {
         const response = await fetch(`${apiRoot}/events`, {
             method: "POST",

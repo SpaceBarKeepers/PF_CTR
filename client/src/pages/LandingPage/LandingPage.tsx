@@ -8,7 +8,6 @@ import { useAtomValue } from 'jotai/index';
 import { LANGUAGE_ENUM } from '../../models/enums';
 import LandingPageCard from '../../components/LandingPageCard/LandingPageCard';
 import FaqRow from '../../components/FaqRow/FaqRow';
-import Footer from '../../components/Footer/Footer';
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
@@ -505,7 +504,6 @@ const LandingPage = () => {
                         />
                     </div>
                 </section>
-                <Footer />
             </div>
         </LayoutPublicWrapper>
     );

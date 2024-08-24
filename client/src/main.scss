@@ -11,28 +11,12 @@ html {
 }
 
 body {
-  padding: 21px 20px;
   margin: 0;
   overflow-x: hidden;
   max-width: 1600px;
   width: 100%;
+}
 
-  @media (min-width: 880px) {
-    padding: 21px 70px;
-  }
-}
-main {
-  background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0.97) 10%,
-      rgba(255, 255, 255, 0.95) 50%,
-      rgba(255, 255, 255, 0.97) 90%,
-      rgba(255, 255, 255, 1) 100%
-    ),
-    url('./assets/bg-earth.png') no-repeat center center fixed;
-  background-size: 150%;
-}
 p,
 td,
 span,

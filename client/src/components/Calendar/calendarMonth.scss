@@ -1,0 +1,36 @@
+@use "../../partials/colors";
+
+.calendarMonth {
+  align-items: center;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px;
+
+  &__name {
+    border-radius: 4px;
+    padding: 5.5px 8px;
+
+    &--selected {
+      color: colors.$color-white;
+      background: colors.$color-orange;
+    }
+  }
+
+  &__weeks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &Week {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  &:hover {
+    background: #fafafa;
+  }
+}

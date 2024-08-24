@@ -1,0 +1,82 @@
+@use "../../partials/colors";
+
+.calendar {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 11px;
+  display: flex;
+  height: 400px;
+  gap: 25px;
+
+  &__months {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding: 32px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 4px; /* Width of the scrollbar */
+      height: 4px; /* Height of the scrollbar (for horizontal scrollbar) */
+      margin-right: 32px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #B6B6B6;
+      border-radius: 10px; /* Optional: for rounded corners */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: colors.$color-orange; /* Color of the scrollbar thumb */
+      border-radius: 10px; /* Optional: for rounded corners */
+    }
+  }
+
+  &__events {
+    box-sizing: border-box;
+    background: colors.$color-orange;
+    color: colors.$color-white;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    flex-shrink: 0;
+    padding: 25px;
+    overflow: auto;
+
+    &Event {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      &Head {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &Title {
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      hr {
+        width: 100%;
+        margin: 24px 0 0 0;
+      }
+    }
+    &::-webkit-scrollbar {
+      width: 4px; /* Width of the scrollbar */
+      height: 4px; /* Height of the scrollbar (for horizontal scrollbar) */
+      margin-right: 32px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #B6B6B6;
+      border-radius: 10px; /* Optional: for rounded corners */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: colors.$color-orange; /* Color of the scrollbar thumb */
+      border-radius: 10px; /* Optional: for rounded corners */
+      border-left: 1px solid #B6B6B6;
+    }
+  }
+}

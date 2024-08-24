@@ -42,7 +42,7 @@ const LandingPageHeader = () => {
                                 <FormattedMessage id={'label_buy'} defaultMessage={'Buy Report'} />
                             </a>
                         </ButtonColored>
-                        {!FLAG_PRESALE && <ButtonColored type={'secondary'}>
+                        {!FLAG_PRESALE && <ButtonColored buttonType={'secondary'}>
                           <Link to={'/login'}>
                             <FormattedMessage id={'label_login'} defaultMessage={'Login'} />
                           </Link>
