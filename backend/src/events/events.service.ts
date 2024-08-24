@@ -19,6 +19,7 @@ export class EventsService {
     createdEvent.titleEn = event.titleEn;
     createdEvent.eventAt = event.eventAt;
     createdEvent.eventTimeAt = event.eventTimeAt;
+    createdEvent.location = event.location;
 
     return this.eventsRepository.save(createdEvent);
   }

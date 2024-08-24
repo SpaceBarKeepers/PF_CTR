@@ -115,8 +115,9 @@ export interface EventEntity {
     titleCs: string;
     publishedEn: boolean;
     titleEn: string;
-    eventAt: Date;
+    eventAt: string;
     eventTimeAt: string;
+    location: string;
 }
 
 export interface EventInterface {
@@ -126,6 +127,7 @@ export interface EventInterface {
     titleEn: string;
     eventAt: Date;
     eventTimeAt: string;
+    location: string;
 }
 
 export interface ToolEntity {

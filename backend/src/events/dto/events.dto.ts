@@ -29,4 +29,7 @@ export class EventsDto {
 
   @IsString()
   eventTimeAt: string;
+
+  @IsString()
+  location: string;
 }

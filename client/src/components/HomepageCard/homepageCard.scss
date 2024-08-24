@@ -1,0 +1,46 @@
+.homepageCard {
+  border: 3px solid;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 70px 40px 40px 40px;
+  position: relative;
+  transition: all 0.3s ease;
+
+  &__icon {
+    border-radius: 4px;
+    left: 50px;
+    top: -17%;
+    padding: 24px;
+    position: absolute;
+
+    img {
+      height: 37px;
+    }
+  }
+
+  h2 {
+    margin-bottom: 8px;
+  }
+
+  p {
+    max-width: 260px;
+  }
+
+  &:hover {
+    scale: 1.01;
+  }
+}
+
+.homepageCard--large {
+  .homepageCard__icon {
+    top: -26%;
+
+    img {
+      height: 70px;
+    }
+  }
+
+  p {
+    max-width: 500px;
+  }
+}

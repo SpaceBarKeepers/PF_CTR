@@ -22,4 +22,7 @@ export class Events {
 
   @Column({ type: 'varchar', nullable: true })
   eventTimeAt: string;
+
+  @Column({ type: 'varchar', nullable: true })
+  location: string;
 }
