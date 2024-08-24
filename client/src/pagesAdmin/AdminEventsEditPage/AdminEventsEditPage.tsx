@@ -97,6 +97,7 @@ const AdminEventsEditPage = () => {
             }
             <DateInput label={'Datum: '} state={data} setState={setData} name={'eventAt'} />
             <TimeInput label={'Čas: '} state={data} setState={setData} name={'eventTimeAt'} />
+            <Input label={'Lokace: '} state={data} setState={setData} name={'location'} />
             <ButtonColored childIsLink={false} onClick={handleSave}>
                 Uložit
             </ButtonColored>

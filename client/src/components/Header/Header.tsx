@@ -53,7 +53,7 @@ const Header = () => {
                 </Link>
             </nav>
             <div>
-                <ButtonColored onClick={handleClickAccount} type={'secondary'}>
+                <ButtonColored onClick={handleClickAccount} buttonType={'secondary'}>
                     <Link to={'/account'}>
                         <FormattedMessage
                             id={'label_your_account'}

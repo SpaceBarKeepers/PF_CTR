@@ -19,6 +19,7 @@ export class EventsService {
     createdEvent.titleEn = event.titleEn;
     createdEvent.eventAt = event.eventAt;
     createdEvent.eventTimeAt = event.eventTimeAt;
+    createdEvent.location = event.location;
 
     return this.eventsRepository.save(createdEvent);
   }
@@ -31,7 +32,7 @@ export class EventsService {
     return this.eventsRepository.findOneBy({ id });
   }
 
-  async update(event: Events) {
+  async update(event: EventsDto) {
     return this.eventsRepository.save(event);
   }
 

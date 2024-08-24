@@ -50,7 +50,7 @@ export class EventsController {
   @UseGuards(JwtAdminGuard)
   @Patch('')
   @HttpCode(204)
-  async updateEvents(@Body() body: Events) {
+  async updateEvents(@Body() body: EventsDto) {
     try {
       await this.eventsService.update(body);
     } catch (e) {

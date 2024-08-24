@@ -23,6 +23,8 @@ import { Tools } from './tools/entities/tools.entity';
 import { PaywallModule } from './paywall/paywall.module';
 import { EmailModule } from './email/email.module';
 import { FileModule } from './file/file.module';
+import { Feed } from './feed/entities/feed.entity';
+import { FeedModule } from './feed/feed.module';
 
 dotenv.config();
 
@@ -44,7 +46,7 @@ dotenv.config();
       port: 25060,
       password: process.env.DB_PASSWORD,
       username: process.env.DB_USERNAME,
-      entities: [User, KnowledgeBase, Tag, News, Page, Events, Tools],
+      entities: [User, KnowledgeBase, Tag, News, Page, Events, Tools, Feed],
       database: process.env.DB_NAME,
       synchronize: true,
       logging: true,
@@ -68,6 +70,7 @@ dotenv.config();
     PaywallModule,
     EmailModule,
     FileModule,
+    FeedModule,
   ],
   controllers: [AppController],
   providers: [AppService],

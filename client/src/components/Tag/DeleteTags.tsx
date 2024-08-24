@@ -80,7 +80,7 @@ const DeleteTags = ({ updateTags }: Props) => {
                     ))}
                 </div>
                 <div className={'dialog__buttonContainer'}>
-                    <ButtonColored onClick={handleCloseDialog} type={'secondary'}
+                    <ButtonColored onClick={handleCloseDialog} buttonType={'secondary'}
                                    childIsLink={false}>Zrušit</ButtonColored>
                     <ButtonColored onClick={handleDeleteTags} childIsLink={false}>Smazat</ButtonColored>
                 </div>
