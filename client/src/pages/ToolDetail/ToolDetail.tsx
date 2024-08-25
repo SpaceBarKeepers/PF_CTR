@@ -23,6 +23,16 @@ const ToolDetail = () => {
             });
     }, [id]);
 
+    const formatUrl = (url:string) => {
+        // Check if the URL starts with 'http://' or 'https://'
+        if (url.startsWith('http://') || url.startsWith('https://')) {
+            return url;
+        } else {
+            // Prepend 'https://' if it does not
+            return 'https://' + url;
+        }
+    }
+
     return (
         <div className={'toolDetail'}>
             <Header />
@@ -130,16 +140,16 @@ const ToolDetail = () => {
                             </div>
                             <div className={'toolDetail__toolDetailsRightContact'}>
                                 <img src={'/icons/icon_web.svg'} alt={''} />
-                                <p>{tool.web ? tool.web : "N/A"}</p>
+                                <p>{tool.web ? <a href={formatUrl(tool.web)}>{tool.web}</a> : "N/A"}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                {tool.feedEn && (
+                {!!tool.feedEn.length && (
                     <div className={'toolDetail__feed'}>
                         <h2>Feed</h2>
                         <div className={'toolDetail__feedContainer'}>
-                            {tool.feedEn?.map((feed, index) => {
+                            {tool.feedEn.map((feed, index) => {
                                 return <p key={index}>{feed}</p>;
                             })}
                         </div>
