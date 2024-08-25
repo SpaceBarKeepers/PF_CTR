@@ -81,13 +81,22 @@ h4 {
     max-width: 100%;
     margin: 24px 0;
   }
+
   p,
   span {
     font-size: 18px !important;
     line-height: 1.5;
   }
+
+  pre span {;
+    display: block;
+    width: 0;
+    overflow: hidden;
+  }
 }
 
 .breadcrumps {
   margin: 24px 0 16px 0;
+  display: flex;
+  gap: 12px;
 }

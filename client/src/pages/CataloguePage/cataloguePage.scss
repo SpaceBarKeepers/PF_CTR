@@ -24,16 +24,19 @@
     }
 
     &Item {
+      align-items: center;
+      background: colors.$color-grey;
       border: 2px solid transparent;
+      color: colors.$color-black;
       display: flex;
       font-family: Arial, sans-serif;
       font-size: 18px;
-      color: colors.$color-black;
-      background: colors.$color-grey;
+      gap: 16px;
       text-transform: uppercase;
       padding: 16px;
       text-wrap: nowrap;
       border-radius: 8px;
+
 
       &--selected,
       &:hover {
@@ -45,15 +48,18 @@
   }
 
   &__searchInputs {
+    align-items: center;
     display: flex;
     background-color: colors.$color-grey;
     border-radius: 8px;
-    width: 500px;
-    padding: 16px 8px;
+    width: 900px;
     margin: 24px auto 40px auto;
 
-    & div:first-child {
-      border-right: 4px solid black;
+    .verticalLine {
+      background: black;
+      border-radius: 2px;
+      height: 70px;
+      width: 4px;
     }
   }
 
@@ -75,7 +81,7 @@
       flex-wrap: wrap;
       margin-top: 36px;
       @media (min-width: 1000px) {
-        gap: 36px;
+        gap: 32px;
       }
 
       &Item {

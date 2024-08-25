@@ -30,7 +30,6 @@ const CountryInput = ({ label, state, setState, name }: Props) => {
     const handleSuggestionClick = (suggestion: string) => {
         setInputValue("");
         setState((prev: any) => {
-            console.log(state, prev);
             return { ...prev, [name]: [...(prev[name] || []), suggestion] };
         });
         setSuggestions([]);

@@ -1,0 +1,155 @@
+@use '../../partials/colors';
+
+.toolDetail {
+  & > main > * {
+    box-sizing: border-box;
+    padding: 21px 20px;
+
+    @media (min-width: 880px) {
+      padding: 21px 70px;
+    }
+  }
+
+  .header {
+    box-sizing: border-box;
+    padding: 21px 20px 0 20px;
+
+    @media (min-width: 880px) {
+      padding: 21px 70px 0 70px;
+    }
+  }
+
+  &__head {
+    display: flex;
+    gap: 100px;
+    justify-content: space-between;
+
+
+    &Text {
+      max-width: 500px;
+
+      p {
+        font-size: 22px;
+        line-height: 30px;
+      }
+    }
+
+    img {
+      max-width: 40%;
+    }
+  }
+
+  &__featureTags {
+    background: colors.$color-blue;
+    display: flex;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    gap: 60px;
+    justify-content: space-evenly;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    flex-wrap: wrap;
+
+    &Tag {
+      align-items: center;
+      color: colors.$color-white;
+      display: flex;
+      flex-direction: column;
+      flex-basis: 20%;
+      gap: 16px;
+      text-transform: uppercase;
+      text-align: center;
+
+      img {
+        height: 64px;
+        filter: invert(1);
+      }
+    }
+  }
+
+  &__features {
+    ul {
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+      line-height: 30px;
+    }
+  }
+
+  &__toolDetails {
+    background: #F7C799;
+    font-family: Arial, sans-serif;
+
+    h4 {
+      text-wrap: nowrap;
+    }
+
+    &Container {
+      display: flex;
+      gap: 24px;
+      font-size: 18px;
+    }
+
+    &Left {
+        flex-basis: 30%;
+    }
+
+    &Center {
+      flex-basis: 30%;
+    }
+
+    &Right {
+      flex-basis: 30%;
+
+      &TagContainer {
+        display: flex;
+        gap: 16px;
+
+        &Tag {
+          display: flex;
+          flex-direction: column;
+
+          &Container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+
+            &Tag {
+              display: flex;
+              font-family: Arial, sans-serif;
+              font-size: 16px;
+              flex-direction: column;
+              gap: 16px;
+              text-transform: uppercase;
+              text-align: center;
+
+              img {
+                height: 40px;
+              }
+            }
+          }
+        }
+      }
+
+      &Contact {
+        align-items: center;
+        display: flex;
+        gap: 4px;
+
+        img {
+          width: 40px;
+        }
+      }
+    }
+  }
+
+  &__feed {
+    background: #E6E6E6;
+
+    &Container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+}

@@ -93,7 +93,7 @@ const RichTextInput = ({label, state, setState, name}: Props) => {
         "components.controls.blocktype.h5": "Nadpis 5",
         "components.controls.blocktype.h6": "Nadpis 6",
         "components.controls.blocktype.blockquote": "Citace",
-        "components.controls.blocktype.code": "Blok kódu",
+        "components.controls.blocktype.code": "Kotva",
         "components.controls.blocktype.blocktype": "Typ bloku",
         "components.controls.blocktype.normal": "Normal",
 
