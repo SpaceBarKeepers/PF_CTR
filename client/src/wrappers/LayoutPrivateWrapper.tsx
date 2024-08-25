@@ -5,13 +5,17 @@ import Header from '../components/Header/Header';
 
 type Props = {
     children: React.ReactNode
+    background?: string
 }
 
-const LayoutPublicWrapper = ({ children }: Props) => {
+const LayoutPublicWrapper = ({ background, children }: Props) => {
     return (
-        <div className={'layoutPrivateWrapper'}>
+        <div
+            className={'layoutPrivateWrapper'}
+            style={{ background: background ? `${background}` : undefined }}
+            >
             <Header />
-            <main className={"layoutPrivateWrapper__page"}>
+            <main className={'layoutPrivateWrapper__page'}>
                 {children}
             </main>
             <hr />

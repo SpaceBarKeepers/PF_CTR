@@ -1,0 +1,36 @@
+.articlePage {
+
+  &__content {
+
+    blockquote:has(+img), img + blockquote {
+      display: inline-block;
+      vertical-align: middle;
+      width: 40% !important;
+      margin: 26px 0;
+    }
+
+    blockquote + img, img:has(+blockquote) {
+      display: inline-block;
+      vertical-align: middle;
+      width: 40% !important;
+      margin: 26px 26px 26px 0;
+    }
+
+
+    blockquote {
+      background-image: url("/icons/icon_quote.svg");
+      background-repeat: no-repeat;
+      background-position: 0 10px;
+      box-sizing: border-box;
+      font-family: dharmaRegular, Arial, sans-serif;
+      font-size: 45px;
+      height: 100%;
+      padding-bottom: 80px;
+      padding-top: 80px;
+      padding-left: 80px;
+      text-align: left;
+    }
+  }
+
+
+}
