@@ -145,7 +145,7 @@ const ToolDetail = () => {
                         </div>
                     </div>
                 </div>
-                {!!tool.feedEn.length && (
+                {!!tool.feedEn?.length && (
                     <div className={'toolDetail__feed'}>
                         <h2>Feed</h2>
                         <div className={'toolDetail__feedContainer'}>
