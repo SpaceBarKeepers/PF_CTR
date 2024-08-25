@@ -17,6 +17,13 @@
   url('../assets/bg-earth.png') no-repeat center 100px fixed;
   background-size: 150%;
 
+  hr {
+    background-color: #000;
+    height: 3px;
+    width: 150%;
+    margin: 64px 0 0 -25%;
+  }
+
   @media (min-width: 880px) {
     padding: 21px 70px;
   }

@@ -5,6 +5,7 @@ import { getKnowledgeAll } from '../../api/knowledge';
 import FeaturedArticlesHeader from '../../components/FeaturedArticlesHeader/FeaturedArticlesHeader';
 import { Link } from 'react-router-dom';
 import './knowledgeBasePage.scss';
+import LayoutPrivateWrapper from '../../wrappers/LayoutPrivateWrapper';
 
 const KnowledgeBasePage = () => {
     const [knowledgeBase, setKnowledgeBase] = useState<KnowledgeBaseEntity[]>([]);
@@ -37,33 +38,34 @@ const KnowledgeBasePage = () => {
 
         fetchKnowledgeBase();
     }, []);
-    console.log(knowledgeBase, knowledgeBase.filter((knowledge: KnowledgeBaseEntity) => !featuredKnowledgeBase.some((featured: KnowledgeBaseEntity) => featured.id === knowledge.id)).sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)));
+
     return (
-        <div className={'knowledgeBasePage'}>
-            <Header />
-            <main className={'knowledgeBasePage__container'}>
-                <FeaturedArticlesHeader articles={featuredKnowledgeBase} slug={"knowledge-base"} />
-                <div className={'knowledgeBasePage__articleContainer'}>
-                    {knowledgeBase
-                        .filter((knowledge: KnowledgeBaseEntity) => !featuredKnowledgeBase.some((featured: KnowledgeBaseEntity) => featured.id === knowledge.id))
-                        .filter((knowledge: KnowledgeBaseEntity) => knowledge.publishedEn)
-                        .sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
-                        .map((knowledge: KnowledgeBaseEntity) => (
-                            <Link
-                                className={'knowledgeBasePage__articleCard'}
-                                to={`/knowledge-base/${knowledge.id}`}
-                                key={knowledge.id}
-                            >
-                                <img src={knowledge.thumbnail} alt={knowledge.titleEn} />
-                                <div className={'knowledgeBasePage__articleCardLabel'}>
-                                    <h3>{knowledge.titleEn}</h3>
-                                    <p>{knowledge.subtitleEn}</p>
-                                </div>
-                            </Link>
-                        ))}
+        <LayoutPrivateWrapper>
+            <div className={'knowledgeBasePage'}>
+                <div className={'knowledgeBasePage__container'}>
+                    <FeaturedArticlesHeader articles={featuredKnowledgeBase} slug={'knowledge-base'} />
+                    <div className={'knowledgeBasePage__articleContainer'}>
+                        {knowledgeBase
+                            .filter((knowledge: KnowledgeBaseEntity) => !featuredKnowledgeBase.some((featured: KnowledgeBaseEntity) => featured.id === knowledge.id))
+                            .filter((knowledge: KnowledgeBaseEntity) => knowledge.publishedEn)
+                            .sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
+                            .map((knowledge: KnowledgeBaseEntity) => (
+                                <Link
+                                    className={'knowledgeBasePage__articleCard'}
+                                    to={`/knowledge-base/${knowledge.id}`}
+                                    key={knowledge.id}
+                                >
+                                    <img src={knowledge.thumbnail} alt={knowledge.titleEn} />
+                                    <div className={'knowledgeBasePage__articleCardLabel'}>
+                                        <h3>{knowledge.titleEn}</h3>
+                                        <p>{knowledge.subtitleEn}</p>
+                                    </div>
+                                </Link>
+                            ))}
+                    </div>
                 </div>
-            </main>
-        </div>
+            </div>
+        </LayoutPrivateWrapper>
     );
 };
 

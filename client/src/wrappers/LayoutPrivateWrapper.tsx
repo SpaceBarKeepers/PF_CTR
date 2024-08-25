@@ -14,6 +14,7 @@ const LayoutPublicWrapper = ({ children }: Props) => {
             <main className={"layoutPrivateWrapper__page"}>
                 {children}
             </main>
+            <hr />
             <Footer />
         </div>
     );
