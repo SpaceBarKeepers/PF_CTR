@@ -6,10 +6,11 @@ type Props = {
     state: any;
     setState: Dispatch<SetStateAction<any>>
     name: string;
+    addInputInFront?: boolean;
 };
 
 
-const ArrayTextInput = ({ label, state, setState, name }: Props) => {
+const ArrayTextInput = ({ addInputInFront = false, label, state, setState, name }: Props) => {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
         setState((prev: any) => ({
@@ -22,12 +23,21 @@ const ArrayTextInput = ({ label, state, setState, name }: Props) => {
         }));
     };
 
-    const addInput = () => {
+    const addInputAfter = () => {
         setState((prev: any) => ({
             ...prev,
             [name]: [
                 ...(prev[name] || []), // If prev[name] is undefined, initialize it as an empty array
                 '',
+            ],
+        }));
+    };
+    const addInputBefore = () => {
+        setState((prev: any) => ({
+            ...prev,
+            [name]: [
+                '',
+                ...(prev[name] || []), // If prev[name] is undefined, initialize it as an empty array
             ],
         }));
     };
@@ -41,8 +51,9 @@ const ArrayTextInput = ({ label, state, setState, name }: Props) => {
     };
 
     return (
-        <label htmlFor={name} className={'inputLabel'}>
+        <label htmlFor={name} className={'inputLabel multipleInput'}>
             {label}
+            {addInputInFront && <button onClick={addInputBefore}>Add Input</button>}
             {state?.[name] && state[name].map((item: string, index: number) => (
                     <div>
                         <input key={index} value={item} type={'text'}
@@ -51,7 +62,7 @@ const ArrayTextInput = ({ label, state, setState, name }: Props) => {
                     </div>
                 ),
             )}
-            <button onClick={addInput}>Add Input</button>
+            {!addInputInFront && <button onClick={addInputAfter}>Add Input</button>}
         </label>
     );
 };

@@ -118,8 +118,8 @@ const AdminToolsEditPage = () => {
                 <Input label={'Produktový update CS: '} state={data} setState={setData} name={'nextProductUpdateCs'} />
             </div>
             <div className={'adminToolsEditPage__dualLangBox'}>
-                <ArrayTextInput label={'Feed EN: '} state={data} setState={setData} name={'feedEn'} />
-                <ArrayTextInput label={'Feed CS: '} state={data} setState={setData} name={'feedEn'} />
+                <ArrayTextInput label={'Feed EN: '} state={data} setState={setData} name={'feedEn'} addInputInFront={true} />
+                <ArrayTextInput label={'Feed CS: '} state={data} setState={setData} name={'feedCs'} addInputInFront={true} />
             </div>
             <Input label={'Established: '} state={data} setState={setData} name={'established'} />
             <Input label={'Number of clients: '} state={data} setState={setData} name={'noOfClients'} />
@@ -152,7 +152,7 @@ const AdminToolsEditPage = () => {
                     />
                 ))}
             </div>
-            {/*// TODO: Social positioning tag.ts*/}
+            {/*// TODO: Case studies*/}
             {/*// TODO: Similar tools*/}
 
             <ButtonColored childIsLink={false} onClick={handleSave}>
