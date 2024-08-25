@@ -1,4 +1,3 @@
-import Header from '../../components/Header/Header';
 import { KnowledgeBaseEntity } from '../../models/knowledge';
 import { useEffect, useState } from 'react';
 import { getKnowledgeAll } from '../../api/knowledge';

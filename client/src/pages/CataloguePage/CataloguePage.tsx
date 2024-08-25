@@ -1,4 +1,3 @@
-import Header from '../../components/Header/Header';
 import { useEffect, useState } from 'react';
 import {
     CountryFilterArray,
