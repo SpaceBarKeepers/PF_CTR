@@ -24,7 +24,9 @@
     overflow: hidden;
     text-decoration: none;
     color: colors.$color-black;
+    transition: all 0.3s ease;
     &:hover {
+      scale: 1.01;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
 

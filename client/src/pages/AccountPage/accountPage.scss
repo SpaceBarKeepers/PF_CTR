@@ -1,0 +1,50 @@
+@use "../../partials/colors";
+
+.accountPage {
+  font-family: dharmaRegular, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__form {
+    border: 3px solid colors.$color-black;
+    border-radius: 12px;
+    padding: 32px;
+    width: 300px;
+
+    &Username,
+    &Password {
+      margin-bottom: 1.5rem;
+
+      label {
+        font-size: 32px;
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          padding: 0.75rem;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          background-color: #f9f9f9;
+          color: #333;
+          font-size: 1rem;
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+
+          &:focus {
+            outline: none;
+            border-color: #333;
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+    }
+
+    &Error {
+      color: colors.$color-red;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+  }
+}

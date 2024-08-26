@@ -25,8 +25,10 @@
     width: 675px;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
     &:hover {
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      scale: 1.01;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
 
     @media (min-width: 1300px) {
@@ -61,8 +63,9 @@
     display: flex;
     justify-content: space-between;
     background-color: white;
-
+    transition: all 0.3s ease;
     &:hover {
+      scale: 1.01;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
 

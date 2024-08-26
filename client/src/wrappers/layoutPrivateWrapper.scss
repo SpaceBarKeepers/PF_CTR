@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  padding: 21px 20px;
+  padding: 21px 20px 0 20px;
 
   background: linear-gradient(
                   90deg,
@@ -25,6 +25,6 @@
   }
 
   @media (min-width: 880px) {
-    padding: 21px 70px;
+    padding: 21px 70px 0 70px;
   }
 }

@@ -26,6 +26,32 @@ export const getUserAll = async (adminToken: string) => {
     }
 }
 
+export const changePassword = async (adminToken: string, username: string, newPassword: string) => {
+    try {
+        const response = await fetch(`${apiRoot}/user/${username}`, {
+            method: "PATCH",
+            credentials: "include",
+            headers: {
+                "Authorization": "Bearer " + adminToken,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({newPassword}),
+        })
+
+        if (!response.ok) {
+            if (response.status === 401) {
+                throw new Error("error_invalid_refresh");
+            } else {
+                throw new Error("error_unknown");
+            }
+        }
+
+        return await response.json();
+    } catch (error: any) {
+        throw new Error(error.message);
+    }
+}
+
 export const deleteUserById = async (adminToken: string, id: number) => {
     try {
         const response = await fetch(`${apiRoot}/user/${id}`, {

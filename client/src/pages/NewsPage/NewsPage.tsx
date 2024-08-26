@@ -165,7 +165,7 @@ const NewsPage = () => {
                 {!!interviewRow.length && (
                     <ArticleRow articles={interviewRow} rowTitle={'Interviews'} />
                 )}
-                {!!caseStudyRow && (
+                {!!caseStudyRow.length && (
                     <ArticleRow articles={caseStudyRow} rowTitle={'Case Studies'} />
                 )}
             </div>

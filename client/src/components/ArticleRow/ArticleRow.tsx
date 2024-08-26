@@ -12,7 +12,7 @@ const ArticleRow = ({ articles, rowTitle }: Props) => {
         <div className="articleRow">
             {rowTitle && <h2>{rowTitle}</h2>}
             <div className={'articleRow__container'}>
-            {articles.map((article) => (
+            {!!articles.length ? articles.map((article) => (
                 <Link
                     className={'articleRow__articleCard'}
                     to={`/news/${article.id}`}
@@ -24,7 +24,7 @@ const ArticleRow = ({ articles, rowTitle }: Props) => {
                         <p>{article.subtitleEn}</p>
                     </div>
                 </Link>
-            ))}
+            )) : "No results found."}
             </div>
         </div>
     );
