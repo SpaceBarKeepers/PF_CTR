@@ -6,6 +6,7 @@ import Header from '../../components/Header/Header';
 import { accessibilityTagsIntl, featureTagIntl, socialTagsIntl } from '../../models/tag';
 import { FormattedMessage } from 'react-intl';
 import './toolsDetails.scss';
+import Footer from '../../components/Footer/Footer';
 
 const ToolDetail = () => {
     const [tool, setTool] = useState<ToolEntity>({} as ToolEntity);
@@ -98,7 +99,7 @@ const ToolDetail = () => {
                                 <div className={'toolDetail__toolDetailsRightTagContainerTag'}>
                                     <h4>Accessibility</h4>
                                     <div className={'toolDetail__toolDetailsRightTagContainerTagContainer'}>
-                                        {!!tool.accessibilityTag.length ? tool.accessibilityTag?.map((atag, index) => {
+                                        {!!tool.accessibilityTag?.length ? tool.accessibilityTag?.map((atag, index) => {
                                             const intlObject = accessibilityTagsIntl.find((tag) => tag.value === atag);
                                             return (
                                                 <div key={index}
@@ -115,7 +116,7 @@ const ToolDetail = () => {
                                 <div>
                                     <h4>Social positioning</h4>
                                     <div className={'toolDetail__toolDetailsRightTagContainerTagContainer'}>
-                                        {!!tool.socialPositioningTag.length ? tool.socialPositioningTag?.map((stag, index) => {
+                                        {!!tool.socialPositioningTag?.length ? tool.socialPositioningTag?.map((stag, index) => {
                                             const intlObject = socialTagsIntl.find((tag) => tag.value === stag);
                                             return (
                                                 <div key={index}
@@ -156,6 +157,7 @@ const ToolDetail = () => {
                     </div>
                 )}
             </main>
+            <Footer />
         </div>
     )
         ;
