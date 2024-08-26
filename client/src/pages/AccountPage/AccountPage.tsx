@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import './accountPage.scss';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { loginUserWithUsernameAndPassword, tokenRefresh } from '../../api/auth';
+import { changePassword } from '../../api/user';
 
 interface FormElements extends HTMLFormElement {
     password: HTMLInputElement;
@@ -25,7 +26,7 @@ const AccountPage = () => {
         tokenRefresh()
             .then((response) => {
                     if (response) {
-                        const username = jwtDecode<CustomJwtPayload>(response).username;
+                        const username = jwtDecode<CustomJwtPayload>(response.access_token).username;
                         setUsername(username);
                     }
                 },
@@ -38,7 +39,7 @@ const AccountPage = () => {
         const target = e.target as FormElements;
 
         if (target.newPassword.value !== target.confirmPassword.value) {
-            setError('Passwords do not match.');
+            setError('New passwords do not match.');
             return;
         }
 
@@ -49,17 +50,21 @@ const AccountPage = () => {
                 if (!token) {
                     throw new Error('error_invalid_refresh');
                 }
-                console.log(token)
+                return token.access_token;
             })
-            // .then((token) => {
-            //     return changePassword(token, username, target.newPassword.value);
-            // })
-            // .then(() => {
-            //     setError('');
-            // })
-            // .catch((error: any) => {
-            //     setError(error.message);
-            // });
+            .then((token) => {
+                console.log(token);
+                return changePassword(token, username, target.newPassword.value);
+            })
+            .then(() => {
+                setError('Password changed successfully.');
+                target.password.value = '';
+                target.newPassword.value = '';
+                target.confirmPassword.value = '';
+            })
+            .catch((error: any) => {
+                setError(error.message);
+            });
     };
 
     return (
