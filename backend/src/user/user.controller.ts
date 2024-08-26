@@ -54,12 +54,12 @@ export class UserController {
 
   @UseGuards(JwtAuthGuard)
   @Patch(':username')
+  @HttpCode(200)
   async changePassword(
     @Param('username') username: string,
-    @Body('newPassword') body: NewPasswordDto,
+    @Body('newPassword') body: string,
   ) {
-    const { newPassword } = body;
-    const user = await this.userService.changePassword(username, newPassword);
+    const user = await this.userService.changePassword(username, body);
     if (!user) {
       throw new NotFoundException('User not found');
     }

@@ -1,5 +1,9 @@
 import {apiRoot} from "./apiRoot";
 import { CreateUserInterface } from '../models/entities';
+// @ts-expect-error get-browser-fingerprint is not typed
+import getBrowserFingerprint from "get-browser-fingerprint"
+
+const deviceHash = getBrowserFingerprint({ enableWebgl: true }).toString()
 
 export const getUserAll = async (adminToken: string) => {
     try {
@@ -34,6 +38,7 @@ export const changePassword = async (adminToken: string, username: string, newPa
             headers: {
                 "Authorization": "Bearer " + adminToken,
                 "Content-Type": "application/json",
+                "device-hash": deviceHash
             },
             body: JSON.stringify({newPassword}),
         })
