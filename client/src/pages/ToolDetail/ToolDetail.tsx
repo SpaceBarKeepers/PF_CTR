@@ -98,7 +98,7 @@ const ToolDetail = () => {
                                 <div className={'toolDetail__toolDetailsRightTagContainerTag'}>
                                     <h4>Accessibility</h4>
                                     <div className={'toolDetail__toolDetailsRightTagContainerTagContainer'}>
-                                        {tool.accessibilityTag?.map((atag, index) => {
+                                        {!!tool.accessibilityTag.length ? tool.accessibilityTag?.map((atag, index) => {
                                             const intlObject = accessibilityTagsIntl.find((tag) => tag.value === atag);
                                             return (
                                                 <div key={index}
@@ -108,14 +108,14 @@ const ToolDetail = () => {
                                                                       defaultMessage={intlObject?.defaultMessage} />
                                                 </div>
                                             );
-                                        })}
+                                        }) : "N/A"}
                                     </div>
                                 </div>
 
                                 <div>
                                     <h4>Social positioning</h4>
                                     <div className={'toolDetail__toolDetailsRightTagContainerTagContainer'}>
-                                        {tool.socialPositioningTag?.map((stag, index) => {
+                                        {!!tool.socialPositioningTag.length ? tool.socialPositioningTag?.map((stag, index) => {
                                             const intlObject = socialTagsIntl.find((tag) => tag.value === stag);
                                             return (
                                                 <div key={index}
@@ -125,7 +125,7 @@ const ToolDetail = () => {
                                                                       defaultMessage={intlObject?.defaultMessage} />
                                                 </div>
                                             );
-                                        })}
+                                        }) : "N/A"}
                                     </div>
                                 </div>
                             </div>

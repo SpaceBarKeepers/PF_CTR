@@ -6,6 +6,7 @@ import {
   HttpCode,
   NotFoundException,
   Param,
+  Patch,
   Post,
   UseGuards,
 } from '@nestjs/common';
@@ -13,6 +14,7 @@ import { CreateUserDto } from './dto/user.dto';
 import { UserService } from './user.service';
 import { User } from './interfaces/user.interface';
 import { JwtAdminGuard, JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { NewPasswordDto } from './dto/newPassword.dto';
 
 @Controller('user')
 export class UserController {
@@ -44,6 +46,20 @@ export class UserController {
   @HttpCode(200)
   async getUser(@Param('username') id: number): Promise<User> {
     const user = await this.userService.findOne(id);
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+    return user;
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Patch(':username')
+  async changePassword(
+    @Param('username') username: string,
+    @Body('newPassword') body: NewPasswordDto,
+  ) {
+    const { newPassword } = body;
+    const user = await this.userService.changePassword(username, newPassword);
     if (!user) {
       throw new NotFoundException('User not found');
     }

@@ -8,6 +8,7 @@
   gap: 25px;
 
   &__months {
+    background: colors.$color-white;
     display: flex;
     gap: 32px;
     flex-wrap: wrap;
@@ -58,6 +59,8 @@
       }
 
       hr {
+        background: colors.$color-white;
+        border: none;
         width: 100%;
         margin: 24px 0 0 0;
       }
