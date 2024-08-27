@@ -13,6 +13,7 @@ import CountryInput from '../../components/Input/CountryInput';
 import { accessibilityTagsIntl, socialTagsIntl } from '../../models/tag';
 import GeoTag from '../../components/Tag/GeoTag';
 import { useIntl } from 'react-intl';
+import Checkbox from '../../components/Input/Checkbox';
 
 const AdminToolsEditPage = () => {
     const [data, setData] = useState<ToolEntity>({} as ToolEntity);
@@ -30,6 +31,7 @@ const AdminToolsEditPage = () => {
         getToolsById(id)
             .then((response) => {
                 setData(response);
+                console.log(response);
                 setLoaded(true);
             })
             .catch((error) => {
@@ -152,7 +154,185 @@ const AdminToolsEditPage = () => {
                     />
                 ))}
             </div>
-            {/*// TODO: Case studies*/}
+            <Checkbox label={"Case Study 1 Published En:"}
+                      setState={setData}
+                      name={"caseStudyOnePublishedEn"}
+                      checked={data.caseStudyOnePublishedEn}
+            />
+            {data?.caseStudyOnePublishedEn && (
+                <>
+                    <Image label={'Case Study 1 Thumbnail: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneImgEn'}
+                    />
+                    <Input label={'Case Study 1 Title En: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneTitleEn'}
+                    />
+                    <Input label={'Case Study 1 Description En: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneDescEn'}
+                    />
+                    <Input label={'Case Study 1 Highlight 1 En: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneHighlightOneEn'}
+                    />
+                    <Input label={'Case Study 1 Highlight 2 En: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneHighlightTwoEn'}
+                    />
+                    <Input label={'Case Study 1 Highlight 3 En: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneHighlightThreeEn'}
+                    />
+                    <Input label={'Case Study 1 Highlight 4 En: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneHighlightFourEn'}
+                    />
+                </>
+            )}
+
+            <Checkbox label={"Case Study 1 Published Cs:"}
+                      setState={setData}
+                      name={"caseStudyOnePublishedCs"}
+                      checked={data.caseStudyOnePublishedCs}
+            />
+            {data?.caseStudyOnePublishedCs && (
+                <>
+                    <Image label={'Case Study 1 Thumbnail: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneImgCs'}
+                    />
+                    <Input label={'Case Study 1 Title Cs: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneTitleCs'}
+                    />
+                    <Input label={'Case Study 1 Description Cs: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneDescCs'}
+                    />
+                    <Input label={'Case Study 1 Highlight 1 Cs: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneHighlightOneCs'}
+                    />
+                    <Input label={'Case Study 1 Highlight 2 Cs: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneHighlightTwoCs'}
+                    />
+                    <Input label={'Case Study 1 Highlight 3 Cs: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneHighlightThreeCs'}
+                    />
+                    <Input label={'Case Study 1 Highlight 4 Cs: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyOneHighlightFourCs'}
+                    />
+                </>
+            )}
+
+            <Checkbox label={"Case Study 2 Published En:"}
+                      setState={setData}
+                      name={"caseStudyTwoPublishedEn"}
+                      checked={data.caseStudyTwoPublishedEn}
+            />
+            {data?.caseStudyTwoPublishedEn && (
+                <>
+                    <Image label={'Case Study 2 Thumbnail: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoImgEn'}
+                    />
+                    <Input label={'Case Study 2 Title En: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoTitleEn'}
+                    />
+                    <Input label={'Case Study 2 Description En: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoDescEn'}
+                    />
+                    <Input label={'Case Study 2 Highlight 1 En: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoHighlightOneEn'}
+                    />
+                    <Input label={'Case Study 2 Highlight 2 En: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoHighlightTwoEn'}
+                    />
+                    <Input label={'Case Study 2 Highlight 3 En: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoHighlightThreeEn'}
+                    />
+                    <Input label={'Case Study 2 Highlight 4 En: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoHighlightFourEn'}
+                    />
+                </>
+            )}
+
+            <Checkbox label={"Case Study 2 Published Cs:"}
+                      setState={setData}
+                      name={"caseStudyTwoPublishedCs"}
+                      checked={data.caseStudyTwoPublishedCs}
+            />
+            {data?.caseStudyTwoPublishedCs && (
+                <>
+                    <Image label={'Case Study 2 Thumbnail: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoImgCs'}
+                    />
+                    <Input label={'Case Study 2 Title Cs: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoTitleCs'}
+                    />
+                    <Input label={'Case Study 2 Description Cs: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoDescCs'}
+                    />
+                    <Input label={'Case Study 2 Highlight 1 Cs: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoHighlightOneCs'}
+                    />
+                    <Input label={'Case Study 2 Highlight 2 Cs: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoHighlightTwoCs'}
+                    />
+                    <Input label={'Case Study 2 Highlight 3 Cs: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoHighlightThreeCs'}
+                    />
+                    <Input label={'Case Study 2 Highlight 4 Cs: '}
+                           state={data}
+                           setState={setData}
+                           name={'caseStudyTwoHighlightFourCs'}
+                    />
+                </>
+            )}
             {/*// TODO: Similar tools*/}
 
             <ButtonColored childIsLink={false} onClick={handleSave}>

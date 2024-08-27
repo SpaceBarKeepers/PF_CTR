@@ -157,6 +157,38 @@ export interface ToolEntity {
     socialPositioningTag: string[];
     featureTag: string[];
     similarTools: ToolEntity[];
+    caseStudyOnePublishedEn: boolean;
+    caseStudyOneTitleEn: string;
+    caseStudyOneImgEn: string;
+    caseStudyOneDescEn: string;
+    caseStudyOneHighlightOneEn: string;
+    caseStudyOneHighlightTwoEn: string;
+    caseStudyOneHighlightThreeEn: string;
+    caseStudyOneHighlightFourEn: string;
+    caseStudyOnePublishedCs: boolean;
+    caseStudyOneTitleCs: string;
+    caseStudyOneImgCs: string;
+    caseStudyOneDescCs: string;
+    caseStudyOneHighlightOneCs: string;
+    caseStudyOneHighlightTwoCs: string;
+    caseStudyOneHighlightThreeCs: string;
+    caseStudyOneHighlightFourCs: string;
+    caseStudyTwoPublishedEn: boolean;
+    caseStudyTwoTitleEn: string;
+    caseStudyTwoImgEn: string;
+    caseStudyTwoDescEn: string;
+    caseStudyTwoHighlightOneEn: string;
+    caseStudyTwoHighlightTwoEn: string;
+    caseStudyTwoHighlightThreeEn: string;
+    caseStudyTwoHighlightFourEn: string;
+    caseStudyTwoPublishedCs: boolean;
+    caseStudyTwoTitleCs: string;
+    caseStudyTwoImgCs: string;
+    caseStudyTwoDescCs: string;
+    caseStudyTwoHighlightOneCs: string;
+    caseStudyTwoHighlightTwoCs: string;
+    caseStudyTwoHighlightThreeCs: string;
+    caseStudyTwoHighlightFourCs: string;
 }
 
 export interface ToolInterface {
@@ -185,6 +217,38 @@ export interface ToolInterface {
     socialPositioningTag: string[];
     featureTag: string[];
     similarTools: ToolEntity[];
+    caseStudyOnePublishedEn: boolean;
+    caseStudyOneTitleEn: string;
+    caseStudyOneImgEn: string;
+    caseStudyOneDescEn: string;
+    caseStudyOneHighlightOneEn: string;
+    caseStudyOneHighlightTwoEn: string;
+    caseStudyOneHighlightThreeEn: string;
+    caseStudyOneHighlightFourEn: string;
+    caseStudyOnePublishedCs: boolean;
+    caseStudyOneTitleCs: string;
+    caseStudyOneImgCs: string;
+    caseStudyOneDescCs: string;
+    caseStudyOneHighlightOneCs: string;
+    caseStudyOneHighlightTwoCs: string;
+    caseStudyOneHighlightThreeCs: string;
+    caseStudyOneHighlightFourCs: string;
+    caseStudyTwoPublishedEn: boolean;
+    caseStudyTwoTitleEn: string;
+    caseStudyTwoImgEn: string;
+    caseStudyTwoDescEn: string;
+    caseStudyTwoHighlightOneEn: string;
+    caseStudyTwoHighlightTwoEn: string;
+    caseStudyTwoHighlightThreeEn: string;
+    caseStudyTwoHighlightFourEn: string;
+    caseStudyTwoPublishedCs: boolean;
+    caseStudyTwoTitleCs: string;
+    caseStudyTwoImgCs: string;
+    caseStudyTwoDescCs: string;
+    caseStudyTwoHighlightOneCs: string;
+    caseStudyTwoHighlightTwoCs: string;
+    caseStudyTwoHighlightThreeCs: string;
+    caseStudyTwoHighlightFourCs: string;
 }
 
 export interface CreateUserInterface {

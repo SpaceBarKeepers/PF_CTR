@@ -80,6 +80,102 @@ export class Tools {
   @Column({ type: 'varchar', array: true, default: [] })
   featureTag: string[];
 
+  @Column({ type: 'boolean', default: false })
+  caseStudyOnePublishedEn: boolean;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneTitleEn: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneImgEn: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneDescEn: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneHighlightOneEn: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneHighlightTwoEn: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneHighlightThreeEn: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneHighlightFourEn: string;
+
+  @Column({ type: 'boolean', default: false })
+  caseStudyOnePublishedCs: boolean;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneTitleCs: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneImgCs: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneDescCs: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneHighlightOneCs: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneHighlightTwoCs: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneHighlightThreeCs: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyOneHighlightFourCs: string;
+
+  @Column({ type: 'boolean', default: false })
+  caseStudyTwoPublishedEn: boolean;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoTitleEn: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoImgEn: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoDescEn: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoHighlightOneEn: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoHighlightTwoEn: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoHighlightThreeEn: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoHighlightFourEn: string;
+
+  @Column({ type: 'boolean', default: false })
+  caseStudyTwoPublishedCs: boolean;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoTitleCs: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoImgCs: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoDescCs: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoHighlightOneCs: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoHighlightTwoCs: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoHighlightThreeCs: string;
+
+  @Column({ type: 'varchar', default: '' })
+  caseStudyTwoHighlightFourCs: string;
+
   // @ManyToMany(() => Tools, { eager: true })
   // @JoinTable()
   // similarTools: Tools[];

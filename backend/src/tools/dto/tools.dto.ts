@@ -1,4 +1,4 @@
-import { IsArray, IsNotEmpty, IsString } from 'class-validator';
+import { IsArray, IsBoolean, IsNotEmpty, IsString } from 'class-validator';
 import { Tools } from '../entities/tools.entity';
 
 export class ToolsDto {
@@ -81,4 +81,100 @@ export class ToolsDto {
 
   @IsArray()
   similarTools: Tools[];
+
+  @IsBoolean()
+  caseStudyOnePublishedEn: boolean;
+
+  @IsString()
+  caseStudyOneTitleEn: string;
+
+  @IsString()
+  caseStudyOneImgEn: string;
+
+  @IsString()
+  caseStudyOneDescEn: string;
+
+  @IsString()
+  caseStudyOneHighlightOneEn: string;
+
+  @IsString()
+  caseStudyOneHighlightTwoEn: string;
+
+  @IsString()
+  caseStudyOneHighlightThreeEn: string;
+
+  @IsString()
+  caseStudyOneHighlightFourEn: string;
+
+  @IsBoolean()
+  caseStudyOnePublishedCs: boolean;
+
+  @IsString()
+  caseStudyOneTitleCs: string;
+
+  @IsString()
+  caseStudyOneImgCs: string;
+
+  @IsString()
+  caseStudyOneDescCs: string;
+
+  @IsString()
+  caseStudyOneHighlightOneCs: string;
+
+  @IsString()
+  caseStudyOneHighlightTwoCs: string;
+
+  @IsString()
+  caseStudyOneHighlightThreeCs: string;
+
+  @IsString()
+  caseStudyOneHighlightFourCs: string;
+
+  @IsBoolean()
+  caseStudyTwoPublishedEn: boolean;
+
+  @IsString()
+  caseStudyTwoTitleEn: string;
+
+  @IsString()
+  caseStudyTwoImgEn: string;
+
+  @IsString()
+  caseStudyTwoDescEn: string;
+
+  @IsString()
+  caseStudyTwoHighlightOneEn: string;
+
+  @IsString()
+  caseStudyTwoHighlightTwoEn: string;
+
+  @IsString()
+  caseStudyTwoHighlightThreeEn: string;
+
+  @IsString()
+  caseStudyTwoHighlightFourEn: string;
+
+  @IsBoolean()
+  caseStudyTwoPublishedCs: boolean;
+
+  @IsString()
+  caseStudyTwoTitleCs: string;
+
+  @IsString()
+  caseStudyTwoImgCs: string;
+
+  @IsString()
+  caseStudyTwoDescCs: string;
+
+  @IsString()
+  caseStudyTwoHighlightOneCs: string;
+
+  @IsString()
+  caseStudyTwoHighlightTwoCs: string;
+
+  @IsString()
+  caseStudyTwoHighlightThreeCs: string;
+
+  @IsString()
+  caseStudyTwoHighlightFourCs: string;
 }
