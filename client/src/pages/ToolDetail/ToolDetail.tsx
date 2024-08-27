@@ -24,7 +24,7 @@ const ToolDetail = () => {
             });
     }, [id]);
 
-    const formatUrl = (url:string) => {
+    const formatUrl = (url: string) => {
         // Check if the URL starts with 'http://' or 'https://'
         if (url.startsWith('http://') || url.startsWith('https://')) {
             return url;
@@ -32,8 +32,8 @@ const ToolDetail = () => {
             // Prepend 'https://' if it does not
             return 'https://' + url;
         }
-    }
-
+    };
+    console.log(tool.caseStudyOnePublishedEn, tool.caseStudyTwoPublishedEn);
     return (
         <div className={'toolDetail'}>
             <Header />
@@ -70,16 +70,16 @@ const ToolDetail = () => {
                     <div className={'toolDetail__toolDetailsContainer'}>
                         <div className={'toolDetail__toolDetailsLeft'}>
                             <h4>Data Protection</h4>
-                            <p>{tool.dataProtectionEn ? tool.dataProtectionEn : "N/A"}</p>
+                            <p>{tool.dataProtectionEn ? tool.dataProtectionEn : 'N/A'}</p>
 
                             <h4>Authentication/Verification</h4>
-                            <p>{tool.authenticationEn ? tool.authenticationEn : "N/A"}</p>
+                            <p>{tool.authenticationEn ? tool.authenticationEn : 'N/A'}</p>
 
                             <h4>Year established</h4>
-                            <p>{tool.established ? tool.established : "N/A"}</p>
+                            <p>{tool.established ? tool.established : 'N/A'}</p>
 
                             <h4>Number of clients</h4>
-                            <p>{tool.noOfClients ? tool.noOfClients : "N/A"}</p>
+                            <p>{tool.noOfClients ? tool.noOfClients : 'N/A'}</p>
                         </div>
                         <div className={'toolDetail__toolDetailsCenter'}>
                             <h4>Team</h4>
@@ -89,7 +89,7 @@ const ToolDetail = () => {
                             <p>{tool.countries?.join(', ').toUpperCase()}</p>
 
                             <h4>Next product update session</h4>
-                            <p>{tool.nextProductUpdateEn ? tool.nextProductUpdateEn : "N/A"}</p>
+                            <p>{tool.nextProductUpdateEn ? tool.nextProductUpdateEn : 'N/A'}</p>
 
                             <h4>Network and partners</h4>
                             <p>{tool.partners ? tool.partners : 'N/A'}</p>
@@ -109,7 +109,7 @@ const ToolDetail = () => {
                                                                       defaultMessage={intlObject?.defaultMessage} />
                                                 </div>
                                             );
-                                        }) : "N/A"}
+                                        }) : 'N/A'}
                                     </div>
                                 </div>
 
@@ -126,26 +126,95 @@ const ToolDetail = () => {
                                                                       defaultMessage={intlObject?.defaultMessage} />
                                                 </div>
                                             );
-                                        }) : "N/A"}
+                                        }) : 'N/A'}
                                     </div>
                                 </div>
                             </div>
                             <h4>Contact</h4>
                             <div className={'toolDetail__toolDetailsRightContact'}>
                                 <img src={'/icons/icon_email.svg'} alt={''} />
-                                <p>{tool.email ? tool.email : "N/A"}</p>
+                                <p>{tool.email ? tool.email : 'N/A'}</p>
                             </div>
                             <div className={'toolDetail__toolDetailsRightContact'}>
                                 <img src={'/icons/icon_phone.svg'} alt={''} />
-                                <p>{tool.phone ? tool.phone : "N/A"}</p>
+                                <p>{tool.phone ? tool.phone : 'N/A'}</p>
                             </div>
                             <div className={'toolDetail__toolDetailsRightContact'}>
                                 <img src={'/icons/icon_web.svg'} alt={''} />
-                                <p>{tool.web ? <a href={formatUrl(tool.web)}>{tool.web}</a> : "N/A"}</p>
+                                <p>{tool.web ? <a href={formatUrl(tool.web)}>{tool.web}</a> : 'N/A'}</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                {(tool.caseStudyOnePublishedEn || tool.caseStudyTwoPublishedEn) && (
+                    <div className={'toolDetail__caseStudies'}>
+                        <h2>Case Studies</h2>
+                        {tool.caseStudyOnePublishedEn && (
+                            <div className={'toolDetail__caseStudiesContainer'}>
+                                {tool.caseStudyOneImgEn && <img src={tool.caseStudyOneImgEn} alt={''} />}
+                                <div  className={'toolDetail__caseStudiesContainerRight'}>
+                                    <h3>{tool.caseStudyOneTitleEn}</h3>
+                                    {(tool.caseStudyOneHighlightOneEn
+                                            || tool.caseStudyOneHighlightTwoEn
+                                            || tool.caseStudyOneHighlightThreeEn
+                                            || tool.caseStudyOneHighlightFourEn)
+                                        && <ul>
+                                            {
+                                                tool.caseStudyOneHighlightOneEn &&
+                                              <li>{tool.caseStudyOneHighlightOneEn}</li>
+                                            }
+                                            {
+                                                tool.caseStudyOneHighlightTwoEn &&
+                                              <li>{tool.caseStudyOneHighlightTwoEn}</li>
+                                            }
+                                            {
+                                                tool.caseStudyOneHighlightThreeEn &&
+                                              <li>{tool.caseStudyOneHighlightThreeEn}</li>
+                                            }
+                                            {
+                                                tool.caseStudyOneHighlightFourEn &&
+                                              <li>{tool.caseStudyOneHighlightFourEn}</li>
+                                            }
+                                      </ul>
+                                    }
+                                    <p>{tool.caseStudyOneDescEn}</p>
+                                </div>
+                            </div>
+                        )}
+                        {tool.caseStudyTwoPublishedEn && (
+                            <div className={'toolDetail__caseStudiesContainer'}>
+                                {tool.caseStudyTwoImgEn && <img src={tool.caseStudyTwoImgEn} alt={''} />}
+                                <div  className={'toolDetail__caseStudiesContainerRight'}>
+                                    <h3>{tool.caseStudyTwoTitleEn}</h3>
+                                    {(tool.caseStudyTwoHighlightOneEn
+                                            || tool.caseStudyTwoHighlightTwoEn
+                                            || tool.caseStudyTwoHighlightThreeEn
+                                            || tool.caseStudyTwoHighlightFourEn)
+                                        && <ul>
+                                            {
+                                                tool.caseStudyTwoHighlightOneEn &&
+                                              <li>{tool.caseStudyTwoHighlightOneEn}</li>
+                                            }
+                                            {
+                                                tool.caseStudyTwoHighlightTwoEn &&
+                                              <li>{tool.caseStudyTwoHighlightTwoEn}</li>
+                                            }
+                                            {
+                                                tool.caseStudyTwoHighlightThreeEn &&
+                                              <li>{tool.caseStudyTwoHighlightThreeEn}</li>
+                                            }
+                                            {
+                                                tool.caseStudyTwoHighlightFourEn &&
+                                              <li>{tool.caseStudyTwoHighlightFourEn}</li>
+                                            }
+                                      </ul>
+                                    }
+                                    <p>{tool.caseStudyTwoDescEn}</p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
                 {!!tool.feedEn?.length && (
                     <div className={'toolDetail__feed'}>
                         <h2>Feed</h2>
