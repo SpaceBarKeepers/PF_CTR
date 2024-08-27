@@ -24,6 +24,7 @@
   }
 
   &__head {
+    align-items: center;
     display: flex;
     gap: 100px;
     justify-content: space-between;
@@ -94,7 +95,7 @@
     }
 
     &Left {
-        flex-basis: 30%;
+      flex-basis: 30%;
     }
 
     &Center {
@@ -142,6 +143,42 @@
 
         img {
           width: 40px;
+        }
+      }
+    }
+  }
+
+  &__caseStudies {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &Container {
+      display: flex;
+      gap: 24px;
+
+      img {
+        width: 30%;
+      }
+
+      &Right {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        ul {
+          background: colors.$color-blue;
+          display: flex;
+          list-style: none;
+          justify-content: space-evenly;
+          padding: 24px;
+          margin: 0;
+
+          li {
+            color: colors.$color-white;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+          }
         }
       }
     }

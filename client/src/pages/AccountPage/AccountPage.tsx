@@ -99,7 +99,7 @@ const AccountPage = () => {
                     </div>
                     <div className={'accountPage__formSubmit'}>
                         <ButtonColored childIsLink={false}>
-                            Login
+                            Change
                         </ButtonColored>
                     </div>
                     <div className={'accountPage__formError'}>
