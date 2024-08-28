@@ -49,17 +49,30 @@
 
   &__searchInputs {
     align-items: center;
-    display: flex;
     background-color: colors.$color-grey;
     border-radius: 8px;
-    width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
     margin: 24px auto 40px auto;
 
     .verticalLine {
       background: black;
       border-radius: 2px;
-      height: 70px;
-      width: 4px;
+      height: 4px;
+      width: 300px;
+    }
+
+    @media (min-width: 1000px) {
+      flex-direction: row;
+      width: 900px;
+
+      .verticalLine {
+        display: initial;
+        height: 70px;
+        width: 4px;
+      }
     }
   }
 
@@ -118,7 +131,6 @@
           align-items: center;
           display: flex;
           justify-content: space-between;
-          align-items: center;
           width: 100%;
           gap: 16px;
           & h2 {

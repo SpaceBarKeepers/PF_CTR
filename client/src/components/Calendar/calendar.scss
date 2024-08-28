@@ -1,19 +1,25 @@
-@use "../../partials/colors";
+@use '../../partials/colors';
 
 .calendar {
   font-family: Inter, Arial, sans-serif;
   font-size: 11px;
-  display: flex;
-  height: 400px;
+  height: auto;
   gap: 25px;
+  @media (min-width: 768px) {
+    display: flex;
+    height: 400px;
+  }
 
   &__months {
     background: colors.$color-white;
-    display: flex;
+    display: none;
     gap: 32px;
     flex-wrap: wrap;
     padding: 32px;
     overflow: auto;
+    @media (min-width: 768px) {
+      display: flex;
+    }
 
     &::-webkit-scrollbar {
       width: 4px; /* Width of the scrollbar */
@@ -22,7 +28,7 @@
     }
 
     &::-webkit-scrollbar-track {
-      background: #B6B6B6;
+      background: #b6b6b6;
       border-radius: 10px; /* Optional: for rounded corners */
     }
 
@@ -72,14 +78,14 @@
     }
 
     &::-webkit-scrollbar-track {
-      background: #B6B6B6;
+      background: #b6b6b6;
       border-radius: 10px; /* Optional: for rounded corners */
     }
 
     &::-webkit-scrollbar-thumb {
       background: colors.$color-orange; /* Color of the scrollbar thumb */
       border-radius: 10px; /* Optional: for rounded corners */
-      border-left: 1px solid #B6B6B6;
+      border-left: 1px solid #b6b6b6;
     }
   }
 }
