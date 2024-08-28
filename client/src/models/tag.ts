@@ -15,9 +15,8 @@ export const geotagsIntl = [
 
 export const accessibilityTagsIntl = [
     { label: 'label_atag_people_with_disabilities', value: 'people_with_disabilities', defaultMessage: 'People with disabilities', icon: "/accessibilityIcon/1.svg" },
-    { label: 'label_atag_hybrid', value: 'hybrid', defaultMessage: 'Hybrid', icon: "/accessibilityIcon/2.svg" },
+    { label: 'label_atag_hybrid', value: 'hybrid_integration', defaultMessage: 'Hybrid integration', icon: "/accessibilityIcon/2.svg" },
     { label: 'label_atag_low_tech', value: 'low_tech', defaultMessage: 'Low tech', icon: "/accessibilityIcon/3.svg" },
-    { label: 'label_atag_hybrid_integration', value: 'hybrid_integration', defaultMessage: 'Hybrid integration', icon: "/accessibilityIcon/2.svg" },
 ];
 
 export const socialTagsIntl = [
