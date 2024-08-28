@@ -6,6 +6,10 @@
   padding: 70px 40px 40px 40px;
   position: relative;
   transition: all 0.3s ease;
+  margin-top: 24px;
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
 
   &__icon {
     border-radius: 4px;
