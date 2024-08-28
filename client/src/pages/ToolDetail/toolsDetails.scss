@@ -22,13 +22,27 @@
       padding: 21px 70px 0 70px;
     }
   }
-
+  &__logoWrapper {
+    width: 250px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    @media (min-width: 768px) {
+      width: 330px;
+      height: 180px;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
   &__head {
     align-items: center;
-    display: flex;
     gap: 100px;
     justify-content: space-between;
-
+    @media (min-width: 768px) {
+      display: flex;
+    }
 
     &Text {
       max-width: 500px;
@@ -38,10 +52,6 @@
         line-height: 30px;
       }
     }
-
-    img {
-      max-width: 40%;
-    }
   }
 
   &__featureTags {
@@ -49,11 +59,15 @@
     display: flex;
     font-family: Arial, sans-serif;
     font-size: 24px;
-    gap: 60px;
+    gap: 24px;
     justify-content: space-evenly;
     padding-top: 40px !important;
     padding-bottom: 40px !important;
     flex-wrap: wrap;
+    @media (min-width: 768px) {
+      gap: 48px;
+      flex-wrap: wrap;
+    }
 
     &Tag {
       align-items: center;
@@ -64,10 +78,17 @@
       gap: 16px;
       text-transform: uppercase;
       text-align: center;
+      font-size: 0.8rem;
+      @media (min-width: 768px) {
+        font-size: 1rem;
+      }
 
       img {
-        height: 64px;
+        height: 40px;
         filter: invert(1);
+        @media (min-width: 768px) {
+          height: 64px;
+        }
       }
     }
   }
@@ -81,7 +102,7 @@
   }
 
   &__toolDetails {
-    background: #F7C799;
+    background: #f7c799;
     font-family: Arial, sans-serif;
 
     h4 {
@@ -89,9 +110,11 @@
     }
 
     &Container {
-      display: flex;
       gap: 24px;
       font-size: 18px;
+      @media (min-width: 768px) {
+        display: flex;
+      }
     }
 
     &Left {
@@ -154,17 +177,28 @@
     gap: 24px;
 
     &Container {
-      display: flex;
       gap: 24px;
+      @media (min-width: 768px) {
+        display: flex;
+      }
 
-      img {
-        width: 30%;
+      &__imgWrapper {
+        height: 200px;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        @media (min-width: 768px) {
+          flex-basis: 30%;
+          height: auto;
+        }
       }
 
       &Right {
         display: flex;
         flex-direction: column;
         gap: 8px;
+        flex-basis: 70%;
 
         ul {
           background: colors.$color-blue;
@@ -185,7 +219,7 @@
   }
 
   &__feed {
-    background: #E6E6E6;
+    background: #e6e6e6;
 
     &Container {
       display: flex;
