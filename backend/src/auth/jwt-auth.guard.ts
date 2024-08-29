@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { applyDecorators, CanActivate, Injectable, Provider, Type, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
 @Injectable()
@@ -11,3 +11,5 @@ export class JwtRefreshGuard extends AuthGuard('jwt-refresh') {}
 export class JwtAdminGuard extends AuthGuard('jwt-admin') {}
 @Injectable()
 export class JwtAdminRefreshGuard extends AuthGuard('jwt-admin-refresh') {}
+@Injectable()
+export class JwtCombinedGuard extends AuthGuard(['jwt', 'jwt-admin']) {}

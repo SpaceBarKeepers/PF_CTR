@@ -28,11 +28,17 @@ const AdminToolsEditPage = () => {
             setLoaded(true);
             return;
         }
-        getToolsById(id)
-            .then((response) => {
-                setData(response);
-                console.log(response);
-                setLoaded(true);
+        getToken()
+            .then((token) => {
+                getToolsById(token, id)
+                    .then((response) => {
+                        setData(response);
+                        console.log(response);
+                        setLoaded(true);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
             })
             .catch((error) => {
                 console.log(error);
@@ -120,8 +126,10 @@ const AdminToolsEditPage = () => {
                 <Input label={'Produktový update CS: '} state={data} setState={setData} name={'nextProductUpdateCs'} />
             </div>
             <div className={'adminToolsEditPage__dualLangBox'}>
-                <ArrayTextInput label={'Feed EN: '} state={data} setState={setData} name={'feedEn'} addInputInFront={true} />
-                <ArrayTextInput label={'Feed CS: '} state={data} setState={setData} name={'feedCs'} addInputInFront={true} />
+                <ArrayTextInput label={'Feed EN: '} state={data} setState={setData} name={'feedEn'}
+                                addInputInFront={true} />
+                <ArrayTextInput label={'Feed CS: '} state={data} setState={setData} name={'feedCs'}
+                                addInputInFront={true} />
             </div>
             <Input label={'Established: '} state={data} setState={setData} name={'established'} />
             <Input label={'Number of clients: '} state={data} setState={setData} name={'noOfClients'} />
@@ -129,7 +137,6 @@ const AdminToolsEditPage = () => {
             <Input label={'Email: '} state={data} setState={setData} name={'email'} />
             <Input label={'Phone: '} state={data} setState={setData} name={'phone'} />
             <Input label={'Web: '} state={data} setState={setData} name={'web'} />
-            <Input label={'Team: '} state={data} setState={setData} name={'team'} />
             <CountryInput label={'Countries: '} state={data} setState={setData} name={'countries'} />
             <Input label={'Partners: '} state={data} setState={setData} name={'partners'} />
             <div className={'adminToolsEditPage__tagContainer'}>
@@ -154,9 +161,9 @@ const AdminToolsEditPage = () => {
                     />
                 ))}
             </div>
-            <Checkbox label={"Case Study 1 Published En:"}
+            <Checkbox label={'Case Study 1 Published En:'}
                       setState={setData}
-                      name={"caseStudyOnePublishedEn"}
+                      name={'caseStudyOnePublishedEn'}
                       checked={data.caseStudyOnePublishedEn}
             />
             {data?.caseStudyOnePublishedEn && (
@@ -199,9 +206,9 @@ const AdminToolsEditPage = () => {
                 </>
             )}
 
-            <Checkbox label={"Case Study 1 Published Cs:"}
+            <Checkbox label={'Case Study 1 Published Cs:'}
                       setState={setData}
-                      name={"caseStudyOnePublishedCs"}
+                      name={'caseStudyOnePublishedCs'}
                       checked={data.caseStudyOnePublishedCs}
             />
             {data?.caseStudyOnePublishedCs && (
@@ -244,9 +251,9 @@ const AdminToolsEditPage = () => {
                 </>
             )}
 
-            <Checkbox label={"Case Study 2 Published En:"}
+            <Checkbox label={'Case Study 2 Published En:'}
                       setState={setData}
-                      name={"caseStudyTwoPublishedEn"}
+                      name={'caseStudyTwoPublishedEn'}
                       checked={data.caseStudyTwoPublishedEn}
             />
             {data?.caseStudyTwoPublishedEn && (
@@ -289,9 +296,9 @@ const AdminToolsEditPage = () => {
                 </>
             )}
 
-            <Checkbox label={"Case Study 2 Published Cs:"}
+            <Checkbox label={'Case Study 2 Published Cs:'}
                       setState={setData}
-                      name={"caseStudyTwoPublishedCs"}
+                      name={'caseStudyTwoPublishedCs'}
                       checked={data.caseStudyTwoPublishedCs}
             />
             {data?.caseStudyTwoPublishedCs && (

@@ -11,6 +11,7 @@ import './cataloguePage.scss';
 import { useNavigate } from 'react-router-dom';
 import LayoutPrivateWrapper from '../../wrappers/LayoutPrivateWrapper';
 import { shippingCountrySelectArray } from '../../models/countries';
+import { useSilentTokenRefresh } from '../../lib/useSilentTokenRefresh';
 
 const CataloguePage = () => {
     const [tools, setTools] = useState<ToolEntity[]>([]);
@@ -22,13 +23,18 @@ const CataloguePage = () => {
     const [nameFilter, setNameFilter] = useState<string>('');
     const [countryFilter, setCountryFilter] = useState<string>('');
     const navigate = useNavigate();
+    const getToken = useSilentTokenRefresh();
 
     useEffect(() => {
-        getToolsAll()
-            .then((response) => {
-                setTools(response);
-            })
+        getToken().then((token) => {
+            getToolsAll(token)
+                .then((response) => {
+                    setTools(response);
+                })
+                .catch((error) => console.error(error));
+        })
             .catch((error) => console.error(error));
+
     }, []);
 
     const handleClickExpandFuntionalityFilter = () => {
@@ -117,14 +123,14 @@ const CataloguePage = () => {
                         options={tools.map((tool) => tool.toolsName)}
                         setState={setNameFilter}
                         placeholder={'Search'}
-                        preIcon={"/icons/icon_search.svg"}
+                        preIcon={'/icons/icon_search.svg'}
                     />
-                    <div className={"verticalLine"}/>
+                    <div className={'verticalLine'} />
                     <AutocompleteWhispererInput
                         options={CountryFilterArray}
                         setState={setCountryFilter}
                         placeholder={'Country active'}
-                        preIcon={"/icons/icon_location.svg"}
+                        preIcon={'/icons/icon_location.svg'}
                     />
                 </div>
                 <div className={'cataloguePage__tools'}>
