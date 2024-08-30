@@ -24,6 +24,10 @@ const LoginPage = () => {
     const intl = useIntl();
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    useEffect(() => {
         // try autologin from cookie
         tokenRefresh()
             .then((response: TokenEntity) => {

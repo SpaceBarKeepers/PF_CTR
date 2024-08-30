@@ -26,6 +26,10 @@ const CataloguePage = () => {
     const getToken = useSilentTokenRefresh();
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    useEffect(() => {
         getToken().then((token) => {
             getToolsAll(token)
                 .then((response) => {
@@ -35,7 +39,7 @@ const CataloguePage = () => {
         })
             .catch((error) => console.error(error));
 
-    }, []);
+    }, [getToken]);
 
     const handleClickExpandFuntionalityFilter = () => {
         setFunctionalityFilterExpanded((prev) => !prev);

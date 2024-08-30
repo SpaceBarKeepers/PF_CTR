@@ -17,6 +17,10 @@ const HomepagePage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    useEffect(() => {
         getNewsAll()
             .then((response) => {
                 setNews(response.sort((a: NewsEntity, b:NewsEntity) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 3));

@@ -11,6 +11,10 @@ const KnowledgeBasePage = () => {
     const [featuredKnowledgeBase, setFeaturedKnowledgeBase] = useState<KnowledgeBaseEntity[]>([]);
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    useEffect(() => {
         const fetchKnowledgeBase = async () => {
             try {
                 const response = await getKnowledgeAll();

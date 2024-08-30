@@ -21,6 +21,9 @@ const AccountPage = () => {
     const [username, setUsername] = React.useState<string>('');
     const [error, setError] = React.useState<string>('');
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     useEffect(() => {
         tokenRefresh()

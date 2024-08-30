@@ -19,6 +19,10 @@ const ArticlePage = ({ type }: Props) => {
     const { id } = useParams<{ id: string }>();
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [id])
+
+    useEffect(() => {
         if (!id) return;
         if (type === ARTICLE_TYPE_ENUM.KNOWLEDGE_BASE) {
             getKnowledgeById(id)
