@@ -19,6 +19,10 @@ const ToolDetail = () => {
     const getToken = useSilentTokenRefresh();
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [id])
+
+    useEffect(() => {
         if (!id) return;
         getToken().then((token) => {
             getToolsById(token, id)
@@ -33,7 +37,7 @@ const ToolDetail = () => {
             .catch((error) => {
                 console.error(error);
             });
-    }, [id]);
+    }, [getToken, id]);
 
     const formatUrl = (url: string) => {
         // Check if the URL starts with 'http://' or 'https://'
