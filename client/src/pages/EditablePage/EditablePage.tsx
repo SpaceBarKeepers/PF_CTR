@@ -9,6 +9,10 @@ const EditablePage = () => {
     const pageId = useLocation().pathname.split('/').pop();
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    useEffect(() => {
         if (!pageId) return;
         getPageById(pageId)
             .then((response) => {

@@ -7,6 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 import './deviceCheckPage.scss';
 import ButtonColored from '../../components/Button/ButtonColored';
+import LayoutPublicWrapper from '../../wrappers/LayoutPublicWrapper';
 
 const DeviceCheckPage = () => {
     const [promptReassignDevice, setPromptReassignDevice] = useState<boolean>(false);
@@ -40,30 +41,32 @@ const DeviceCheckPage = () => {
     };
 
     return (
-        <div className={'deviceCheckPage'}>
-            <div className={'deviceCheckPage__container'}>
-                {
-                    promptReassignDevice
-                        ? <div className={'deviceCheckPage__check'}>
-                            <h3>Do you want to continue from this device?</h3>
-                            <p>You are only allowed to be logged in from one device/browser at a time.</p>
-                            <div className={'deviceCheckPage__checkActions'}>
-                                <ButtonColored onClick={logout} childIsLink={false} buttonType={"secondary"}>
-                                    <FormattedMessage id={'label_logout'} defaultMessage={'Logout'} />
-                                </ButtonColored>
-                                <ButtonColored onClick={handleReassignDevice} childIsLink={false}>
-                                    <FormattedMessage
-                                        id={'label_device_continue'}
-                                        defaultMessage={'Continue from this device'} />
-                                </ButtonColored>
+        <LayoutPublicWrapper>
+            <div className={'deviceCheckPage'}>
+                <div className={'deviceCheckPage__container'}>
+                    {
+                        promptReassignDevice
+                            ? <div className={'deviceCheckPage__check'}>
+                                <h3>Do you want to continue from this device?</h3>
+                                <p>You are only allowed to be logged in from one device/browser at a time.</p>
+                                <div className={'deviceCheckPage__checkActions'}>
+                                    <ButtonColored onClick={logout} childIsLink={false} buttonType={'secondary'}>
+                                        <FormattedMessage id={'label_logout'} defaultMessage={'Logout'} />
+                                    </ButtonColored>
+                                    <ButtonColored onClick={handleReassignDevice} childIsLink={false}>
+                                        <FormattedMessage
+                                            id={'label_device_continue'}
+                                            defaultMessage={'Continue from this device'} />
+                                    </ButtonColored>
+                                </div>
                             </div>
-                        </div>
-                        : <div className={'deviceCheckPage__loader'}>
-                            Loading...
-                        </div>
-                }
+                            : <div className={'deviceCheckPage__loader'}>
+                                Loading...
+                            </div>
+                    }
+                </div>
             </div>
-        </div>
+        </LayoutPublicWrapper>
     );
 };
 

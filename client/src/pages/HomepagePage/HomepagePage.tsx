@@ -1,4 +1,4 @@
-import LayoutPublicWrapper from '../../wrappers/LayoutPrivateWrapper';
+import LayoutPrivateWrapper from '../../wrappers/LayoutPrivateWrapper';
 import HomepageCard from '../../components/HomepageCard/HomepageCard';
 import "./homepagePage.scss"
 import { useEffect, useState } from 'react';
@@ -15,6 +15,10 @@ const HomepagePage = () => {
     const [news, setNews] = useState<NewsEntity[]>([]);
     const [feed, setFeed] = useState<FeedEntity[]>([]);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     useEffect(() => {
         getNewsAll()
@@ -47,7 +51,7 @@ const HomepagePage = () => {
     }
 
     return (
-        <LayoutPublicWrapper>
+        <LayoutPrivateWrapper>
             <div className={'homepage'}>
                 <div className={'homepage__top'}>
                     <div className={'homepage__topTop'}>
@@ -102,7 +106,7 @@ const HomepagePage = () => {
                 <h2>Industry events</h2>
                 <Calendar />
             </div>
-        </LayoutPublicWrapper>
+        </LayoutPrivateWrapper>
     );
 };
 

@@ -41,6 +41,10 @@ const OrderPage = () => {
     const { option } = useParams();
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [option])
+
+    useEffect(() => {
         if (!name || !email || !address || !shippingCode) {
             setValidationError(intl.formatMessage({
                 id: 'error_order_fill_all_required',
