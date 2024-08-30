@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import ButtonColored from '../Button/ButtonColored';
 import { FLAG_PRESALE } from '../../dev_flags';
 import ButtonLanguage from '../Button/ButtonLanguage';
-import "./landingPageHeader.scss"
+import './landingPageHeader.scss';
 import { useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
 
@@ -12,11 +12,11 @@ const LandingPageHeader = () => {
 
     const handleClickHambuger = () => {
         setMobileMenuOpen(!mobileMenuOpen);
-    }
+    };
 
     const handleClickLink = () => {
         setMobileMenuOpen(false);
-    }
+    };
 
     return (
         <div className={'landingHeader'}>
@@ -33,11 +33,13 @@ const LandingPageHeader = () => {
                     </svg>}
             </div>
 
-            <img src={'/images/PFlogo.png'} alt={'logo Participation Factory'} />
+            <HashLink to={'/'}>
+                <img src={'/images/PFlogo.png'} className={"landingHeader__logo"} alt={'logo Participation Factory'} />
+            </HashLink>
             <div className={'landingHeader__navigationContainer'}>
                 <div className={'landingHeader__loginAndLanguage'}>
                     <div className={'landingHeader__login'}>
-                    <ButtonColored>
+                        <ButtonColored>
                             <HashLink to={'/#pricingSection'}>
                                 <FormattedMessage id={'label_buy'} defaultMessage={'Buy Report'} />
                             </HashLink>
@@ -70,7 +72,7 @@ const LandingPageHeader = () => {
                         <FormattedMessage id={'label_pricing'} defaultMessage={'Pricing'} />
                     </HashLink>
                     {<Link to={'/contact'} onClick={handleClickLink}>
-                      <FormattedMessage id={'label_contact'} defaultMessage={'Contact'} />
+                        <FormattedMessage id={'label_contact'} defaultMessage={'Contact'} />
                     </Link>}
                 </nav>
             </div>
