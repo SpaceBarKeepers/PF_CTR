@@ -48,7 +48,7 @@ const ToolDetail = () => {
             return 'https://' + url;
         }
     };
-    console.log(tool.caseStudyOnePublishedEn, tool.caseStudyTwoPublishedEn);
+
     return (
         <div className={'toolDetail'}>
             <Header />
