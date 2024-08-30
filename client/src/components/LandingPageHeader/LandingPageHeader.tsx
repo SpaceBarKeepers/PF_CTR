@@ -38,9 +38,9 @@ const LandingPageHeader = () => {
                 <div className={'landingHeader__loginAndLanguage'}>
                     <div className={'landingHeader__login'}>
                     <ButtonColored>
-                            <a href={'#pricingSection'}>
+                            <HashLink to={'/#pricingSection'}>
                                 <FormattedMessage id={'label_buy'} defaultMessage={'Buy Report'} />
-                            </a>
+                            </HashLink>
                         </ButtonColored>
                         {!FLAG_PRESALE && <ButtonColored buttonType={'secondary'}>
                           <Link to={'/login'}>
