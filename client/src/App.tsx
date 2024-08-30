@@ -35,6 +35,7 @@ import { ARTICLE_TYPE_ENUM } from './models/enums';
 import ToolDetail from './pages/ToolDetail/ToolDetail';
 import AdminFeedPage from './pagesAdmin/AdminFeedPage/AdminFeedPage';
 import AdminFeedEditPage from './pagesAdmin/AdminFeedEditPage/AdminFeedEditPage';
+import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -53,6 +54,10 @@ function App() {
         {
             path: '/',
             element: <LandingPage/>,
+        },
+        {
+            path: "reset-password",
+            element: <ResetPasswordPage/>
         },
         {
             path: "/order/:option",
