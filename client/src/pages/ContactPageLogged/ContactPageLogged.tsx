@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import OrderInput from '../../components/OrderInput/OrderInput';
 import './contactPage.scss';
@@ -14,6 +14,10 @@ const ContactPageLogged = () => {
     const [message, setMessage] = useState('');
     const [validation, setValidation] = useState('');
     const intl = useIntl();
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const handleSend = () => {
         if (!name || !email || !message) {

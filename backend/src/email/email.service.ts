@@ -18,11 +18,17 @@ export class EmailService {
     });
   }
 
-  async sendRegistrationEmail(to: string, html: string) {
+  async sendRegistrationEmail(
+    to: string,
+    html: string,
+    alternativeSubject?: string,
+  ) {
     const mailOptions = {
       from: '"Civic Tech Report" <civictechreport@civictechreport.com>',
       to: to,
-      subject: 'Civic Tech Report: Account created',
+      subject: alternativeSubject
+        ? alternativeSubject
+        : 'Civic Tech Report: Account created',
       html: html,
     };
 
@@ -131,6 +137,92 @@ export class EmailService {
     `;
 
     await this.sendRegistrationEmail(email, htmlTemplate);
+  }
+
+  async sendResetPasswordEmail(email: string, password: string) {
+    const htmlTemplate = `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Your New Account</title>
+          <style>
+              body {
+                  font-family: Arial, sans-serif;
+                  background-color: #f4f4f4;
+                  margin: 0;
+                  padding: 0;
+              }
+              .container {
+                  background-color: #ffffff;
+                  max-width: 600px;
+                  margin: 20px auto;
+                  padding: 20px;
+                  border: 1px solid #e0e0e0;
+                  border-radius: 5px;
+              }
+              .header {
+                  text-align: center;
+                  padding: 10px 0;
+                  border-bottom: 1px solid #e0e0e0;
+              }
+              .header img {
+                  max-width: 100px;
+              }
+              .content {
+                  margin: 20px 0;
+                  text-align: center;
+              }
+              .content p {
+                  font-size: 16px;
+                  color: #333333;
+              }
+              .content .password {
+                  font-size: 24px;
+                  font-weight: bold;
+                  color: #1a73e8;
+                  margin: 20px 0;
+              }
+              .footer {
+                  text-align: center;
+                  padding: 10px 0;
+                  border-top: 1px solid #e0e0e0;
+                  font-size: 12px;
+                  color: #888888;
+              }
+          </style>
+      </head>
+      <body>
+          <div class="container">
+              <div class="header">
+                  <h1>
+                  Civic Tech Report
+                  </h1>
+              </div>
+              <div class="content">
+                  <p>Hello,</p>
+                  <p>You've asked for your password to be reset.</p>
+                  <p>Your new password for account:</p>
+                  <p class="password">${email}</p>
+                  <p>is:</p>
+                  <p class="password">${password}</p>
+                  <p>Please keep this password secure and do not share it with anyone.</p>
+              </div>
+              <div class="footer">
+                  <p>&copy; 2024 All rights reserved.</p>
+                  <p>Please note that by placing an order, you agree to our <a href="https://drive.google.com/file/d/18b4_vOCgR_JCa-KtpHBAgo8-W3pbbNn-/view" target="_blank">Confidentiality and Non-Compete Agreement.</a></p>
+              </div>
+          </div>
+      </body>
+      </html>
+    `;
+
+    await this.sendRegistrationEmail(
+      email,
+      htmlTemplate,
+      'Civic Tech Report: Password reset',
+    );
   }
 
   async sendCopyEmailToPF(

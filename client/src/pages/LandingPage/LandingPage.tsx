@@ -9,10 +9,15 @@ import { LANGUAGE_ENUM } from '../../models/enums';
 import LandingPageCard from '../../components/LandingPageCard/LandingPageCard';
 import FaqRow from '../../components/FaqRow/FaqRow';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const LandingPage = () => {
     const language = useAtomValue(languageAtom);
     const intl = useIntl();
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <LayoutPublicWrapper>

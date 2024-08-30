@@ -1,24 +1,24 @@
 import {useAtom} from "jotai";
-import {tokenAdminAtom} from "../atomStore";
+import { tokenAtom } from '../atomStore';
 import {jwtDecode} from "jwt-decode";
-import {adminTokenRefresh} from "../api/admin";
-import {useAdminLogout} from "./logoutAdmin";
+import { useForcedLogout } from './logout';
+import { tokenRefresh } from '../api/auth';
 
-export const useSilentAdminTokenRefresh = () => {
-    const [adminToken, setAdminToken] = useAtom(tokenAdminAtom)
-    const logout = useAdminLogout()
+export const useSilentTokenRefresh = () => {
+    const [token, setToken] = useAtom(tokenAtom)
+    const logout = useForcedLogout()
 
     return async () => {
-        if (adminToken) {
+        if (token) {
             const now = Date.now();
-            const expires = jwtDecode(adminToken.admin_token).exp! * 1000;
+            const expires = jwtDecode(token.access_token).exp! * 1000;
             const timeUntilExpiration = expires - now;
 
             if (timeUntilExpiration < 1000 * 60) {
                 try {
-                    const response = await adminTokenRefresh();
-                    setAdminToken(response);
-                    return response.admin_token;
+                    const response = await tokenRefresh();
+                    setToken(response);
+                    return response.access_token;
                 } catch (error: any) {
                     if (error.message === "error_invalid_refresh") {
                         logout();
@@ -27,13 +27,13 @@ export const useSilentAdminTokenRefresh = () => {
                     throw error; // Rethrow error to indicate failure
                 }
             } else {
-                return adminToken.admin_token;
+                return token.access_token;
             }
         } else {
             try {
-                const response = await adminTokenRefresh();
-                setAdminToken(response);
-                return response.admin_token;
+                const response = await tokenRefresh();
+                setToken(response);
+                return response.access_token;
             } catch (error: any) {
                 if (error.message === "error_invalid_refresh") {
                     logout();

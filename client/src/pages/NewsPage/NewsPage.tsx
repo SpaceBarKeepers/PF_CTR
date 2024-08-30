@@ -19,6 +19,10 @@ const NewsPage = () => {
     const [filteredNews, setFilteredNews] = useState<NewsEntity[]>([]);
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    useEffect(() => {
         getNewsAll()
             .then((response) => {
                 setNews(response);

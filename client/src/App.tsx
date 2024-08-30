@@ -22,7 +22,6 @@ import CataloguePage from './pages/CataloguePage/CataloguePage';
 import KnowledgeBasePage from './pages/KnowledgeBasePage/KnowledgeBasePage';
 import NewsPage from './pages/NewsPage/NewsPage';
 import EditablePage from './pages/EditablePage/EditablePage';
-import { jwtDecode } from 'jwt-decode';
 import ContactPage from './pages/ContactPage/ContactPage';
 import AdminKnowledgeEditPage from './pagesAdmin/AdminKnowledgeEditPage/AdminKnowledgeEditPage';
 import AdminNewsEditPage from './pagesAdmin/AdminNewsEditPage/AdminNewsEditPage';
@@ -36,6 +35,7 @@ import { ARTICLE_TYPE_ENUM } from './models/enums';
 import ToolDetail from './pages/ToolDetail/ToolDetail';
 import AdminFeedPage from './pagesAdmin/AdminFeedPage/AdminFeedPage';
 import AdminFeedEditPage from './pagesAdmin/AdminFeedEditPage/AdminFeedEditPage';
+import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage';
 
 function App() {
     const [messages, setMessages] = useState({})
@@ -54,6 +54,10 @@ function App() {
         {
             path: '/',
             element: <LandingPage/>,
+        },
+        {
+            path: "reset-password",
+            element: <ResetPasswordPage/>
         },
         {
             path: "/order/:option",
@@ -214,10 +218,11 @@ const AuthRequired = ({children}: { children: ReactElement }) => {
 
     useEffect(() => {
         if (!token) navigate("/login")
-        else {
-            const expiration = jwtDecode(token.access_token).exp
-            if (expiration && Date.now() > expiration * 1000) navigate("/login")
-        }
+        // this cause a problem with navigation path
+        // else {
+            // const expiration = jwtDecode(token.access_token).exp
+            // if (expiration && Date.now() > expiration * 1000) navigate("/login", {replace: true})
+        // }
     }, [token, navigate])
 
     return children

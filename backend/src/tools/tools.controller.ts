@@ -11,7 +11,7 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAdminGuard } from '../auth/jwt-auth.guard';
+import { JwtAdminGuard, JwtAuthGuard, JwtCombinedGuard } from '../auth/jwt-auth.guard';
 import { ToolsService } from './tools.service';
 import { ToolsDto } from './dto/tools.dto';
 import { Tools } from './entities/tools.entity';
@@ -31,12 +31,14 @@ export class ToolsController {
     }
   }
 
+  @UseGuards(JwtCombinedGuard)
   @Get('all')
   @HttpCode(200)
   async getAllTools(): Promise<Tools[]> {
     return await this.toolsService.findAll();
   }
 
+  @UseGuards(JwtCombinedGuard)
   @Get(':id')
   @HttpCode(200)
   async getToolById(@Param('id') id: number) {

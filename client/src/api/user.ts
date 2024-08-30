@@ -130,3 +130,30 @@ export const createUser = async (adminToken: string, newUser: CreateUserInterfac
         throw new Error(error.message);
     }
 }
+
+export const resetPassword = async (username: string) => {
+    try {
+        const response = await fetch(`${apiRoot}/user/reset-password`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username }),
+        })
+
+        if (!response.ok) {
+            if (response.status === 401) {
+                throw new Error("error_invalid_refresh");
+            } else if (response.status === 404) {
+                throw new Error("error_account_not_exist");
+            } else {
+                throw new Error("error_unknown");
+            }
+        }
+
+        return response;
+    } catch (error: any) {
+        throw new Error(error.message);
+    }
+}

@@ -8,7 +8,7 @@ type Props = {
     background?: string
 }
 
-const LayoutPublicWrapper = ({ background, children }: Props) => {
+const LayoutPrivateWrapper = ({ background, children }: Props) => {
     return (
         <div
             className={'layoutPrivateWrapper'}
@@ -24,4 +24,4 @@ const LayoutPublicWrapper = ({ background, children }: Props) => {
     );
 };
 
-export default LayoutPublicWrapper;
+export default LayoutPrivateWrapper;
