@@ -1,6 +1,5 @@
 import {
   Controller,
-  Get,
   Post,
   Request,
   Res,
@@ -65,13 +64,6 @@ export class AuthController {
   ) {
     await this.authService.reassignDeviceHash(req.user.username, deviceHash);
     return;
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Get('pokus')
-  @HttpCode(200)
-  getProfile(@Request() req: any) {
-    return req.user;
   }
 
   @UseGuards(JwtRefreshGuard)
