@@ -72,4 +72,10 @@ export class UserController {
   async deleteUser(@Param('id') id: number) {
     await this.userService.delete(id);
   }
+
+  @Post('reset-password')
+  @HttpCode(200)
+  async resetPassword(@Body('username') body: string) {
+    await this.userService.resetPassword(body);
+  }
 }

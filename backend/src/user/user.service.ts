@@ -79,4 +79,22 @@ export class UserService {
       { password: hashedPassword },
     );
   }
+
+  async resetPassword(username: string) {
+    const user = await this.userRepository.findOneBy({ username });
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const password = generatePassword(16);
+    const hashedPassword = await generateBcryptHash(password);
+
+    try {
+      await this.emailService.sendResetPasswordEmail(username, password);
+    } catch (error) {
+      console.error('Error while sending email:', error);
+    }
+
+    return this.userRepository.update({ username }, { password: hashedPassword });
+  }
 }

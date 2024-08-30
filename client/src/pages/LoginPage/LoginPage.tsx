@@ -3,7 +3,7 @@ import { loginUserWithUsernameAndPassword, tokenRefresh } from '../../api/auth';
 import { useAtom } from 'jotai';
 import { tokenAtom } from '../../atomStore';
 import { TokenEntity } from '../../models/entities';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { useForcedLogout } from '../../lib/logout';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -79,6 +79,7 @@ const LoginPage = () => {
                                                                       defaultMessage={'Password'} />:
                             <input type="password" id="password" name="password" />
                         </label>
+                    <Link to={'/reset-password'} className={"loginPage__resetPassword"}><FormattedMessage id={'label_reset_password'} defaultMessage={"Reset password"}/></Link>
                     </div>
                     <div className={'loginPage__formSubmit'}>
                         <ButtonColored childIsLink={false}>
