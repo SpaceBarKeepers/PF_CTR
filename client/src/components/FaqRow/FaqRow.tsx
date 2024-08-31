@@ -25,8 +25,8 @@ const FaqRow = ({ question, answer }: Props) => {
             <p
                 className={"faqRow__answer"}
                 style={{
-                    display: open ? "flex" : "none",
-                    maxHeight: open ? "300px" : "0px"
+                    padding: open ? "45px" : "0px 45px 0 45px",
+                    maxHeight: open ? "fit-content" : "0px",
                 }}
             >
                 {answer}

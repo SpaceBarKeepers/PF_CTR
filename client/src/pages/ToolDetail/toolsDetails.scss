@@ -7,10 +7,10 @@
 
   & > main > * {
     box-sizing: border-box;
-    padding: 21px 20px;
+    padding: 24px;
 
     @media (min-width: 880px) {
-      padding: 21px 70px;
+      padding: 32px 70px;
     }
   }
 
@@ -59,13 +59,11 @@
     display: flex;
     font-family: Arial, sans-serif;
     font-size: 24px;
-    gap: 24px;
+    gap: 16px;
     justify-content: space-evenly;
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
     flex-wrap: wrap;
     @media (min-width: 768px) {
-      gap: 48px;
+      gap: 24px;
       flex-wrap: wrap;
     }
 
@@ -84,10 +82,10 @@
       }
 
       img {
-        height: 40px;
+        height: 30px;
         filter: invert(1);
         @media (min-width: 768px) {
-          height: 64px;
+          height: 40px;
         }
       }
     }
@@ -220,6 +218,13 @@
 
   &__feed {
     background: #e6e6e6;
+    a {
+      color: colors.$color-blue;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
 
     &Container {
       display: flex;

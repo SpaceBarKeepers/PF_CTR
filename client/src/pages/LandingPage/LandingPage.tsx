@@ -184,7 +184,7 @@ const LandingPage = () => {
                             image={'/images/landing_whatYouGet3.png'}
                             heading={intl.formatMessage({
                                 id: 'label_what_you_get3',
-                                defaultMessage: 'Regular updates and news',
+                                defaultMessage: 'News and product updates',
                             })}
                             text={intl.formatMessage({
                                 id: 'text_what_you_get3',

@@ -89,7 +89,7 @@
     align-items: flex-start;
 
     &Container {
-      align-items: center;
+      align-items: stretch;
       display: flex;
       flex-direction: column;
       gap: 16px;
