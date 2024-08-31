@@ -4,17 +4,17 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  padding: 21px 20px 0 20px;
+  padding: 0 20px 0 20px;
 
   background: linear-gradient(
-                  90deg,
-                  rgba(255, 255, 255, 1) 0%,
-                  rgba(255, 255, 255, 0.97) 10%,
-                  rgba(255, 255, 255, 0.95) 50%,
-                  rgba(255, 255, 255, 0.97) 90%,
-                  rgba(255, 255, 255, 1) 100%
-  ),
-  url('../assets/bg-earth.png') no-repeat center 70px fixed;
+      90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.97) 10%,
+      rgba(255, 255, 255, 0.95) 50%,
+      rgba(255, 255, 255, 0.97) 90%,
+      rgba(255, 255, 255, 1) 100%
+    ),
+    url('../assets/bg-earth.png') no-repeat center 70px fixed;
   background-size: 150%;
 
   hr {
@@ -25,6 +25,6 @@
   }
 
   @media (min-width: 880px) {
-    padding: 21px 70px 0 70px;
+    padding: 100px 70px 0 70px;
   }
 }
