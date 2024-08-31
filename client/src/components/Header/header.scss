@@ -1,4 +1,4 @@
-@use "../../partials/colors";
+@use '../../partials/colors';
 
 .header {
   align-items: center;
@@ -36,9 +36,14 @@
       flex-direction: row;
       position: initial;
       gap: 32px;
-      padding: 0;
       box-shadow: none;
       width: 100%;
+      background-color: white;
+      border-bottom: 4px solid black;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 20px 0 0 0;
 
       .account_button {
         margin-left: auto;
