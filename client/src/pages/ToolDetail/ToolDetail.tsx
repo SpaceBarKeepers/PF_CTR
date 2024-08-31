@@ -37,7 +37,7 @@ const ToolDetail = () => {
             .catch((error) => {
                 console.error(error);
             });
-    }, [getToken, id]);
+    }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const formatUrl = (url: string) => {
         // Check if the URL starts with 'http://' or 'https://'

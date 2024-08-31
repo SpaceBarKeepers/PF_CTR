@@ -39,7 +39,7 @@ const CataloguePage = () => {
           .catch((error) => console.error(error));
       })
       .catch((error) => console.error(error));
-  }, [getToken]);
+  }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
   const handleClickExpandFuntionalityFilter = () => {
     setFunctionalityFilterExpanded((prev) => !prev);
