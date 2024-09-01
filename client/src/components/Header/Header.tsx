@@ -2,12 +2,27 @@ import { FormattedMessage } from 'react-intl';
 import { Link, useNavigate } from 'react-router-dom';
 import ButtonColored from '../Button/ButtonColored';
 import './header.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [border, setBorder] = useState(false);
     const navigate = useNavigate();
     // const logout = useForcedLogout();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setBorder(true);
+            } else {
+                setBorder(false);
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const handleClickAccount = () => {
         navigate('/account');
@@ -36,7 +51,7 @@ const Header = () => {
                     </svg>}
             </div>
 
-            <nav style={{ display: mobileMenuOpen ? 'flex' : undefined }}>
+            <nav className={border ? "border" : ""} style={{ display: mobileMenuOpen ? 'flex' : undefined }}>
 
                 <Link to={'/homepage'}>
                     {mobileMenuOpen
