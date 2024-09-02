@@ -6,7 +6,7 @@ export const useAdminLogout = () => {
     const setToken = useSetAtom(tokenAdminAtom);
 
     return () => {
-        adminLogout();
         setToken(null);
+        adminLogout();
     };
 }
