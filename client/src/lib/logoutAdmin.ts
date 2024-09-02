@@ -5,8 +5,8 @@ import {adminLogout} from "../api/admin";
 export const useAdminLogout = () => {
     const setToken = useSetAtom(tokenAdminAtom);
 
-    return () => {
+    return async () => {
+        await adminLogout();
         setToken(null);
-        adminLogout();
     };
 }
