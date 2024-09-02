@@ -19,7 +19,7 @@
     padding: 21px 20px 0 20px;
 
     @media (min-width: 880px) {
-      padding: 21px 70px 0 70px;
+      padding: 21px 70px 48px 70px;
     }
   }
   &__logoWrapper {
@@ -137,7 +137,7 @@
           &Container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 12px;
 
             &Tag {
@@ -148,6 +148,8 @@
               gap: 16px;
               text-transform: uppercase;
               text-align: center;
+              flex: 0;
+              flex-basis: 120px;
 
               img {
                 height: 40px;

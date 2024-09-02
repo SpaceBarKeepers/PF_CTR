@@ -19,13 +19,6 @@
         flex-direction: column;
         gap: 100px;
         flex: 1;
-
-        h1 {
-          font-size: 64px;
-          @media (min-width: 768px) {
-            font-size: 80px;
-          }
-        }
       }
 
       &Feed {
