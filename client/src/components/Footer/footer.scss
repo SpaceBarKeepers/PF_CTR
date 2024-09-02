@@ -59,4 +59,12 @@
       font-size: initial;
     }
   }
+
+  &__links {
+    a {
+      color: revert;
+      font-size: 12px;
+      text-decoration: revert;
+    }
+  }
 }

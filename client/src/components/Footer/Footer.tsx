@@ -18,6 +18,11 @@ const Footer = () => {
                 <p>
                     <b>E-mail: </b> <a href={"mailto:info@participationfactory.com"}>info@participationfactory.com</a>
                 </p>
+                <p className={"footer__links"}>
+                    <a href={"https://drive.google.com/file/d/18b4_vOCgR_JCa-KtpHBAgo8-W3pbbNn-/view?usp=sharing"} target={"_blank"}>Confidentiality agreement</a>
+                    {' | '}
+                    <a href={"#"} target={"_blank"}>Privacy policy</a>
+                </p>
             </div>
         </footer>
     );
