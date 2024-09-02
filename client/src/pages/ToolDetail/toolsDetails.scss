@@ -10,16 +10,16 @@
     padding: 24px;
 
     @media (min-width: 880px) {
-      padding: 100px 70px 0 70px;
+      padding: 32px 70px;
     }
   }
 
   .header {
     box-sizing: border-box;
-    padding: 21px 20px 0 20px;
+    padding: 21px 20px 0px 20px;
 
     @media (min-width: 880px) {
-      padding: 21px 70px 0 70px;
+      padding: 21px 70px 48px 70px;
     }
   }
   &__logoWrapper {
