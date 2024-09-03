@@ -21,7 +21,7 @@ const Footer = () => {
                 <p className={"footer__links"}>
                     <a href={"https://drive.google.com/file/d/18b4_vOCgR_JCa-KtpHBAgo8-W3pbbNn-/view?usp=sharing"} target={"_blank"}>Confidentiality agreement</a>
                     {' | '}
-                    <a href={"#"} target={"_blank"}>Privacy policy</a>
+                    <a href={"https://drive.google.com/file/d/1nplALgeWytMUXF6pGI8K40qMhKdkgIN6/view?usp=sharing"} target={"_blank"}>Privacy policy</a>
                 </p>
             </div>
         </footer>
