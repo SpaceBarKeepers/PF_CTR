@@ -310,7 +310,7 @@ export class EmailService {
     `;
 
     await this.sendRegistrationEmail(
-      'civictechreport@civictechreport.com',
+      'civictech@participationfactory.com',
       htmlTemplate,
     );
   }
@@ -392,7 +392,7 @@ export class EmailService {
     `;
 
     await this.sendContactEmail(
-      'civictechreport@civictechreport.com',
+      'civictech@participationfactory.com',
       htmlTemplate,
     );
   }
