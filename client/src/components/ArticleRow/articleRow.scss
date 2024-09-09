@@ -7,12 +7,13 @@
 
   &__container {
     display: flex;
+    flex-wrap: wrap;
     gap: 32px;
   }
 
   &__articleCard {
-    width: 361px;
-    height: 265px;
+    width: 90%;
+    height: 365px;
     position: relative;
     overflow: hidden;
     text-decoration: none;
@@ -21,6 +22,17 @@
     &:hover {
       scale: 1.01;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    @media (min-width: 800px) {
+      width: 45%;
+      height: 280px;
+    }
+    @media (min-width: 1200px) {
+      width: 31%;
+      height: 350px;
+    }
+    @media (min-width: 1500px) {
+      width: 23%;
     }
 
     img {
@@ -37,6 +49,10 @@
       right: 0;
       bottom: 16px;
       padding: 8px 16px 8px 16px;
+      & h3 {
+        font-size: 32px;
+        margin-bottom: 0px;
+      }
     }
   }
 }
