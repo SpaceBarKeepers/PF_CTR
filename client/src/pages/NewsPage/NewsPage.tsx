@@ -100,7 +100,7 @@ const NewsPage = () => {
                     if (filteredGeotags.length === 0) {
                         return true;
                     }
-                    return news.geoTags?.some((tag) => filteredGeotags.includes(tag));
+                    return news.geotags?.some((tag) => filteredGeotags.includes(tag));
                 }),
         );
     }, [news, filteredTags, filteredGeotags]);

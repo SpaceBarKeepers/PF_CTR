@@ -83,15 +83,15 @@ const OrderPage = () => {
         switch (option) {
             case CTR_OPTION_ENUM.INDIVIDUAL:
                 orderOption = CTR_OPTION_ENUM.INDIVIDUAL;
-                setOptionPrice(490);
+                setOptionPrice(590);
                 break;
             case CTR_OPTION_ENUM.PARTICIPATION:
                 orderOption = CTR_OPTION_ENUM.PARTICIPATION;
-                setOptionPrice(790);
+                setOptionPrice(890);
                 break;
             default:
                 orderOption = CTR_OPTION_ENUM.INDIVIDUAL;
-                setOptionPrice(490);
+                setOptionPrice(590);
                 break;
         }
 
