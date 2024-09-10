@@ -1,8 +1,8 @@
-import { apiRoot } from './apiRoot';
+import { fileApiRoot } from './apiRoot';
 
 export const createFile = async (adminToken: string, file: FormData) => {
     try {
-        const response = await fetch(`${apiRoot}/file`, {
+        const response = await fetch(`${fileApiRoot}/file`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -28,7 +28,7 @@ export const createFile = async (adminToken: string, file: FormData) => {
 export const deleteFile = async (adminToken: string, url: string) => {
     const key = url.split("/").pop();
     try {
-        const response = await fetch(`${apiRoot}/file/${key}`, {
+        const response = await fetch(`${fileApiRoot}/file/${key}`, {
             method: "DELETE",
             credentials: "include",
             headers: {
