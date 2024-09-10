@@ -12,7 +12,7 @@ export interface NewsEntity {
     contentEn: string;
     thumbnail: string;
     featuredPosition: number | null;
-    geoTags: string[];
+    geotags: string[];
     interview: boolean;
     caseStudy: boolean;
     tags: TagEntity[];
