@@ -41,8 +41,7 @@ const LandingPageHeader = () => {
                     <div className={'landingHeader__login'}>
                         <ButtonColored>
                             <HashLink to={'/#pricingSection'}>
-                                {/*<FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />*/}
-                                <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
+                                <FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />
                             </HashLink>
                         </ButtonColored>
                         {/*<ButtonColored buttonType={'secondary'}>*/}
