@@ -51,7 +51,7 @@ const AdminPagesEditPage = ({ page }: Props) => {
       <div className={'adminPagesEditPage'}>
         <AdminHeader />
           <p>
-              Pro vytvoření kotvy, vytvořte odstavec typu "kotva", vložte do něj nějaký text, třeba "kotva10", poté na něj můžete odkazovat odkazem obsahem "##:~:text=kotva10".
+              Pro vytvoření kotvy, vytvořte odstavec typu "code", vložte do něj nějaký text, třeba "kotva10", poté na něj můžete odkazovat odkazem obsahem "##:~:text=kotva10".
           </p>
           <br/>
         <RichTextInput
