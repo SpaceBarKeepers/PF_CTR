@@ -44,12 +44,11 @@ const LandingPageHeader = () => {
                                 <FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />
                             </HashLink>
                         </ButtonColored>
-                        {!FLAG_PRESALE && <ButtonColored buttonType={'secondary'}>
+                        <ButtonColored buttonType={'secondary'}>
                           <Link to={'/login'}>
                             <FormattedMessage id={'label_login'} defaultMessage={'Login'} />
                           </Link>
                         </ButtonColored>
-                        }
                     </div>
                     {!FLAG_PRESALE && <ButtonLanguage />}
                 </div>

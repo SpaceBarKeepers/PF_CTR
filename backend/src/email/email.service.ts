@@ -124,8 +124,6 @@ export class EmailService {
                   <p>is:</p>
                   <p class="password">${password}</p>
                   <p>Please keep this password secure and do not share it with anyone.</p>
-                  <p>Please note that access to the Civic Tech Market Report 2025 is currently unavailable until the full launch on September 3rd.
-                    So save this email and follow us on  on LinkedIn and Facebook for further updates. </p>
               </div>
               <div class="footer">
                   <p>&copy; 2024 All rights reserved.</p>
