@@ -16,13 +16,13 @@ const LandingPage = () => {
     const intl = useIntl();
 
     useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <LayoutPublicWrapper>
             <div className={'landingPage'}>
-                <img className={"wormhole"} src={'/images/landing_wormhole.png'} alt={'logo Participation Factory'} />
+                <img className={'wormhole'} src={'/images/landing_wormhole.png'} alt={'logo Participation Factory'} />
                 <section className={'landingPage__hero'}>
                     <h1>Civic Tech Market Report 2025</h1>
                     <p>{FLAG_PRESALE
@@ -37,11 +37,7 @@ const LandingPage = () => {
                     }</p>
                     <ButtonColored size={'large'}>
                         <a href={'#pricingSection'}>
-                            {FLAG_PRESALE
-                                ? <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
-                                : <FormattedMessage id={'label_get_your_copy'} defaultMessage={'Get your copy'} />
-                            }
-
+                            <FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />
                         </a>
                     </ButtonColored>
                 </section>
@@ -283,20 +279,20 @@ const LandingPage = () => {
                         <table>
                             <thead>
                             <tr>
-                                <th className={"borderBottom borderRight sticky"}></th>
-                                <th className={"borderBottom borderRight center"}>
+                                <th className={'borderBottom borderRight sticky'}></th>
+                                <th className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'label_pricing1'}
                                         defaultMessage={'Individual bundle'}
                                     />
                                 </th>
-                                <th className={"borderBottom borderRight center"}>
+                                <th className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'label_pricing2'}
                                         defaultMessage={'Participation bundle'}
                                     />
                                 </th>
-                                <th className={"borderBottom borderRight center"}>
+                                <th className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'label_pricing3'}
                                         defaultMessage={'Team bundle'}
@@ -379,7 +375,8 @@ const LandingPage = () => {
                             <tr>
                                 <td className={'borderBottom borderRight sticky'}>
                                     <b>
-                                        <a className={"tableLink"} href={'https://participatepractically.com'}>Participate Practically</a>
+                                        <a className={'tableLink'} href={'https://participatepractically.com'}>Participate
+                                            Practically</a>
                                         {' '}
                                         <FormattedMessage
                                             id={'text_pricing_row4_title'}
@@ -419,23 +416,23 @@ const LandingPage = () => {
                             <tr>
                                 <td>
                                 </td>
-                                <td className={"buttonCell"}>
+                                <td className={'buttonCell'}>
                                     <ButtonColored>
-                                        <Link to={"/order/individual"}>
-                                            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
+                                        <Link to={'/order/individual'}>
+                                            <FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />
                                         </Link>
                                     </ButtonColored>
                                 </td>
-                                <td className={"buttonCell"}>
+                                <td className={'buttonCell'}>
                                     <ButtonColored>
-                                        <Link to={"/order/participation"}>
-                                            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
+                                        <Link to={'/order/participation'}>
+                                            <FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />
                                         </Link>
                                     </ButtonColored>
                                 </td>
-                                <td className={"buttonCell"}>
+                                <td className={'buttonCell'}>
                                     <ButtonColored>
-                                        <Link to={"/contact"}>
+                                        <Link to={'/contact'}>
                                             <FormattedMessage id={'label_contact_us'} defaultMessage={'Contact us'} />
                                         </Link>
                                     </ButtonColored>
