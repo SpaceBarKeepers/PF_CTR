@@ -41,14 +41,15 @@ const LandingPageHeader = () => {
                     <div className={'landingHeader__login'}>
                         <ButtonColored>
                             <HashLink to={'/#pricingSection'}>
-                                <FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />
+                                {/*<FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />*/}
+                                <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
                             </HashLink>
                         </ButtonColored>
-                        <ButtonColored buttonType={'secondary'}>
-                          <Link to={'/login'}>
-                            <FormattedMessage id={'label_login'} defaultMessage={'Login'} />
-                          </Link>
-                        </ButtonColored>
+                        {/*<ButtonColored buttonType={'secondary'}>*/}
+                        {/*  <Link to={'/login'}>*/}
+                        {/*    <FormattedMessage id={'label_login'} defaultMessage={'Login'} />*/}
+                        {/*  </Link>*/}
+                        {/*</ButtonColored>*/}
                     </div>
                     {!FLAG_PRESALE && <ButtonLanguage />}
                 </div>
