@@ -33,6 +33,7 @@ const AdminPagesEditPage = ({ page }: Props) => {
 
   const handleSave = () => {
     getToken().then((token) => {
+        console.log(token);
       if (!token) return;
       updatePage(token, data)
         .then((response) => {
