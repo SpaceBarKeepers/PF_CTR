@@ -38,34 +38,34 @@ import AdminFeedEditPage from './pagesAdmin/AdminFeedEditPage/AdminFeedEditPage'
 import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage';
 
 function App() {
-    const [messages, setMessages] = useState({})
-    const language = useAtomValue(languageAtom)
-    const adminToken = useAtomValue(tokenAdminAtom)
+    const [messages, setMessages] = useState({});
+    const language = useAtomValue(languageAtom);
+    // const adminToken = useAtomValue(tokenAdminAtom);
 
     // Load translations for currently selected language
     useEffect(() => {
-        if (!language) return
+        if (!language) return;
         setMessages({
             ...(JSON.parse(JSON.stringify(translate))[language] && JSON.parse(JSON.stringify(translate))[language]),
-        })
-    }, [language])
+        });
+    }, [language]);
 
     const router = createBrowserRouter([
         {
             path: '/',
-            element: <LandingPage/>,
+            element: <LandingPage />,
         },
         {
-            path: "reset-password",
-            element: <ResetPasswordPage/>
+            path: 'reset-password',
+            element: <ResetPasswordPage />,
         },
         {
-            path: "/order/:option",
-            element: <OrderPage/>
+            path: '/order/:option',
+            element: <OrderPage />,
         },
         {
             path: '/login',
-            element: <LoginPage/>,
+            element: <LoginPage />,
         },
         {
             path: '/device-check',
@@ -85,7 +85,7 @@ function App() {
         },
         {
             path: '/knowledge-base/:id',
-            element: <AuthRequired><ArticlePage type={ARTICLE_TYPE_ENUM.KNOWLEDGE_BASE}/></AuthRequired>,
+            element: <AuthRequired><ArticlePage type={ARTICLE_TYPE_ENUM.KNOWLEDGE_BASE} /></AuthRequired>,
         },
         {
             path: '/knowledge-base',
@@ -93,7 +93,7 @@ function App() {
         },
         {
             path: '/news/:id',
-            element: <AuthRequired><ArticlePage type={ARTICLE_TYPE_ENUM.NEWS}/></AuthRequired>,
+            element: <AuthRequired><ArticlePage type={ARTICLE_TYPE_ENUM.NEWS} /></AuthRequired>,
         },
         {
             path: '/news',
@@ -117,115 +117,126 @@ function App() {
         },
         {
             path: '/admin',
-            element: <AdminLoginPage/>,
+            element: <AdminLoginPage />,
         },
         {
             path: '/admin/dashboard',
-            element: adminToken ? <AdminDashboardPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminDashboardPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/users',
-            element: adminToken ? <AdminUsersPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminUsersPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/knowledge/new',
-            element: adminToken ? <AdminKnowledgeEditPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminKnowledgeEditPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/knowledge/:id',
-            element: adminToken ? <AdminKnowledgeEditPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminKnowledgeEditPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/knowledge',
-            element: adminToken ? <AdminKnowledgePage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminKnowledgePage /></AdminAuthRequired>,
         },
         {
             path: '/admin/news/new',
-            element: adminToken ? <AdminNewsEditPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminNewsEditPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/news/:id',
-            element: adminToken ? <AdminNewsEditPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminNewsEditPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/news',
-            element: adminToken ? <AdminNewsPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminNewsPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/pages/trends',
-            element: adminToken ? <AdminPagesEditPage page={"trends"} /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminPagesEditPage page={'trends'} /></AdminAuthRequired>,
         },
         {
             path: '/admin/pages',
-            element: adminToken ? <AdminPagesPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminPagesPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/events/new',
-            element: adminToken ? <AdminEventsEditPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminEventsEditPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/events/:id',
-            element: adminToken ? <AdminEventsEditPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminEventsEditPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/events',
-            element: adminToken ? <AdminEventsPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminEventsPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/feed/new',
-            element: adminToken ? <AdminFeedEditPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminFeedEditPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/feed/:id',
-            element: adminToken ? <AdminFeedEditPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminFeedEditPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/feed',
-            element: adminToken ? <AdminFeedPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminFeedPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/tools/new',
-            element: adminToken ? <AdminToolsEditPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminToolsEditPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/tools/:id',
-            element: adminToken ? <AdminToolsEditPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminToolsEditPage /></AdminAuthRequired>,
         },
         {
             path: '/admin/tools',
-            element: adminToken ? <AdminToolsPage /> : <AdminLoginPage/>,
+            element: <AdminAuthRequired><AdminToolsPage /></AdminAuthRequired>,
         },
     ]);
 
     return (
-        <IntlProvider locale={language ? language : "en"} messages={messages}>
-            <RouterProvider router={router}/>
+        <IntlProvider locale={language ? language : 'en'} messages={messages}>
+            <RouterProvider router={router} />
         </IntlProvider>
-    )
+    );
 }
 
-const AuthRequired = ({children}: { children: ReactElement }) => {
-    const setRedirectAtom = useSetAtom(redirectUrlAtom)
-    const token = useAtomValue(tokenAtom)
-    const navigate = useNavigate()
-    const location = useLocation()
+const AuthRequired = ({ children }: { children: ReactElement }) => {
+    const setRedirectAtom = useSetAtom(redirectUrlAtom);
+    const token = useAtomValue(tokenAtom);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
-        if (location.pathname === "/login") return
-        if (location.pathname === "/device-check") return
-        setRedirectAtom(location.pathname)
+        if (location.pathname === '/login') return;
+        if (location.pathname === '/device-check') return;
+        setRedirectAtom(location.pathname);
     }, [location.pathname, setRedirectAtom]);
 
     useEffect(() => {
-        if (!token) navigate("/login")
+        if (!token) navigate('/login');
         // this cause a problem with navigation path
         // else {
-            // const expiration = jwtDecode(token.access_token).exp
-            // if (expiration && Date.now() > expiration * 1000) navigate("/login", {replace: true})
+        // const expiration = jwtDecode(token.access_token).exp
+        // if (expiration && Date.now() > expiration * 1000) navigate("/login", {replace: true})
         // }
-    }, [token, navigate])
+    }, [token, navigate]);
 
-    return children
-}
+    return children;
+};
 
-export default App
+const AdminAuthRequired = ({ children }: { children: ReactElement }) => {
+    const token = useAtomValue(tokenAdminAtom);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!token) navigate('/admin');
+    }, [token, navigate]);
+
+    return children;
+};
+
+export default App;
