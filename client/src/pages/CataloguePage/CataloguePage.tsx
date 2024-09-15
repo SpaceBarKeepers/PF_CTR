@@ -12,10 +12,13 @@ import { useNavigate } from 'react-router-dom';
 import LayoutPrivateWrapper from '../../wrappers/LayoutPrivateWrapper';
 import { shippingCountrySelectArray } from '../../models/countries';
 import { useSilentTokenRefresh } from '../../lib/useSilentTokenRefresh';
+import { useAtom } from 'jotai';
+import { filteredToolsAtom, toolsAtom } from '../../atomStore';
+import { useNavigationType } from "react-router-dom";
 
 const CataloguePage = () => {
-  const [tools, setTools] = useState<ToolEntity[]>([]);
-  const [filteredTools, setFilteredTools] = useState<ToolEntity[]>([]);
+  // const [tools, setTools] = useState<ToolEntity[]>([]);
+  // const [filteredTools, setFilteredTools] = useState<ToolEntity[]>([]);
   const [functionalityFilterExpanded, setFunctionalityFilterExpanded] =
     useState<boolean>(false);
   const [selectedFunctionalityFilter, setSelectedFunctionalityFilter] =
@@ -24,12 +27,19 @@ const CataloguePage = () => {
   const [countryFilter, setCountryFilter] = useState<string>('');
   const navigate = useNavigate();
   const getToken = useSilentTokenRefresh();
+  const [tools, setTools] = useAtom(toolsAtom);
+  const [filteredTools, setFilteredTools] = useAtom(filteredToolsAtom);
+  const navigationType = useNavigationType(); // 'POP', 'PUSH', or 'REPLACE'
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    // Scroll to top, when user navigated any other way then by BACK action
+    if (navigationType !== "POP") {
+      window.scrollTo(0, 0);
+    }
+  }, [navigationType]);
 
   useEffect(() => {
+    if (!!tools.length) return;
     getToken()
       .then((token) => {
         getToolsAll(token)

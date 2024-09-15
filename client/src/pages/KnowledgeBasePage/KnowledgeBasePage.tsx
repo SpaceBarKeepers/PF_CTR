@@ -61,7 +61,7 @@ const KnowledgeBasePage = () => {
                                     <img src={knowledge.thumbnail} alt={knowledge.titleEn} />
                                     <div className={'knowledgeBasePage__articleCardLabel'}>
                                         <h3>{knowledge.titleEn}</h3>
-                                        <p>{knowledge.subtitleEn}</p>
+                                        {knowledge.subtitleEn && <p>{knowledge.subtitleEn}</p>}
                                     </div>
                                 </Link>
                             ))}
