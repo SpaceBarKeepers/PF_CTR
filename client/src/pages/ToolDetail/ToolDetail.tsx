@@ -62,23 +62,54 @@ const ToolDetail = () => {
                     </div>
                 </div>
                 <div className={'toolDetail__featureTags'}>
-                    {tool.featureTag?.map((feature, index) => {
-                        const intlObject = featureTagIntl.find(
-                            (tag) => tag.value === feature,
-                        );
-                        const tagObject = functionalityFilterArray.find(
-                            (tag) => tag.value === feature,
-                        );
-                        return (
-                            <div key={index} className={'toolDetail__featureTagsTag'}>
-                                <img src={tagObject?.icon} alt={''} />
-                                <FormattedMessage
-                                    id={intlObject?.label}
-                                    defaultMessage={intlObject?.defaultMessage}
-                                />
-                            </div>
-                        );
-                    })}
+                    {/*{tool.featureTag?.map((feature, index) => {*/}
+                    {/*    const intlObject = featureTagIntl.find(*/}
+                    {/*        (tag) => tag.value === feature,*/}
+                    {/*    );*/}
+                    {/*    const tagObject = functionalityFilterArray.find(*/}
+                    {/*        (tag) => tag.value === feature,*/}
+                    {/*    );*/}
+                    {/*    return (*/}
+                    {/*        <div key={index} className={'toolDetail__featureTagsTag'}>*/}
+                    {/*            <img src={tagObject?.icon} alt={''} />*/}
+                    {/*            <FormattedMessage*/}
+                    {/*                id={intlObject?.label}*/}
+                    {/*                defaultMessage={intlObject?.defaultMessage}*/}
+                    {/*            />*/}
+                    {/*        </div>*/}
+                    {/*    );*/}
+                    {/*})}*/}
+                    {(() => {
+                        const featureTags = tool.featureTag || [];
+
+                        // Get the number of additional divs required to make the total divisible by 4
+                        const extraDivsCount = featureTags.length > 4 ? (4 - (featureTags.length % 4)) % 4 : 0;
+
+                        return featureTags.map((feature, index) => {
+                            const intlObject = featureTagIntl.find(
+                                (tag) => tag.value === feature,
+                            );
+                            const tagObject = functionalityFilterArray.find(
+                                (tag) => tag.value === feature,
+                            );
+
+                            return (
+                                <div key={index} className={'toolDetail__featureTagsTag'}>
+                                    <img src={tagObject?.icon} alt={''} />
+                                    <FormattedMessage
+                                        id={intlObject?.label}
+                                        defaultMessage={intlObject?.defaultMessage}
+                                    />
+                                </div>
+                            );
+                        })
+                            .concat(
+                                // Add extra empty <div>s to make the total count divisible by 4
+                                Array(extraDivsCount).fill(null).map((_, index) => (
+                                    <div key={`extra-${index}`} className={'toolDetail__featureTagsTag'}></div>
+                                ))
+                            );
+                    })()}
                 </div>
                 <div className={'toolDetail__features'}>
                     <h2>Standout features</h2>
