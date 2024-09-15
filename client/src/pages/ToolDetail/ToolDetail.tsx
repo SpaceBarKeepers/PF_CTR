@@ -27,7 +27,6 @@ const ToolDetail = () => {
         getToken().then((token) => {
             getToolsById(token, id)
                 .then((response) => {
-                    console.log(response);
                     setTool(response);
                 })
                 .catch((error) => {
