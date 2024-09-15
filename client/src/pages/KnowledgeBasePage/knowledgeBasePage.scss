@@ -27,7 +27,7 @@
     transition: all 0.3s ease;
     &:hover {
       scale: 1.01;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
     }
 
     img {
@@ -39,11 +39,19 @@
 
     &Label {
       background: colors.$color-white;
+      //display: flex;
+      //flex-direction: column;
+      gap: 16px;
       position: absolute;
       left: 0;
       right: 0;
       bottom: 16px;
+      //top: 130px;
       padding: 8px 16px 8px 16px;
+
+      h3 {
+        margin: 0;
+      }
     }
   }
 }
