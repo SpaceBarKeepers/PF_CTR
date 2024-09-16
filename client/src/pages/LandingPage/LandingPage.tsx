@@ -37,8 +37,8 @@ const LandingPage = () => {
                     }</p>
                     <ButtonColored size={'large'}>
                         <a href={'#pricingSection'}>
-                            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
-                            {/*<FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />*/}
+                            {/*<FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
+                            <FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />
                         </a>
                     </ButtonColored>
                 </section>
@@ -420,16 +420,16 @@ const LandingPage = () => {
                                 <td className={'buttonCell'}>
                                     <ButtonColored>
                                         <Link to={'/order/individual'}>
-                                            {/*<FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />*/}
-                                            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
+                                            <FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />
+                                            {/*<FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
                                         </Link>
                                     </ButtonColored>
                                 </td>
                                 <td className={'buttonCell'}>
                                     <ButtonColored>
                                         <Link to={'/order/participation'}>
-                                            {/*<FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />*/}
-                                            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />
+                                            <FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />
+                                            {/*<FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
                                         </Link>
                                     </ButtonColored>
                                 </td>
