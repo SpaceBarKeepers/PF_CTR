@@ -140,6 +140,7 @@ const AdminToolsEditPage = () => {
             <CountryInput label={'Countries: '} state={data} setState={setData} name={'countries'} />
             <Input label={'Partners: '} state={data} setState={setData} name={'partners'} />
             <div className={'adminToolsEditPage__tagContainer'}>
+                <label>Accessibility tags:</label>
                 {accessibilityTagsIntl.map((tag) => (
                     <GeoTag
                         key={tag.value}
@@ -151,6 +152,7 @@ const AdminToolsEditPage = () => {
                 ))}
             </div>
             <div className={'adminToolsEditPage__tagContainer'}>
+                <label>Social positioning tags:</label>
                 {socialTagsIntl.map((tag) => (
                     <GeoTag
                         key={tag.value}
