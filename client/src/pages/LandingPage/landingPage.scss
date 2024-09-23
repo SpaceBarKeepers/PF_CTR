@@ -1,8 +1,29 @@
+@use "../../partials/colors";
+
 .landingPage {
   display: flex;
   flex-direction: column;
   gap: 64px;
   position: relative;
+
+  &__clickUp {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background: colors.$color-blue;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    z-index: 2;
+
+    svg {
+      height: 40px;
+      width: 40px;
+    }
+  }
 
   .wormhole {
     display: none;

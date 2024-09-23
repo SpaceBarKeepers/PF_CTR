@@ -9,9 +9,10 @@ import { LANGUAGE_ENUM } from '../../models/enums';
 import LandingPageCard from '../../components/LandingPageCard/LandingPageCard';
 import FaqRow from '../../components/FaqRow/FaqRow';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const LandingPage = () => {
+    const [scrollButtonVisible, setScrollButtonVisible] = useState(false);
     const language = useAtomValue(languageAtom);
     const intl = useIntl();
 
@@ -19,12 +20,41 @@ const LandingPage = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            if (scrollPosition < 30) {
+                setScrollButtonVisible(false);
+            } else {
+                setScrollButtonVisible(true);
+            }
+        };
+
+        // Add event listener for scrolling
+        window.addEventListener('scroll', handleScroll);
+
+        // Clean up the event listener on component unmount
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const handleClickUp = () => {
+        window.scrollTo(0,0);
+    }
+
     return (
         <LayoutPublicWrapper>
             <div className={'landingPage'}>
+                {scrollButtonVisible && <div className={'landingPage__clickUp'} onClick={handleClickUp}>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                       fill="#FFFFFF">
+                    <path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z" />
+                  </svg>
+                </div>}
                 <img className={'wormhole'} src={'/images/landing_wormhole.png'} alt={'logo Participation Factory'} />
                 <section className={'landingPage__hero'}>
-                    <h1>Civic Tech Market Report 2025</h1>
+                <h1>Civic Tech Market Report 2025</h1>
                     <p>{FLAG_PRESALE
                         ? <FormattedMessage
                             id={'text_hero_presale'}
