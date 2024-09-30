@@ -15,10 +15,10 @@ export class News {
   @Column({ type: 'boolean', default: false })
   publishedCs: boolean;
 
-  @Column({ type: 'varchar', length: 100, default: '' })
+  @Column({ type: 'varchar', length: 800, default: '' })
   titleCs: string;
 
-  @Column({ type: 'varchar', length: 100, default: '' })
+  @Column({ type: 'varchar', length: 800, default: '' })
   subtitleCs: string;
 
   @Column({ type: 'varchar', default: '' })
@@ -27,16 +27,16 @@ export class News {
   @Column({ type: 'boolean', default: false })
   publishedEn: boolean;
 
-  @Column({ type: 'varchar', length: 100, default: '' })
+  @Column({ type: 'varchar', length: 800, default: '' })
   titleEn: string;
 
-  @Column({ type: 'varchar', length: 100, default: '' })
+  @Column({ type: 'varchar', length: 800, default: '' })
   subtitleEn: string;
 
   @Column({ type: 'varchar', default: '' })
   contentEn: string;
 
-  @Column({ type: 'varchar', length: 300, default: '' })
+  @Column({ type: 'varchar', default: '' })
   thumbnail: string;
 
   @Column({ type: 'int2', nullable: true, default: null })
