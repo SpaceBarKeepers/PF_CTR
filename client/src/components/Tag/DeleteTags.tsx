@@ -19,14 +19,18 @@ const DeleteTags = ({ updateTags }: Props) => {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     useEffect(() => {
-        getTagAll()
-            .then((response) => {
-                setTags(response);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [dialogRef.current?.showModal]);
+        getToken().then((token) => {
+            getTagAll(token)
+                .then((response) => {
+                    setTags(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, [dialogRef.current?.showModal]); //eslint-disable-line react-hooks/exhaustive-deps
 
     const handleOpenDialog = () => {
         if (dialogRef.current) {

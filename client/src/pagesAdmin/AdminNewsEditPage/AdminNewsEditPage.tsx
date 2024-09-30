@@ -51,10 +51,15 @@ const AdminNewsEditPage = () => {
     }, [id]); //eslint-disable-line react-hooks/exhaustive-deps
 
     const updateTags = () => {
-        getTagAll()
-            .then((response) => {
-                setTags(response);
-            })
+        getToken().then((token) => {
+            getTagAll(token)
+                .then((response) => {
+                    setTags(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        })
             .catch((error) => {
                 console.log(error);
             });
@@ -62,7 +67,7 @@ const AdminNewsEditPage = () => {
 
     useEffect(() => {
         updateTags();
-    }, []);
+    }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     const handleSave = () => {
         // save

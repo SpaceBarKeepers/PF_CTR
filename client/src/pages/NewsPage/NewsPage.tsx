@@ -69,12 +69,15 @@ const NewsPage = () => {
     }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
-        getTagAll()
-            .then((response) => {
-                setTags(response);
-            })
+        getToken().then((token) => {
+            getTagAll(token)
+                .then((response) => {
+                    setTags(response);
+                })
+                .catch((error) => console.error(error));
+        })
             .catch((error) => console.error(error));
-    }, []);
+    }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     const handleClickTag = (tagId: number) => () => {
         if (filteredTags.includes(tagId)) {
@@ -132,7 +135,7 @@ const NewsPage = () => {
         )
         .filter((news: NewsEntity) => news.publishedEn)
         .filter((news: NewsEntity) => news.caseStudy);
-
+    console.log(tags);
     return (
         <LayoutPrivateWrapper>
             <div className={'newsPage'}>
