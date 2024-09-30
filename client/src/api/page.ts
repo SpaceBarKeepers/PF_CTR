@@ -1,13 +1,19 @@
 import {apiRoot} from "./apiRoot";
 import { PageEntity } from '../models/entities';
+// @ts-expect-error get-browser-fingerprint is not typed
+import getBrowserFingerprint from "get-browser-fingerprint"
 
-export const getPageById = async (id: string) => {
+const deviceHash = getBrowserFingerprint({ enableWebgl: true }).toString()
+
+export const getPageById = async (token: string, id: string) => {
     try {
         const response = await fetch(`${apiRoot}/page/${id}`, {
             method: "GET",
             credentials: "include",
             headers: {
+                "Authorization": "Bearer " + token,
                 "Content-Type": "application/json",
+                "device-hash": deviceHash
             },
         })
 

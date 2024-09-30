@@ -9,7 +9,7 @@ import {
   Patch,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAdminGuard } from '../auth/jwt-auth.guard';
+import { JwtAdminGuard, JwtCombinedGuard } from '../auth/jwt-auth.guard';
 import { PageService } from './page.service';
 import { PageDto } from './dto/page.dto';
 
@@ -17,6 +17,7 @@ import { PageDto } from './dto/page.dto';
 export class PageController {
   constructor(private pageService: PageService) {}
 
+  @UseGuards(JwtCombinedGuard)
   @Get(':id')
   @HttpCode(200)
   async getPageById(@Param('id') id: string) {

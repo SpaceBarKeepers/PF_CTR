@@ -20,16 +20,21 @@ const AdminPagesEditPage = ({ page }: Props) => {
 
   useEffect(() => {
     if (!page) return;
-    getPageById(page)
-      .then((response) => {
-        const dto = { id: page, ...response };
-        setData(dto);
-        setLoaded(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [page]);
+    getToken().then((token) => {
+        getPageById(token, page)
+            .then((response) => {
+                const dto = { id: page, ...response };
+                setData(dto);
+                setLoaded(true);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    })
+        .catch((error) => {
+            console.log(error);
+        });
+  }, [page]); //eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSave = () => {
     getToken().then((token) => {
