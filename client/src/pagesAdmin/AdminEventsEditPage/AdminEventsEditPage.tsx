@@ -24,17 +24,22 @@ const AdminEventsEditPage = () => {
             setLoaded(true);
             return
         }
-        getEventById(id)
-            .then((response) => {
-                const event = {...response, eventAt: dateStringToDate(response.eventAt)};
-                console.log("event", event)
-                setData(event);
-                setLoaded(true);
-            })
+        getToken().then((token) => {
+            getEventById(token, id)
+                .then((response) => {
+                    const event = {...response, eventAt: dateStringToDate(response.eventAt)};
+                    console.log("event", event)
+                    setData(event);
+                    setLoaded(true);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        })
             .catch((error) => {
                 console.log(error);
             });
-    }, [id]);
+    }, [id]); //eslint-disable-line react-hooks/exhaustive-deps
 
     const handleSave = () => {
         // save

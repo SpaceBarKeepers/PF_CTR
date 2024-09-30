@@ -103,7 +103,6 @@ const HomepagePage = () => {
                     </div>
                 </div>
                 <ArticleRow articles={news} />
-                <h2>Industry events</h2>
                 <Calendar />
             </div>
         </LayoutPrivateWrapper>

@@ -4,11 +4,13 @@ import { getEventsAll } from '../../api/events';
 import CalendarMonth from './CalendarMonth';
 import './calendar.scss';
 import { getMonthName } from '../../lib/getMonthName';
+import { useSilentTokenRefresh } from '../../lib/useSilentTokenRefresh';
 
 const Calendar = () => {
     const [events, setEvents] = useState<EventEntity[]>([]);
     const [firstEvent, setFirstEvent] = useState<number[]>([]);
     const [monthArray, setMonthArray] = useState<number[][]>([]);
+    const getToken = useSilentTokenRefresh();
 
     const findRelevantMonth = useCallback((events: EventEntity[]) => {
         if (!events.length) return;
@@ -122,18 +124,22 @@ const Calendar = () => {
     }, [firstEvent]);
 
     useEffect(() => {
-        getEventsAll()
-            .then((response) => {
-                const onlyEnglishEvents = response.filter((event: EventEntity) => event.publishedEn);
-                setEvents(onlyEnglishEvents);
-                setFirstEvent(() => {
-                    const firstEvent = onlyEnglishEvents.sort((a: EventEntity, b: EventEntity) => new Date(a.eventAt).getTime() - new Date(b.eventAt).getTime())[0];
-                    return [new Date(firstEvent.eventAt).getMonth(), new Date(firstEvent.eventAt).getFullYear()];
-                });
-                setSelectedMonth(findRelevantMonth(onlyEnglishEvents));
+        getToken()
+            .then((token) => {
+                getEventsAll(token)
+                    .then((response) => {
+                        const onlyEnglishEvents = response.filter((event: EventEntity) => event.publishedEn);
+                        setEvents(onlyEnglishEvents);
+                        setFirstEvent(() => {
+                            const firstEvent = onlyEnglishEvents.sort((a: EventEntity, b: EventEntity) => new Date(a.eventAt).getTime() - new Date(b.eventAt).getTime())[0];
+                            return [new Date(firstEvent.eventAt).getMonth(), new Date(firstEvent.eventAt).getFullYear()];
+                        });
+                        setSelectedMonth(findRelevantMonth(onlyEnglishEvents));
+                    })
+                    .catch((error: any) => console.log(error));
             })
             .catch((error: any) => console.log(error));
-    }, [findRelevantMonth]);
+    }, [findRelevantMonth]); //eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if (!firstEvent.length) return;
@@ -144,48 +150,51 @@ const Calendar = () => {
         setSelectedMonth(month);
     };
 
-    return (
-        <div className={'calendar'}>
-            <div className={'calendar__months'}>
-                {monthArray.length && monthArray.map((month, index) => {
-                    return (
-                        <CalendarMonth
-                            key={index + month[0] + month[1]}
-                            month={month[0]}
-                            year={month[1]}
-                            events={events.filter(item => {
-                                const [eventYear, eventMonth] = item.eventAt.split('-').map(Number);
-                                return eventYear === month[1] && eventMonth === month[0];
-                            })}
-                            selected={selectedMonth && selectedMonth[0] === month[0] && selectedMonth[1] === month[1]}
-                            onClick={handleSelectMonth(month)}
-                        />
-                    );
-                })}
-            </div>
-            <div className={'calendar__events'}>
-                {selectedMonth && selectedMonth.length > 0 &&
-                    (
-                        <>
-                            <h3>Events in {getMonthName(selectedMonth[0])}</h3>
-                            {events.filter(item => {
-                                const [eventYear, eventMonth] = item.eventAt.split('-').map(Number);
-                                return eventYear === selectedMonth[1] && eventMonth === selectedMonth[0];
-                            }).map((event, index) => (
-                                <div key={event.id + index} className={'calendar__eventsEvent'}>
-                                    {index !== 0 && <hr />}
-                                    <div className={'calendar__eventsEventHead'}>
-                                        <p><b>{event.eventAt}</b></p>
-                                        <p>{`${event.location || ''}${event.location && event.eventTimeAt ? ", " : ""}${event.eventTimeAt || ''}`}</p>
-                                    </div>
-                                    <p className={'calendar__eventsEventTitle'}>{event.titleEn}</p>
-                                </div>
-                            ))
-                            }
-                        </>
-                    )}
-            </div>
-        </div>
+    return (events.length ?
+            <>
+                <h2>Industry events</h2>
+                <div className={'calendar'}>
+                    <div className={'calendar__months'}>
+                        {monthArray.length && monthArray.map((month, index) => {
+                            return (
+                                <CalendarMonth
+                                    key={index + month[0] + month[1]}
+                                    month={month[0]}
+                                    year={month[1]}
+                                    events={events.filter(item => {
+                                        const [eventYear, eventMonth] = item.eventAt.split('-').map(Number);
+                                        return eventYear === month[1] && eventMonth === month[0];
+                                    })}
+                                    selected={selectedMonth && selectedMonth[0] === month[0] && selectedMonth[1] === month[1]}
+                                    onClick={handleSelectMonth(month)}
+                                />
+                            );
+                        })}
+                    </div>
+                    <div className={'calendar__events'}>
+                        {selectedMonth && selectedMonth.length > 0 &&
+                            (
+                                <>
+                                    <h3>Events in {getMonthName(selectedMonth[0])}</h3>
+                                    {events.filter(item => {
+                                        const [eventYear, eventMonth] = item.eventAt.split('-').map(Number);
+                                        return eventYear === selectedMonth[1] && eventMonth === selectedMonth[0];
+                                    }).map((event, index) => (
+                                        <div key={event.id + index} className={'calendar__eventsEvent'}>
+                                            {index !== 0 && <hr />}
+                                            <div className={'calendar__eventsEventHead'}>
+                                                <p><b>{event.eventAt}</b></p>
+                                                <p>{`${event.location || ''}${event.location && event.eventTimeAt ? ', ' : ''}${event.eventTimeAt || ''}`}</p>
+                                            </div>
+                                            <p className={'calendar__eventsEventTitle'}>{event.titleEn}</p>
+                                        </div>
+                                    ))
+                                    }
+                                </>
+                            )}
+                    </div>
+                </div>
+            </> : null
     );
 };
 
