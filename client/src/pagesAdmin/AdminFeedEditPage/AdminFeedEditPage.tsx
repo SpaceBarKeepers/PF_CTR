@@ -4,11 +4,11 @@ import Input from '../../components/Input/Input';
 import AdminHeader from '../../components/AdminHeader/AdminHeader';
 import ButtonColored from '../../components/Button/ButtonColored';
 import { useSilentAdminTokenRefresh } from '../../lib/useSilentAdminTokenRefresh';
-import {  FeedEntity } from '../../models/entities';
+import { FeedEntity } from '../../models/entities';
 import DateInput from '../../components/Input/DateInput';
 import { dateStringToDate } from '../../lib/dateConversions';
 import { createFeed, getFeedById, updateFeed } from '../../api/feed';
-import "./adminFeedEditPage.scss"
+import './adminFeedEditPage.scss';
 
 const AdminFeedEditPage = () => {
     const [data, setData] = useState<FeedEntity>({} as FeedEntity);
@@ -22,17 +22,22 @@ const AdminFeedEditPage = () => {
             setLoaded(true);
             return;
         }
-        getFeedById(id)
-            .then((response) => {
-                const feed = { ...response, date: dateStringToDate(response.date) };
-                console.log('feed', feed);
-                setData(feed);
-                setLoaded(true);
-            })
+        getToken().then((token) => {
+            getFeedById(token, id)
+                .then((response) => {
+                    const feed = { ...response, date: dateStringToDate(response.date) };
+                    console.log('feed', feed);
+                    setData(feed);
+                    setLoaded(true);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        })
             .catch((error) => {
                 console.log(error);
             });
-    }, [id]);
+    }, [id]); //eslint-disable-line react-hooks/exhaustive-deps
 
     const handleSave = () => {
         // save

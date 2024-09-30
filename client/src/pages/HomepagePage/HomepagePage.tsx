@@ -10,11 +10,13 @@ import { useNavigate } from 'react-router-dom';
 import { FeedEntity } from '../../models/entities';
 import { getFeedAll } from '../../api/feed';
 import { dateStringToDate, formatDateToDDMMYYYY } from '../../lib/dateConversions';
+import { useSilentTokenRefresh } from '../../lib/useSilentTokenRefresh';
 
 const HomepagePage = () => {
     const [news, setNews] = useState<NewsEntity[]>([]);
     const [feed, setFeed] = useState<FeedEntity[]>([]);
     const navigate = useNavigate();
+    const getToken = useSilentTokenRefresh();
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -29,12 +31,15 @@ const HomepagePage = () => {
     }, []);
 
     useEffect(() => {
-        getFeedAll()
-            .then((response) => {
-                setFeed(response.sort((a: FeedEntity, b:FeedEntity) => new Date(b.date).getTime() - new Date(a.date).getTime()));
-            })
+        getToken().then((token) => {
+            getFeedAll(token)
+                .then((response) => {
+                    setFeed(response.sort((a: FeedEntity, b:FeedEntity) => new Date(b.date).getTime() - new Date(a.date).getTime()));
+                })
+                .catch((error) => console.error(error));
+        })
             .catch((error) => console.error(error));
-    }, []);
+    }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     const handleCardClick = (path: string) => () => {
         navigate(path);
@@ -68,7 +73,7 @@ const HomepagePage = () => {
                         </div>
                         <div className={'homepage__topTopFeed'}>
                             <h3>Feed</h3>
-                            {feed.length && feed.map((item: FeedEntity) => (
+                            {!!feed.length && feed.map((item: FeedEntity) => (
                                 <div key={item.id} className={'homepage__topTopFeedItem'}>
                                     <p><b>{formatDateToDDMMYYYY(dateStringToDate(item.date))}</b> - {item.url
                                         ? <a href={formatUrl(item.url)}>{item.titleEn}</a>

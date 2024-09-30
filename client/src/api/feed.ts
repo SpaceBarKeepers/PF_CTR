@@ -1,13 +1,19 @@
 import {apiRoot} from "./apiRoot";
 import { FeedEntity } from '../models/entities';
+// @ts-expect-error get-browser-fingerprint is not typed
+import getBrowserFingerprint from "get-browser-fingerprint"
 
-export const getFeedAll = async () => {
+const deviceHash = getBrowserFingerprint({ enableWebgl: true }).toString()
+
+export const getFeedAll = async (token: string) => {
     try {
         const response = await fetch(`${apiRoot}/feed/all`, {
             method: "GET",
             credentials: "include",
             headers: {
+                "Authorization": "Bearer " + token,
                 "Content-Type": "application/json",
+                "device-hash": deviceHash
             },
         })
 
@@ -21,13 +27,15 @@ export const getFeedAll = async () => {
     }
 }
 
-export const getFeedById = async (id: string) => {
+export const getFeedById = async (token: string, id: string) => {
     try {
         const response = await fetch(`${apiRoot}/feed/${id}`, {
             method: "GET",
             credentials: "include",
             headers: {
+                "Authorization": "Bearer " + token,
                 "Content-Type": "application/json",
+                "device-hash": deviceHash
             },
         })
 
