@@ -4,7 +4,9 @@ import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { rawBody: true });
-  app.setGlobalPrefix('v1', { exclude: ['file', 'file/:key'] });
+  app.setGlobalPrefix('v1', {
+    exclude: ['file', 'file/:key', 'paywall/webhook'],
+  });
   app.enableCors({
     allowedHeaders: ['Content-Type', 'Authorization', 'device-hash'],
     origin: true,
@@ -14,4 +16,5 @@ async function bootstrap() {
   app.use(cookieParser());
   await app.listen(3000);
 }
+
 bootstrap();
