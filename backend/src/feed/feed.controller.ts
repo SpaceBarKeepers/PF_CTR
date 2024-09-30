@@ -11,10 +11,10 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAdminGuard } from '../auth/jwt-auth.guard';
+import { JwtAdminGuard, JwtCombinedGuard } from '../auth/jwt-auth.guard';
 import { FeedService } from './feed.service';
 import { FeedDto } from './dto/feed.dto';
-import {  Feed } from './entities/feed.entity';
+import { Feed } from './entities/feed.entity';
 
 @Controller('feed')
 export class FeedController {
@@ -31,12 +31,14 @@ export class FeedController {
     }
   }
 
+  @UseGuards(JwtCombinedGuard)
   @Get('all')
   @HttpCode(200)
   async getAllEvents(): Promise<Feed[]> {
     return await this.feedService.findAll();
   }
 
+  @UseGuards(JwtCombinedGuard)
   @Get(':id')
   @HttpCode(200)
   async getNewsById(@Param('id') id: number) {

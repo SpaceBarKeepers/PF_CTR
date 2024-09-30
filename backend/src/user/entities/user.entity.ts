@@ -5,10 +5,10 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 100, unique: true })
+  @Column({ type: 'varchar', unique: true })
   username: string;
 
-  @Column({ type: 'varchar', length: 200 })
+  @Column({ type: 'varchar' })
   password: string;
 
   @Column({ type: 'varchar', length: 200, nullable: true })
@@ -20,16 +20,16 @@ export class User {
   @Column({ type: 'varchar', default: 'manual' })
   registrationType: 'manual' | 'paygate';
 
-  @Column({ type: 'varchar', length: 100, nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   name: string;
 
-  @Column({ type: 'varchar', length: 100, nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   organization: string;
 
-  @Column({ type: 'varchar', length: 100, nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   phone: string;
 
-  @Column({ type: 'varchar', length: 300, nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   address: string;
 
   @Column({ type: 'varchar', length: 2, nullable: true })

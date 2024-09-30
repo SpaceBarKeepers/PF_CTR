@@ -1,13 +1,19 @@
 import {apiRoot} from "./apiRoot";
 import { TagInterface } from '../models/entities';
+// @ts-expect-error get-browser-fingerprint is not typed
+import getBrowserFingerprint from "get-browser-fingerprint"
 
-export const getTagAll = async () => {
+const deviceHash = getBrowserFingerprint({ enableWebgl: true }).toString()
+
+export const getTagAll = async (token: string) => {
     try {
         const response = await fetch(`${apiRoot}/tag/all`, {
             method: "GET",
             credentials: "include",
             headers: {
+                "Authorization": "Bearer " + token,
                 "Content-Type": "application/json",
+                "device-hash": deviceHash
             },
         })
 
@@ -20,26 +26,6 @@ export const getTagAll = async () => {
         throw new Error(error.message);
     }
 }
-
-// export const getTagById = async (id: string) => {
-//     try {
-//         const response = await fetch(`${apiRoot}/tag.ts/${id}`, {
-//             method: "GET",
-//             credentials: "include",
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//         })
-//
-//         if (!response.ok) {
-//             throw new Error("error_unknown");
-//         }
-//
-//         return await response.json();
-//     } catch (error: any) {
-//         throw new Error(error.message);
-//     }
-// }
 
 export const createTag = async (adminToken: string, data: TagInterface) => {
     try {

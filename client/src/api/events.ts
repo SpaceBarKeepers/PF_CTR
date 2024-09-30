@@ -1,13 +1,19 @@
 import {apiRoot} from "./apiRoot";
 import { EventEntity } from '../models/entities';
+// @ts-expect-error get-browser-fingerprint is not typed
+import getBrowserFingerprint from "get-browser-fingerprint"
 
-export const getEventsAll = async () => {
+const deviceHash = getBrowserFingerprint({ enableWebgl: true }).toString()
+
+export const getEventsAll = async (token: string) => {
     try {
         const response = await fetch(`${apiRoot}/events/all`, {
             method: "GET",
             credentials: "include",
             headers: {
+                "Authorization": "Bearer " + token,
                 "Content-Type": "application/json",
+                "device-hash": deviceHash
             },
         })
 
@@ -21,13 +27,15 @@ export const getEventsAll = async () => {
     }
 }
 
-export const getEventById = async (id: string) => {
+export const getEventById = async (token: string, id: string) => {
     try {
         const response = await fetch(`${apiRoot}/events/${id}`, {
             method: "GET",
             credentials: "include",
             headers: {
+                "Authorization": "Bearer " + token,
                 "Content-Type": "application/json",
+                "device-hash": deviceHash
             },
         })
 

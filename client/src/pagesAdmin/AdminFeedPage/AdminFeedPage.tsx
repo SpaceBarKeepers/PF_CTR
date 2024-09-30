@@ -28,15 +28,20 @@ const AdminFeedPage = () => {
     };
 
     useEffect(() => {
-        getFeedAll()
-            .then((response) => {
-                console.log(response);
-                setFeed(sortEventsByDate(response));
-            })
+        getToken().then((token) => {
+            getFeedAll(token)
+                .then((response) => {
+                    console.log(response);
+                    setFeed(sortEventsByDate(response));
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        })
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+}, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     const handleRemove = (id: string) => () => {
         const confirmRemove = window.confirm(
@@ -47,7 +52,7 @@ const AdminFeedPage = () => {
             if (!token) return;
             deleteFeedById(token, id)
                 .then(() => {
-                    getFeedAll()
+                    getFeedAll(token)
                         .then((response) => {
                             setFeed(sortEventsByDate(response));
                         })

@@ -11,7 +11,7 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAdminGuard } from '../auth/jwt-auth.guard';
+import { JwtAdminGuard, JwtCombinedGuard } from '../auth/jwt-auth.guard';
 import { EventsService } from './events.service';
 import { EventsDto } from './dto/events.dto';
 import { Events } from './entities/events.entity';
@@ -31,12 +31,14 @@ export class EventsController {
     }
   }
 
+  @UseGuards(JwtCombinedGuard)
   @Get('all')
   @HttpCode(200)
   async getAllEvents(): Promise<Events[]> {
     return await this.eventsService.findAll();
   }
 
+  @UseGuards(JwtCombinedGuard)
   @Get(':id')
   @HttpCode(200)
   async getNewsById(@Param('id') id: number) {

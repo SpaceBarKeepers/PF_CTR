@@ -6,7 +6,8 @@ import { KnowledgeBaseEntity } from '../../models/knowledge';
 import { NewsEntity } from '../../models/news';
 import { getNewsById } from '../../api/news';
 import LayoutPrivateWrapper from '../../wrappers/LayoutPrivateWrapper';
-import "./articlePage.scss"
+import './articlePage.scss';
+import { useSilentTokenRefresh } from '../../lib/useSilentTokenRefresh';
 
 type Props = {
     type: ARTICLE_TYPE_ENUM;
@@ -17,35 +18,46 @@ const ArticlePage = ({ type }: Props) => {
         KnowledgeBaseEntity | NewsEntity | null
     >(null);
     const { id } = useParams<{ id: string }>();
+    const getToken = useSilentTokenRefresh();
 
     useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [id])
+        window.scrollTo(0, 0);
+    }, [id]);
 
     useEffect(() => {
         if (!id) return;
         if (type === ARTICLE_TYPE_ENUM.KNOWLEDGE_BASE) {
-            getKnowledgeById(id)
-                .then((response) => {
-                    setArticle(response);
-                })
+            getToken().then((token) => {
+                getKnowledgeById(token, id)
+                    .then((response) => {
+                        setArticle(response);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            })
                 .catch((error) => {
                     console.error(error);
                 });
         }
         if (type === ARTICLE_TYPE_ENUM.NEWS) {
-            getNewsById(id)
-                .then((response) => {
-                    setArticle(response);
-                })
+            getToken().then((token) => {
+                getNewsById(token, id)
+                    .then((response) => {
+                        setArticle(response);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            })
                 .catch((error) => {
                     console.error(error);
                 });
         }
-    }, [type, id]);
+    }, [type, id]); //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <LayoutPrivateWrapper background={"white"}>
+        <LayoutPrivateWrapper background={'white'}>
             <div className={'articlePage richtext'}>
                 <div>
                     {type === ARTICLE_TYPE_ENUM.KNOWLEDGE_BASE && article && (
@@ -65,7 +77,8 @@ const ArticlePage = ({ type }: Props) => {
                     <h1>{article?.titleEn}</h1>
                     <h2>{article?.subtitleEn}</h2>
                     {article?.contentEn && (
-                        <div dangerouslySetInnerHTML={{ __html: article?.contentEn }} className={"articlePage__content"} />
+                        <div dangerouslySetInnerHTML={{ __html: article?.contentEn }}
+                             className={'articlePage__content'} />
                     )}
                 </div>
             </div>

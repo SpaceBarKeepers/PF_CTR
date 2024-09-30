@@ -1,13 +1,19 @@
 import {apiRoot} from "./apiRoot";
 import { KnowledgeBaseInterface } from '../models/entities';
+// @ts-expect-error get-browser-fingerprint is not typed
+import getBrowserFingerprint from "get-browser-fingerprint"
 
-export const getKnowledgeAll = async () => {
+const deviceHash = getBrowserFingerprint({ enableWebgl: true }).toString()
+
+export const getKnowledgeAll = async (token: string) => {
     try {
         const response = await fetch(`${apiRoot}/knowledge/all`, {
             method: "GET",
             credentials: "include",
             headers: {
+                "Authorization": "Bearer " + token,
                 "Content-Type": "application/json",
+                "device-hash": deviceHash
             },
         })
 
@@ -21,13 +27,15 @@ export const getKnowledgeAll = async () => {
     }
 }
 
-export const getKnowledgeById = async (id: string) => {
+export const getKnowledgeById = async (token: string, id: string) => {
     try {
         const response = await fetch(`${apiRoot}/knowledge/${id}`, {
             method: "GET",
             credentials: "include",
             headers: {
+                "Authorization": "Bearer " + token,
                 "Content-Type": "application/json",
+                "device-hash": deviceHash
             },
         })
 

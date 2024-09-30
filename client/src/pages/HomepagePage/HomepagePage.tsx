@@ -1,6 +1,6 @@
 import LayoutPrivateWrapper from '../../wrappers/LayoutPrivateWrapper';
 import HomepageCard from '../../components/HomepageCard/HomepageCard';
-import "./homepagePage.scss"
+import './homepagePage.scss';
 import { useEffect, useState } from 'react';
 import { getNewsAll } from '../../api/news';
 import { NewsEntity } from '../../models/news';
@@ -10,37 +10,45 @@ import { useNavigate } from 'react-router-dom';
 import { FeedEntity } from '../../models/entities';
 import { getFeedAll } from '../../api/feed';
 import { dateStringToDate, formatDateToDDMMYYYY } from '../../lib/dateConversions';
+import { useSilentTokenRefresh } from '../../lib/useSilentTokenRefresh';
 
 const HomepagePage = () => {
     const [news, setNews] = useState<NewsEntity[]>([]);
     const [feed, setFeed] = useState<FeedEntity[]>([]);
     const navigate = useNavigate();
+    const getToken = useSilentTokenRefresh();
 
     useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
-
-    useEffect(() => {
-        getNewsAll()
-            .then((response) => {
-                setNews(response.sort((a: NewsEntity, b:NewsEntity) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 3));
-            })
-            .catch((error) => console.error(error));
+        window.scrollTo(0, 0);
     }, []);
 
     useEffect(() => {
-        getFeedAll()
-            .then((response) => {
-                setFeed(response.sort((a: FeedEntity, b:FeedEntity) => new Date(b.date).getTime() - new Date(a.date).getTime()));
-            })
+        getToken().then((token) => {
+            getNewsAll(token)
+                .then((response) => {
+                    setNews(response.sort((a: NewsEntity, b: NewsEntity) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 3));
+                })
+                .catch((error) => console.error(error));
+        })
             .catch((error) => console.error(error));
-    }, []);
+    }, []); //eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+        getToken().then((token) => {
+            getFeedAll(token)
+                .then((response) => {
+                    setFeed(response.sort((a: FeedEntity, b: FeedEntity) => new Date(b.date).getTime() - new Date(a.date).getTime()));
+                })
+                .catch((error) => console.error(error));
+        })
+            .catch((error) => console.error(error));
+    }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     const handleCardClick = (path: string) => () => {
         navigate(path);
-    }
+    };
 
-    const formatUrl = (url:string) => {
+    const formatUrl = (url: string) => {
         // Check if the URL starts with 'http://' or 'https://'
         if (url.startsWith('http://') || url.startsWith('https://')) {
             return url;
@@ -48,7 +56,7 @@ const HomepagePage = () => {
             // Prepend 'https://' if it does not
             return 'https://' + url;
         }
-    }
+    };
 
     return (
         <LayoutPrivateWrapper>
@@ -68,7 +76,7 @@ const HomepagePage = () => {
                         </div>
                         <div className={'homepage__topTopFeed'}>
                             <h3>Feed</h3>
-                            {feed.length && feed.map((item: FeedEntity) => (
+                            {!!feed.length && feed.map((item: FeedEntity) => (
                                 <div key={item.id} className={'homepage__topTopFeedItem'}>
                                     <p><b>{formatDateToDDMMYYYY(dateStringToDate(item.date))}</b> - {item.url
                                         ? <a href={formatUrl(item.url)}>{item.titleEn}</a>
@@ -103,7 +111,6 @@ const HomepagePage = () => {
                     </div>
                 </div>
                 <ArticleRow articles={news} />
-                <h2>Industry events</h2>
                 <Calendar />
             </div>
         </LayoutPrivateWrapper>

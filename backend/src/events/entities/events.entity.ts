@@ -8,13 +8,13 @@ export class Events {
   @Column({ type: 'boolean', default: false })
   publishedCs: boolean;
 
-  @Column({ type: 'varchar', length: 100, default: '' })
+  @Column({ type: 'varchar', length: 800, default: '' })
   titleCs: string;
 
   @Column({ type: 'boolean', default: false })
   publishedEn: boolean;
 
-  @Column({ type: 'varchar', length: 100, default: '' })
+  @Column({ type: 'varchar', length: 800, default: '' })
   titleEn: string;
 
   @Column({ type: 'date', default: new Date() })

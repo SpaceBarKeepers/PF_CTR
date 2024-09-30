@@ -25,15 +25,20 @@ const AdminKnowledgeEditPage = () => {
             setLoaded(true);
             return
         }
-        getKnowledgeById(id)
-            .then((response) => {
-                setData(response);
-                setLoaded(true);
-            })
+        getToken().then((token) => {
+            getKnowledgeById(token, id)
+                .then((response) => {
+                    setData(response);
+                    setLoaded(true);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        })
             .catch((error) => {
                 console.log(error);
             });
-    }, [id]);
+    }, [id]); //eslint-disable-line react-hooks/exhaustive-deps
 
     const handleSave = () => {
         // save

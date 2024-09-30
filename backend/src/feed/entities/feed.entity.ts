@@ -8,12 +8,12 @@ export class Feed {
   @Column({ type: 'date', default: new Date() })
   date: Date;
 
-  @Column({ type: 'varchar', length: 200, default: '' })
+  @Column({ type: 'varchar', length: 800, default: '' })
   titleCs: string;
 
-  @Column({ type: 'varchar', length: 200, default: '' })
+  @Column({ type: 'varchar', length: 800, default: '' })
   titleEn: string;
 
-  @Column({ type: 'varchar', length: 300, default: '' })
+  @Column({ type: 'varchar', default: '' })
   url: string;
 }

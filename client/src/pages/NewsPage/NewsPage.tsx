@@ -9,6 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import ArticleRow from '../../components/ArticleRow/ArticleRow';
 import './newsPage.scss';
 import LayoutPrivateWrapper from '../../wrappers/LayoutPrivateWrapper';
+import { useSilentTokenRefresh } from '../../lib/useSilentTokenRefresh';
 
 const NewsPage = () => {
     const [news, setNews] = useState<NewsEntity[]>([]);
@@ -17,59 +18,66 @@ const NewsPage = () => {
     const [filteredTags, setFilteredTags] = useState<number[]>([]);
     const [filteredGeotags, setFilteredGeotags] = useState<string[]>([]);
     const [filteredNews, setFilteredNews] = useState<NewsEntity[]>([]);
+    const getToken = useSilentTokenRefresh();
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
     useEffect(() => {
-        getNewsAll()
-            .then((response) => {
-                setNews(response);
+        getToken().then((token) => {
+            getNewsAll(token)
+                .then((response) => {
+                    setNews(response);
 
-                const featuredByPosition = response
-                    .filter(
-                        (knowledge: KnowledgeBaseEntity) =>
-                            knowledge.featuredPosition !== null,
-                    )
-                    .sort(
-                        (a: KnowledgeBaseEntity, b: KnowledgeBaseEntity) =>
-                            a.featuredPosition! - b.featuredPosition!,
-                    )
-                    .filter((knowledge: KnowledgeBaseEntity) => knowledge.publishedEn);
-
-                if (featuredByPosition.length < 4) {
-                    const numberOfArticlesPushToFeatured = 4 - featuredByPosition.length;
-                    const notFeatured = response
-                        .filter((knowledge: KnowledgeBaseEntity) => knowledge.publishedEn)
+                    const featuredByPosition = response
                         .filter(
                             (knowledge: KnowledgeBaseEntity) =>
-                                knowledge.featuredPosition === null,
-                        );
-                    const sortedNotFeatured = notFeatured.sort(
-                        (a: KnowledgeBaseEntity, b: KnowledgeBaseEntity) =>
-                            Date.parse(a.createdAt) - Date.parse(b.createdAt),
-                    );
-                    const additionalArticles = sortedNotFeatured.slice(
-                        0,
-                        numberOfArticlesPushToFeatured,
-                    );
+                                knowledge.featuredPosition !== null,
+                        )
+                        .sort(
+                            (a: KnowledgeBaseEntity, b: KnowledgeBaseEntity) =>
+                                a.featuredPosition! - b.featuredPosition!,
+                        )
+                        .filter((knowledge: KnowledgeBaseEntity) => knowledge.publishedEn);
 
-                    setFeaturedNews([...featuredByPosition, ...additionalArticles]);
-                } else {
-                    setFeaturedNews(featuredByPosition);
-                }
-            })
+                    if (featuredByPosition.length < 4) {
+                        const numberOfArticlesPushToFeatured = 4 - featuredByPosition.length;
+                        const notFeatured = response
+                            .filter((knowledge: KnowledgeBaseEntity) => knowledge.publishedEn)
+                            .filter(
+                                (knowledge: KnowledgeBaseEntity) =>
+                                    knowledge.featuredPosition === null,
+                            );
+                        const sortedNotFeatured = notFeatured.sort(
+                            (a: KnowledgeBaseEntity, b: KnowledgeBaseEntity) =>
+                                Date.parse(a.createdAt) - Date.parse(b.createdAt),
+                        );
+                        const additionalArticles = sortedNotFeatured.slice(
+                            0,
+                            numberOfArticlesPushToFeatured,
+                        );
+
+                        setFeaturedNews([...featuredByPosition, ...additionalArticles]);
+                    } else {
+                        setFeaturedNews(featuredByPosition);
+                    }
+                })
+                .catch((error) => console.error(error));
+        })
             .catch((error) => console.error(error));
-    }, []);
+    }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
-        getTagAll()
-            .then((response) => {
-                setTags(response);
-            })
+        getToken().then((token) => {
+            getTagAll(token)
+                .then((response) => {
+                    setTags(response);
+                })
+                .catch((error) => console.error(error));
+        })
             .catch((error) => console.error(error));
-    }, []);
+    }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     const handleClickTag = (tagId: number) => () => {
         if (filteredTags.includes(tagId)) {
@@ -127,7 +135,7 @@ const NewsPage = () => {
         )
         .filter((news: NewsEntity) => news.publishedEn)
         .filter((news: NewsEntity) => news.caseStudy);
-
+    console.log(tags);
     return (
         <LayoutPrivateWrapper>
             <div className={'newsPage'}>
