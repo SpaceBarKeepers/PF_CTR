@@ -11,7 +11,7 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAdminGuard } from '../auth/jwt-auth.guard';
+import { JwtAdminGuard, JwtCombinedGuard } from '../auth/jwt-auth.guard';
 import { KnowledgeService } from './knowledge.service';
 import { KnowledgeDto } from './dto/knowledge.dto';
 import { KnowledgeBase } from './entities/knowledge.entity';
@@ -31,12 +31,14 @@ export class KnowledgeController {
     }
   }
 
+  @UseGuards(JwtCombinedGuard)
   @Get('all')
   @HttpCode(200)
   async getAllKnowledge(): Promise<KnowledgeBase[]> {
     return await this.knowledgeService.findAll();
   }
 
+  @UseGuards(JwtCombinedGuard)
   @Get(':id')
   @HttpCode(200)
   async getKnowledgeById(@Param('id') id: number) {
@@ -50,10 +52,7 @@ export class KnowledgeController {
   @UseGuards(JwtAdminGuard)
   @Patch(':id')
   @HttpCode(204)
-  async updateKnowledge(
-    @Param('id') id: number,
-    @Body() body: KnowledgeDto,
-  ) {
+  async updateKnowledge(@Param('id') id: number, @Body() body: KnowledgeDto) {
     try {
       await this.knowledgeService.update(id, body);
     } catch (e) {

@@ -5,10 +5,12 @@ import FeaturedArticlesHeader from '../../components/FeaturedArticlesHeader/Feat
 import { Link } from 'react-router-dom';
 import './knowledgeBasePage.scss';
 import LayoutPrivateWrapper from '../../wrappers/LayoutPrivateWrapper';
+import { useSilentTokenRefresh } from '../../lib/useSilentTokenRefresh';
 
 const KnowledgeBasePage = () => {
     const [knowledgeBase, setKnowledgeBase] = useState<KnowledgeBaseEntity[]>([]);
     const [featuredKnowledgeBase, setFeaturedKnowledgeBase] = useState<KnowledgeBaseEntity[]>([]);
+    const getToken = useSilentTokenRefresh();
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -17,7 +19,8 @@ const KnowledgeBasePage = () => {
     useEffect(() => {
         const fetchKnowledgeBase = async () => {
             try {
-                const response = await getKnowledgeAll();
+                const token = await getToken();
+                const response = await getKnowledgeAll(token);
                 setKnowledgeBase(response);
 
                 const featuredByPosition = response
@@ -40,7 +43,7 @@ const KnowledgeBasePage = () => {
         };
 
         fetchKnowledgeBase();
-    }, []);
+    }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <LayoutPrivateWrapper>

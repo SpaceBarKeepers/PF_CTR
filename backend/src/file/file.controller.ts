@@ -36,25 +36,24 @@ export class FilesController {
 
   @Get(':key')
   async downloadFile(@Param('key') key: string, @Res() res: Response) {
-    const bucket = 'pf-ctr'; // Replace with your Space bucket name
+    const bucket = 'pf-ctr';
     const { stream, contentType } = await this.fileService.downloadFile(
       key,
       bucket,
     );
 
-    // Set appropriate headers for the image content
     res.set({
       'Content-Type': contentType,
-      'Content-Disposition': `inline; filename="${key}"`, // Renders the image directly in the browser
+      'Content-Disposition': `inline; filename="${key}"`,
     });
 
-    // Pipe the image stream to the response
     stream.pipe(res);
   }
 
+  @UseGuards(JwtAdminGuard)
   @Delete(':key')
   async deleteFile(@Param('key') key: string) {
-    const bucket = 'pf-ctr'; // Replace with your Space bucket name
+    const bucket = 'pf-ctr';
     await this.fileService.deleteFile(key, bucket);
     return {
       message: 'File deleted successfully!',

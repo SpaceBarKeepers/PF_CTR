@@ -7,6 +7,7 @@ import { NewsEntity } from '../../models/news';
 import { getNewsById } from '../../api/news';
 import LayoutPrivateWrapper from '../../wrappers/LayoutPrivateWrapper';
 import "./articlePage.scss"
+import { useSilentTokenRefresh } from '../../lib/useSilentTokenRefresh';
 
 type Props = {
     type: ARTICLE_TYPE_ENUM;
@@ -17,6 +18,7 @@ const ArticlePage = ({ type }: Props) => {
         KnowledgeBaseEntity | NewsEntity | null
     >(null);
     const { id } = useParams<{ id: string }>();
+    const getToken = useSilentTokenRefresh();
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -25,10 +27,15 @@ const ArticlePage = ({ type }: Props) => {
     useEffect(() => {
         if (!id) return;
         if (type === ARTICLE_TYPE_ENUM.KNOWLEDGE_BASE) {
-            getKnowledgeById(id)
-                .then((response) => {
-                    setArticle(response);
-                })
+            getToken().then((token) => {
+                getKnowledgeById(token, id)
+                    .then((response) => {
+                        setArticle(response);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            })
                 .catch((error) => {
                     console.error(error);
                 });
@@ -42,7 +49,7 @@ const ArticlePage = ({ type }: Props) => {
                     console.error(error);
                 });
         }
-    }, [type, id]);
+}, [type, id]); //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <LayoutPrivateWrapper background={"white"}>
