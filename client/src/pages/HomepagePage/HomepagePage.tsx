@@ -1,6 +1,6 @@
 import LayoutPrivateWrapper from '../../wrappers/LayoutPrivateWrapper';
 import HomepageCard from '../../components/HomepageCard/HomepageCard';
-import "./homepagePage.scss"
+import './homepagePage.scss';
 import { useEffect, useState } from 'react';
 import { getNewsAll } from '../../api/news';
 import { NewsEntity } from '../../models/news';
@@ -19,22 +19,25 @@ const HomepagePage = () => {
     const getToken = useSilentTokenRefresh();
 
     useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
-        getNewsAll()
-            .then((response) => {
-                setNews(response.sort((a: NewsEntity, b:NewsEntity) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 3));
-            })
+        getToken().then((token) => {
+            getNewsAll(token)
+                .then((response) => {
+                    setNews(response.sort((a: NewsEntity, b: NewsEntity) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 3));
+                })
+                .catch((error) => console.error(error));
+        })
             .catch((error) => console.error(error));
-    }, []);
+    }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         getToken().then((token) => {
             getFeedAll(token)
                 .then((response) => {
-                    setFeed(response.sort((a: FeedEntity, b:FeedEntity) => new Date(b.date).getTime() - new Date(a.date).getTime()));
+                    setFeed(response.sort((a: FeedEntity, b: FeedEntity) => new Date(b.date).getTime() - new Date(a.date).getTime()));
                 })
                 .catch((error) => console.error(error));
         })
@@ -43,9 +46,9 @@ const HomepagePage = () => {
 
     const handleCardClick = (path: string) => () => {
         navigate(path);
-    }
+    };
 
-    const formatUrl = (url:string) => {
+    const formatUrl = (url: string) => {
         // Check if the URL starts with 'http://' or 'https://'
         if (url.startsWith('http://') || url.startsWith('https://')) {
             return url;
@@ -53,7 +56,7 @@ const HomepagePage = () => {
             // Prepend 'https://' if it does not
             return 'https://' + url;
         }
-    }
+    };
 
     return (
         <LayoutPrivateWrapper>

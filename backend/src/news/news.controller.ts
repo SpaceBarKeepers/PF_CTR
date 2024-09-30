@@ -14,7 +14,7 @@ import {
 import { NewsService } from './news.service';
 import { News } from './entities/news.entity';
 import { NewsDto } from './dto/news.dto';
-import { JwtAdminGuard } from '../auth/jwt-auth.guard';
+import { JwtAdminGuard, JwtCombinedGuard } from '../auth/jwt-auth.guard';
 
 @Controller('news')
 export class NewsController {
@@ -31,12 +31,14 @@ export class NewsController {
     }
   }
 
+  @UseGuards(JwtCombinedGuard)
   @Get('all')
   @HttpCode(200)
   async getAllNews(): Promise<News[]> {
     return await this.newsService.findAll();
   }
 
+  @UseGuards(JwtCombinedGuard)
   @Get(':id')
   @HttpCode(200)
   async getNewsById(@Param('id') id: number) {

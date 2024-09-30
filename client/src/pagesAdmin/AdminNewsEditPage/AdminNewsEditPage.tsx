@@ -35,15 +35,20 @@ const AdminNewsEditPage = () => {
             setLoaded(true);
             return
         }
-        getNewsById(id)
-            .then((response) => {
-                setData(response);
-                setLoaded(true);
-            })
+        getToken().then((token) => {
+            getNewsById(token, id)
+                .then((response) => {
+                    setData(response);
+                    setLoaded(true);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        })
             .catch((error) => {
                 console.log(error);
             });
-    }, [id]);
+    }, [id]); //eslint-disable-line react-hooks/exhaustive-deps
 
     const updateTags = () => {
         getTagAll()

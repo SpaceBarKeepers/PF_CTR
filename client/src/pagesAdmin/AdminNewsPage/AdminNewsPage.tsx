@@ -20,15 +20,20 @@ const AdminNewsPage = () => {
     }
 
     useEffect(() => {
-        getNewsAll()
-            .then((response) => {
-                console.log(response);
-                setArticles(sortArticlesByCreatedAt(response));
-            })
+        getToken().then((token) => {
+            getNewsAll(token)
+                .then((response) => {
+                    console.log(response);
+                    setArticles(sortArticlesByCreatedAt(response));
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        })
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     const handleRemove = (id: string) => () => {
         const confirmRemove = window.confirm('Are you sure you want to remove this article?');
@@ -38,7 +43,7 @@ const AdminNewsPage = () => {
                 if (!token) return;
                 deleteNewsById(token, id)
                     .then(() => {
-                        getNewsAll()
+                        getNewsAll(token)
                             .then((response) => {
                                 setArticles(sortArticlesByCreatedAt(response));
                             })
