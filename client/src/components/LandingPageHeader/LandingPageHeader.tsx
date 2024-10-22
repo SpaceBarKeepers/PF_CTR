@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import ButtonColored from '../Button/ButtonColored';
-import { FLAG_PRESALE } from '../../dev_flags';
-import ButtonLanguage from '../Button/ButtonLanguage';
 import './landingPageHeader.scss';
 import { useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
@@ -50,7 +48,6 @@ const LandingPageHeader = () => {
                           </Link>
                         </ButtonColored>
                     </div>
-                    {!FLAG_PRESALE && <ButtonLanguage />}
                 </div>
                 <nav
                     style={{ display: mobileMenuOpen ? 'flex' : undefined }}

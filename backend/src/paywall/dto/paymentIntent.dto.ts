@@ -12,8 +12,9 @@ export class PaymentIntentDto {
 }
 
 export enum CTR_OPTION_ENUM {
-  INDIVIDUAL = 'individual',
-  PARTICIPATION = 'participation',
+  DIGITAL = 'digital',
+  PRINTED = 'printed',
+  BUNDLE = 'bundle',
 }
 
 export enum CTR_SHIPPING_ENUM {
@@ -21,4 +22,5 @@ export enum CTR_SHIPPING_ENUM {
   EU = 'eu',
   NORTH_AMERICA = 'north_america',
   OTHER = 'other',
+  NONE = 'none',
 }
