@@ -31,10 +31,13 @@ export class PaywallService {
       let optionPrice = 0;
       let shippingPrice = 0;
       switch (option) {
-        case CTR_OPTION_ENUM.INDIVIDUAL:
+        case CTR_OPTION_ENUM.DIGITAL:
+          optionPrice = 250;
+          break;
+        case CTR_OPTION_ENUM.PRINTED:
           optionPrice = 590;
           break;
-        case CTR_OPTION_ENUM.PARTICIPATION:
+        case CTR_OPTION_ENUM.BUNDLE:
           optionPrice = 890;
           break;
       }
@@ -51,6 +54,9 @@ export class PaywallService {
           break;
         case CTR_SHIPPING_ENUM.OTHER:
           shippingPrice = 40;
+          break;
+        case CTR_SHIPPING_ENUM.NONE:
+          shippingPrice = 0;
           break;
       }
 

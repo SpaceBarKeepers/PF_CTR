@@ -77,21 +77,27 @@ const OrderPage = () => {
     }, [name, email, address, shippingCode, intl]);
 
     useEffect(() => {
-        const shippingRegion = shippingCountryToRegion.find((country) => country.code === shippingCode)!.region;
+        const shippingRegion = option === CTR_OPTION_ENUM.DIGITAL ? CTR_SHIPPING_ENUM.NONE : shippingCountryToRegion.find((country) => country.code === shippingCode)!.region;
         let orderOption;
 
         switch (option) {
-            case CTR_OPTION_ENUM.INDIVIDUAL:
-                orderOption = CTR_OPTION_ENUM.INDIVIDUAL;
+            case CTR_OPTION_ENUM.DIGITAL:
+                orderOption = CTR_OPTION_ENUM.DIGITAL;
+                setOptionPrice(250);
+                setShippingPrice(0);
+                break;
+            case CTR_OPTION_ENUM.PRINTED:
+                orderOption = CTR_OPTION_ENUM.PRINTED;
                 setOptionPrice(590);
                 break;
-            case CTR_OPTION_ENUM.PARTICIPATION:
-                orderOption = CTR_OPTION_ENUM.PARTICIPATION;
+            case CTR_OPTION_ENUM.BUNDLE:
+                orderOption = CTR_OPTION_ENUM.BUNDLE;
                 setOptionPrice(890);
                 break;
             default:
-                orderOption = CTR_OPTION_ENUM.INDIVIDUAL;
-                setOptionPrice(590);
+                orderOption = CTR_OPTION_ENUM.DIGITAL;
+                setOptionPrice(250);
+                setShippingPrice(0);
                 break;
         }
 
@@ -107,6 +113,9 @@ const OrderPage = () => {
                 break;
             case CTR_SHIPPING_ENUM.OTHER:
                 setShippingPrice(40);
+                break;
+            case CTR_SHIPPING_ENUM.NONE:
+                setShippingPrice(0);
                 break;
         }
 
@@ -307,7 +316,7 @@ const OrderPage = () => {
                     </h2>
                     <div className={'orderPage__itemsList'}>
                         <OrderItem
-                            label={option === CTR_OPTION_ENUM.PARTICIPATION ? intl.formatMessage({ id: 'label_order_option_b', defaultMessage: 'Participate option' }) :  intl.formatMessage({ id: 'label_order_option_a', defaultMessage: 'Individual option' })}
+                            label={option === CTR_OPTION_ENUM.BUNDLE ? intl.formatMessage({ id: 'label_order_option_c', defaultMessage: 'Participate Practically bundle' }) : option === CTR_OPTION_ENUM.PRINTED ? intl.formatMessage({ id: 'label_order_option_b', defaultMessage: 'Digital + Printed option' }) : intl.formatMessage({ id: 'label_order_option_a', defaultMessage: 'Digital Access option' })}
                             price={optionPrice}
                         />
                         <OrderItem

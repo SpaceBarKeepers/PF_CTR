@@ -1,5 +1,4 @@
 import LayoutPublicWrapper from '../../wrappers/LayoutPublicWrapper';
-import { FLAG_PRESALE } from '../../dev_flags';
 import { FormattedMessage, useIntl } from 'react-intl';
 import ButtonColored from '../../components/Button/ButtonColored';
 import './landingPage.scss';
@@ -55,16 +54,12 @@ const LandingPage = () => {
                 <img className={'wormhole'} src={'/images/landing_wormhole.png'} alt={'logo Participation Factory'} />
                 <section className={'landingPage__hero'}>
                 <h1>Civic Tech Market Report 2025</h1>
-                    <p>{FLAG_PRESALE
-                        ? <FormattedMessage
-                            id={'text_hero_presale'}
-                            defaultMessage={'Explore major trends that are currently shaping the field of digital participation. Get access to the insights from top-tear industry experts and gain a perfect overview of the European Civic Tech ecosystem and detailed information about over 80 solutions with accompanying case studies. Sign up now to pre-order your copy of Civic Tech Market Report 2025 for the early-bird price!'}
-                        />
-                        : <FormattedMessage
+                    <p>
+                        <FormattedMessage
                             id={'text_hero'}
-                            defaultMessage={'Explore major trends that are currently shaping the field of digital participation. Get access to the insights from top-tear industry experts and gain a perfect overview of the European Civic Tech ecosystem and detailed information about over 80 solutions with accompanying case studies.'}
+                            defaultMessage={'Explore major trends that are currently shaping the field of digital participation. Get access to the insights from top-tear industry experts and gain a perfect overview of the European Civic Tech ecosystem and detailed information about over 80 solutions with accompanying case studies. Get your copy of Civic Tech Market Report 2025 and become a part of the digital participation community of practitioners and experts!'}
                         />
-                    }</p>
+                    </p>
                     <ButtonColored size={'large'}>
                         <a href={'#pricingSection'}>
                             {/*<FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
@@ -226,87 +221,6 @@ const LandingPage = () => {
                         <FormattedMessage id={'label_pricing'} defaultMessage={'Pricing'} />
                     </h2>
                     <div className={'landingPage__pricingContainer'}>
-                        {/*<LandingPagePricingCard*/}
-                        {/*    title={intl.formatMessage({ id: 'label_pricing1', defaultMessage: 'Individual bundle' })}*/}
-                        {/*    options={[*/}
-                        {/*        intl.formatMessage({*/}
-                        {/*            id: 'text_pricing1_1',*/}
-                        {/*            defaultMessage: 'Personalised hard copy of the Report delivered to you',*/}
-                        {/*        }),*/}
-                        {/*        intl.formatMessage({*/}
-                        {/*            id: 'text_pricing1_2',*/}
-                        {/*            defaultMessage: 'Access to the online platform for 1 person for the 2025 edition of the Report',*/}
-                        {/*        }),*/}
-                        {/*        intl.formatMessage({*/}
-                        {/*            id: 'text_pricing1_3',*/}
-                        {/*            defaultMessage: 'Regular news, updates, and expert articles available on the platform',*/}
-                        {/*        }),*/}
-                        {/*    ]}*/}
-                        {/*>*/}
-                        {/*    <ButtonColored>*/}
-                        {/*        <a href={'https://tally.so/r/mKoV9X'}>*/}
-                        {/*            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
-                        {/*        </a>*/}
-                        {/*    </ButtonColored>*/}
-                        {/*</LandingPagePricingCard>*/}
-                        {/*<LandingPagePricingCard*/}
-                        {/*    title={intl.formatMessage({ id: 'label_pricing2', defaultMessage: 'Participation bundle' })}*/}
-                        {/*    options={[*/}
-                        {/*        <span>*/}
-                        {/*        <a href={'https://participatepractically.com'}>Participate Practically</a>*/}
-                        {/*            {' '}*/}
-                        {/*            {intl.formatMessage({*/}
-                        {/*                id: 'text_pricing2_1',*/}
-                        {/*                defaultMessage: 'online course for 1 person',*/}
-                        {/*            })}</span>,*/}
-                        {/*        intl.formatMessage({*/}
-                        {/*            id: 'text_pricing2_2',*/}
-                        {/*            defaultMessage: 'Personalised hard copy of the Report delivered to you',*/}
-                        {/*        }),*/}
-                        {/*        intl.formatMessage({*/}
-                        {/*            id: 'text_pricing2_3',*/}
-                        {/*            defaultMessage: 'Access to the online platform for 1 person for the 2025 edition of the Report',*/}
-                        {/*        }),*/}
-                        {/*        intl.formatMessage({*/}
-                        {/*            id: 'text_pricing2_4',*/}
-                        {/*            defaultMessage: 'Regular news, updates, and expert articles available on the platform',*/}
-                        {/*        }),*/}
-                        {/*    ]}*/}
-                        {/*>*/}
-                        {/*    <ButtonColored>*/}
-                        {/*        <a href={'https://tally.so/r/mKoV9X'}>*/}
-                        {/*            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
-                        {/*        </a>*/}
-                        {/*    </ButtonColored>*/}
-                        {/*</LandingPagePricingCard>*/}
-                        {/*<LandingPagePricingCard*/}
-                        {/*    title={intl.formatMessage({ id: 'label_pricing3', defaultMessage: 'Team bundle' })}*/}
-                        {/*    options={[*/}
-                        {/*        intl.formatMessage({*/}
-                        {/*            id: 'text_pricing3_1',*/}
-                        {/*            defaultMessage: 'Team/group discount if obtained for 3 or more people',*/}
-                        {/*        }),*/}
-                        {/*        intl.formatMessage({*/}
-                        {/*            id: 'text_pricing3_2',*/}
-                        {/*            defaultMessage: 'Multiple personalised hard copies of the Report',*/}
-                        {/*        }),*/}
-                        {/*        intl.formatMessage({*/}
-                        {/*            id: 'text_pricing3_3',*/}
-                        {/*            defaultMessage: 'Access to the online platform for multiple people for the 2025 edition of the Report',*/}
-                        {/*        }),*/}
-                        {/*        intl.formatMessage({*/}
-                        {/*            id: 'text_pricing3_4',*/}
-                        {/*            defaultMessage: 'Regular news, updates, and expert articles available on the platform',*/}
-                        {/*        }),*/}
-                        {/*    ]}*/}
-                        {/*>*/}
-                        {/*    <ButtonColored>*/}
-                        {/*        <a href={'https://tally.so/r/mKoV9X'}>*/}
-                        {/*            <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
-                        {/*        </a>*/}
-                        {/*    </ButtonColored>*/}
-                        {/*</LandingPagePricingCard>*/}
-
                         <table>
                             <thead>
                             <tr>
@@ -314,87 +228,79 @@ const LandingPage = () => {
                                 <th className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'label_pricing1'}
-                                        defaultMessage={'Individual bundle'}
+                                        defaultMessage={'Digital Access'}
                                     />
                                 </th>
                                 <th className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'label_pricing2'}
-                                        defaultMessage={'Participation bundle'}
+                                        defaultMessage={'Digital Access and Printed Report'}
                                     />
                                 </th>
                                 <th className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'label_pricing3'}
-                                        defaultMessage={'Team bundle'}
+                                        defaultMessage={'Participate Practically bundle'}
                                     />
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
+                            <tr className={"blackRow"}>
+                                <td></td>
+                                <td>250 EUR</td>
+                                <td>590 EUR</td>
+                                <td>890 EUR</td>
+                            </tr>
                             <tr>
                                 <td className={'borderBottom borderRight sticky'}>
                                     <b>
                                         <FormattedMessage
                                             id={'text_pricing_row1_title'}
-                                            defaultMessage={'Personalised hard copy of the Report delivered to you'}
-                                        />
-                                    </b>
-                                </td>
-                                <td className={'borderBottom borderRight center'}>
-                                    <FormattedMessage
-                                        id={'text_pricing_row1_individual'}
-                                        defaultMessage={'1 copy'}
-                                    />
-                                </td>
-                                <td className={'borderBottom borderRight center'}>
-                                    <FormattedMessage
-                                        id={'text_pricing_row1_participation'}
-                                        defaultMessage={'1 copy'} />
-                                </td>
-                                <td className={'borderBottom borderRight center'}>
-                                    <FormattedMessage
-                                        id={'text_pricing_row1_team'}
-                                        defaultMessage={'multiple copies'} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className={'borderBottom borderRight sticky'}>
-                                    <b>
-                                        <FormattedMessage
-                                            id={'text_pricing_row2_title'}
                                             defaultMessage={'Access to the online platform for the 2025 edition of the Report'}
                                         />
                                     </b>
                                 </td>
                                 <td className={'borderBottom borderRight center'}>
-                                    <FormattedMessage
-                                        id={'text_pricing_row2_individual'}
-                                        defaultMessage={'for 1 person'}
-                                    />
+                                    <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
                                 </td>
                                 <td className={'borderBottom borderRight center'}>
-                                    <FormattedMessage
-                                        id={'text_pricing_row2_participation'}
-                                        defaultMessage={'for 1 person'} />
+                                    <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
                                 </td>
                                 <td className={'borderBottom borderRight center'}>
-                                    <FormattedMessage
-                                        id={'text_pricing_row2_team'}
-                                        defaultMessage={'for multiple people'} />
+                                    <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
                                 </td>
                             </tr>
                             <tr>
                                 <td className={'borderBottom borderRight sticky'}>
                                     <b>
-                                        <FormattedMessage
-                                            id={'text_pricing_row3_title'}
+                                    <FormattedMessage
+                                            id={'text_pricing_row2_title'}
                                             defaultMessage={'Regular news, updates, and expert articles available on the platform'}
                                         />
                                     </b>
                                 </td>
                                 <td className={'borderBottom borderRight center'}>
                                     <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
+                                </td>
+                                <td className={'borderBottom borderRight center'}>
+                                    <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
+                                </td>
+                                <td className={'borderBottom borderRight center'}>
+                                    <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={'borderBottom borderRight sticky'}>
+                                <b>
+                                        <FormattedMessage
+                                            id={'text_pricing_row3_title'}
+                                            defaultMessage={'Personalised hard copy of the Report'}
+                                        />
+                                    </b>
+                                </td>
+                                <td className={'borderBottom borderRight center'}>
+                                    <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
                                 </td>
                                 <td className={'borderBottom borderRight center'}>
                                     <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
@@ -419,25 +325,6 @@ const LandingPage = () => {
                                     <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
                                 </td>
                                 <td className={'borderBottom borderRight center'}>
-                                    <img src={'/icons/icon_check_black.svg'} alt={'checkmark'} />
-                                </td>
-                                <td className={'borderBottom borderRight center'}>
-                                    <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className={'borderBottom borderRight sticky'}>
-                                    <b>
-                                        <FormattedMessage
-                                            id={'text_pricing_row5_title'}
-                                            defaultMessage={'Team/group discount if obtained for 3 or more people'}
-                                        />
-                                    </b>
-                                </td>
-                                <td className={'borderBottom borderRight center'}>
-                                    <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
-                                </td>
-                                <td className={'borderBottom borderRight center'}>
                                     <img src={'/icons/icon_cross_black.svg'} alt={'checkmark'} />
                                 </td>
                                 <td className={'borderBottom borderRight center'}>
@@ -449,35 +336,28 @@ const LandingPage = () => {
                                 </td>
                                 <td className={'buttonCell'}>
                                     <ButtonColored>
-                                        <Link to={'/order/individual'}>
+                                        <Link to={'/order/digital'}>
                                             <FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />
-                                            {/*<FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
                                         </Link>
                                     </ButtonColored>
                                 </td>
                                 <td className={'buttonCell'}>
                                     <ButtonColored>
-                                        <Link to={'/order/participation'}>
+                                        <Link to={'/order/printed'}>
                                             <FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />
-                                            {/*<FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
                                         </Link>
                                     </ButtonColored>
                                 </td>
                                 <td className={'buttonCell'}>
                                     <ButtonColored>
-                                        <Link to={'/contact'}>
-                                            <FormattedMessage id={'label_contact_us'} defaultMessage={'Contact us'} />
+                                        <Link to={'/order/bundle'}>
+                                            <FormattedMessage id={'label_buy'} defaultMessage={'Buy now'} />
                                         </Link>
                                     </ButtonColored>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
-                        {/*<ButtonColored size={'large'}>*/}
-                        {/*    <a href={'https://tally.so/r/mKoV9X'}>*/}
-                        {/*        <FormattedMessage id={'label_preorder'} defaultMessage={'Pre-order'} />*/}
-                        {/*    </a>*/}
-                        {/*</ButtonColored>*/}
                     </div>
 
                 </section>
@@ -494,7 +374,7 @@ const LandingPage = () => {
                             })}
                             answer={intl.formatMessage({
                                 id: 'text_faq1_answer',
-                                defaultMessage: 'At the moment, we offer the Report only as a bundle with hard copy and online platform together. We want our artistically designed and crafted Report to become a valuable addition to your bookshelf. Yet at the same time we would like to offer you a convenient way to browse through the database.',
+                                defaultMessage: 'You have the flexibility to choose between digital access only or a full bundle that includes both a printed copy and online access. With the digital access option, you\'ll gain entry to the full content of the report, a searchable catalogue of tools, and an exclusive feed with regular updates and industry events. If you prefer, the full bundle provides the best of both worlds, giving you an artistically-designed printed copy along with complete digital access.',
                             })}
                         />
                         <FaqRow
