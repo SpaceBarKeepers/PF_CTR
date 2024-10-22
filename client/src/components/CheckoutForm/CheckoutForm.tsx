@@ -8,7 +8,7 @@ type Props = {
     option?: CTR_OPTION_ENUM
 }
 
-export default function CheckoutForm({ option = CTR_OPTION_ENUM.INDIVIDUAL }: Props) {
+export default function CheckoutForm({ option = CTR_OPTION_ENUM.DIGITAL }: Props) {
     const stripe = useStripe();
     const elements = useElements();
 
@@ -62,7 +62,7 @@ export default function CheckoutForm({ option = CTR_OPTION_ENUM.INDIVIDUAL }: Pr
             confirmParams: {
                 // Make sure to change this to your payment completion page
                 // return_url: 'http://localhost:5173/order/success',
-                return_url: option === CTR_OPTION_ENUM.PARTICIPATION ? 'https://civictechreport.com/order/success-participate' : 'https://civictechreport.com/order/success',
+                return_url: option === CTR_OPTION_ENUM.BUNDLE ? 'https://civictechreport.com/order/success-participate' : 'https://civictechreport.com/order/success',
             },
         });
 
