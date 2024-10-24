@@ -372,7 +372,7 @@ const OrderPage = () => {
                     </h2>
                     <div className={'orderPage__itemsList'}>
                         <OrderItem
-                            label={option === CTR_OPTION_ENUM.BUNDLE ? intl.formatMessage({ id: 'label_order_option_c', defaultMessage: 'Participate Practically bundle' }) : option === CTR_OPTION_ENUM.PRINTED ? intl.formatMessage({ id: 'label_order_option_b', defaultMessage: 'Digital + Printed option' }) : intl.formatMessage({ id: 'label_order_option_a', defaultMessage: 'Digital Access option' })}
+                            label={option === CTR_OPTION_ENUM.BUNDLE ? intl.formatMessage({ id: 'label_order_option_c', defaultMessage: 'Participate Practically Bundle' }) : option === CTR_OPTION_ENUM.PRINTED ? intl.formatMessage({ id: 'label_order_option_b', defaultMessage: 'Digital + Printed option' }) : intl.formatMessage({ id: 'label_order_option_a', defaultMessage: 'Digital Access option' })}
                             price={optionPrice}
                         />
                         <OrderItem
