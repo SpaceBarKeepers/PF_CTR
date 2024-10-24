@@ -1,6 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
 import { ContactDto } from './dto/contact.dto';
+import { contactFormTemplate } from './emailTemplates/contactFormTemplate';
+import { copyToPFRegistrationTemplate } from './emailTemplates/copyToPFRegistrationTemplate';
+import { passwordResetTemplate } from './emailTemplates/passwordResetTemplate';
+import { passwordRegistrationTemplate } from './emailTemplates/passwordRegistrationTemplate';
+import { CTR_OPTION_ENUM } from '../paywall/dto/paymentIntent.dto';
+import { passwordRegistrationPrintedTemplate } from './emailTemplates/passwordRegistrationPrintedTemplate';
+import { passwordRegistrationBundleTemplate } from './emailTemplates/passwordRegistrationBundleTemplate';
 
 @Injectable()
 export class EmailService {
@@ -26,6 +33,7 @@ export class EmailService {
     const mailOptions = {
       from: '"Civic Tech Report" <civictechreport@civictechreport.com>',
       to: to,
+      replyTo: 'civictech@participationfactory.com',
       subject: alternativeSubject
         ? alternativeSubject
         : 'Civic Tech Report: Account created',
@@ -56,169 +64,26 @@ export class EmailService {
     }
   }
 
-  async sendPasswordEmail(email: string, password: string) {
-    const htmlTemplate = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Your New Account</title>
-          <style>
-              body {
-                  font-family: Arial, sans-serif;
-                  background-color: #f4f4f4;
-                  margin: 0;
-                  padding: 0;
-              }
-              .container {
-                  background-color: #ffffff;
-                  max-width: 600px;
-                  margin: 20px auto;
-                  padding: 20px;
-                  border: 1px solid #e0e0e0;
-                  border-radius: 5px;
-              }
-              .header {
-                  text-align: center;
-                  padding: 10px 0;
-                  border-bottom: 1px solid #e0e0e0;
-              }
-              .header img {
-                  max-width: 100px;
-              }
-              .content {
-                  margin: 20px 0;
-                  text-align: center;
-              }
-              .content p {
-                  font-size: 16px;
-                  color: #333333;
-              }
-              .content .password {
-                  font-size: 24px;
-                  font-weight: bold;
-                  color: #1a73e8;
-                  margin: 20px 0;
-              }
-              .footer {
-                  text-align: center;
-                  padding: 10px 0;
-                  border-top: 1px solid #e0e0e0;
-                  font-size: 12px;
-                  color: #888888;
-              }
-          </style>
-      </head>
-      <body>
-          <div class="container">
-              <div class="header">
-                  <h1>
-                  Civic Tech Report
-                  </h1>
-              </div>
-              <div class="content">
-                  <p>Hello,</p>
-                  <p>Your new password for account:</p>
-                  <p class="password">${email}</p>
-                  <p>is:</p>
-                  <p class="password">${password}</p>
-                  <p>Please keep this password secure and do not share it with anyone.</p>
-              </div>
-              <div class="footer">
-                  <p>&copy; 2024 All rights reserved.</p>
-                  <p>Please note that by placing an order, you agree to our <a href="https://drive.google.com/file/d/18b4_vOCgR_JCa-KtpHBAgo8-W3pbbNn-/view" target="_blank">Confidentiality and Non-Compete Agreement.</a></p>
-              </div>
-          </div>
-      </body>
-      </html>
-    `;
+  async sendPasswordEmail(
+    email: string,
+    password: string,
+    orderOption: CTR_OPTION_ENUM,
+  ) {
+    let template = passwordRegistrationTemplate(email, password);
+    if (orderOption === CTR_OPTION_ENUM.PRINTED) {
+      template = passwordRegistrationPrintedTemplate(email, password);
+    }
+    if (orderOption === CTR_OPTION_ENUM.BUNDLE) {
+      template = passwordRegistrationBundleTemplate(email, password);
+    }
 
-    await this.sendRegistrationEmail(email, htmlTemplate);
+    await this.sendRegistrationEmail(email, template);
   }
 
   async sendResetPasswordEmail(email: string, password: string) {
-    const htmlTemplate = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Your New Account</title>
-          <style>
-              body {
-                  font-family: Arial, sans-serif;
-                  background-color: #f4f4f4;
-                  margin: 0;
-                  padding: 0;
-              }
-              .container {
-                  background-color: #ffffff;
-                  max-width: 600px;
-                  margin: 20px auto;
-                  padding: 20px;
-                  border: 1px solid #e0e0e0;
-                  border-radius: 5px;
-              }
-              .header {
-                  text-align: center;
-                  padding: 10px 0;
-                  border-bottom: 1px solid #e0e0e0;
-              }
-              .header img {
-                  max-width: 100px;
-              }
-              .content {
-                  margin: 20px 0;
-                  text-align: center;
-              }
-              .content p {
-                  font-size: 16px;
-                  color: #333333;
-              }
-              .content .password {
-                  font-size: 24px;
-                  font-weight: bold;
-                  color: #1a73e8;
-                  margin: 20px 0;
-              }
-              .footer {
-                  text-align: center;
-                  padding: 10px 0;
-                  border-top: 1px solid #e0e0e0;
-                  font-size: 12px;
-                  color: #888888;
-              }
-          </style>
-      </head>
-      <body>
-          <div class="container">
-              <div class="header">
-                  <h1>
-                  Civic Tech Report
-                  </h1>
-              </div>
-              <div class="content">
-                  <p>Hello,</p>
-                  <p>You've asked for your password to be reset.</p>
-                  <p>Your new password for account:</p>
-                  <p class="password">${email}</p>
-                  <p>is:</p>
-                  <p class="password">${password}</p>
-                  <p>Please keep this password secure and do not share it with anyone.</p>
-              </div>
-              <div class="footer">
-                  <p>&copy; 2024 All rights reserved.</p>
-                  <p>Please note that by placing an order, you agree to our <a href="https://drive.google.com/file/d/18b4_vOCgR_JCa-KtpHBAgo8-W3pbbNn-/view" target="_blank">Confidentiality and Non-Compete Agreement.</a></p>
-              </div>
-          </div>
-      </body>
-      </html>
-    `;
-
     await this.sendRegistrationEmail(
       email,
-      htmlTemplate,
+      passwordResetTemplate(email, password),
       'Civic Tech Report: Password reset',
     );
   }
@@ -230,168 +95,26 @@ export class EmailService {
     shippingCode: string,
     organization: string,
     phone: string,
+    orderOption: string,
   ) {
-    const htmlTemplate = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Your New Account</title>
-          <style>
-              body {
-                  font-family: Arial, sans-serif;
-                  background-color: #f4f4f4;
-                  margin: 0;
-                  padding: 0;
-              }
-              .container {
-                  background-color: #ffffff;
-                  max-width: 600px;
-                  margin: 20px auto;
-                  padding: 20px;
-                  border: 1px solid #e0e0e0;
-                  border-radius: 5px;
-              }
-              .header {
-                  text-align: center;
-                  padding: 10px 0;
-                  border-bottom: 1px solid #e0e0e0;
-              }
-              .header img {
-                  max-width: 100px;
-              }
-              .content {
-                  margin: 20px 0;
-                  text-align: center;
-              }
-              .content p {
-                  font-size: 16px;
-                  color: #333333;
-              }
-              .content .password {
-                  font-size: 24px;
-                  font-weight: bold;
-                  color: #1a73e8;
-                  margin: 20px 0;
-              }
-              .footer {
-                  text-align: center;
-                  padding: 10px 0;
-                  border-top: 1px solid #e0e0e0;
-                  font-size: 12px;
-                  color: #888888;
-              }
-          </style>
-      </head>
-      <body>
-          <div class="container">
-              <div class="header">
-                  <h1>
-                  Civic Tech Report
-                  </h1>
-              </div>
-              <div class="content">
-                <p>Email: ${email}</p>
-                <p>Name: ${name}</p>
-                <p>Address: ${address}</p>
-                <p>Shipping Code: ${shippingCode}</p>
-                <p>Organization: ${organization}</p>
-                <p>Phone: ${phone}</p>
-              </div>
-              <div class="footer">
-                  <p>&copy; 2024 All rights reserved.</p>
-              </div>
-          </div>
-      </body>
-      </html>
-    `;
-
     await this.sendRegistrationEmail(
       'civictech@participationfactory.com',
-      htmlTemplate,
+      copyToPFRegistrationTemplate(
+        email,
+        name,
+        address,
+        shippingCode,
+        organization,
+        phone,
+        orderOption,
+      ),
     );
   }
 
   async contactEmail(body: ContactDto) {
-    const htmlTemplate = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Your New Account</title>
-          <style>
-              body {
-                  font-family: Arial, sans-serif;
-                  background-color: #f4f4f4;
-                  margin: 0;
-                  padding: 0;
-              }
-              .container {
-                  background-color: #ffffff;
-                  max-width: 600px;
-                  margin: 20px auto;
-                  padding: 20px;
-                  border: 1px solid #e0e0e0;
-                  border-radius: 5px;
-              }
-              .header {
-                  text-align: center;
-                  padding: 10px 0;
-                  border-bottom: 1px solid #e0e0e0;
-              }
-              .header img {
-                  max-width: 100px;
-              }
-              .content {
-                  margin: 20px 0;
-                  text-align: center;
-              }
-              .content p {
-                  font-size: 16px;
-                  color: #333333;
-              }
-              .content .password {
-                  font-size: 24px;
-                  font-weight: bold;
-                  color: #1a73e8;
-                  margin: 20px 0;
-              }
-              .footer {
-                  text-align: center;
-                  padding: 10px 0;
-                  border-top: 1px solid #e0e0e0;
-                  font-size: 12px;
-                  color: #888888;
-              }
-          </style>
-      </head>
-      <body>
-          <div class="container">
-              <div class="header">
-                  <h1>
-                  Civic Tech Report
-                  </h1>
-              </div>
-              <div class="content">
-                <p>Name: ${body.name}</p>
-                <p>Email: ${body.email}</p>
-                <p>Organization: ${body.organization}</p>
-                <p>Phone: ${body.phone}</p>
-                <p>Message: ${body.message}</p>
-              </div>
-              <div class="footer">
-                  <p>&copy; 2024 All rights reserved.</p>
-              </div>
-          </div>
-      </body>
-      </html>
-    `;
-
     await this.sendContactEmail(
       'civictech@participationfactory.com',
-      htmlTemplate,
+      contactFormTemplate(body),
     );
   }
 }

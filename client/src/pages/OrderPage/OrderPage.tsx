@@ -129,6 +129,7 @@ const OrderPage = () => {
                 phone,
                 address,
                 shippingCode,
+                orderOption
             },
         };
 
