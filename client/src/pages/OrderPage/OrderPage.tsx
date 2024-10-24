@@ -166,7 +166,56 @@ const OrderPage = () => {
                     <p>
                         <FormattedMessage
                             id={'label_order_success_2'}
-                            defaultMessage={'We are excited to see your interest in digital participation and engagement, and we sincerely appreciate your trust in us. We are thrilled to announce that the Civic Tech Market Report 2025 will be available after September 3rd, when our website goes fully live. Your support is invaluable to us, and we can\'t wait to share this comprehensive report with you.'}
+                            defaultMessage={'We are excited to see your interest in digital participation and engagement, and we sincerely appreciate your trust in us. Digital access to the Civic Tech Market Report 2025 should now be available to you, and we can\'t wait for you to dive into this comprehensive guide.'}
+                        />
+                    </p>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_3_digital'}
+                            defaultMessage={'We also invite you to stay connected and get the latest updates by following us on {li} and {fb}.'}
+                            values={{
+                                li: <a href={'https://www.linkedin.com/company/participation-factory/'}
+                                       target={'_blank'}>LinkedIn</a>,
+                                fb: <a href={'https://www.facebook.com/participationfactory'}
+                                       target={'_blank'}>Facebook</a>,
+                            }}
+                        />
+                    </p>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_4'}
+                            defaultMessage={'Thank you once again for your purchase and your interest in civic technology!'}
+                        />
+                    </p>
+                </div>
+            </LayoutPublicWrapper>
+        );
+    } else if (option === "success-printed") {
+        return (
+            <LayoutPublicWrapper>
+                <div className={'orderPage'}>
+                    <h2>
+                        <FormattedMessage
+                            id={'label_order_success_heading'}
+                            defaultMessage={'Order Complete!'}
+                        />
+                    </h2>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_1'}
+                            defaultMessage={'Thank You for Your Purchase!'}
+                        />
+                    </p>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_2'}
+                            defaultMessage={'We are excited to see your interest in digital participation and engagement, and we sincerely appreciate your trust in us. Digital access to the Civic Tech Market Report 2025 should now be available to you, and we can\'t wait for you to dive into this comprehensive guide.'}
+                        />
+                    </p>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_print'}
+                            defaultMessage={'Please note that the printed copy will be shipped shortly, and we will send you shipping information via the email used for your purchase as soon as possible.'}
                         />
                     </p>
                     <p>
@@ -189,7 +238,7 @@ const OrderPage = () => {
                     </p>
                 </div>
             </LayoutPublicWrapper>
-        );
+        )
     } else if (option === "success-participate") {
         return (
             <LayoutPublicWrapper>
@@ -209,13 +258,19 @@ const OrderPage = () => {
                     <p>
                         <FormattedMessage
                             id={'label_order_success_2'}
-                            defaultMessage={'We are excited to see your interest in digital participation and engagement, and we sincerely appreciate your trust in us. We are thrilled to announce that the Civic Tech Market Report 2025 will be available after September 3rd, when our website goes fully live. Your support is invaluable to us, and we can\'t wait to share this comprehensive report with you.'}
+                            defaultMessage={'We are excited to see your interest in digital participation and engagement, and we sincerely appreciate your trust in us. Digital access to the Civic Tech Market Report 2025 should now be available to you, and we can\'t wait for you to dive into this comprehensive guide.'}
+                        />
+                    </p>
+                    <p>
+                        <FormattedMessage
+                            id={'label_order_success_print'}
+                            defaultMessage={'Please note that the printed copy will be shipped shortly, and we will send you shipping information via the email used for your purchase as soon as possible.'}
                         />
                     </p>
                     <p>
                         <FormattedMessage
                             id={'label_order_success_participate'}
-                            defaultMessage={'Additionally, access to the Participate Practically course will be shared with you promptly via the email used for purchasing the Participate Practically Bundle.'}
+                            defaultMessage={'Additionally, access to the Participate Practically course will be shared with you promptly via the same email.'}
                         />
                     </p>
                     <p>
