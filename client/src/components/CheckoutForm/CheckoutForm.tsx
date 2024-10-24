@@ -62,7 +62,7 @@ export default function CheckoutForm({ option = CTR_OPTION_ENUM.DIGITAL }: Props
             confirmParams: {
                 // Make sure to change this to your payment completion page
                 // return_url: 'http://localhost:5173/order/success',
-                return_url: option === CTR_OPTION_ENUM.BUNDLE ? 'https://civictechreport.com/order/success-participate' : 'https://civictechreport.com/order/success',
+                return_url: option === CTR_OPTION_ENUM.BUNDLE ? 'https://civictechreport.com/order/success-participate' : option === CTR_OPTION_ENUM.PRINTED ? 'https://civictechreport.com/order/success-printed' : 'https://civictechreport.com/order/success',
             },
         });
 
@@ -82,8 +82,7 @@ export default function CheckoutForm({ option = CTR_OPTION_ENUM.DIGITAL }: Props
 
     return (
         <form id="payment-form" onSubmit={handleSubmit}>
-            <p>If you encounter any issues with your card payment, please contact us directly via our contact form or
-                email us at <a href={'mailto:camille@participationfactory.com'}>info@participationfactory.com</a></p>
+            <p>If you encounter any issues with your card payment, please contact us directly via our contact form or email us at <a href={'mailto:civictech@participationfactory.com'}>civictech@participationfactory.com</a></p>
             <PaymentElement id="payment-element" options={{
                 layout: 'tabs',
             }} />

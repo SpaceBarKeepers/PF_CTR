@@ -93,10 +93,12 @@
         "error_order_address_already_exists": "This e-mail address is already used.",
         "label_order_success_heading": "Order Complete!",
         "label_order_success_1": "Thank You for Your Purchase!",
-        "label_order_success_2": "We are excited to see your interest in digital participation and engagement, and we sincerely appreciate your trust in us. We are thrilled to announce that the Civic Tech Market Report 2025 will be available after September 3rd, when our website goes fully live. Your support is invaluable to us, and we can't wait to share this comprehensive report with you.",
+        "label_order_success_2": "We are excited to see your interest in digital participation and engagement, and we sincerely appreciate your trust in us. Digital access to the Civic Tech Market Report 2025 should now be available to you, and we can't wait for you to dive into this comprehensive guide.",
         "label_order_success_3": "In the meantime, stay connected and get the latest updates by following us on {li} and {fb}.",
+        "label_order_success_3_digital": "We also invite you to stay connected and get the latest updates by following us on {li} and {fb}.",
         "label_order_success_4": "Thank you once again for your purchase and your interest in civic technology!",
-        "label_order_success_participate": "Additionally, access to the Participate Practically course will be shared with you promptly via the email used for purchasing the Participate Practically Bundle.",
+        "label_order_success_print": "Please note that the printed copy will be shipped shortly, and we will send you shipping information via the email used for your purchase as soon as possible.",
+        "label_order_success_participate": "Additionally, access to the Participate Practically course will be shared with you promptly via the same email.",
         "success_message_sent": "Message sent successfully."
     },
     "cs": {

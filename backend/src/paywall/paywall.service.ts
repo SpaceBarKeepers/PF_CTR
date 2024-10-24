@@ -111,6 +111,7 @@ export class PaywallService {
           await this.emailService.sendPasswordEmail(
             paymentIntent.metadata.email,
             password,
+            paymentIntent.metadata.orderOption as CTR_OPTION_ENUM,
           );
 
           await this.emailService.sendCopyEmailToPF(
@@ -120,6 +121,7 @@ export class PaywallService {
             paymentIntent.metadata.shippingCode,
             paymentIntent.metadata.organization,
             paymentIntent.metadata.phone,
+            paymentIntent.metadata.orderOption,
           );
 
           await this.userRepository.save(user);
