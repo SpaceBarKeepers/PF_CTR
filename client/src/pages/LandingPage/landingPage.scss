@@ -155,12 +155,30 @@
       .tableLink {
         color: black;
       }
+
+      table-layout: fixed;
+      colgroup col:first-child {
+        width: auto;
+      }
+      colgroup col:nth-child(2),
+      colgroup col:nth-child(3),
+      colgroup col:nth-child(4) {
+        width: 250px;
+      }
+
+      @media (min-width: 1450px) {
+        colgroup col:nth-child(2),
+        colgroup col:nth-child(3),
+        colgroup col:nth-child(4) {
+          width: 25%;
+        }
+      }
     }
 
     th {
       padding: 0 36px 40px 36px;
 
-      @media (min-width: 880px) {
+      @media (min-width: 1450px) {
         text-wrap: nowrap;
       }
     }
