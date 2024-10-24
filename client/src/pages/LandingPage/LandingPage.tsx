@@ -240,7 +240,7 @@ const LandingPage = () => {
                                 <th className={'borderBottom borderRight center'}>
                                     <FormattedMessage
                                         id={'label_pricing3'}
-                                        defaultMessage={'Participate Practically bundle'}
+                                        defaultMessage={'Participate Practically Bundle'}
                                     />
                                 </th>
                             </tr>
