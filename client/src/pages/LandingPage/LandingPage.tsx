@@ -222,6 +222,12 @@ const LandingPage = () => {
                     </h2>
                     <div className={'landingPage__pricingContainer'}>
                         <table>
+                            <colgroup>
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                            </colgroup>
                             <thead>
                             <tr>
                                 <th className={'borderBottom borderRight sticky'}></th>
@@ -246,7 +252,7 @@ const LandingPage = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            <tr className={"blackRow"}>
+                            <tr className={'blackRow'}>
                                 <td></td>
                                 <td>250 EUR</td>
                                 <td>590 EUR</td>
@@ -274,7 +280,7 @@ const LandingPage = () => {
                             <tr>
                                 <td className={'borderBottom borderRight sticky'}>
                                     <b>
-                                    <FormattedMessage
+                                        <FormattedMessage
                                             id={'text_pricing_row2_title'}
                                             defaultMessage={'Regular news, updates, and expert articles available on the platform'}
                                         />
@@ -292,7 +298,7 @@ const LandingPage = () => {
                             </tr>
                             <tr>
                                 <td className={'borderBottom borderRight sticky'}>
-                                <b>
+                                    <b>
                                         <FormattedMessage
                                             id={'text_pricing_row3_title'}
                                             defaultMessage={'Personalised hard copy of the Report'}
