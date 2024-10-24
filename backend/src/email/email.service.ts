@@ -67,7 +67,7 @@ export class EmailService {
   async sendPasswordEmail(
     email: string,
     password: string,
-    orderOption: CTR_OPTION_ENUM,
+    orderOption?: CTR_OPTION_ENUM,
   ) {
     let template = passwordRegistrationTemplate(email, password);
     if (orderOption === CTR_OPTION_ENUM.PRINTED) {
