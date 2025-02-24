@@ -26,6 +26,8 @@ export class UserService {
     user.phone = createUserDto.phone;
     user.address = createUserDto.address;
     user.shippingCode = createUserDto.shippingCode;
+    user.registered = new Date();
+    user.lastLogin = new Date();
 
     try {
       await this.emailService.sendPasswordEmail(
@@ -95,6 +97,9 @@ export class UserService {
       console.error('Error while sending email:', error);
     }
 
-    return this.userRepository.update({ username }, { password: hashedPassword });
+    return this.userRepository.update(
+      { username },
+      { password: hashedPassword },
+    );
   }
 }
