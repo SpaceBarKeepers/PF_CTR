@@ -60,7 +60,7 @@ export class PaywallService {
           break;
       }
 
-      return optionPrice + shippingPrice;
+      return (optionPrice + shippingPrice) * 100;
     };
 
     const paymentIntent: Stripe.Response<Stripe.PaymentIntent> =
@@ -73,6 +73,8 @@ export class PaywallService {
         },
         metadata: body.metadata,
       });
+
+    console.log('payment intent created: ', paymentIntent);
 
     if (paymentIntent.client_secret)
       return { clientSecret: paymentIntent.client_secret };
