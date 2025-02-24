@@ -109,6 +109,8 @@ export class PaywallService {
           user.address = paymentIntent.metadata.address;
           user.shippingCode = paymentIntent.metadata.shippingCode;
           user.registrationType = 'paygate';
+          user.registered = new Date();
+          user.lastLogin = new Date();
 
           await this.emailService.sendPasswordEmail(
             paymentIntent.metadata.email,
